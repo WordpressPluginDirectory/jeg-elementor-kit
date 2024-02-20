@@ -30,6 +30,13 @@ class Social_Share_View extends View_Abstract {
 			$id         = 'elementor-repeater-item-' . esc_attr( $social['_id'] );
 			$brand      = esc_attr( $social['sg_social_brand'] );
 			$label      = esc_attr( $social['sg_social_label'] );
+			$class      = $brand . ' social-icon';
+			$link_attr  = array(
+				'url'               => '#',
+				'is_external'       => '',
+				'nofollow'          => '',
+				'custom_attributes' => 'aria-label|social-share',
+			);
 
 			if ( 'icon' === $style ) {
 				$label_icon = $this->render_icon_element( $social['sg_social_icon'] );
@@ -43,9 +50,14 @@ class Social_Share_View extends View_Abstract {
 				}
 			}
 
+			if ( 'gradient' === $social['sg_social_normal_background_background_background'] || 'gradient' === $social['sg_social_hover_background_background_background'] || 'gradient' === $this->attribute['st_social_normal_background_background_background'] || 'gradient' === $this->attribute['st_social_hover_background_background_background'] ) {
+				$class     .= ' hover-gradient';
+				$label_icon = '<span>' . $label_icon . '</span>';
+			}
+
 			$lists .=
 			'<li class="' . $id . '" data-social="' . $brand . '">
-				<a class="' . $brand . ' social-icon">' . $label_icon . '</a>
+				' . $this->render_url_element( $link_attr, null, $class, $label_icon ) . '
 			</li>';
 		}
 

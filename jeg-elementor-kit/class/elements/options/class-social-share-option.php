@@ -276,13 +276,18 @@ class Social_Share_Option extends Option_Abstract {
 					),
 				),
 				'sg_social_normal_background'         => array(
-					'type'      => 'background',
-					'title'     => esc_html__( 'Normal Background Color', 'jeg-elementor-kit' ),
-					'segment'   => 'sg_social_list',
-					'selectors' => '.jeg-elementor-kit.jkit-social-share .social-share-list > li{{CURRENT_ITEM}} a',
-					'options'   => array(
+					'type'           => 'background',
+					'title'          => esc_html__( 'Normal Background Color', 'jeg-elementor-kit' ),
+					'segment'        => 'sg_social_list',
+					'selectors'      => '.jeg-elementor-kit.jkit-social-share .social-share-list > li{{CURRENT_ITEM}} a',
+					'options'        => array(
 						'classic',
 						'gradient',
+					),
+					'fields_options' => array(
+						'background' => array(
+							'render_type' => 'template',
+						),
 					),
 				),
 				'sg_social_normal_border'             => array(
@@ -334,13 +339,18 @@ class Social_Share_Option extends Option_Abstract {
 					'selectors' => '.jeg-elementor-kit.jkit-social-share .social-share-list > li{{CURRENT_ITEM}}:hover a',
 				),
 				'sg_social_hover_background'          => array(
-					'type'      => 'background',
-					'title'     => esc_html__( 'Hover Background Color', 'jeg-elementor-kit' ),
-					'segment'   => 'sg_social_list',
-					'selectors' => '.jeg-elementor-kit.jkit-social-share .social-share-list > li{{CURRENT_ITEM}}:hover a',
-					'options'   => array(
+					'type'           => 'background',
+					'title'          => esc_html__( 'Hover Background Color', 'jeg-elementor-kit' ),
+					'segment'        => 'sg_social_list',
+					'selectors'      => '.jeg-elementor-kit.jkit-social-share .social-share-list > li{{CURRENT_ITEM}}:hover a:not(.hover-gradient), {{WRAPPER}} .jeg-elementor-kit.jkit-social-share .social-share-list > li{{CURRENT_ITEM}} a.hover-gradient:before',
+					'options'        => array(
 						'classic',
 						'gradient',
+					),
+					'fields_options' => array(
+						'background' => array(
+							'render_type' => 'template',
+						),
 					),
 				),
 				'sg_social_hover_border'              => array(
@@ -614,13 +624,18 @@ class Social_Share_Option extends Option_Abstract {
 		);
 
 		$this->options['st_social_normal_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Normal Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_social',
-			'selectors' => '.jeg-elementor-kit.jkit-social-share .social-share-list > li a',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Normal Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_social',
+			'selectors'      => '.jeg-elementor-kit.jkit-social-share .social-share-list > li a',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -665,13 +680,18 @@ class Social_Share_Option extends Option_Abstract {
 		);
 
 		$this->options['st_social_hover_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_social',
-			'selectors' => '.jeg-elementor-kit.jkit-social-share .social-share-list > li:hover a',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_social',
+			'selectors'      => '.jeg-elementor-kit.jkit-social-share .social-share-list > li:hover a:not(.hover-gradient), {{WRAPPER}} .jeg-elementor-kit.jkit-social-share .social-share-list > li a.hover-gradient:before',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 

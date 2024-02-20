@@ -29,22 +29,32 @@ class Team_View extends View_Abstract {
 		$hover_animation       = ! empty( $this->attribute['st_content_hover_animation'] ) ? 'elementor-animation-' . esc_attr( $this->attribute['st_content_hover_animation'] ) : '';
 		$image_hover_animation = ! empty( $this->attribute['st_image_hover_animation'] ) ? 'elementor-animation-' . esc_attr( $this->attribute['st_image_hover_animation'] ) : '';
 
+		$profile_card_class = 'profile-card';
+
+		if ( 'gradient' === $this->attribute['st_content_normal_background_background_background'] || 'gradient' === $this->attribute['st_content_hover_background_background_background'] ) {
+			$profile_card_class .= ' hover-gradient';
+		}
+
 		if ( 'overlay' === $style ) {
 			$overlay_alignment = esc_attr( $this->attribute['sg_member_overlay_content_alignment'] );
 
+			$profile_card_class .= ' ' . $hover_animation;
+
 			$output =
-			'<div class="profile-card ' . $hover_animation . '">' . $image . '
+			'<div class="' . $profile_card_class . '">' . $image . '
                 <div class="hover-area alignment-' . $overlay_alignment . '">' . $this->render_team() . '</div>
             </div>';
 		} elseif ( 'title-horizontal' === $style ) {
-			$output = '<div class="profile-card">' . $image . $this->render_team() . '</div>';
+			$output = '<div class="' . $profile_card_class . '">' . $image . $this->render_team() . '</div>';
 		} else {
 			$image       = 'yes' === $this->attribute['sg_popup_show'] ? '<a href="#jkit-team-modal-' . $this->unique_id . '" class="jkit-team-modal" data-effect="mfp-move-horizontal">' . $image . '</a>' : $image;
 			$image_class = 'yes' === $this->attribute['sg_popup_show'] ? 'data-toggle="modal" data-target="jkit-team-modal-' . $this->unique_id . '"' : '';
 
+			$profile_card_class .= ' ' . $hover_animation;
+
 			$output =
 			'<div class="profile-box">
-                <div class="profile-card ' . $hover_animation . '">
+                <div class="' . $profile_card_class . '">
                     <div class="profile-header jkit-team-img ' . $image_hover_animation . '"' . $image_class . '>' . $image . '</div>
                     ' . $this->render_team() . '
                     ' . $border_bottom . '
@@ -67,6 +77,7 @@ class Team_View extends View_Abstract {
 		$html_tag    = esc_attr( $this->attribute['sg_member_html_tag'] );
 		$style       = esc_attr( $this->attribute['sg_member_style'] );
 		$html_tag    = isset( $html_tag ) ? $html_tag : 'h2';
+		$html_tag    = \Elementor\Utils::validate_html_tag( $html_tag );
 		$social_list = $this->render_social();
 
 		if ( 'default' === $style ) {
@@ -120,7 +131,7 @@ class Team_View extends View_Abstract {
 			$description = 'yes' === $this->attribute['sg_member_show_description'] ? '<div class="team-modal-description">' . esc_attr( $this->attribute['sg_member_description'] ) . '</div>' : '';
 			$name        = esc_attr( $this->attribute['sg_member_name'] );
 			$position    = esc_attr( $this->attribute['sg_member_position'] );
-			$html_tag    = esc_attr( $this->attribute['sg_member_html_tag'] );
+			$html_tag    = \Elementor\Utils::validate_html_tag( $this->attribute['sg_member_html_tag'] );
 			$close_icon  = $this->render_icon_element( $this->attribute['sg_popup_close_icon'] );
 			$social_list = $this->render_social();
 
@@ -160,9 +171,15 @@ class Team_View extends View_Abstract {
 		if ( 'yes' === $this->attribute['sg_social_show'] ) {
 			foreach ( $this->attribute['sg_social_icon'] as $social ) {
 				$id          = 'elementor-repeater-item-' . esc_attr( $social['_id'] );
+				$class       = 'social-icon ' . $id;
 				$social_icon = $this->render_icon_element( $social['sg_social_icon'] );
-				$social_url  = $this->render_url_element( $social['sg_social_link'], null, null, $social_icon );
-				$social_list = $social_list . '<li class="social-icon ' . $id . '">' . $social_url . '</li>';
+				$social_url  = $this->render_url_element( $social['sg_social_link'], null, null, $social_icon, 'aria-label="social-icon"' );
+
+				if ( 'gradient' === $social['sg_social_normal_background_background_background'] || 'gradient' === $social['sg_social_hover_background_background_background'] ) {
+					$class .= ' hover-gradient';
+				}
+
+				$social_list = $social_list . '<li class="' . $class . '">' . $social_url . '</li>';
 			}
 		}
 

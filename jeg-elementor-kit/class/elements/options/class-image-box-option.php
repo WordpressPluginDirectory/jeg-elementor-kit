@@ -561,6 +561,22 @@ class Image_Box_Option extends Option_Abstract {
 			'responsive'   => true,
 		);
 
+		$this->options['st_image_normal_border'] = array(
+			'type'      => 'border',
+			'title'     => esc_html__( 'Normal Border', 'jeg-elementor-kit' ),
+			'segment'   => 'style_image',
+			'selectors' => '.jeg-elementor-kit.jkit-image-box .image-box-header',
+		);
+
+		$this->options['st_image_normal_border_radius'] = array(
+			'type'      => 'dimension',
+			'title'     => esc_html__( 'Normal Border Radius', 'jeg-elementor-kit' ),
+			'segment'   => 'style_image',
+			'units'     => array( 'px', '%', 'em' ),
+			'selectors' => '.jeg-elementor-kit.jkit-image-box .image-box-header',
+			'attribute' => 'border-radius',
+		);
+
 		$this->options['st_image_normal_tab_end'] = array(
 			'type'    => 'control_tab_end',
 			'segment' => 'style_image',
@@ -605,6 +621,22 @@ class Image_Box_Option extends Option_Abstract {
 					'{{WRAPPER}} .jeg-elementor-kit.jkit-image-box:hover .image-box-header img' => '-webkit-transform: scale({{SIZE}}); -o-transform: scale({{SIZE}}); -moz-transform: scale({{SIZE}}); -ms-transform: scale({{SIZE}}); transform: scale({{SIZE}});',
 				),
 			),
+		);
+
+		$this->options['st_image_hover_border'] = array(
+			'type'      => 'border',
+			'title'     => esc_html__( 'Hover Border', 'jeg-elementor-kit' ),
+			'segment'   => 'style_image',
+			'selectors' => '.jeg-elementor-kit.jkit-image-box:hover .image-box-header',
+		);
+
+		$this->options['st_image_hover_border_radius'] = array(
+			'type'      => 'dimension',
+			'title'     => esc_html__( 'Hover Border Radius', 'jeg-elementor-kit' ),
+			'segment'   => 'style_image',
+			'units'     => array( 'px', '%', 'em' ),
+			'selectors' => '.jeg-elementor-kit.jkit-image-box:hover .image-box-header',
+			'attribute' => 'border-radius',
 		);
 
 		$this->options['st_image_hover_animation'] = array(
@@ -956,13 +988,18 @@ class Image_Box_Option extends Option_Abstract {
 		);
 
 		$this->options['st_button_normal_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Normal Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-image-box .button-box .button-wrapper a',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Normal Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_button',
+			'selectors'      => '.jeg-elementor-kit.jkit-image-box .button-box .button-wrapper a',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -1000,6 +1037,22 @@ class Image_Box_Option extends Option_Abstract {
 			'segment' => 'style_button',
 		);
 
+		$this->options['st_button_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_button',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-image-box .button-box .button-wrapper a' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
 		$this->options['st_button_hover_color'] = array(
 			'type'       => 'color',
 			'title'      => esc_html__( 'Hover Color', 'jeg-elementor-kit' ),
@@ -1014,13 +1067,18 @@ class Image_Box_Option extends Option_Abstract {
 		);
 
 		$this->options['st_button_hover_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-image-box .button-box .button-wrapper a:hover',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_button',
+			'selectors'      => '.jeg-elementor-kit.jkit-image-box .button-box .button-wrapper a:not(.hover-gradient):hover, {{WRAPPER}} .jeg-elementor-kit.jkit-image-box .button-box .button-wrapper a.hover-gradient:before',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 

@@ -23,7 +23,7 @@ class Portfolio_Gallery_View extends View_Abstract {
 		$row     = '';
 		$gallery = '';
 
-		$html_tag    = esc_attr( $this->attribute['sg_setting_title_tag'] );
+		$html_tag    = \Elementor\Utils::validate_html_tag( $this->attribute['sg_setting_title_tag'] );
 		$behavior    = esc_attr( $this->attribute['sg_setting_behavior'] );
 		$image_size  = esc_attr( $this->attribute['sg_gallery_image_size_imagesize_size'] );
 		$more_enable = 'yes' === $this->attribute['sg_setting_more_enable'];

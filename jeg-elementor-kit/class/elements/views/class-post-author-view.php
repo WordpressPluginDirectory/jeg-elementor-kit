@@ -27,7 +27,7 @@ class Post_Author_View extends View_Abstract {
 
 			if ( ! empty( $author ) ) {
 				$link_to   = $this->attribute['sg_author_link_to'];
-				$html_tag  = esc_attr( $this->attribute['sg_author_html_tag'] );
+				$html_tag  = \Elementor\Utils::validate_html_tag( $this->attribute['sg_author_html_tag'] );
 				$animation = ! empty( $this->attribute['st_author_hover_animation'] ) ? 'elementor-animation-' . esc_attr( $this->attribute['st_author_hover_animation'] ) : '';
 
 				switch ( $link_to ) {

@@ -182,6 +182,10 @@ class Query {
 			$args['monthnum'] = $attr['monthnum'];
 		}
 
+		if ( isset( $attr['lang'] ) ) {
+			$args['lang'] = $attr['lang'];
+		}
+
 		$args['post_status'] = 'publish';
 
 		$args = apply_filters( 'jeg_default_query_args', $args, $attr );
@@ -336,6 +340,7 @@ class Query {
 			'monthnum',
 			'day',
 			'taxonomy',
+			'lang',
 		);
 
 		$accepted = apply_filters( 'jeg_accept_query_attribute', $accepted, $attr );

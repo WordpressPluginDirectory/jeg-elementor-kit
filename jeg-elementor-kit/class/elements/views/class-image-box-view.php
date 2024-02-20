@@ -53,7 +53,7 @@ class Image_Box_View extends View_Abstract {
 	 */
 	private function render_body() {
 		$title               = esc_attr( $this->attribute['sg_body_title'] );
-		$title_tag           = esc_attr( $this->attribute['sg_body_title_tag'] );
+		$title_tag           = \Elementor\Utils::validate_html_tag( $this->attribute['sg_body_title_tag'] );
 		$title_icon_position = esc_attr( $this->attribute['sg_body_title_icon_position'] );
 		$description         = $this->attribute['sg_body_description'];
 		$button              = $this->render_button();
@@ -91,13 +91,21 @@ class Image_Box_View extends View_Abstract {
 			$link          = $this->attribute['sg_button_link'];
 			$label         = esc_attr( $this->attribute['sg_button_label'] );
 			$icon          = $this->render_icon_element( $this->attribute['sg_button_icon'] );
+			$link_class    = '';
+			$item          = '';
 
 			if ( 'before' === $icon_position ) {
-				$button = $this->render_url_element( $link, null, null, $icon . $label );
+				$item = $icon . $label;
 			} else {
-				$button = $this->render_url_element( $link, null, null, $label . $icon );
+				$item = $label . $icon;
 			}
 
+			if ( 'gradient' === $this->attribute['st_button_normal_background_background_background'] || 'gradient' === $this->attribute['st_button_hover_background_background_background'] ) {
+				$link_class .= 'hover-gradient';
+				$item        = '<span>' . $item . '</span>';
+			}
+
+			$button = $this->render_url_element( $link, null, $link_class, $item );
 			$button = '<div class="button-box icon-position-' . $icon_position . '"><div class="button-wrapper">' . $button . '</div></div>';
 		}
 

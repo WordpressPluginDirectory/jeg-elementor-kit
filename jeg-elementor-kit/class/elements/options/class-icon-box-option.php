@@ -75,7 +75,8 @@ class Icon_Box_Option extends Option_Abstract {
 			'name'     => esc_html__( 'Setting', 'jeg-elementor-kit' ),
 			'priority' => 10,
 		);
-		$this->segments['segment_icon']    = array(
+
+		$this->segments['segment_icon'] = array(
 			'name'     => esc_html__( 'Icon Box', 'jeg-elementor-kit' ),
 			'priority' => 11,
 		);
@@ -84,10 +85,12 @@ class Icon_Box_Option extends Option_Abstract {
 			'name'     => esc_html__( 'Read More', 'jeg-elementor-kit' ),
 			'priority' => 12,
 		);
-		$this->segments['segment_badge']    = array(
+
+		$this->segments['segment_badge'] = array(
 			'name'     => esc_html__( 'Badge', 'jeg-elementor-kit' ),
 			'priority' => 13,
 		);
+
 		$this->set_style_segment();
 	}
 
@@ -616,13 +619,18 @@ class Icon_Box_Option extends Option_Abstract {
 		);
 
 		$this->options['st_container_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Normal Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_container',
-			'selectors' => '.jeg-elementor-kit.jkit-icon-box .jkit-icon-box-wrapper',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Normal Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_container',
+			'selectors'      => '.jeg-elementor-kit.jkit-icon-box .jkit-icon-box-wrapper',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -669,14 +677,35 @@ class Icon_Box_Option extends Option_Abstract {
 			'segment' => 'style_container',
 		);
 
-		$this->options['st_container_hover_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
+		$this->options['st_container_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
 			'segment'   => 'style_container',
-			'selectors' => '.jeg-elementor-kit.jkit-icon-box:hover .jkit-icon-box-wrapper',
 			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-icon-box .jkit-icon-box-wrapper' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
+		$this->options['st_container_hover_background'] = array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_container',
+			'selectors'      => '.jeg-elementor-kit.jkit-icon-box:hover .jkit-icon-box-wrapper:not(.hover-gradient), {{WRAPPER}} .jeg-elementor-kit.jkit-icon-box .jkit-icon-box-wrapper.hover-gradient:after',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -1246,13 +1275,18 @@ class Icon_Box_Option extends Option_Abstract {
 		);
 
 		$this->options['st_button_normal_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Normal Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-icon-box .icon-box-button a.icon-box-link',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Normal Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_button',
+			'selectors'      => '.jeg-elementor-kit.jkit-icon-box .icon-box-button a.icon-box-link',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -1290,6 +1324,22 @@ class Icon_Box_Option extends Option_Abstract {
 			'segment' => 'style_button',
 		);
 
+		$this->options['st_button_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_button',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-icon-box .icon-box-button a.icon-box-link' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
 		$this->options['st_button_hover_text_color'] = array(
 			'type'       => 'color',
 			'title'      => esc_html__( 'Hover Text Color', 'jeg-elementor-kit' ),
@@ -1304,13 +1354,18 @@ class Icon_Box_Option extends Option_Abstract {
 		);
 
 		$this->options['st_button_hover_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-icon-box:hover .icon-box-button a.icon-box-link',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_button',
+			'selectors'      => '.jeg-elementor-kit.jkit-icon-box:hover .icon-box-button a.icon-box-link:not(.hover-gradient), {{WRAPPER}} .jeg-elementor-kit.jkit-icon-box:hover .icon-box-button a.icon-box-link.hover-gradient:before',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 

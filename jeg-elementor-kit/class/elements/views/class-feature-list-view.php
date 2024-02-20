@@ -33,7 +33,7 @@ class Feature_List_View extends View_Abstract {
 		$output         = '';
 		$connector      = '';
 		$connector_type = '';
-		$html_tag       = esc_attr( $this->attribute['sg_setting_html_tag'] );
+		$html_tag       = \Elementor\Utils::validate_html_tag( $this->attribute['sg_setting_html_tag'] );
 		$shape          = 'shape-' . esc_attr( $this->attribute['sg_setting_icon_shape'] );
 		$shape_view     = 'shape-view-' . esc_attr( $this->attribute['sg_setting_shape_view'] );
 

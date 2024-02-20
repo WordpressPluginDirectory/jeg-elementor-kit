@@ -179,6 +179,7 @@ class Dashboard {
 
 		if ( is_admin() && isset( $_REQUEST['page'] ) && strpos( $_REQUEST['page'], 'jkit' ) !== false ) {
 			add_action( 'in_admin_header', array( $this, 'disable_plugins_notices_jkit_dashboard' ) );
+			add_filter( 'elementor/admin-top-bar/is-active', '__return_false' );
 		}
 	}
 

@@ -201,6 +201,10 @@ class Elementor_Kit_Abstract extends Elementor_Abstract {
 							$args['render_type'] = $option['render_type'];
 						}
 
+						if ( isset( $option['frontend_available'] ) ) {
+							$args['frontend_available'] = $option['frontend_available'];
+						}
+
 						if ( isset( $option['global'] ) ) {
 							$args['global'] = $option['global'];
 						}
@@ -377,6 +381,10 @@ class Elementor_Kit_Abstract extends Elementor_Abstract {
 							'description' => isset( $option['description'] ) ? $option['description'] : '',
 							'separator'   => isset( $option['separator'] ) ? $option['separator'] : '',
 						);
+
+						if ( isset( $option['frontend_available'] ) ) {
+							$args['frontend_available'] = $option['frontend_available'];
+						}
 
 						if ( isset( $option['dependency'] ) ) {
 							if ( isset( $option['dependency']['custom'] ) ) {
@@ -871,6 +879,12 @@ class Elementor_Kit_Abstract extends Elementor_Abstract {
 							} else {
 								$args['condition'] = $this->parse_dependency_option( $option['dependency'] );
 							}
+						}
+
+						$args['dynamic']['active'] = true;
+
+						if ( isset( $option['dynamic'] ) ) {
+							$args['dynamic']['active'] = $option['dynamic'];
 						}
 
 						if ( $repeater_options ) {

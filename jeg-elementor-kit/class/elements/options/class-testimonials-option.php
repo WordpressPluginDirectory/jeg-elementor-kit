@@ -862,13 +862,18 @@ class Testimonials_Option extends Option_Abstract {
 		);
 
 		$this->options['st_quote_normal_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Normal Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_quote',
-			'selectors' => '.jeg-elementor-kit.jkit-testimonials .testimonials-track .testimonial-item .testimonial-box .icon-content',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Normal Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_quote',
+			'selectors'      => '.jeg-elementor-kit.jkit-testimonials .testimonials-track .testimonial-item .testimonial-box .icon-content',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -890,6 +895,22 @@ class Testimonials_Option extends Option_Abstract {
 			'type'    => 'control_tab_start',
 			'title'   => esc_html__( 'Hover', 'jeg-elementor-kit' ),
 			'segment' => 'style_quote',
+		);
+
+		$this->options['st_quote_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_quote',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .testimonials-track .testimonial-item .testimonial-box .icon-content' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
 		);
 
 		$this->options['st_quote_hover_color'] = array(
@@ -947,13 +968,18 @@ class Testimonials_Option extends Option_Abstract {
 		);
 
 		$this->options['st_quote_hover_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_quote',
-			'selectors' => '.jeg-elementor-kit.jkit-testimonials .testimonials-track .testimonial-item:hover .testimonial-box .icon-content',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_quote',
+			'selectors'      => '.jeg-elementor-kit.jkit-testimonials .testimonials-track .testimonial-item:hover .testimonial-box .icon-content:not(.hover-gradient), {{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .testimonials-track .testimonial-item .testimonial-box .icon-content.hover-gradient:before',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -1534,8 +1560,26 @@ class Testimonials_Option extends Option_Abstract {
 				'step' => 1,
 			),
 			'responsive' => true,
-			'selectors'  => '.jeg-elementor-kit.jkit-testimonials .testimonials-track .testimonial-item .testimonial-box .profile-image img',
-			'attribute'  => 'width',
+			'selectors'  => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .testimonials-track .testimonial-item .testimonial-box .profile-image img' => 'width: {{SIZE}}px',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .testimonials-track .testimonial-item .testimonial-box .profile-image img.source-url' => 'height: {{SIZE}}px',
+				),
+			),
+		);
+
+		$this->options['st_client_image_height'] = array(
+			'type'       => 'slider',
+			'title'      => esc_html__( 'Height', 'jeg-elementor-kit' ),
+			'segment'    => 'style_client_image',
+			'options'    => array(
+				'min'  => 0,
+				'max'  => 1000,
+				'step' => 1,
+			),
+			'responsive' => true,
+			'selectors'  => '.jeg-elementor-kit.jkit-testimonials .testimonials-track .testimonial-item .testimonial-box .profile-image img, {{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .testimonials-track .testimonial-item .testimonial-box .profile-image img.source-url',
+			'attribute'  => 'height',
 		);
 
 		$this->options['st_client_layout_heading'] = array(
@@ -1609,22 +1653,27 @@ class Testimonials_Option extends Option_Abstract {
 			'responsive' => true,
 			'selectors'  => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button i'   => 'color: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button span'   => 'color: {{VALUE}};',
 					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button svg' => 'fill: {{VALUE}};',
 				),
 			),
 		);
 
 		$this->options['st_arrow_normal_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Normal Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_arrow',
-			'selectors' => array(
-				'custom' => '{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button i, {{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button svg',
+			'type'           => 'background',
+			'title'          => esc_html__( 'Normal Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_arrow',
+			'selectors'      => array(
+				'custom' => '{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button span',
 			),
-			'options'   => array(
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -1635,7 +1684,7 @@ class Testimonials_Option extends Option_Abstract {
 			'units'     => array( 'px', '%', 'em' ),
 			'selectors' => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button i, {{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button span' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			),
 		);
@@ -1647,7 +1696,7 @@ class Testimonials_Option extends Option_Abstract {
 			'units'     => array( 'px', '%', 'em' ),
 			'selectors' => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button i, {{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button svg' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button span' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			),
 		);
@@ -1659,7 +1708,7 @@ class Testimonials_Option extends Option_Abstract {
 			'units'     => array( 'px', '%', 'em' ),
 			'selectors' => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button i, {{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button svg' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button span' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			),
 		);
@@ -1669,7 +1718,7 @@ class Testimonials_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Normal Box Shadow', 'jeg-elementor-kit' ),
 			'segment'   => 'style_arrow',
 			'selectors' => array(
-				'custom' => '{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button i, {{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button svg',
+				'custom' => '{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button span',
 			),
 		);
 
@@ -1678,7 +1727,7 @@ class Testimonials_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Normal Border', 'jeg-elementor-kit' ),
 			'segment'   => 'style_arrow',
 			'selectors' => array(
-				'custom' => '{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button i, {{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button svg',
+				'custom' => '{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button span',
 			),
 		);
 
@@ -1697,7 +1746,7 @@ class Testimonials_Option extends Option_Abstract {
 			'units'        => array( '%' ),
 			'selectors'    => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button i, {{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button svg' => 'opacity: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button span' => 'opacity: {{SIZE}}{{UNIT}};',
 				),
 			),
 		);
@@ -1713,6 +1762,22 @@ class Testimonials_Option extends Option_Abstract {
 			'segment' => 'style_arrow',
 		);
 
+		$this->options['st_arrow_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_arrow',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button span, {{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button i, {{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button svg' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
 		$this->options['st_arrow_hover_color'] = array(
 			'type'       => 'color',
 			'title'      => esc_html__( 'Hover Color', 'jeg-elementor-kit' ),
@@ -1720,22 +1785,27 @@ class Testimonials_Option extends Option_Abstract {
 			'responsive' => true,
 			'selectors'  => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button i:hover'   => 'color: {{VALUE}};',
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button svg:hover' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button:hover span'   => 'color: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button:hover svg' => 'fill: {{VALUE}};',
 				),
 			),
 		);
 
 		$this->options['st_arrow_hover_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_arrow',
-			'selectors' => array(
-				'custom' => '{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button i:hover, {{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button svg:hover',
+			'type'           => 'background',
+			'title'          => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_arrow',
+			'selectors'      => array(
+				'custom' => '{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button:hover span:not(.hover-gradient), {{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button span.hover-gradient:before',
 			),
-			'options'   => array(
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -1746,7 +1816,7 @@ class Testimonials_Option extends Option_Abstract {
 			'units'     => array( 'px', '%', 'em' ),
 			'selectors' => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button i:hover, {{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button svg:hover' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button:hover span',
 				),
 			),
 		);
@@ -1758,7 +1828,7 @@ class Testimonials_Option extends Option_Abstract {
 			'units'     => array( 'px', '%', 'em' ),
 			'selectors' => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button i:hover, {{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button svg:hover' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button:hover span' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			),
 		);
@@ -1770,7 +1840,7 @@ class Testimonials_Option extends Option_Abstract {
 			'units'     => array( 'px', '%', 'em' ),
 			'selectors' => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button i:hover, {{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button svg:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button:hover span' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			),
 		);
@@ -1780,7 +1850,7 @@ class Testimonials_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Hover Box Shadow', 'jeg-elementor-kit' ),
 			'segment'   => 'style_arrow',
 			'selectors' => array(
-				'custom' => '{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button i:hover, {{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button svg:hover',
+				'custom' => '{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button:hover span',
 			),
 		);
 
@@ -1789,7 +1859,7 @@ class Testimonials_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Hover Border', 'jeg-elementor-kit' ),
 			'segment'   => 'style_arrow',
 			'selectors' => array(
-				'custom' => '{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button i:hover, {{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button svg:hover',
+				'custom' => '{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button:hover span',
 			),
 		);
 
@@ -1808,7 +1878,7 @@ class Testimonials_Option extends Option_Abstract {
 			'units'        => array( '%' ),
 			'selectors'    => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials:hover .tns-controls button i, {{WRAPPER}} .jeg-elementor-kit.jkit-testimonials:hover .tns-controls button svg' => 'opacity: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials:hover .tns-controls button span' => 'opacity: {{SIZE}}{{UNIT}};',
 				),
 			),
 		);

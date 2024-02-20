@@ -45,12 +45,28 @@ class Nav_Menu_View extends View_Abstract {
 			$mobile_logo_image = $this->render_url_element( $this->attribute['sg_mobile_menu_custom_link'], null, 'jkit-nav-logo', $mobile_logo_image );
 		}
 
+		$button_open_class  = 'jkit-hamburger-menu';
+		$button_close_class = 'jkit-close-menu';
+
+		if ( 'gradient' === $this->attribute['st_hamburger_menu_icon_background_background_background'] || 'gradient' === $this->attribute['st_hamburger_menu_icon_background_hover_background_background'] ) {
+			$button_open_class .= ' hover-gradient';
+			$mobile_menu_icon   = '<span>' . $mobile_menu_icon . '</span>';
+		}
+
+		if ( 'gradient' === $this->attribute['st_hamburger_menu_close_background_background_background'] || 'gradient' === $this->attribute['st_hamburger_menu_close_background_hover_background_background'] ) {
+			$button_close_class .= ' hover-gradient';
+			$mobile_close_icon   = '<span>' . $mobile_close_icon . '</span>';
+		}
+
+		$button_open  = '<button aria-label="open-menu" class="' . $button_open_class . '">' . $mobile_menu_icon . '</button>';
+		$button_close = '<button aria-label="close-menu" class="' . $button_close_class . '">' . $mobile_close_icon . '</button>';
+
 		$output =
-		'<button class="jkit-hamburger-menu">' . $mobile_menu_icon . '</button>
+		$button_open . '
         <div class="jkit-menu-wrapper">' . $menu . '
             <div class="jkit-nav-identity-panel">
                 <div class="jkit-nav-site-title">' . $mobile_logo_image . '</div>
-                <button class="jkit-close-menu">' . $mobile_close_icon . '</button>
+                ' . $button_close . '
             </div>
         </div>
         <div class="jkit-overlay"></div>';

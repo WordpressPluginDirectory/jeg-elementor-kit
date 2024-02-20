@@ -38,7 +38,13 @@ class Search_View extends View_Abstract {
 	 * @param string $icon Rendered icon.
 	 */
 	private function render_modal( $icon ) {
-		return '<a href="#" class="jkit-search-modal">' . $icon . '</a>
+		$search_modal_class = 'jkit-search-modal';
+
+		if ( 'gradient' === $this->attribute['st_icon_normal_background_background_background'] || 'gradient' === $this->attribute['st_icon_hover_background_background_background'] ) {
+			$search_modal_class .= ' hover-gradient';
+		}
+
+		return '<a href="#" class="' . $search_modal_class . '">' . $icon . '</a>
 			<div class="jkit-modal-search-panel-wrapper">
 				<div class="jkit-modal-search-panel">
 					' . $this->render_form( $icon ) . '
@@ -56,10 +62,17 @@ class Search_View extends View_Abstract {
 		$placeholder     = esc_attr( $this->attribute['sg_search_placeholder'] );
 		$button_icon     = 'icon' === $this->attribute['sg_search_button_style'] ? $icon : esc_attr( $this->attribute['sg_search_text'] );
 
+		$button_class = 'jkit-search-button';
+		$input_class  = 'jkit-search-field';
+
+		if ( 'gradient' === $this->attribute['st_button_background_background_background'] || 'gradient' === $this->attribute['st_button_hover_background_background_background'] ) {
+			$button_class .= ' hover-gradient';
+		}
+
 		return '<div class="jkit-search-panel">
 					<form role="search" method="get" class="jkit-search-group" action="' . esc_url( home_url( '/' . $language_prefix ) ) . '">
-						<input type="search" class="jkit-search-field" placeholder="' . $placeholder . '" value="' . esc_attr( get_search_query() ) . '" name="s" />
-						<button type="submit" class="jkit-search-button">' . $button_icon . '</button>
+						<input type="search" class="' . $input_class . '" placeholder="' . $placeholder . '" value="' . esc_attr( get_search_query() ) . '" name="s" />
+						<button type="submit" class="' . $button_class . '" aria-label="search-button">' . $button_icon . '</button>
 					</form>
 				</div>';
 	}

@@ -70,9 +70,16 @@ class Mailchimp_Option extends Option_Abstract {
 			return $options;
 		}
 
-		$url = 'https://' . $server[1] . '.api.mailchimp.com/3.0/lists?apikey=' . $api_key;
+		$url = 'https://' . $server[1] . '.api.mailchimp.com/3.0/lists';
 
-		$response = wp_remote_get( $url, array() );
+		$response = wp_remote_get(
+			$url,
+			array(
+				'headers' => array(
+					'Authorization' => 'apikey ' . $api_key,
+				),
+			)
+		);
 
 		if ( is_array( $response ) && ! is_wp_error( $response ) ) {
 			$body   = (array) json_decode( $response['body'] );
@@ -870,15 +877,6 @@ class Mailchimp_Option extends Option_Abstract {
 			'selectors' => '.jeg-elementor-kit.jkit-mailchimp .jkit-mailchimp-submit',
 		);
 
-		$this->options['st_button_border_radius'] = array(
-			'type'      => 'dimension',
-			'title'     => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
-			'segment'   => 'style_button',
-			'units'     => array( 'px', '%', 'em' ),
-			'selectors' => '.jeg-elementor-kit.jkit-mailchimp .jkit-mailchimp-submit',
-			'attribute' => 'border-radius',
-		);
-
 		$this->options['st_button_padding'] = array(
 			'type'      => 'dimension',
 			'title'     => esc_html__( 'Padding', 'jeg-elementor-kit' ),
@@ -895,20 +893,6 @@ class Mailchimp_Option extends Option_Abstract {
 			'units'     => array( 'px', '%', 'em' ),
 			'selectors' => '.jeg-elementor-kit.jkit-mailchimp .jkit-mailchimp-submit',
 			'attribute' => 'margin',
-		);
-
-		$this->options['st_button_border'] = array(
-			'type'      => 'border',
-			'title'     => esc_html__( 'Border', 'jeg-elementor-kit' ),
-			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-mailchimp .jkit-mailchimp-submit',
-		);
-
-		$this->options['st_button_boxshadow'] = array(
-			'type'      => 'boxshadow',
-			'title'     => esc_html__( 'Box Shadow', 'jeg-elementor-kit' ),
-			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-mailchimp .jkit-mailchimp-submit',
 		);
 
 		$this->options['st_button_width'] = array(
@@ -965,6 +949,29 @@ class Mailchimp_Option extends Option_Abstract {
 			),
 		);
 
+		$this->options['st_button_border'] = array(
+			'type'      => 'border',
+			'title'     => esc_html__( 'Border', 'jeg-elementor-kit' ),
+			'segment'   => 'style_button',
+			'selectors' => '.jeg-elementor-kit.jkit-mailchimp .jkit-mailchimp-submit',
+		);
+
+		$this->options['st_button_border_radius'] = array(
+			'type'      => 'dimension',
+			'title'     => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
+			'segment'   => 'style_button',
+			'units'     => array( 'px', '%', 'em' ),
+			'selectors' => '.jeg-elementor-kit.jkit-mailchimp .jkit-mailchimp-submit',
+			'attribute' => 'border-radius',
+		);
+
+		$this->options['st_button_boxshadow'] = array(
+			'type'      => 'boxshadow',
+			'title'     => esc_html__( 'Box Shadow', 'jeg-elementor-kit' ),
+			'segment'   => 'style_button',
+			'selectors' => '.jeg-elementor-kit.jkit-mailchimp .jkit-mailchimp-submit',
+		);
+
 		$this->options['st_button_normal_tab_end'] = array(
 			'type'    => 'control_tab_end',
 			'segment' => 'style_button',
@@ -998,6 +1005,29 @@ class Mailchimp_Option extends Option_Abstract {
 				'classic',
 				'gradient',
 			),
+		);
+
+		$this->options['st_button_hover_border'] = array(
+			'type'      => 'border',
+			'title'     => esc_html__( 'Border', 'jeg-elementor-kit' ),
+			'segment'   => 'style_button',
+			'selectors' => '.jeg-elementor-kit.jkit-mailchimp .jkit-mailchimp-submit:hover',
+		);
+
+		$this->options['st_button_hover_border_radius'] = array(
+			'type'      => 'dimension',
+			'title'     => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
+			'segment'   => 'style_button',
+			'units'     => array( 'px', '%', 'em' ),
+			'selectors' => '.jeg-elementor-kit.jkit-mailchimp .jkit-mailchimp-submit:hover',
+			'attribute' => 'border-radius',
+		);
+
+		$this->options['st_button_hover_boxshadow'] = array(
+			'type'      => 'boxshadow',
+			'title'     => esc_html__( 'Box Shadow', 'jeg-elementor-kit' ),
+			'segment'   => 'style_button',
+			'selectors' => '.jeg-elementor-kit.jkit-mailchimp .jkit-mailchimp-submit:hover',
 		);
 
 		$this->options['st_button_hover_tab_end'] = array(

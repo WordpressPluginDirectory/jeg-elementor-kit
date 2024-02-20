@@ -48,6 +48,7 @@ class Tabs_View extends View_Abstract {
 			$tab_id      = 'tab-' . esc_attr( $list['_id'] );
 			$icon_type   = $list['sg_content_icon_type'];
 			$button      = '';
+			$tab_class   = 'tab-nav ' . $active . ' ' . $toggle_tab;
 
 			if ( 'yes' === $list['sg_content_list_button'] ) {
 				$url            = $list['sg_content_list_button_link'];
@@ -74,7 +75,14 @@ class Tabs_View extends View_Abstract {
 				}
 			}
 
-			$nav .= '<li class="tab-nav ' . $active . ' ' . $toggle_tab . '" data-tab="' . $tab_id . '">' . $title . $content . '</li>';
+			$nav_item = $title . $content;
+
+			if ( 'gradient' === $this->attribute['st_tab_normal_background_background_background'] || 'gradient' === $this->attribute['st_tab_hover_background_background_background'] || 'gradient' === $this->attribute['st_tab_active_background_background_background'] ) {
+				$tab_class .= ' hover-gradient';
+				$nav_item   = '<span>' . $nav_item . '</span>';
+			}
+
+			$nav .= '<li class="' . $tab_class . '" data-tab="' . $tab_id . '">' . $nav_item . '</li>';
 		}
 
 		$nav = '<div class="tab-navigation"><ul class="tab-nav-list ' . $icon_position . ' ' . $animation . ' ' . $caret . '" data-toggle="' . $this->attribute['sg_general_toggle_tab_enable'] . '">' . $nav . '</ul></div>';

@@ -951,13 +951,18 @@ class Tabs_Option extends Option_Abstract {
 		);
 
 		$this->options['st_tab_normal_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_tab',
-			'selectors' => '.jeg-elementor-kit.jkit-tabs .tab-nav-list .tab-nav',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_tab',
+			'selectors'      => '.jeg-elementor-kit.jkit-tabs .tab-nav-list .tab-nav',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -1012,13 +1017,18 @@ class Tabs_Option extends Option_Abstract {
 		);
 
 		$this->options['st_tab_hover_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_tab',
-			'selectors' => '.jeg-elementor-kit.jkit-tabs .tab-nav-list .tab-nav:hover',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_tab',
+			'selectors'      => '.jeg-elementor-kit.jkit-tabs .tab-nav-list .tab-nav:not(.active):not(.hover-gradient):hover, {{WRAPPER}} .jeg-elementor-kit.jkit-tabs .tab-nav-list .tab-nav.hover-gradient:not(.active):before',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -1057,13 +1067,18 @@ class Tabs_Option extends Option_Abstract {
 		);
 
 		$this->options['st_tab_active_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_tab',
-			'selectors' => '.jeg-elementor-kit.jkit-tabs .tab-nav-list:not(.slide):not(.over) .tab-nav.active, {{WRAPPER}} .jeg-elementor-kit.jkit-tabs .tab-nav-list.slide .tab-nav:before, {{WRAPPER}} .jeg-elementor-kit.jkit-tabs .tab-nav-list .tab-nav.tab-nav-cloned',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_tab',
+			'selectors'      => '.jeg-elementor-kit.jkit-tabs .tab-nav-list:not(.slide):not(.over) .tab-nav.active, {{WRAPPER}} .jeg-elementor-kit.jkit-tabs .tab-nav-list.slide .tab-nav:before, {{WRAPPER}} .jeg-elementor-kit.jkit-tabs .tab-nav-list .tab-nav.tab-nav-cloned',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 

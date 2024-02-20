@@ -108,6 +108,19 @@ class Search_Option extends Option_Abstract {
 			'kit_style' => true,
 		);
 
+		$this->segments['style_close_button'] = array(
+			'name'       => esc_html__( 'Close Button', 'jeg-elementor-kit' ),
+			'priority'   => 14,
+			'kit_style'  => true,
+			'dependency' => array(
+				array(
+					'field'    => 'sg_search_style',
+					'operator' => '==',
+					'value'    => 'popup',
+				),
+			),
+		);
+
 		parent::set_style_segment();
 	}
 
@@ -267,13 +280,18 @@ class Search_Option extends Option_Abstract {
 		);
 
 		$this->options['st_icon_normal_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Normal Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_icon',
-			'selectors' => '.jeg-elementor-kit.jkit-search .jkit-search-modal',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Normal Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_icon',
+			'selectors'      => '.jeg-elementor-kit.jkit-search .jkit-search-modal',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -286,6 +304,22 @@ class Search_Option extends Option_Abstract {
 			'type'    => 'control_tab_start',
 			'title'   => esc_html__( 'Hover', 'jeg-elementor-kit' ),
 			'segment' => 'style_icon',
+		);
+
+		$this->options['st_icon_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_icon',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-search .jkit-search-modal' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
 		);
 
 		$this->options['st_icon_hover_color'] = array(
@@ -302,13 +336,18 @@ class Search_Option extends Option_Abstract {
 		);
 
 		$this->options['st_icon_hover_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_icon',
-			'selectors' => '.jeg-elementor-kit.jkit-search .jkit-search-modal:hover',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_icon',
+			'selectors'      => '.jeg-elementor-kit.jkit-search .jkit-search-modal:not(.hover-gradient):hover, .jeg-elementor-kit.jkit-search .jkit-search-modal.hover-gradient:before',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -549,6 +588,22 @@ class Search_Option extends Option_Abstract {
 			'segment' => 'style_container',
 		);
 
+		$this->options['st_container_focus_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_container',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-search .jkit-search-panel input:not([type=submit])' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
 		$this->options['st_container_focus_form_background'] = array(
 			'type'      => 'background',
 			'title'     => esc_html__( 'Form Background', 'jeg-elementor-kit' ),
@@ -606,25 +661,6 @@ class Search_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Placeholder Typography', 'jeg-elementor-kit' ),
 			'segment'   => 'style_container',
 			'selectors' => '.jeg-elementor-kit.jkit-search .jkit-search-panel input:not([type=submit])::placeholder',
-		);
-
-		$this->options['st_container_close_color'] = array(
-			'type'       => 'color',
-			'title'      => esc_html__( 'Close Color', 'jeg-elementor-kit' ),
-			'segment'    => 'style_container',
-			'responsive' => true,
-			'selectors'  => array(
-				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-search .swal2-close' => 'color: {{VALUE}}; border-color: {{VALUE}};',
-				),
-			),
-			'dependency' => array(
-				array(
-					'field'    => 'sg_search_style',
-					'operator' => '==',
-					'value'    => 'popup',
-				),
-			),
 		);
 
 		$this->options['st_container_border_radius'] = array(
@@ -753,13 +789,18 @@ class Search_Option extends Option_Abstract {
 		);
 
 		$this->options['st_button_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-search .jkit-search-panel .jkit-search-button',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_button',
+			'selectors'      => '.jeg-elementor-kit.jkit-search .jkit-search-panel .jkit-search-button',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -788,6 +829,22 @@ class Search_Option extends Option_Abstract {
 			'segment' => 'style_button',
 		);
 
+		$this->options['st_button_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_button',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-search .jkit-search-panel .jkit-search-button' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
 		$this->options['st_button_hover_color'] = array(
 			'type'       => 'color',
 			'title'      => esc_html__( 'Color', 'jeg-elementor-kit' ),
@@ -802,13 +859,18 @@ class Search_Option extends Option_Abstract {
 		);
 
 		$this->options['st_button_hover_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-search .jkit-search-panel .jkit-search-button:hover',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_button',
+			'selectors'      => '.jeg-elementor-kit.jkit-search .jkit-search-panel .jkit-search-button:not(.hover-gradient):hover, {{WRAPPER}} .jeg-elementor-kit.jkit-search .jkit-search-panel .jkit-search-button.hover-gradient:before',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -892,6 +954,273 @@ class Search_Option extends Option_Abstract {
 			'responsive' => true,
 			'selectors'  => '.jeg-elementor-kit.jkit-search .jkit-search-panel .jkit-search-button',
 			'attribute'  => 'height',
+		);
+
+		$this->options['st_close_button_margin'] = array(
+			'type'      => 'dimension',
+			'title'     => esc_html__( 'Margin', 'jeg-elementor-kit' ),
+			'segment'   => 'style_close_button',
+			'units'     => array( 'px', '%', 'em' ),
+			'selectors' => '.jeg-elementor-kit.jkit-search .swal2-close',
+			'attribute' => 'margin',
+		);
+
+		$this->options['st_close_button_padding'] = array(
+			'type'      => 'dimension',
+			'title'     => esc_html__( 'Padding', 'jeg-elementor-kit' ),
+			'segment'   => 'style_close_button',
+			'units'     => array( 'px', '%', 'em' ),
+			'selectors' => '.jeg-elementor-kit.jkit-search .swal2-close',
+			'attribute' => 'padding',
+		);
+
+		$this->options['st_close_button_icon_size'] = array(
+			'type'       => 'slider',
+			'title'      => esc_html__( 'Icon Size', 'jeg-elementor-kit' ),
+			'segment'    => 'style_close_button',
+			'options'    => array(
+				'min'  => 0,
+				'max'  => 100,
+				'step' => 1,
+			),
+			'responsive' => true,
+			'units'      => array( 'px', 'em' ),
+			'selectors'  => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-search .swal2-close' => 'font-size: {{SIZE}}{{UNIT}};',
+				),
+			),
+		);
+
+		$this->options['st_close_button_tabs_start'] = array(
+			'type'    => 'control_tabs_start',
+			'segment' => 'style_close_button',
+		);
+
+		$this->options['st_close_button_normal_tab_start'] = array(
+			'type'    => 'control_tab_start',
+			'title'   => esc_html__( 'Normal', 'jeg-elementor-kit' ),
+			'segment' => 'style_close_button',
+		);
+
+		$this->options['st_container_close_color'] = array(
+			'type'       => 'color',
+			'title'      => esc_html__( 'Close Color', 'jeg-elementor-kit' ),
+			'segment'    => 'style_close_button',
+			'responsive' => true,
+			'selectors'  => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-search .swal2-close' => 'color: {{VALUE}}; border-color: {{VALUE}};',
+				),
+			),
+		);
+
+		$this->options['st_close_button_background'] = array(
+			'type'      => 'background',
+			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
+			'segment'   => 'style_close_button',
+			'selectors' => '.jeg-elementor-kit.jkit-search .swal2-close',
+			'options'   => array(
+				'classic',
+				'gradient',
+			),
+		);
+
+		$this->options['st_close_button_border'] = array(
+			'type'      => 'border',
+			'title'     => esc_html__( 'Border', 'jeg-elementor-kit' ),
+			'segment'   => 'style_close_button',
+			'selectors' => '.jeg-elementor-kit.jkit-search .swal2-close',
+		);
+
+		$this->options['st_close_button_border_radius'] = array(
+			'type'      => 'dimension',
+			'title'     => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
+			'segment'   => 'style_close_button',
+			'units'     => array( 'px', '%', 'em' ),
+			'selectors' => '.jeg-elementor-kit.jkit-search .swal2-close',
+			'attribute' => 'border-radius',
+		);
+
+		$this->options['st_close_button_boxshadow'] = array(
+			'type'      => 'boxshadow',
+			'title'     => esc_html__( 'Box Shadow', 'jeg-elementor-kit' ),
+			'segment'   => 'style_close_button',
+			'selectors' => '.jeg-elementor-kit.jkit-search .swal2-close',
+		);
+
+		$this->options['st_close_button_normal_tab_end'] = array(
+			'type'    => 'control_tab_end',
+			'segment' => 'style_close_button',
+		);
+
+		$this->options['st_close_button_hover_tab_start'] = array(
+			'type'    => 'control_tab_start',
+			'title'   => esc_html__( 'Hover', 'jeg-elementor-kit' ),
+			'segment' => 'style_close_button',
+		);
+
+		$this->options['st_close_button_hover_color'] = array(
+			'type'       => 'color',
+			'title'      => esc_html__( 'Close Color', 'jeg-elementor-kit' ),
+			'segment'    => 'style_close_button',
+			'responsive' => true,
+			'selectors'  => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-search .swal2-close:hover' => 'color: {{VALUE}}; border-color: {{VALUE}};',
+				),
+			),
+		);
+
+		$this->options['st_close_button_hover_background'] = array(
+			'type'      => 'background',
+			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
+			'segment'   => 'style_close_button',
+			'selectors' => '.jeg-elementor-kit.jkit-search .swal2-close:hover',
+			'options'   => array(
+				'classic',
+				'gradient',
+			),
+		);
+
+		$this->options['st_close_button_hover_border'] = array(
+			'type'      => 'border',
+			'title'     => esc_html__( 'Border', 'jeg-elementor-kit' ),
+			'segment'   => 'style_close_button',
+			'selectors' => '.jeg-elementor-kit.jkit-search .swal2-close:hover',
+		);
+
+		$this->options['st_close_button_hover_border_radius'] = array(
+			'type'      => 'dimension',
+			'title'     => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
+			'segment'   => 'style_close_button',
+			'units'     => array( 'px', '%', 'em' ),
+			'selectors' => '.jeg-elementor-kit.jkit-search .swal2-close:hover',
+			'attribute' => 'border-radius',
+		);
+
+		$this->options['st_close_button_hover_boxshadow'] = array(
+			'type'      => 'boxshadow',
+			'title'     => esc_html__( 'Box Shadow', 'jeg-elementor-kit' ),
+			'segment'   => 'style_close_button',
+			'selectors' => '.jeg-elementor-kit.jkit-search .swal2-close:hover',
+		);
+
+		$this->options['st_close_button_hover_tab_end'] = array(
+			'type'    => 'control_tab_end',
+			'segment' => 'style_close_button',
+		);
+
+		$this->options['st_close_button_tabs_end'] = array(
+			'type'    => 'control_tabs_end',
+			'segment' => 'style_close_button',
+		);
+
+		$this->options['st_close_button_position_absolute'] = array(
+			'type'         => 'checkbox',
+			'title'        => esc_html__( 'Position Absolute', 'jeg-elementor-kit' ),
+			'segment'      => 'style_close_button',
+			'return_value' => 'absolute',
+			'prefix_class' => 'jkit-close-position-',
+			'separator'    => 'before',
+		);
+
+		$this->options['st_close_button_position_horizontal_orientation'] = array(
+			'type'       => 'radio',
+			'title'      => esc_html__( 'Horizontal Orientation', 'jeg-elementor-kit' ),
+			'segment'    => 'style_close_button',
+			'options'    => array(
+				'left'  => array(
+					'title' => esc_html__( 'Left', 'jeg-elementor-kit' ),
+					'icon'  => 'eicon-h-align-left',
+				),
+				'right' => array(
+					'title' => esc_html__( 'Right', 'jeg-elementor-kit' ),
+					'icon'  => 'eicon-h-align-right',
+				),
+			),
+			'default'    => 'right',
+			'toggle'     => false,
+			'dependency' => array(
+				array(
+					'field'    => 'st_close_button_position_absolute',
+					'operator' => '==',
+					'value'    => 'absolute',
+				),
+			),
+		);
+
+		$this->options['st_close_button_position_horizontal_offset'] = array(
+			'type'       => 'slider',
+			'title'      => esc_html__( 'Offset', 'jeg-elementor-kit' ),
+			'segment'    => 'style_close_button',
+			'responsive' => true,
+			'units'      => array( 'px', '%', 'em' ),
+			'options'    => array(
+				'min'  => 0,
+				'max'  => 1600,
+				'step' => 1,
+			),
+			'default'    => 0,
+			'selectors'  => array(
+				'custom' => array( '{{WRAPPER}}.jkit-close-position-absolute .swal2-close' => '{{st_close_button_position_horizontal_orientation.VALUE}}: {{SIZE}}{{UNIT}};' ),
+			),
+			'dependency' => array(
+				array(
+					'field'    => 'st_close_button_position_absolute',
+					'operator' => '==',
+					'value'    => 'absolute',
+				),
+			),
+		);
+
+		$this->options['st_close_button_position_vertical_orientation'] = array(
+			'type'       => 'radio',
+			'title'      => esc_html__( 'Vertical Orientation', 'jeg-elementor-kit' ),
+			'segment'    => 'style_close_button',
+			'options'    => array(
+				'top'    => array(
+					'title' => esc_html__( 'Top', 'jeg-elementor-kit' ),
+					'icon'  => 'eicon-v-align-top',
+				),
+				'bottom' => array(
+					'title' => esc_html__( 'Bottom', 'jeg-elementor-kit' ),
+					'icon'  => 'eicon-v-align-bottom',
+				),
+			),
+			'default'    => 'top',
+			'toggle'     => false,
+			'dependency' => array(
+				array(
+					'field'    => 'st_close_button_position_absolute',
+					'operator' => '==',
+					'value'    => 'absolute',
+				),
+			),
+		);
+
+		$this->options['st_close_button_position_vertical_offset'] = array(
+			'type'       => 'slider',
+			'title'      => esc_html__( 'Offset', 'jeg-elementor-kit' ),
+			'segment'    => 'style_close_button',
+			'responsive' => true,
+			'units'      => array( 'px', '%', 'em' ),
+			'options'    => array(
+				'min'  => 0,
+				'max'  => 1600,
+				'step' => 1,
+			),
+			'default'    => 0,
+			'selectors'  => array(
+				'custom' => array( '{{WRAPPER}}.jkit-close-position-absolute .swal2-close' => '{{st_close_button_position_vertical_orientation.VALUE}}: {{SIZE}}{{UNIT}};' ),
+			),
+			'dependency' => array(
+				array(
+					'field'    => 'st_close_button_position_absolute',
+					'operator' => '==',
+					'value'    => 'absolute',
+				),
+			),
 		);
 
 		parent::additional_style();

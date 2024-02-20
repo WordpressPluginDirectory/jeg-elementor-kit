@@ -133,7 +133,7 @@ class Post_Block_View extends View_Abstract {
 	 * @param  int|\WP_Post $post Post object.
 	 * @return mixed
 	 */
-	protected function get_readmore( $post ) {
+	protected function get_readmore( $post, $post_title ) {
 		$readmore        = null;
 		$readmore_enable = 'yes' === $this->attribute['sg_content_readmore_enable'];
 
@@ -150,7 +150,7 @@ class Post_Block_View extends View_Abstract {
 
 			$readmore =
 			'<div class="jkit-meta-readmore icon-position-' . $icon_position . '">
-                <a href="' . esc_url( get_the_permalink( $post ) ) . '" class="jkit-readmore">' . $readmore . '</a>
+                <a title="' . $post_title . '" href="' . esc_url( get_the_permalink( $post ) ) . '" class="jkit-readmore">' . $readmore . '</a>
             </div>';
 		}
 
@@ -222,6 +222,7 @@ class Post_Block_View extends View_Abstract {
 	 */
 	public function get_ajax_param() {
 		return array(
+			'lang',
 			'post_type',
 			'number_post',
 			'post_offset',
@@ -372,7 +373,7 @@ class Post_Block_View extends View_Abstract {
 	public function build_column( $results ) {
 		$block      = '';
 		$image_size = esc_attr( $this->attribute['sg_content_image_size_imagesize_size'] );
-		$html_tag   = esc_attr( $this->attribute['sg_content_title_html_tag'] );
+		$html_tag   = \Elementor\Utils::validate_html_tag( $this->attribute['sg_content_title_html_tag'] );
 		$type       = esc_attr( $this->attribute['sg_content_postblock_type'] );
 		$order      = explode( ',', $this->attribute['sg_content_element_order'] );
 
@@ -402,12 +403,12 @@ class Post_Block_View extends View_Abstract {
 				if ( 'read' === $item ) {
 					$content .=
 						'<div class="jkit-post-meta-bottom">
-							' . $this->get_readmore( $post ) . $this->get_comment_bubble( $post ) . '
+							' . $this->get_readmore( $post, $post_title ) . $this->get_comment_bubble( $post ) . '
 						</div>';
 				}
 			}
 
-			$thumb = jkit_edit_post( $post->ID ) . '<a href="' . $post_url . '">' . $thumbnail . '</a>';
+			$thumb = jkit_edit_post( $post->ID ) . '<a aria-label="' . $post_title . '" href="' . $post_url . '">' . $thumbnail . '</a>';
 
 			if ( 'type-3' === $type ) {
 				$block .=

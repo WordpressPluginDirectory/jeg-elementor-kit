@@ -24,6 +24,7 @@ class Button_View extends View_Abstract {
 		$class         = esc_attr( $this->attribute['sg_content_class'] );
 		$link          = $this->attribute['sg_content_link'];
 		$icon_position = $this->attribute['sg_content_icon_position'];
+		$link_class    = 'jkit-button-wrapper';
 		$icon_attr     = array();
 
 		if ( $this->attribute['st_icon_normal_color_responsive'] || $this->attribute['st_icon_hover_color_responsive'] ) {
@@ -38,7 +39,12 @@ class Button_View extends View_Abstract {
 			$label = $label . $icon;
 		}
 
-		$label = $this->render_url_element( $link, null, 'jkit-button-wrapper', $label );
+		if ( $this->attribute['st_button_hover_background_background_background'] === 'gradient' || $this->attribute['st_button_normal_background_background_background'] === 'gradient' ) {
+			$link_class .= ' hover-gradient';
+			$label       = '<span>' . $label . '</span>';
+		}
+
+		$label = $this->render_url_element( $link, null, $link_class, $label );
 
 		return $this->render_wrapper( 'button', $label, array( $class, 'icon-position-' . $icon_position ), array(), $id );
 	}

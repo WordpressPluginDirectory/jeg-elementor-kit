@@ -115,7 +115,7 @@ class Video_Button_Option extends Option_Abstract {
 				array(
 					'field'    => 'sg_video_button_style',
 					'operator' => '==',
-					'value'    => 'both',
+					'value'    => array( 'icon', 'both' ),
 				),
 			),
 		);
@@ -399,33 +399,6 @@ class Video_Button_Option extends Option_Abstract {
 			'attribute' => 'padding',
 		);
 
-		$this->options['st_button_icon_size'] = array(
-			'type'       => 'slider',
-			'title'      => esc_html__( 'Icon Size', 'jeg-elementor-kit' ),
-			'segment'    => 'style_button',
-			'default'    => 30,
-			'options'    => array(
-				'min'  => 1,
-				'max'  => 200,
-				'step' => 1,
-			),
-			'units'      => array( 'px', '%' ),
-			'responsive' => true,
-			'selectors'  => array(
-				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-video-button i'   => 'font-size: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-video-button svg' => 'width: {{SIZE}}{{UNIT}};',
-				),
-			),
-			'dependency' => array(
-				array(
-					'field'    => 'sg_video_button_style',
-					'operator' => 'in',
-					'value'    => array( 'icon', 'both' ),
-				),
-			),
-		);
-
 		$this->options['st_button_title_typography'] = array(
 			'type'       => 'typography',
 			'title'      => esc_html__( 'Title Typography', 'jeg-elementor-kit' ),
@@ -547,7 +520,7 @@ class Video_Button_Option extends Option_Abstract {
 			'responsive' => true,
 			'selectors'  => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn.glow-enable:after, {{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn.glow-enable:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn.glow-enable:not(.hover-gradient):after, {{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn.glow-enable:not(.hover-gradient):before, {{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn.glow-enable.hover-gradient > span:after, {{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn.glow-enable.hover-gradient > span:before' => 'color: {{VALUE}};',
 				),
 			),
 			'dependency' => array(
@@ -560,13 +533,18 @@ class Video_Button_Option extends Option_Abstract {
 		);
 
 		$this->options['st_button_normal_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_button',
+			'selectors'      => '.jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -579,6 +557,22 @@ class Video_Button_Option extends Option_Abstract {
 			'type'    => 'control_tab_start',
 			'title'   => esc_html__( 'Hover', 'jeg-elementor-kit' ),
 			'segment' => 'style_button',
+		);
+
+		$this->options['st_button_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_button',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
 		);
 
 		$this->options['st_button_hover_text_color'] = array(
@@ -601,7 +595,7 @@ class Video_Button_Option extends Option_Abstract {
 			'responsive' => true,
 			'selectors'  => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn.glow-enable:hover:after, {{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn.glow-enable:hover:before' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn.glow-enable:not(.hover-gradient):hover:after, {{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn.glow-enable:not(.hover-gradient):hover:before, {{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn.glow-enable.hover-gradient:hover > span:after, {{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn.glow-enable.hover-gradient:hover > span:before' => 'color: {{VALUE}};',
 				),
 			),
 			'dependency' => array(
@@ -614,13 +608,18 @@ class Video_Button_Option extends Option_Abstract {
 		);
 
 		$this->options['st_button_hover_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn:hover',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_button',
+			'selectors'      => '.jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn:not(.hover-gradient):hover, {{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn.hover-gradient:before',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -696,12 +695,12 @@ class Video_Button_Option extends Option_Abstract {
 
 		$this->options['st_border_hover_tab_end'] = array(
 			'type'    => 'control_tab_end',
-			'segment' => 'style_button',
+			'segment' => 'style_border',
 		);
 
 		$this->options['st_border_tabs_end'] = array(
 			'type'    => 'control_tabs_end',
-			'segment' => 'style_button',
+			'segment' => 'style_border',
 		);
 
 		$this->options['st_shadow_boxshadow'] = array(
@@ -717,6 +716,42 @@ class Video_Button_Option extends Option_Abstract {
 			'segment'   => 'style_shadow',
 			'selectors' => array(
 				'custom' => '{{WRAPPER}} .jeg-elementor-kit.jkit-video-button i, {{WRAPPER}} .jeg-elementor-kit.jkit-video-button span',
+			),
+		);
+
+		$this->options['st_icon_padding'] = array(
+			'type'      => 'dimension',
+			'title'     => esc_html__( 'Padding', 'jeg-elementor-kit' ),
+			'segment'   => 'style_icon',
+			'units'     => array( 'px', '%', 'em' ),
+			'selectors' => '.jeg-elementor-kit.jkit-video-button i, {{WRAPPER}} .jeg-elementor-kit.jkit-video-button svg',
+			'attribute' => 'padding',
+		);
+
+		$this->options['st_button_icon_size'] = array(
+			'type'       => 'slider',
+			'title'      => esc_html__( 'Icon Size', 'jeg-elementor-kit' ),
+			'segment'    => 'style_icon',
+			'default'    => 30,
+			'options'    => array(
+				'min'  => 1,
+				'max'  => 200,
+				'step' => 1,
+			),
+			'units'      => array( 'px', '%' ),
+			'responsive' => true,
+			'selectors'  => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-video-button i'   => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-video-button svg' => 'width: {{SIZE}}{{UNIT}};',
+				),
+			),
+			'dependency' => array(
+				array(
+					'field'    => 'sg_video_button_style',
+					'operator' => 'in',
+					'value'    => array( 'icon', 'both' ),
+				),
 			),
 		);
 
@@ -745,6 +780,110 @@ class Video_Button_Option extends Option_Abstract {
 					'value'    => 'both',
 				),
 			),
+		);
+
+		$this->options['st_icon_tabs_start'] = array(
+			'type'    => 'control_tabs_start',
+			'segment' => 'style_icon',
+		);
+
+		$this->options['st_icon_normal_tab_start'] = array(
+			'type'    => 'control_tab_start',
+			'title'   => esc_html__( 'Normal', 'jeg-elementor-kit' ),
+			'segment' => 'style_icon',
+		);
+
+		$this->options['st_icon_normal_color'] = array(
+			'type'       => 'color',
+			'title'      => esc_html__( 'Text Color', 'jeg-elementor-kit' ),
+			'segment'    => 'style_icon',
+			'responsive' => true,
+			'selectors'  => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn svg' => 'fill: {{VALUE}};',
+				),
+			),
+		);
+
+		$this->options['st_icon_normal_background'] = array(
+			'type'      => 'background',
+			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
+			'segment'   => 'style_icon',
+			'selectors' => '.jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn i, {{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn svg',
+			'options'   => array(
+				'classic',
+				'gradient',
+			),
+		);
+
+		$this->options['st_icon_normal_border_radius'] = array(
+			'type'      => 'dimension',
+			'title'     => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
+			'segment'   => 'style_icon',
+			'units'     => array( 'px', '%', 'em' ),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn i, {{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn svg' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			),
+		);
+
+		$this->options['st_icon_normal_tab_end'] = array(
+			'type'    => 'control_tab_end',
+			'segment' => 'style_icon',
+		);
+
+		$this->options['st_icon_hover_tab_start'] = array(
+			'type'    => 'control_tab_start',
+			'title'   => esc_html__( 'Hover', 'jeg-elementor-kit' ),
+			'segment' => 'style_icon',
+		);
+
+		$this->options['st_icon_hover_color'] = array(
+			'type'       => 'color',
+			'title'      => esc_html__( 'Text Color', 'jeg-elementor-kit' ),
+			'segment'    => 'style_icon',
+			'responsive' => true,
+			'selectors'  => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn:hover i' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn:hover svg' => 'fill: {{VALUE}};',
+				),
+			),
+		);
+
+		$this->options['st_icon_hover_background'] = array(
+			'type'      => 'background',
+			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
+			'segment'   => 'style_icon',
+			'selectors' => '.jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn:hover i, {{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn:hover svg',
+			'options'   => array(
+				'classic',
+				'gradient',
+			),
+		);
+
+		$this->options['st_icon_hover_border_radius'] = array(
+			'type'      => 'dimension',
+			'title'     => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
+			'segment'   => 'style_icon',
+			'units'     => array( 'px', '%', 'em' ),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn:hover i, {{WRAPPER}} .jeg-elementor-kit.jkit-video-button .jkit-video-popup-btn:hover svg' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			),
+		);
+
+		$this->options['st_icon_hover_tab_end'] = array(
+			'type'    => 'control_tab_end',
+			'segment' => 'style_icon',
+		);
+
+		$this->options['st_icon_tabs_end'] = array(
+			'type'    => 'control_tabs_end',
+			'segment' => 'style_icon',
 		);
 
 		parent::additional_style();

@@ -420,13 +420,18 @@ class Dual_Button_Option extends Option_Abstract {
 		);
 
 		$this->options['st_one_normal_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Normal Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_one',
-			'selectors' => '.jeg-elementor-kit.jkit-dual-button .jkit-dual-button-wrapper .jkit-dual-button-one',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Normal Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_one',
+			'selectors'      => '.jeg-elementor-kit.jkit-dual-button .jkit-dual-button-wrapper .jkit-dual-button-one',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -464,6 +469,22 @@ class Dual_Button_Option extends Option_Abstract {
 			'segment' => 'style_one',
 		);
 
+		$this->options['st_one_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_one',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-dual-button .jkit-dual-button-wrapper .jkit-dual-button-one' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
 		$this->options['st_one_hover_color'] = array(
 			'type'       => 'color',
 			'title'      => esc_html__( 'Hover Color', 'jeg-elementor-kit' ),
@@ -478,13 +499,18 @@ class Dual_Button_Option extends Option_Abstract {
 		);
 
 		$this->options['st_one_hover_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_one',
-			'selectors' => '.jeg-elementor-kit.jkit-dual-button .jkit-dual-button-wrapper .jkit-dual-button-one:hover',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_one',
+			'selectors'      => '.jeg-elementor-kit.jkit-dual-button .jkit-dual-button-wrapper .jkit-dual-button-one:not(.hover-gradient):hover, {{WRAPPER}} .jeg-elementor-kit.jkit-dual-button .jkit-dual-button-wrapper .jkit-dual-button-one.hover-gradient:before',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -621,13 +647,18 @@ class Dual_Button_Option extends Option_Abstract {
 		);
 
 		$this->options['st_two_normal_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Normal Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_two',
-			'selectors' => '.jeg-elementor-kit.jkit-dual-button .jkit-dual-button-wrapper .jkit-dual-button-two',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Normal Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_two',
+			'selectors'      => '.jeg-elementor-kit.jkit-dual-button .jkit-dual-button-wrapper .jkit-dual-button-two',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -665,6 +696,22 @@ class Dual_Button_Option extends Option_Abstract {
 			'segment' => 'style_two',
 		);
 
+		$this->options['st_two_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_two',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-dual-button .jkit-dual-button-wrapper .jkit-dual-button-two' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
 		$this->options['st_two_hover_color'] = array(
 			'type'       => 'color',
 			'title'      => esc_html__( 'Hover Color', 'jeg-elementor-kit' ),
@@ -679,13 +726,18 @@ class Dual_Button_Option extends Option_Abstract {
 		);
 
 		$this->options['st_two_hover_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_two',
-			'selectors' => '.jeg-elementor-kit.jkit-dual-button .jkit-dual-button-wrapper .jkit-dual-button-two:hover',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_two',
+			'selectors'      => '.jeg-elementor-kit.jkit-dual-button .jkit-dual-button-wrapper .jkit-dual-button-two:not(.hover-gradient):hover, {{WRAPPER}} .jeg-elementor-kit.jkit-dual-button .jkit-dual-button-wrapper .jkit-dual-button-two.hover-gradient:before',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 

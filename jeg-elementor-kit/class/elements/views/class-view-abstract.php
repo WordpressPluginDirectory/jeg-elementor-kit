@@ -121,6 +121,33 @@ class View_Abstract extends Elements_View_Abstract {
 	 * @return string
 	 */
 	protected function render_image_element( $attr, $image_size = 'thumbnail', $additional_id = null, $additional_class = null, $additional_alt = null ) {
+		if ( ! empty( $attr['id'] ) ) {
+			$attachment_id = $attr['id'];
+			unset( $attr['id'] );
+
+			if ( ! empty( $additional_id ) ) {
+				$attr['id'] = $additional_id;
+			}
+
+			if ( ! empty( $additional_class ) ) {
+				$attr['class'] = $additional_class;
+			}
+
+			if ( ! empty( $additional_alt ) ) {
+				$attr['alt'] = $additional_alt;
+			}
+
+			foreach ( $attr as $key => $data ) {
+				if ( empty( $data ) ) {
+					unset( $attr[ $key ] );
+				}
+			}
+
+			$attr = apply_filters( 'jkit_render_image_element', $attr, $this->attribute );
+
+			return wp_get_attachment_image( $attachment_id, $image_size, false, $attr );
+		}
+
 		$id         = ! empty( $additional_id ) ? ' id="' . $additional_id . '"' : '';
 		$class      = ! empty( $additional_class ) ? ' class="' . $additional_class . '"' : '';
 		$alt        = ! empty( $additional_alt ) ? ' alt="' . $additional_alt . '"' : ( isset( $attr['alt'] ) && ! empty( $attr['alt'] ) ? ' alt="' . $attr['alt'] . '"' : '' );
@@ -242,7 +269,7 @@ class View_Abstract extends Elements_View_Abstract {
 
 		$thumbnail =
 		'<div class="thumbnail-container ' . $additional_class . '">
-            ' . get_the_post_thumbnail( $post_id, $size ) . '
+            ' . get_the_post_thumbnail( $post_id, $size, array( 'loading' => 'lazy' ) ) . '
         </div>';
 
 		return $thumbnail;
@@ -365,7 +392,7 @@ class View_Abstract extends Elements_View_Abstract {
 	 */
 	protected function render_settings() {
 		if ( $this->unique_id ) {
-			$keys = $this->get_ajax_param();
+			$keys = array_merge( $this->get_ajax_param(), array_keys( jeg_get_enabled_custom_taxonomy() ) );
 
 			$attr = array_filter(
 				$this->attribute,
@@ -529,6 +556,10 @@ class View_Abstract extends Elements_View_Abstract {
 				10,
 				2
 			);
+		}
+
+		if ( jkit_is_multilanguage() ) {
+			$attr['lang'] = jkit_get_current_language();
 		}
 
 		return $attr;

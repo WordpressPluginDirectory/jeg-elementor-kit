@@ -32,8 +32,8 @@ class Dual_Button_View extends View_Abstract {
 	 * Render Button One
 	 */
 	private function render_button_one() {
-		$icon_position = null;
-		$text          = esc_attr( $this->attribute['sg_one_text'] );
+		$class = 'jkit-dual-btn jkit-dual-button-one';
+		$text  = esc_attr( $this->attribute['sg_one_text'] );
 
 		if ( 'yes' === $this->attribute['sg_one_icon_enable'] ) {
 			$icon_position = $this->attribute['sg_one_icon_position'];
@@ -44,17 +44,24 @@ class Dual_Button_View extends View_Abstract {
 			} else {
 				$text = $text . $this->render_icon_element( $icon );
 			}
+
+			$class .= ' icon-position-' . $icon_position;
 		}
 
-		return $this->render_url_element( $this->attribute['sg_one_link'], null, 'jkit-dual-btn jkit-dual-button-one icon-position-' . $icon_position, $text );
+		if ( 'gradient' === $this->attribute['st_one_normal_background_background_background'] || 'gradient' === $this->attribute['st_one_hover_background_background_background'] ) {
+			$class .= ' hover-gradient';
+			$text   = '<span>' . $text . '</span>';
+		}
+
+		return $this->render_url_element( $this->attribute['sg_one_link'], null, $class, $text );
 	}
 
 	/**
 	 * Render Button Two
 	 */
 	private function render_button_two() {
-		$icon_position = null;
-		$text          = esc_attr( $this->attribute['sg_two_text'] );
+		$class = 'jkit-dual-btn jkit-dual-button-two';
+		$text  = esc_attr( $this->attribute['sg_two_text'] );
 
 		if ( 'yes' === $this->attribute['sg_two_icon_enable'] ) {
 			$icon_position = $this->attribute['sg_two_icon_position'];
@@ -65,8 +72,15 @@ class Dual_Button_View extends View_Abstract {
 			} else {
 				$text = $text . $this->render_icon_element( $icon );
 			}
+
+			$class .= ' icon-position-' . $icon_position;
 		}
 
-		return $this->render_url_element( $this->attribute['sg_two_link'], null, 'jkit-dual-btn jkit-dual-button-two icon-position-' . $icon_position, $text );
+		if ( 'gradient' === $this->attribute['st_two_normal_background_background_background'] || 'gradient' === $this->attribute['st_two_normal_background_background_background'] ) {
+			$class .= ' hover-gradient';
+			$text   = '<span>' . $text . '</span>';
+		}
+
+		return $this->render_url_element( $this->attribute['sg_two_link'], null, $class, $text );
 	}
 }

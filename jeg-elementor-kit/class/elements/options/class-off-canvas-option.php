@@ -241,13 +241,18 @@ class Off_Canvas_Option extends Option_Abstract {
 		);
 
 		$this->options['st_open_normal_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_open',
-			'selectors' => '.jeg-elementor-kit.jkit-off-canvas .offcanvas-sidebar-button',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_open',
+			'selectors'      => '.jeg-elementor-kit.jkit-off-canvas .offcanvas-sidebar-button',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -269,6 +274,22 @@ class Off_Canvas_Option extends Option_Abstract {
 			'segment' => 'style_open',
 		);
 
+		$this->options['st_open_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_open',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-off-canvas .offcanvas-sidebar-button' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
 		$this->options['st_open_hover_color'] = array(
 			'type'       => 'color',
 			'title'      => esc_html__( 'Color', 'jeg-elementor-kit' ),
@@ -283,13 +304,18 @@ class Off_Canvas_Option extends Option_Abstract {
 		);
 
 		$this->options['st_open_hover_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_open',
-			'selectors' => '.jeg-elementor-kit.jkit-off-canvas .offcanvas-sidebar-button:hover',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_open',
+			'selectors'      => '.jeg-elementor-kit.jkit-off-canvas .offcanvas-sidebar-button:not(.hover-gradient):hover, {{WRAPPER}} .jeg-elementor-kit.jkit-off-canvas .offcanvas-sidebar-button.hover-gradient:before',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -450,13 +476,18 @@ class Off_Canvas_Option extends Option_Abstract {
 		);
 
 		$this->options['st_close_normal_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_close',
-			'selectors' => '.jeg-elementor-kit.jkit-off-canvas .offcanvas-close-button',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_close',
+			'selectors'      => '.jeg-elementor-kit.jkit-off-canvas .offcanvas-close-button',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -478,6 +509,22 @@ class Off_Canvas_Option extends Option_Abstract {
 			'segment' => 'style_close',
 		);
 
+		$this->options['st_close_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_close',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-off-canvas .offcanvas-close-button' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
 		$this->options['st_close_hover_color'] = array(
 			'type'       => 'color',
 			'title'      => esc_html__( 'Color', 'jeg-elementor-kit' ),
@@ -492,13 +539,18 @@ class Off_Canvas_Option extends Option_Abstract {
 		);
 
 		$this->options['st_close_hover_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_close',
-			'selectors' => '.jeg-elementor-kit.jkit-off-canvas .offcanvas-close-button:hover',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_close',
+			'selectors'      => '.jeg-elementor-kit.jkit-off-canvas .offcanvas-close-button:not(.hover-gradient):hover, {{WRAPPER}} .jeg-elementor-kit.jkit-off-canvas .offcanvas-close-button.hover-gradient:before',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 

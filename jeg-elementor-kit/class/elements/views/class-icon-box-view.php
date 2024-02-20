@@ -29,8 +29,14 @@ class Icon_Box_View extends View_Abstract {
 		$header      = 'none' !== $this->attribute['sg_icon_type'] ? '<div class="icon-box icon-box-header elementor-animation-' . $icon_hover_animation . '"><div class="icon style-' . $icon_color_style . '">' . $this->render_icon() . '</div></div>' : '';
 		$description = ! empty( $icon_description ) ? '<p class="icon-box-description">' . $icon_description . '</p>' : '';
 
+		$class = 'jkit-icon-box-wrapper hover-from-' . $hover_direction;
+
+		if ( 'gradient' === $this->attribute['st_container_background_background_background'] || 'gradient' === $this->attribute['st_container_hover_background_background_background'] ) {
+			$class .= ' hover-gradient';
+		}
+
 		$icon_box =
-		'<div class="jkit-icon-box-wrapper hover-from-' . $hover_direction . '">'
+		'<div class="' . $class . '">'
 			. $header .
 			'<div class="icon-box icon-box-body">
                 ' . $this->render_title() . $description . $this->render_button() . '
@@ -48,7 +54,7 @@ class Icon_Box_View extends View_Abstract {
 	 * Render Title
 	 */
 	private function render_title() {
-		$title_tag = isset( $this->attribute['sg_setting_html_tag'] ) && ! empty( $this->attribute['sg_setting_html_tag'] ) ? esc_attr( $this->attribute['sg_setting_html_tag'] ) : 'h2';
+		$title_tag = isset( $this->attribute['sg_setting_html_tag'] ) && ! empty( $this->attribute['sg_setting_html_tag'] ) ? \Elementor\Utils::validate_html_tag( $this->attribute['sg_setting_html_tag'] ) : 'h2';
 		$title     = esc_attr( $this->attribute['sg_icon_text'] );
 		$title     = ! empty( $title ) ? '<' . $title_tag . ' class="title">' . esc_attr( $this->attribute['sg_icon_text'] ) . '</' . $title_tag . '>' : '';
 
@@ -96,7 +102,13 @@ class Icon_Box_View extends View_Abstract {
 	 */
 	private function render_global_link( $icon_box ) {
 		if ( 'yes' === $this->attribute['sg_readmore_enable_globallink'] && ( 'no' === $this->attribute['sg_readmore_enable_button'] || ! $this->attribute['sg_readmore_enable_button'] ) ) {
-			return $this->render_url_element( $this->attribute['sg_readmore_globallink'], null, 'icon-box-link', $icon_box );
+			if ( ! empty( $this->attribute['sg_readmore_button_label'] ) ) {
+				$data_attribute = 'aria-label="' . esc_attr( $this->attribute['sg_readmore_button_label'] ) . '"';
+			} else {
+				$data_attribute = 'aria-label="' . esc_attr( $this->attribute['sg_icon_text'] ) . '"';
+			}
+
+			return $this->render_url_element( $this->attribute['sg_readmore_globallink'], null, 'icon-box-link', $icon_box, $data_attribute );
 		}
 
 		return $icon_box;
@@ -107,17 +119,30 @@ class Icon_Box_View extends View_Abstract {
 	 */
 	private function render_button() {
 		$button        = null;
+		$class         = 'icon-box-link';
 		$icon_position = esc_attr( $this->attribute['sg_readmore_button_icon_position'] );
 		$icon          = 'yes' === $this->attribute['sg_readmore_button_enable_icon'] ? $this->render_icon_element( $this->attribute['sg_readmore_button_icon'] ) : '';
 		$icon_before   = 'before' === $icon_position ? $icon : '';
 		$icon_after    = 'after' === $icon_position ? $icon : '';
 		$hover         = 'yes' === $this->attribute['sg_readmore_enable_hover_button'] ? 'hover' : '';
+		$button_item   = $icon_before . esc_attr( $this->attribute['sg_readmore_button_label'] ) . $icon_after;
+
+		if ( 'gradient' === $this->attribute['st_button_normal_background_background_background'] || 'gradient' === $this->attribute['st_button_hover_background_background_background'] ) {
+			$class      .= ' hover-gradient';
+			$button_item = '<span>' . $button_item . '</span>';
+		}
 
 		if ( 'yes' === $this->attribute['sg_readmore_enable_button'] ) {
+			if ( ! empty( $this->attribute['sg_readmore_button_label'] ) ) {
+				$data_attribute = 'aria-label="' . esc_attr( $this->attribute['sg_readmore_button_label'] ) . '"';
+			} else {
+				$data_attribute = 'aria-label="' . esc_attr( $this->attribute['sg_icon_text'] ) . '"';
+			}
+
 			$button =
 			'<div class="icon-box-button ' . $hover . '">
                 <div class="btn-wrapper icon-position-' . $icon_position . '">
-                    ' . $this->render_url_element( $this->attribute['sg_readmore_globallink'], null, 'icon-box-link', $icon_before . esc_attr( $this->attribute['sg_readmore_button_label'] ) . $icon_after ) . '
+                    ' . $this->render_url_element( $this->attribute['sg_readmore_globallink'], null, $class, $button_item ) . '
                 </div>
             </div>';
 		}

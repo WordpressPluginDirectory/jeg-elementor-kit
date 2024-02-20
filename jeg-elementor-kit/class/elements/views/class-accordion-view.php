@@ -55,6 +55,17 @@ class Accordion_View extends View_Abstract {
             </div>';
 		}
 
+		$class_wrapper = 'card-wrapper';
+		$class_header  = 'card-header';
+
+		if ( 'gradient' === $this->attribute['st_wrapper_open_background_background_background'] || 'gradient' === $this->attribute['st_wrapper_close_background_background_background'] ) {
+			$class_wrapper .= ' background-gradient';
+		}
+
+		if ( 'gradient' === $this->attribute['st_title_open_background_background_background'] || 'gradient' === $this->attribute['st_title_close_background_background_background'] ) {
+			$class_header .= ' background-gradient';
+		}
+
 		foreach ( $list as $key => $accordion ) {
 			$expand_id    = 'expand-' . esc_attr( $accordion['_id'] );
 			$title        = esc_attr( $accordion['sg_accordion_list_title'] );
@@ -64,8 +75,8 @@ class Accordion_View extends View_Abstract {
 			$style_expand = 'expand' === $expand ? 'block' : 'none';
 
 			$accordions = $accordions .
-			'<div class="card-wrapper ' . $expand . '">
-                <div class="card-header">
+			'<div class="' . $class_wrapper . ' ' . $expand . '">
+                <div class="' . $class_header . '">
                     <a href="#' . $expand_id . '" class="card-header-button" aria-expanded="false" data-target="#' . $expand_id . '" aria-controls="' . $expand_id . '">
                         ' . $number . $left_icon . '<span class="title">' . $title . '</span>' . $right_icon . '
                     </a>

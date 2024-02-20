@@ -1011,15 +1011,6 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 			)
 		);
 
-		$allowedtags['script'] = array_merge(
-			isset( $allowedtags['script'] ) ? $allowedtags['script'] : array(),
-			array(
-				'id'    => true,
-				'class' => true,
-				'type'  => true,
-			)
-		);
-
 		$allowedtags['ins']   = array_merge( isset( $allowedtags['ins'] ) ? $allowedtags['ins'] : array(), array() );
 		$allowedtags['style'] = array_merge( isset( $allowedtags['style'] ) ? $allowedtags['style'] : array(), array() );
 		$allowedtags['bdi']   = array_merge( isset( $allowedtags['bdi'] ) ? $allowedtags['bdi'] : array(), array() );
@@ -1070,5 +1061,64 @@ if ( ! function_exists( 'jkit_plugin_row_meta' ) ) {
 		}
 
 		return $plugin_meta;
+	}
+}
+
+if ( ! function_exists( 'jkit_get_languages' ) ) {
+	/**
+	 * Get The Available Languages
+	 *
+	 *  @return array
+	 */
+	function jkit_get_languages() {
+		if ( function_exists( 'pll_the_languages' ) ) {
+			return pll_the_languages( array( 'raw' => 1 ) );
+		}
+
+		if ( class_exists( 'SitePress' ) ) {
+			/**
+			 * Get The Active Languages by `wpml_active_languages` hook filters
+			 */
+			return apply_filters( 'wpml_active_languages', null, '' );
+		}
+
+		return array();
+	}
+}
+
+if ( ! function_exists( 'jkit_get_the_language' ) ) {
+	/**
+	 * Get The Current Language
+	 *
+	 *  @return bool|string
+	 */
+	function jkit_get_current_language() {
+		if ( function_exists( 'pll_current_language' ) ) {
+			return pll_current_language();
+		}
+
+		if ( class_exists( 'SitePress' ) ) {
+			/**
+			 * Get The Current Language by `wpml_current_language` hook filters
+			 */
+			return apply_filters( 'wpml_current_language', null );
+		}
+
+		return false;
+	}
+}
+
+if ( ! function_exists( 'jkit_is_multilanguage' ) ) {
+	/**
+	 * Check If Site Is Multilanguage
+	 *
+	 * @return bool
+	 */
+	function jkit_is_multilanguage() {
+		if ( function_exists( 'PLL' ) || class_exists( 'SitePress' ) ) {
+			return true;
+		}
+
+		return false;
 	}
 }

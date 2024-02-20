@@ -21,7 +21,7 @@ class Fun_Fact_View extends View_Abstract {
 	 * @return bool
 	 */
 	public function build_content() {
-		$title_tag            = isset( $this->attribute['sg_setting_html_tag'] ) && ! empty( $this->attribute['sg_setting_html_tag'] ) ? esc_attr( $this->attribute['sg_setting_html_tag'] ) : 'h2';
+		$title_tag            = isset( $this->attribute['sg_setting_html_tag'] ) && ! empty( $this->attribute['sg_setting_html_tag'] ) ? \Elementor\Utils::validate_html_tag( $this->attribute['sg_setting_html_tag'] ) : 'h2';
 		$title                = esc_attr( $this->attribute['sg_content_title'] );
 		$alignment            = esc_attr( $this->attribute['sg_setting_alignment'] );
 		$hover_direction      = esc_attr( $this->attribute['st_background_hover_direction'] );

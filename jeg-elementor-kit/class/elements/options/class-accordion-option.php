@@ -300,6 +300,22 @@ class Accordion_Option extends Option_Abstract {
 			'attribute' => 'padding',
 		);
 
+		$this->options['st_wrapper_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_wrapper',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-accordion .card-wrapper' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
 		$this->options['st_wrapper_tabs_start'] = array(
 			'type'    => 'control_tabs_start',
 			'segment' => 'style_wrapper',
@@ -312,13 +328,18 @@ class Accordion_Option extends Option_Abstract {
 		);
 
 		$this->options['st_wrapper_open_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Open Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_wrapper',
-			'selectors' => '.jeg-elementor-kit.jkit-accordion .card-wrapper.expand',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Open Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_wrapper',
+			'selectors'      => '.jeg-elementor-kit.jkit-accordion .card-wrapper.expand:not(.background-gradient), {{WRAPPER}} .jeg-elementor-kit.jkit-accordion .card-wrapper.background-gradient:after',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -357,13 +378,18 @@ class Accordion_Option extends Option_Abstract {
 		);
 
 		$this->options['st_wrapper_close_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Open Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_wrapper',
-			'selectors' => '.jeg-elementor-kit.jkit-accordion .card-wrapper',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Open Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_wrapper',
+			'selectors'      => '.jeg-elementor-kit.jkit-accordion .card-wrapper:not(.background-gradient), {{WRAPPER}} .jeg-elementor-kit.jkit-accordion .card-wrapper.background-gradient:before',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -395,6 +421,67 @@ class Accordion_Option extends Option_Abstract {
 			'segment' => 'style_wrapper',
 		);
 
+		$this->options['st_wrapper_hover_tab_start'] = array(
+			'type'    => 'control_tab_start',
+			'title'   => esc_html__( 'Hover', 'jeg-elementor-kit' ),
+			'segment' => 'style_wrapper',
+		);
+
+		$this->options['st_wrapper_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_wrapper',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-accordion .card-wrapper' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
+		$this->options['st_wrapper_hover_background'] = array(
+			'type'      => 'background',
+			'title'     => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
+			'segment'   => 'style_wrapper',
+			'selectors' => '.jeg-elementor-kit.jkit-accordion .card-wrapper:hover',
+			'options'   => array(
+				'classic',
+				'gradient',
+			),
+		);
+
+		$this->options['st_wrapper_hover_border'] = array(
+			'type'      => 'border',
+			'title'     => esc_html__( 'Border', 'jeg-elementor-kit' ),
+			'segment'   => 'style_wrapper',
+			'selectors' => '.jeg-elementor-kit.jkit-accordion .card-wrapper:hover',
+		);
+
+		$this->options['st_wrapper_hover_border_radius'] = array(
+			'type'      => 'dimension',
+			'title'     => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
+			'segment'   => 'style_wrapper',
+			'units'     => array( 'px', '%', 'em' ),
+			'selectors' => '.jeg-elementor-kit.jkit-accordion .card-wrapper:hover',
+			'attribute' => 'border-radius',
+		);
+
+		$this->options['st_wrapper_hover_boxshadow'] = array(
+			'type'      => 'boxshadow',
+			'title'     => esc_html__( 'Box Shadow', 'jeg-elementor-kit' ),
+			'segment'   => 'style_wrapper',
+			'selectors' => '.jeg-elementor-kit.jkit-accordion .card-wrapper:hover',
+		);
+
+		$this->options['st_wrapper_hover_tab_end'] = array(
+			'type'    => 'control_tab_end',
+			'segment' => 'style_wrapper',
+		);
+
 		$this->options['st_wrapper_tabs_end'] = array(
 			'type'    => 'control_tabs_end',
 			'segment' => 'style_wrapper',
@@ -405,6 +492,22 @@ class Accordion_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Typography', 'jeg-elementor-kit' ),
 			'segment'   => 'style_title',
 			'selectors' => '.jeg-elementor-kit.jkit-accordion .card-wrapper .card-header .card-header-button',
+		);
+
+		$this->options['st_title_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_title',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-accordion .card-wrapper .card-header .card-header-button, {{WRAPPER}} .jeg-elementor-kit.jkit-accordion .card-wrapper .card-header.background-gradient' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
 		);
 
 		$this->options['st_title_tabs_start'] = array(
@@ -427,13 +530,18 @@ class Accordion_Option extends Option_Abstract {
 		);
 
 		$this->options['st_title_open_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Open Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_title',
-			'selectors' => '.jeg-elementor-kit.jkit-accordion .card-wrapper.expand .card-header .card-header-button',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Open Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_title',
+			'selectors'      => '.jeg-elementor-kit.jkit-accordion .card-wrapper.expand .card-header:not(.background-gradient) .card-header-button, {{WRAPPER}} .jeg-elementor-kit.jkit-accordion .card-wrapper .card-header.background-gradient:after',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -490,13 +598,18 @@ class Accordion_Option extends Option_Abstract {
 		);
 
 		$this->options['st_title_close_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Close Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_title',
-			'selectors' => '.jeg-elementor-kit.jkit-accordion .card-wrapper:not(.expand) .card-header .card-header-button',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Close Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_title',
+			'selectors'      => '.jeg-elementor-kit.jkit-accordion .card-wrapper .card-header:not(.background-gradient) .card-header-button, {{WRAPPER}} .jeg-elementor-kit.jkit-accordion .card-wrapper .card-header.background-gradient:before',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -533,6 +646,66 @@ class Accordion_Option extends Option_Abstract {
 		);
 
 		$this->options['st_title_close_tab_end'] = array(
+			'type'    => 'control_tab_end',
+			'segment' => 'style_title',
+		);
+
+		$this->options['st_title_hover_tab_start'] = array(
+			'type'    => 'control_tab_start',
+			'title'   => esc_html__( 'Hover', 'jeg-elementor-kit' ),
+			'segment' => 'style_title',
+		);
+
+		$this->options['st_title_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_title',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-accordion .card-wrapper .card-header .card-header-button' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
+		$this->options['st_title_hover_color'] = array(
+			'type'       => 'color',
+			'title'      => esc_html__( 'Hover Color', 'jeg-elementor-kit' ),
+			'segment'    => 'style_title',
+			'responsive' => true,
+			'selectors'  => '.jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button',
+		);
+
+		$this->options['st_title_hover_background'] = array(
+			'type'      => 'background',
+			'title'     => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
+			'segment'   => 'style_title',
+			'selectors' => '.jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button',
+			'options'   => array(
+				'classic',
+				'gradient',
+			),
+		);
+
+		$this->options['st_title_hover_border'] = array(
+			'type'      => 'border',
+			'title'     => esc_html__( 'Hover Border', 'jeg-elementor-kit' ),
+			'segment'   => 'style_title',
+			'selectors' => '.jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button',
+		);
+
+		$this->options['st_title_hover_boxshadow'] = array(
+			'type'      => 'boxshadow',
+			'title'     => esc_html__( 'Hover Box Shadow', 'jeg-elementor-kit' ),
+			'segment'   => 'style_title',
+			'selectors' => '.jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button',
+		);
+
+		$this->options['st_title_hover_tab_end'] = array(
 			'type'    => 'control_tab_end',
 			'segment' => 'style_title',
 		);
@@ -854,6 +1027,80 @@ class Accordion_Option extends Option_Abstract {
 		);
 
 		$this->options['st_icon_close_tab_end'] = array(
+			'type'    => 'control_tab_end',
+			'segment' => 'style_icon',
+		);
+
+		$this->options['st_icon_hover_tab_start'] = array(
+			'type'    => 'control_tab_start',
+			'title'   => esc_html__( 'Hover', 'jeg-elementor-kit' ),
+			'segment' => 'style_icon',
+		);
+
+		$this->options['st_icon_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_icon',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-accordion .card-wrapper .card-header .card-header-button [class*="icon-group"] [class*="-icon"]' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
+		$this->options['st_icon_hover_color'] = array(
+			'type'       => 'color',
+			'title'      => esc_html__( 'Color', 'jeg-elementor-kit' ),
+			'segment'    => 'style_icon',
+			'responsive' => true,
+			'selectors'  => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button [class*="icon-group"] [class*="-icon"]'     => 'color: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button [class*="icon-group"] [class*="-icon"] svg' => 'fill: {{VALUE}};',
+				),
+			),
+		);
+
+		$this->options['st_icon_hover_background'] = array(
+			'type'      => 'background',
+			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
+			'segment'   => 'style_icon',
+			'options'   => array(
+				'classic',
+				'gradient',
+			),
+			'selectors' => '.jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button [class*="icon-group"] [class*="-icon"]',
+		);
+
+		$this->options['st_icon_hover_border'] = array(
+			'type'      => 'border',
+			'title'     => esc_html__( 'Border', 'jeg-elementor-kit' ),
+			'segment'   => 'style_icon',
+			'selectors' => '.jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button [class*="icon-group"] [class*="-icon"]',
+		);
+
+		$this->options['st_icon_hover_radius'] = array(
+			'type'      => 'dimension',
+			'title'     => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
+			'segment'   => 'style_icon',
+			'units'     => array( 'px', '%', 'em' ),
+			'selectors' => '.jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button [class*="icon-group"] [class*="-icon"]',
+			'attribute' => 'border-radius',
+		);
+
+		$this->options['st_icon_hover_boxshadow'] = array(
+			'type'      => 'boxshadow',
+			'title'     => esc_html__( 'Box Shadow', 'jeg-elementor-kit' ),
+			'segment'   => 'style_icon',
+			'selectors' => '.jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button [class*="icon-group"] [class*="-icon"]',
+		);
+
+		$this->options['st_icon_hover_tab_end'] = array(
 			'type'    => 'control_tab_end',
 			'segment' => 'style_icon',
 		);
@@ -1270,6 +1517,140 @@ class Accordion_Option extends Option_Abstract {
 			'segment' => 'style_icon',
 		);
 
+		$this->options['st_icon_overide_left_hover_tab_start'] = array(
+			'type'    => 'control_tab_start',
+			'title'   => esc_html__( 'Hover', 'jeg-elementor-kit' ),
+			'segment' => 'style_icon',
+		);
+
+		$this->options['st_icon_overide_left_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_icon',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-accordion .card-wrapper .card-header .card-header-button .left-icon-group [class*="-icon"]' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
+		$this->options['st_icon_overide_left_hover_color'] = array(
+			'type'       => 'color',
+			'title'      => esc_html__( 'Hover Color', 'jeg-elementor-kit' ),
+			'segment'    => 'style_icon',
+			'responsive' => true,
+			'selectors'  => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button .left-icon-group [class*="-icon"]'     => 'color: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button .left-icon-group [class*="-icon"] svg' => 'fill: {{VALUE}};',
+				),
+			),
+			'dependency' => array(
+				array(
+					'field'    => 'sg_icon_position',
+					'operator' => '==',
+					'value'    => 'both',
+				),
+				array(
+					'field'    => 'st_icon_overide',
+					'operator' => '==',
+					'value'    => 'yes',
+				),
+			),
+		);
+
+		$this->options['st_icon_overide_left_hover_background'] = array(
+			'type'       => 'background',
+			'title'      => esc_html__( 'Background', 'jeg-elementor-kit' ),
+			'segment'    => 'style_icon',
+			'options'    => array(
+				'classic',
+				'gradient',
+			),
+			'selectors'  => '.jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button .left-icon-group [class*="-icon"]',
+			'dependency' => array(
+				array(
+					'field'    => 'sg_icon_position',
+					'operator' => '==',
+					'value'    => 'both',
+				),
+				array(
+					'field'    => 'st_icon_overide',
+					'operator' => '==',
+					'value'    => 'yes',
+				),
+			),
+		);
+
+		$this->options['st_icon_overide_left_hover_border'] = array(
+			'type'       => 'border',
+			'title'      => esc_html__( 'Border', 'jeg-elementor-kit' ),
+			'segment'    => 'style_icon',
+			'selectors'  => '.jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button .left-icon-group [class*="-icon"]',
+			'dependency' => array(
+				array(
+					'field'    => 'sg_icon_position',
+					'operator' => '==',
+					'value'    => 'both',
+				),
+				array(
+					'field'    => 'st_icon_overide',
+					'operator' => '==',
+					'value'    => 'yes',
+				),
+			),
+		);
+
+		$this->options['st_icon_overide_left_hover_border_radius'] = array(
+			'type'       => 'dimension',
+			'title'      => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
+			'segment'    => 'style_icon',
+			'units'      => array( 'px', '%', 'em' ),
+			'selectors'  => '.jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button .left-icon-group [class*="-icon"]',
+			'attribute'  => 'border-radius',
+			'dependency' => array(
+				array(
+					'field'    => 'sg_icon_position',
+					'operator' => '==',
+					'value'    => 'both',
+				),
+				array(
+					'field'    => 'st_icon_overide',
+					'operator' => '==',
+					'value'    => 'yes',
+				),
+			),
+		);
+
+		$this->options['st_icon_overide_left_hover_boxshadow'] = array(
+			'type'       => 'boxshadow',
+			'title'      => esc_html__( 'Box Shadow', 'jeg-elementor-kit' ),
+			'segment'    => 'style_icon',
+			'selectors'  => '.jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button .left-icon-group [class*="-icon"]',
+			'dependency' => array(
+				array(
+					'field'    => 'sg_icon_position',
+					'operator' => '==',
+					'value'    => 'both',
+				),
+				array(
+					'field'    => 'st_icon_overide',
+					'operator' => '==',
+					'value'    => 'yes',
+				),
+			),
+		);
+
+		$this->options['st_icon_overide_left_hover_tab_end'] = array(
+			'type'    => 'control_tab_end',
+			'segment' => 'style_icon',
+		);
+
 		$this->options['st_icon_overide_left_tabs_end'] = array(
 			'type'    => 'control_tabs_end',
 			'segment' => 'style_icon',
@@ -1645,6 +2026,140 @@ class Accordion_Option extends Option_Abstract {
 		);
 
 		$this->options['st_icon_overide_right_close_tab_end'] = array(
+			'type'    => 'control_tab_end',
+			'segment' => 'style_icon',
+		);
+
+		$this->options['st_icon_overide_right_hover_tab_start'] = array(
+			'type'    => 'control_tab_start',
+			'title'   => esc_html__( 'Hover', 'jeg-elementor-kit' ),
+			'segment' => 'style_icon',
+		);
+
+		$this->options['st_icon_overide_right_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_icon',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-accordion .card-wrapper .card-header .card-header-button .right-icon-group [class*="-icon"]' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
+		$this->options['st_icon_overide_right_hover_color'] = array(
+			'type'       => 'color',
+			'title'      => esc_html__( 'Hover Color', 'jeg-elementor-kit' ),
+			'segment'    => 'style_icon',
+			'responsive' => true,
+			'selectors'  => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button .right-icon-group [class*="-icon"]'     => 'color: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button .right-icon-group [class*="-icon"] svg' => 'fill: {{VALUE}};',
+				),
+			),
+			'dependency' => array(
+				array(
+					'field'    => 'sg_icon_position',
+					'operator' => '==',
+					'value'    => 'both',
+				),
+				array(
+					'field'    => 'st_icon_overide',
+					'operator' => '==',
+					'value'    => 'yes',
+				),
+			),
+		);
+
+		$this->options['st_icon_overide_right_hover_background'] = array(
+			'type'       => 'background',
+			'title'      => esc_html__( 'Background', 'jeg-elementor-kit' ),
+			'segment'    => 'style_icon',
+			'options'    => array(
+				'classic',
+				'gradient',
+			),
+			'selectors'  => '.jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button .right-icon-group [class*="-icon"]',
+			'dependency' => array(
+				array(
+					'field'    => 'sg_icon_position',
+					'operator' => '==',
+					'value'    => 'both',
+				),
+				array(
+					'field'    => 'st_icon_overide',
+					'operator' => '==',
+					'value'    => 'yes',
+				),
+			),
+		);
+
+		$this->options['st_icon_overide_right_hover_border'] = array(
+			'type'       => 'border',
+			'title'      => esc_html__( 'Border', 'jeg-elementor-kit' ),
+			'segment'    => 'style_icon',
+			'selectors'  => '.jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button .right-icon-group [class*="-icon"]',
+			'dependency' => array(
+				array(
+					'field'    => 'sg_icon_position',
+					'operator' => '==',
+					'value'    => 'both',
+				),
+				array(
+					'field'    => 'st_icon_overide',
+					'operator' => '==',
+					'value'    => 'yes',
+				),
+			),
+		);
+
+		$this->options['st_icon_overide_right_hover_border_radius'] = array(
+			'type'       => 'dimension',
+			'title'      => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
+			'segment'    => 'style_icon',
+			'units'      => array( 'px', '%', 'em' ),
+			'selectors'  => '.jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button .right-icon-group [class*="-icon"]',
+			'attribute'  => 'border-radius',
+			'dependency' => array(
+				array(
+					'field'    => 'sg_icon_position',
+					'operator' => '==',
+					'value'    => 'both',
+				),
+				array(
+					'field'    => 'st_icon_overide',
+					'operator' => '==',
+					'value'    => 'yes',
+				),
+			),
+		);
+
+		$this->options['st_icon_overide_right_hover_boxshadow'] = array(
+			'type'       => 'boxshadow',
+			'title'      => esc_html__( 'Box Shadow', 'jeg-elementor-kit' ),
+			'segment'    => 'style_icon',
+			'selectors'  => '.jeg-elementor-kit.jkit-accordion .card-wrapper:hover .card-header .card-header-button .right-icon-group [class*="-icon"]',
+			'dependency' => array(
+				array(
+					'field'    => 'sg_icon_position',
+					'operator' => '==',
+					'value'    => 'both',
+				),
+				array(
+					'field'    => 'st_icon_overide',
+					'operator' => '==',
+					'value'    => 'yes',
+				),
+			),
+		);
+
+		$this->options['st_icon_overide_right_hover_tab_end'] = array(
 			'type'    => 'control_tab_end',
 			'segment' => 'style_icon',
 		);

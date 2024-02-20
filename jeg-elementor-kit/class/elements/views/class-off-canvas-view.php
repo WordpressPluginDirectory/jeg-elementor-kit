@@ -24,24 +24,45 @@ class Off_Canvas_View extends View_Abstract {
 	 */
 	public function build_content() {
 		$toggle         = '';
+		$toggle_item    = '';
+		$class_toggle   = 'offcanvas-sidebar-button';
 		$panel_position = ! empty( $this->attribute['st_panel_position'] ) ? esc_attr( $this->attribute['st_panel_position'] ) : 'right';
 		$toggle_type    = esc_attr( $this->attribute['sg_setting_open_type'] );
 		$close_icon     = $this->render_icon_element( $this->attribute['sg_setting_close_icon'] );
 		$template       = Plugin::$instance->frontend->get_builder_content( $this->attribute['sg_setting_template'], true );
+		$link_attr      = array(
+			'url'               => '#',
+			'is_external'       => '',
+			'nofollow'          => '',
+			'custom_attributes' => '',
+		);
 
 		if ( 'icon' === $toggle_type ) {
 			$icon = $this->render_icon_element( $this->attribute['sg_setting_open_icon'] );
 
 			if ( ! empty( $icon ) ) {
-				$toggle = '<a href="#" class="offcanvas-sidebar-button">' . $icon . '</a>';
+				$toggle_item = $icon;
 			}
 		} else {
-			$text   = esc_attr( $this->attribute['sg_setting_open_text'] );
-			$toggle = '<a href="#" class="offcanvas-sidebar-button">' . $text . '</a>';
+			$toggle_item = esc_attr( $this->attribute['sg_setting_open_text'] );
 		}
 
+		if ( 'gradient' === $this->attribute['st_open_normal_background_background_background'] || 'gradient' === $this->attribute['st_open_hover_background_background_background'] ) {
+			$class_toggle .= ' hover-gradient';
+			$toggle_item   = '<span>' . $toggle_item . '</span>';
+		}
+
+		$toggle = $this->render_url_element( $link_attr, null, $class_toggle, $toggle_item );
+
 		if ( ! empty( $close_icon ) ) {
-			$close_icon = '<a href="#" class="offcanvas-close-button">' . $close_icon . '</a>';
+			$class_close_button = 'offcanvas-close-button';
+
+			if ( 'gradient' === $this->attribute['st_close_normal_background_background_background'] || 'gradient' === $this->attribute['st_close_hover_background_background_background'] ) {
+				$class_close_button .= ' hover-gradient';
+				$close_icon          = '<span>' . $close_icon . '</span>';
+			}
+
+			$close_icon = $this->render_url_element( $link_attr, null, $class_close_button, $close_icon );
 		}
 
 		$content =

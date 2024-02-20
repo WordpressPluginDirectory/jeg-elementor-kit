@@ -87,6 +87,7 @@ class Product_Grid_View extends View_WooCommerce_Abstract {
 	 */
 	public function get_ajax_param() {
 		return array(
+			'lang',
 			'post_type',
 			'number_post',
 			'post_offset',
@@ -183,7 +184,9 @@ class Product_Grid_View extends View_WooCommerce_Abstract {
 		$orders  = explode( ',', $this->attribute['sg_content_show_element'] );
 
 		foreach ( $orders as $order ) {
-			$content .= call_user_func( array( $this, 'render_' . $order ) );
+			if ( method_exists( $this, 'render_' . $order ) ) {
+				$content .= call_user_func( array( $this, 'render_' . $order ) );
+			}
 		}
 
 		return $content;

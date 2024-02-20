@@ -565,13 +565,19 @@ class Nav_Menu_Option extends Option_Abstract {
 		);
 
 		$this->options['st_menu_item_text_normal_bg'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Item Text Normal Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_menu_item',
-			'selectors' => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu > li > a',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Item Text Normal Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_menu_item',
+			'selectors'      => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu > li > a',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type'        => 'template',
+					'frontend_available' => true,
+				),
 			),
 		);
 
@@ -664,13 +670,19 @@ class Nav_Menu_Option extends Option_Abstract {
 		);
 
 		$this->options['st_menu_item_text_hover_bg'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Item Text Hover Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_menu_item',
-			'selectors' => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu > li:hover > a',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Item Text Hover Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_menu_item',
+			'selectors'      => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu > li:not(.hover-gradient):hover > a, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu > li.hover-gradient > a:before',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type'        => 'template',
+					'frontend_available' => true,
+				),
 			),
 		);
 
@@ -900,13 +912,19 @@ class Nav_Menu_Option extends Option_Abstract {
 		);
 
 		$this->options['st_submenu_item_text_normal_bg'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Item Text Normal Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_submenu_item',
-			'selectors' => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu .sub-menu li > a',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Item Text Normal Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_submenu_item',
+			'selectors'      => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu .sub-menu li > a',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type'        => 'template',
+					'frontend_available' => true,
+				),
 			),
 		);
 
@@ -1034,13 +1052,19 @@ class Nav_Menu_Option extends Option_Abstract {
 		);
 
 		$this->options['st_submenu_item_text_hover_bg'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Item Text Hover Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_submenu_item',
-			'selectors' => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu .sub-menu li:hover > a',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Item Text Hover Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_submenu_item',
+			'selectors'      => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu .sub-menu li:not(.hover-gradient):hover > a, .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu .sub-menu li.hover-gradient > a:before',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type'        => 'template',
+					'frontend_available' => true,
+				),
 			),
 		);
 
@@ -1256,13 +1280,18 @@ class Nav_Menu_Option extends Option_Abstract {
 		);
 
 		$this->options['st_hamburger_menu_icon_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Icon Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_hamburger_menu',
-			'selectors' => '.jeg-elementor-kit.jkit-nav-menu .jkit-hamburger-menu',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Icon Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_hamburger_menu',
+			'selectors'      => '.jeg-elementor-kit.jkit-nav-menu .jkit-hamburger-menu',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -1306,14 +1335,35 @@ class Nav_Menu_Option extends Option_Abstract {
 			'segment' => 'style_hamburger_menu',
 		);
 
-		$this->options['st_hamburger_menu_icon_background_hover'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Icon Hover Background', 'jeg-elementor-kit' ),
+		$this->options['st_hamburger_menu_icon_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
 			'segment'   => 'style_hamburger_menu',
-			'selectors' => '.jeg-elementor-kit.jkit-nav-menu .jkit-hamburger-menu:hover',
 			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-hamburger-menu' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
+		$this->options['st_hamburger_menu_icon_background_hover'] = array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Icon Hover Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_hamburger_menu',
+			'selectors'      => '.jeg-elementor-kit.jkit-nav-menu .jkit-hamburger-menu:not(.hover-gradient):hover, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-hamburger-menu.hover-gradient:before',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -1425,13 +1475,18 @@ class Nav_Menu_Option extends Option_Abstract {
 		);
 
 		$this->options['st_hamburger_menu_close_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Close Background', 'jeg-elementor-kit' ),
-			'segment'   => 'style_hamburger_menu',
-			'selectors' => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-nav-identity-panel .jkit-close-menu',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Close Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_hamburger_menu',
+			'selectors'      => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-nav-identity-panel .jkit-close-menu',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -1475,14 +1530,35 @@ class Nav_Menu_Option extends Option_Abstract {
 			'segment' => 'style_hamburger_menu',
 		);
 
-		$this->options['st_hamburger_menu_close_background_hover'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Close Hover Background', 'jeg-elementor-kit' ),
+		$this->options['st_hamburger_menu_close_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
 			'segment'   => 'style_hamburger_menu',
-			'selectors' => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-nav-identity-panel .jkit-close-menu:hover',
 			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-nav-identity-panel .jkit-close-menu' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
+		$this->options['st_hamburger_menu_close_background_hover'] = array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Close Hover Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_hamburger_menu',
+			'selectors'      => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-nav-identity-panel .jkit-close-menu:not(.hover-gradient):hover, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-nav-identity-panel .jkit-close-menu.hover-gradient:before',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 

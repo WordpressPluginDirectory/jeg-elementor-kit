@@ -358,6 +358,27 @@ abstract class Template_Dashboard_Abstract {
 			'default'     => '',
 		);
 
+		if ( jkit_is_multilanguage() ) {
+			$fields['language'] = array(
+				'type'        => 'select',
+				'title'       => esc_html__( 'Language', 'jeg-elementor-kit' ),
+				'description' => esc_html__( 'Select the language for the template.', 'jeg-elementor-kit' ),
+				'options'     => call_user_func(
+					function() {
+						$languages = jkit_get_languages();
+						$options = array( '' => esc_html__( 'All Language', 'jeg-elementor-kit' ) );
+
+						foreach ( $languages as $locale => $language ) {
+							$options[ $locale ] = isset( $language['name'] ) ? $language['name'] : $language['native_name'];
+						}
+
+						return $options;
+					}
+				),
+				'default'     => '',
+			);
+		}
+
 		return apply_filters( 'jkit_template_condition_fields', $fields, $value, $page );
 	}
 

@@ -396,13 +396,18 @@ class Team_Option extends Option_Abstract {
 					),
 				),
 				'sg_social_normal_background' => array(
-					'type'      => 'background',
-					'title'     => esc_html__( 'Normal Background Color', 'jeg-elementor-kit' ),
-					'segment'   => 'sg_social_icon',
-					'selectors' => '.jeg-elementor-kit.jkit-team .social-list .social-icon{{CURRENT_ITEM}} a',
-					'options'   => array(
+					'type'           => 'background',
+					'title'          => esc_html__( 'Normal Background Color', 'jeg-elementor-kit' ),
+					'segment'        => 'sg_social_icon',
+					'selectors'      => '.jeg-elementor-kit.jkit-team .social-list .social-icon{{CURRENT_ITEM}} a',
+					'options'        => array(
 						'classic',
 						'gradient',
+					),
+					'fields_options' => array(
+						'background' => array(
+							'render_type' => 'template',
+						),
 					),
 				),
 				'sg_social_normal_border'     => array(
@@ -444,13 +449,18 @@ class Team_Option extends Option_Abstract {
 					),
 				),
 				'sg_social_hover_background'  => array(
-					'type'      => 'background',
-					'title'     => esc_html__( 'Hover Background Color', 'jeg-elementor-kit' ),
-					'segment'   => 'sg_social_icon',
-					'selectors' => '.jeg-elementor-kit.jkit-team .social-list .social-icon{{CURRENT_ITEM}}:hover a',
-					'options'   => array(
+					'type'           => 'background',
+					'title'          => esc_html__( 'Hover Background Color', 'jeg-elementor-kit' ),
+					'segment'        => 'sg_social_icon',
+					'selectors'      => '.jeg-elementor-kit.jkit-team .social-list .social-icon{{CURRENT_ITEM}}:not(.hover-gradient):hover a, {{WRAPPER}} .jeg-elementor-kit.jkit-team .social-list .social-icon{{CURRENT_ITEM}}.hover-gradient a:before',
+					'options'        => array(
 						'classic',
 						'gradient',
+					),
+					'fields_options' => array(
+						'background' => array(
+							'render_type' => 'template',
+						),
 					),
 				),
 				'sg_social_hover_border'      => array(
@@ -719,21 +729,26 @@ class Team_Option extends Option_Abstract {
 		);
 
 		$this->options['st_content_normal_background'] = array(
-			'type'       => 'background',
-			'title'      => esc_html__( 'Normal Background', 'jeg-elementor-kit' ),
-			'segment'    => 'style_content',
-			'selectors'  => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Normal Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_content',
+			'selectors'      => array(
 				'custom' => '{{WRAPPER}} .jeg-elementor-kit.jkit-team .profile-box .profile-card, {{WRAPPER}} .jeg-elementor-kit.jkit-team.style-overlay .profile-card:before, {{WRAPPER}} .jeg-elementor-kit.jkit-team.style-hover-social .profile-card:before',
 			),
-			'options'    => array(
+			'options'        => array(
 				'classic',
 				'gradient',
 			),
-			'dependency' => array(
+			'dependency'     => array(
 				array(
 					'field'    => 'sg_member_style!',
 					'operator' => '==',
 					'value'    => 'title-horizontal',
+				),
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
 				),
 			),
 		);
@@ -764,21 +779,26 @@ class Team_Option extends Option_Abstract {
 		);
 
 		$this->options['st_content_hover_background'] = array(
-			'type'       => 'background',
-			'title'      => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
-			'segment'    => 'style_content',
-			'selectors'  => array(
-				'custom' => '{{WRAPPER}} .jeg-elementor-kit.jkit-team:hover .profile-box .profile-card, {{WRAPPER}} .jeg-elementor-kit.jkit-team.style-overlay:hover .profile-card:before, {{WRAPPER}} .jeg-elementor-kit.jkit-team.style-hover-social:hover .profile-card:before',
+			'type'           => 'background',
+			'title'          => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
+			'segment'        => 'style_content',
+			'selectors'      => array(
+				'custom' => '{{WRAPPER}} .jeg-elementor-kit.jkit-team:hover .profile-box .profile-card:not(.hover-gradient), {{WRAPPER}} .jeg-elementor-kit.jkit-team.style-overlay .profile-card:before, {{WRAPPER}} .jeg-elementor-kit.jkit-team.style-hover-social:hover .profile-card:before, {{WRAPPER}} .jeg-elementor-kit.jkit-team .profile-box .profile-card.hover-gradient:before',
 			),
-			'options'    => array(
+			'options'        => array(
 				'classic',
 				'gradient',
 			),
-			'dependency' => array(
+			'dependency'     => array(
 				array(
 					'field'    => 'sg_member_style!',
 					'operator' => '==',
 					'value'    => 'title-horizontal',
+				),
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
 				),
 			),
 		);

@@ -119,7 +119,7 @@ class Pie_Chart_View extends View_Abstract {
 	private function render_content() {
 		$title       = esc_attr( $this->attribute['sg_content_title'] );
 		$description = esc_attr( $this->attribute['sg_content_description'] );
-		$html_tag    = esc_attr( $this->attribute['sg_content_title_html_tag'] );
+		$html_tag    = \Elementor\Utils::validate_html_tag( $this->attribute['sg_content_title_html_tag'] );
 		$html_tag    = isset( $html_tag ) ? $html_tag : 'h2';
 
 		$content = '<' . $html_tag . ' class="pie-chart-title">' . $title . '</' . $html_tag . '><div class="pie-chart-description"><p>' . $description . '</p></div>';

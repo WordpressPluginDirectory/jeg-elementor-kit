@@ -723,6 +723,22 @@ class Post_List_Option extends Option_Abstract {
 			'selectors'  => '.jeg-elementor-kit.jkit-postlist article:hover a .jkit-postlist-title',
 		);
 
+		$this->options['st_title_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_title',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-postlist article a .jkit-postlist-title' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
 		$this->options['st_title_padding'] = array(
 			'type'      => 'dimension',
 			'title'     => esc_html__( 'Padding', 'jeg-elementor-kit' ),
@@ -1082,6 +1098,22 @@ class Post_List_Option extends Option_Abstract {
 				'custom' => array(
 					'{{WRAPPER}} .jeg-elementor-kit.jkit-postlist article:hover a .icon-list i'   => 'color: {{VALUE}};',
 					'{{WRAPPER}} .jeg-elementor-kit.jkit-postlist article:hover a .icon-list svg' => 'fill: {{VALUE}};',
+				),
+			),
+		);
+
+		$this->options['st_icon_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_icon',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-postlist article a .icon-list i, {{WRAPPER}} .jeg-elementor-kit.jkit-postlist article a .icon-list svg' => 'transition-duration: {{SIZE}}s;',
 				),
 			),
 		);

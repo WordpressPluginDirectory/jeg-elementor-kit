@@ -24,7 +24,7 @@ class Post_Terms_View extends View_Abstract {
 		$term_list     = get_the_terms( get_the_ID(), $term_taxonomy );
 		$animation     = ! empty( $this->attribute['st_term_hover_animation'] ) ? 'elementor-animation-' . esc_attr( $this->attribute['st_term_hover_animation'] ) : '';
 		$link_to       = $this->attribute['sg_term_link_to'];
-		$html_tag      = esc_attr( $this->attribute['sg_term_html_tag'] );
+		$html_tag      = \Elementor\Utils::validate_html_tag( $this->attribute['sg_term_html_tag'] );
 
 		if ( ! empty( $term_list ) && is_array( $term_list ) ) {
 			$separator = esc_attr( $this->attribute['sg_term_separator'] );

@@ -27,6 +27,13 @@ class Video_Button_View extends View_Abstract {
 			$class .= ' glow-enable';
 		}
 
+		$content = $this->render_content();
+
+		if ( 'gradient' === $this->attribute['st_button_normal_background_background_background'] || 'gradient' === $this->attribute['st_button_hover_background_background_background'] ) {
+			$class  .= ' hover-gradient';
+			$content = '<span>' . $content . '</span>';
+		}
+
 		$content = $this->render_url_element(
 			array(
 				'url'               => $url,
@@ -36,7 +43,8 @@ class Video_Button_View extends View_Abstract {
 			),
 			null,
 			$class,
-			$this->render_content()
+			$content,
+			'aria-label="video-button"'
 		);
 
 		$data_attr = $this->render_data();

@@ -71,9 +71,15 @@ class Testimonials_View extends View_Abstract {
 		$testimonials            = '';
 		$height                  = 'yes' === $this->attribute['st_wrapper_fix_height'] ? 'fix-height' : '';
 		$icon                    = 'yes' === $this->attribute['sg_setting_quote'] ? $this->render_icon_element( $this->attribute['sg_setting_quote_icon'] ) : '';
+		$icon_class              = 'icon-content';
 		$hover_direction         = esc_attr( $this->attribute['st_layout_hover_direction'] );
 		$image_size              = esc_attr( $this->attribute['sg_testimonials_image_size_imagesize_size'] );
 		$override_quote_position = esc_attr( $this->attribute['st_quote_override_position'] );
+
+		if ( 'gradient' === $this->attribute['st_quote_normal_background_background_background'] || 'gradient' === $this->attribute['st_quote_hover_background_background_background'] ) {
+			$icon_class .= ' hover-gradient';
+			$icon        = '<span>' . $icon . '</span>';
+		}
 
 		foreach ( $this->attribute['sg_testimonials_list'] as $testimonial ) {
 			$client_name        = esc_attr( $testimonial['sg_testimonials_list_client_name'] );
@@ -81,14 +87,16 @@ class Testimonials_View extends View_Abstract {
 			$client_review      = esc_attr( $testimonial['sg_testimonials_list_review'] );
 			$id                 = 'elementor-repeater-item-' . esc_attr( $testimonial['_id'] );
 			$rating_stars       = 'yes' === $this->attribute['sg_setting_rating'] ? $this->render_rating( floatval( $testimonial['sg_testimonials_list_rating']['size'] ) ) : '';
-			$icon_content       = '<div class="icon-content">' . $icon . '</div>';
+			$icon_content       = '<div class="' . $icon_class . '">' . $icon . '</div>';
 			$content            = null;
 
-			if ( \Elementor\Utils::get_placeholder_image_src() === $testimonial['sg_testimonials_list_client_avatar']['url'] ) {
-				$profile_image = '';
-			} else {
-				$profile_image = $this->render_image_element( $testimonial['sg_testimonials_list_client_avatar'], $image_size, null, null, esc_attr( $testimonial['sg_testimonials_list_client_name'] ) );
+			$img_source = 'source-url';
+
+			if ( isset( $testimonial['sg_testimonials_list_client_avatar']['source'] ) ) {
+				$img_source = 'source-' . $testimonial['sg_testimonials_list_client_avatar']['source'];
 			}
+
+			$profile_image = $this->render_image_element( $testimonial['sg_testimonials_list_client_avatar'], $image_size, null, $img_source, esc_attr( $testimonial['sg_testimonials_list_client_name'] ) );
 
 			$comment_bio =
 			'<div class="comment-bio">
@@ -126,10 +134,16 @@ class Testimonials_View extends View_Abstract {
 		$testimonials            = '';
 		$height                  = 'yes' === $this->attribute['st_wrapper_fix_height'] ? 'fix-height' : '';
 		$icon                    = 'yes' === $this->attribute['sg_setting_quote'] ? $this->render_icon_element( $this->attribute['sg_setting_quote_icon'] ) : '';
+		$icon_class              = 'icon-content';
 		$image_position          = esc_attr( $this->attribute['sg_layout_image_position'] );
 		$hover_direction         = esc_attr( $this->attribute['st_layout_hover_direction'] );
 		$image_size              = esc_attr( $this->attribute['sg_testimonials_image_size_imagesize_size'] );
 		$override_quote_position = esc_attr( $this->attribute['st_quote_override_position'] );
+
+		if ( 'gradient' === $this->attribute['st_quote_normal_background_background_background'] || 'gradient' === $this->attribute['st_quote_hover_background_background_background'] ) {
+			$icon_class .= ' hover-gradient';
+			$icon        = '<span>' . $icon . '</span>';
+		}
 
 		foreach ( $this->attribute['sg_testimonials_list'] as $testimonial ) {
 			$client_name        = esc_attr( $testimonial['sg_testimonials_list_client_name'] );
@@ -137,9 +151,16 @@ class Testimonials_View extends View_Abstract {
 			$client_review      = esc_attr( $testimonial['sg_testimonials_list_review'] );
 			$id                 = 'elementor-repeater-item-' . esc_attr( $testimonial['_id'] );
 			$rating_stars       = 'yes' === $this->attribute['sg_setting_rating'] ? $this->render_rating( floatval( $testimonial['sg_testimonials_list_rating']['size'] ) ) : '';
-			$icon_content       = '<div class="icon-content">' . $icon . '</div>';
-			$profile_image      = $this->render_image_element( $testimonial['sg_testimonials_list_client_avatar'], $image_size, null, null, esc_attr( $testimonial['sg_testimonials_list_client_name'] ) );
+			$icon_content       = '<div class="' . $icon_class . '">' . $icon . '</div>';
 			$content            = null;
+
+			$img_source = 'source-url';
+
+			if ( isset( $testimonial['sg_testimonials_list_client_avatar']['source'] ) ) {
+				$img_source = 'source-' . $testimonial['sg_testimonials_list_client_avatar']['source'];
+			}
+
+			$profile_image = $this->render_image_element( $testimonial['sg_testimonials_list_client_avatar'], $image_size, null, $img_source, esc_attr( $testimonial['sg_testimonials_list_client_name'] ) );
 
 			$bio_details =
 			'<div class="bio-details">
@@ -188,9 +209,15 @@ class Testimonials_View extends View_Abstract {
 		$testimonials    = '';
 		$height          = 'yes' === $this->attribute['st_wrapper_fix_height'] ? 'fix-height' : '';
 		$icon            = 'yes' === $this->attribute['sg_setting_quote'] ? $this->render_icon_element( $this->attribute['sg_setting_quote_icon'] ) : '';
+		$icon_class      = 'icon-content';
 		$image_position  = esc_attr( $this->attribute['sg_layout_image_position'] );
 		$hover_direction = esc_attr( $this->attribute['st_layout_hover_direction'] );
 		$image_size      = esc_attr( $this->attribute['sg_testimonials_image_size_imagesize_size'] );
+
+		if ( 'gradient' === $this->attribute['st_quote_normal_background_background_background'] || 'gradient' === $this->attribute['st_quote_hover_background_background_background'] ) {
+			$icon_class .= ' hover-gradient';
+			$icon        = '<span>' . $icon . '</span>';
+		}
 
 		foreach ( $this->attribute['sg_testimonials_list'] as $testimonial ) {
 			$client_name        = esc_attr( $testimonial['sg_testimonials_list_client_name'] );
@@ -198,9 +225,16 @@ class Testimonials_View extends View_Abstract {
 			$client_review      = esc_attr( $testimonial['sg_testimonials_list_review'] );
 			$id                 = 'elementor-repeater-item-' . esc_attr( $testimonial['_id'] );
 			$rating_stars       = 'yes' === $this->attribute['sg_setting_rating'] ? $this->render_rating( floatval( $testimonial['sg_testimonials_list_rating']['size'] ) ) : '';
-			$icon_content       = '<div class="icon-content">' . $icon . '</div>';
-			$profile_image      = $this->render_image_element( $testimonial['sg_testimonials_list_client_avatar'], $image_size, null, null, esc_attr( $testimonial['sg_testimonials_list_client_name'] ) );
+			$icon_content       = '<div class="' . $icon_class . '">' . $icon . '</div>';
 			$content            = null;
+
+			$img_source = 'source-url';
+
+			if ( isset( $testimonial['sg_testimonials_list_client_avatar']['source'] ) ) {
+				$img_source = 'source-' . $testimonial['sg_testimonials_list_client_avatar']['source'];
+			}
+
+			$profile_image = $this->render_image_element( $testimonial['sg_testimonials_list_client_avatar'], $image_size, null, $img_source, esc_attr( $testimonial['sg_testimonials_list_client_name'] ) );
 
 			$comment_bio =
 			'<div class="comment-bio">
@@ -236,9 +270,15 @@ class Testimonials_View extends View_Abstract {
 		$testimonials    = '';
 		$height          = 'yes' === $this->attribute['st_wrapper_fix_height'] ? 'fix-height' : '';
 		$icon            = 'yes' === $this->attribute['sg_setting_quote'] ? $this->render_icon_element( $this->attribute['sg_setting_quote_icon'] ) : '';
+		$icon_class      = 'icon-content';
 		$image_position  = esc_attr( $this->attribute['sg_layout_image_position'] );
 		$hover_direction = esc_attr( $this->attribute['st_layout_hover_direction'] );
 		$image_size      = esc_attr( $this->attribute['sg_testimonials_image_size_imagesize_size'] );
+
+		if ( 'gradient' === $this->attribute['st_quote_normal_background_background_background'] || 'gradient' === $this->attribute['st_quote_hover_background_background_background'] ) {
+			$icon_class .= ' hover-gradient';
+			$icon        = '<span>' . $icon . '</span>';
+		}
 
 		foreach ( $this->attribute['sg_testimonials_list'] as $testimonial ) {
 			$client_name        = esc_attr( $testimonial['sg_testimonials_list_client_name'] );
@@ -246,9 +286,16 @@ class Testimonials_View extends View_Abstract {
 			$client_review      = esc_attr( $testimonial['sg_testimonials_list_review'] );
 			$id                 = 'elementor-repeater-item-' . esc_attr( $testimonial['_id'] );
 			$rating_stars       = 'yes' === $this->attribute['sg_setting_rating'] ? $this->render_rating( floatval( $testimonial['sg_testimonials_list_rating']['size'] ) ) : '';
-			$icon_content       = '<div class="icon-content">' . $icon . '</div>';
-			$profile_image      = $this->render_image_element( $testimonial['sg_testimonials_list_client_avatar'], $image_size, null, null, esc_attr( $testimonial['sg_testimonials_list_client_name'] ) );
+			$icon_content       = '<div class="' . $icon_class . '">' . $icon . '</div>';
 			$content            = null;
+
+			$img_source = 'source-url';
+
+			if ( isset( $testimonial['sg_testimonials_list_client_avatar']['source'] ) ) {
+				$img_source = 'source-' . $testimonial['sg_testimonials_list_client_avatar']['source'];
+			}
+
+			$profile_image = $this->render_image_element( $testimonial['sg_testimonials_list_client_avatar'], $image_size, null, $img_source, esc_attr( $testimonial['sg_testimonials_list_client_name'] ) );
 
 			$comment_bio =
 			'<div class="comment-bio">
@@ -339,6 +386,15 @@ class Testimonials_View extends View_Abstract {
 		$nav_right = preg_replace( '~[\r\n\s]+~', ' ', $this->render_icon_element( $this->attribute['sg_setting_arrow_right'] ) );
 		$items     = ! empty( $this->attribute['sg_setting_slide_show_responsive']['size'] ) ? $this->attribute['sg_setting_slide_show_responsive']['size'] : $default['dekstop']['items'];
 		$margin    = ! empty( $this->attribute['sg_setting_margin_responsive']['size'] ) ? $this->attribute['sg_setting_margin_responsive']['size'] : $default['dekstop']['margin'];
+
+		if ( 'gradient' === $this->attribute['st_arrow_normal_background_background_background'] || 'gradient' === $this->attribute['st_arrow_hover_background_background_background'] ) {
+			$icon_class = 'hover-gradient';
+			$nav_left   = '<span class="' . $icon_class . '">' . $nav_left . '</span>';
+			$nav_right  = '<span class="' . $icon_class . '">' . $nav_right . '</span>';
+		} else {
+			$nav_left  = '<span>' . $nav_left . '</span>';
+			$nav_right = '<span>' . $nav_right . '</span>';
+		}
 
 		$prev_key              = 'desktop';
 		$responsive['desktop'] = array(

@@ -153,6 +153,7 @@ class Post_List_View extends View_Abstract {
 	 */
 	public function get_ajax_param() {
 		return array(
+			'lang',
 			'post_type',
 			'number_post',
 			'post_offset',

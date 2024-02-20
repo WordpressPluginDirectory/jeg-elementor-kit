@@ -109,7 +109,7 @@ class Heading_View extends View_Abstract {
 			$content = $before . $focused . $after;
 		}
 
-		$html_tag      = esc_attr( $this->attribute['sg_title_html_tag'] );
+		$html_tag      = \Elementor\Utils::validate_html_tag( $this->attribute['sg_title_html_tag'] );
 		$border_enable = 'yes' === $this->attribute['sg_title_border_enable'];
 
 		if ( $border_enable ) {
@@ -140,7 +140,7 @@ class Heading_View extends View_Abstract {
 		$enable = 'yes' === $this->attribute['sg_subtitle_enable'];
 
 		if ( $enable ) {
-			$html_tag       = esc_attr( $this->attribute['sg_subtitle_html_tag'] );
+			$html_tag       = \Elementor\Utils::validate_html_tag( $this->attribute['sg_subtitle_html_tag'] );
 			$subtitle       = esc_attr( $this->attribute['sg_subtitle_heading'] );
 			$color_style    = esc_attr( $this->attribute['st_subtitle_color_style'] );
 			$outline_enable = 'yes' === $this->attribute['sg_subtitle_outline_enable'];

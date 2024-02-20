@@ -283,7 +283,7 @@ class Gallery_View extends View_Abstract {
 	 */
 	private function render_caption( $list ) {
 		$caption          = null;
-		$html_tag         = ! empty( $this->attribute['sg_setting_html_tag'] ) ? esc_attr( $this->attribute['sg_setting_html_tag'] ) : 'h5';
+		$html_tag         = ! empty( $this->attribute['sg_setting_html_tag'] ) ? \Elementor\Utils::validate_html_tag( $this->attribute['sg_setting_html_tag'] ) : 'h5';
 		$enable_video     = 'yes' === $list['sg_gallery_list_enable_video'];
 		$lightbox_caption = 'yes' === $this->attribute['sg_setting_popup_caption'] ? 'data-elementor-lightbox-title="' . esc_attr( $list['sg_gallery_list_item_name'] ) . '"' : '';
 		$category         = 'yes' === $list['sg_gallery_list_enable_category'] ? '<span>' . esc_attr( $list['sg_gallery_list_category'] ) . '</span>' : '';

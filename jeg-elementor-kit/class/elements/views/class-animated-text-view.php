@@ -19,7 +19,7 @@ class Animated_Text_View extends View_Abstract {
 	 * Build block content
 	 */
 	public function build_content() {
-		$tag    = esc_attr( $this->attribute['sg_text_html_tag'] );
+		$tag    = \Elementor\Utils::validate_html_tag( $this->attribute['sg_text_html_tag'] );
 		$url    = $this->attribute['sg_text_link'];
 		$text   = '<' . $tag . ' class="animated-text">' . $this->render_text() . '</' . $tag . '>';
 		$text   = ! empty( $url['url'] ) ? $this->render_url_element( $url, null, null, $text ) : $text;

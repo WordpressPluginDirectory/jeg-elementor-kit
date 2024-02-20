@@ -26,7 +26,7 @@ class Post_Title_View extends View_Abstract {
 
 		if ( ! empty( $title ) ) {
 			$link_to   = $this->attribute['sg_title_link_to'];
-			$html_tag  = esc_attr( $this->attribute['sg_title_html_tag'] );
+			$html_tag  = \Elementor\Utils::validate_html_tag( $this->attribute['sg_title_html_tag'] );
 			$animation = ! empty( $this->attribute['st_title_hover_animation'] ) ? 'elementor-animation-' . esc_attr( $this->attribute['st_title_hover_animation'] ) : '';
 			$style     = 'style-' . esc_attr( $this->attribute['sg_title_color_style'] );
 

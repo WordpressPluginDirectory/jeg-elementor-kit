@@ -2,9 +2,9 @@
 Contributors: Jegtheme
 Tags: elementor, element, addon, widget, extension, blog, post, elementor addon, elementor widget, elementor extension, elementor element, blog post, landing page, template, template kit
 Requires at least: 5.0
-Tested up to: 6.3.1
+Tested up to: 6.4.3
 Requires PHP: 7.0
-Stable tag: 2.6.2
+Stable tag: 2.6.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -90,6 +90,33 @@ Please make sure the WP Memory Limit on your site has set to 128 MB or greater. 
 https://elementor.com/help/requirements/ Also you can disable some widgets that you don't need from Jeg Elementor Kit > Elements dashboard to reduce memory usage.
 
 == Changelog ==
+
+= 2.6.3 - 20-02-2024 =
+- Improvement: Add the Dynamic Tag feature to the Link control type
+- Improvement: Use wp_get_attachment_image function for render images
+- Improvement: Add Multilanguage support for Jeg Elementor Kit Templates
+- Improvement: Make Transition working on Gradient buttons in Accordion, Button, Client Logo, Dual Button, Icon Box, Image Box, Nav Menu, Off-Canvas, Search, Social Share, Tabs, Team, Testimonial, Video Button widgets
+- Improvement: Update viewport meta value
+- Improvement: Add title attribute for the link
+* Improvement: Security issue
+* Improvement: Minify Jkit Icon CSS file
+* Improvement: Add Transition Duration Option for Title and Icon in Post List widget
+- Improvement: Add Close Button Style Options in Search widget
+- Improvement: Add more styling option for icon in Video Button widget
+- Improvement: Add hover border and box shadow style options for button in Mailchimp widget
+- Improvement: Add more options for icon in Button widget
+- Improvement: Add hover options in Accordion widget
+- Improvement: Add Title attribute for Read More button and add Aria-Label attribute for Thumbnail link in Post Block widget
+- Improvement: Add Aria-Label attribute in Video Button and Social Share widgets
+- Improvement: Change Viewport meta tag from maximum-scale to user-scalable
+- Fix: Fatal Error occurs when Element Order option is empty in Product Grid widget
+- Fix: Sticky Element makes the keyboard disappear on mobile devices
+- Fix: Nav Menu widget conflict with Twenty Twenty-One theme
+- Fix: Select List option in Mailchimp widget not working
+- Fix: Post pagination for CPT is not functioning correctly with custom taxonomies
+- Fix: Remove Elementor Top Bar from Jeg Elementor Kit pages
+- Fix: WooCommerce HPOS support issue
+- Tweak: Add Frontend Available capabilities for Slider and Color control
 
 = 2.6.2 - 26-09-2023 =
 - Improvement: Add border on content hover in Team widget

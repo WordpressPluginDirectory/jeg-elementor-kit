@@ -74,6 +74,15 @@ class Client_Logo_View extends View_Abstract {
 		$items      = ! empty( $this->attribute['sg_setting_slide_show_responsive']['size'] ) ? $this->attribute['sg_setting_slide_show_responsive']['size'] : $default['dekstop']['items'];
 		$margin     = ! empty( $this->attribute['sg_setting_margin_responsive']['size'] ) ? $this->attribute['sg_setting_margin_responsive']['size'] : $default['dekstop']['margin'];
 
+		if ( 'gradient' === $this->attribute['st_arrow_normal_background_background_background'] || 'gradient' === $this->attribute['st_arrow_hover_background_background_background'] ) {
+			$icon_class = 'hover-gradient';
+			$nav_left   = '<span class="' . $icon_class . '">' . $nav_left . '</span>';
+			$nav_right  = '<span class="' . $icon_class . '">' . $nav_right . '</span>';
+		} else {
+			$nav_left  = '<span>' . $nav_left . '</span>';
+			$nav_right = '<span>' . $nav_right . '</span>';
+		}
+
 		$prev_key              = 'desktop';
 		$responsive['desktop'] = array(
 			'items'      => $items,

@@ -266,13 +266,18 @@ class Button_Option extends Option_Abstract {
 		);
 
 		$this->options['st_button_normal_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Normal Background Color', 'jeg-elementor-kit' ),
-			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Normal Background Color', 'jeg-elementor-kit' ),
+			'segment'        => 'style_button',
+			'selectors'      => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -305,7 +310,7 @@ class Button_Option extends Option_Abstract {
 			),
 			'selectors' => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper' => 'transition-duration: {{SIZE}}s;',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper, {{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper i' => 'transition-duration: {{SIZE}}s;',
 				),
 			),
 		);
@@ -324,13 +329,18 @@ class Button_Option extends Option_Abstract {
 		);
 
 		$this->options['st_button_hover_background'] = array(
-			'type'      => 'background',
-			'title'     => esc_html__( 'Hover Background Color', 'jeg-elementor-kit' ),
-			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover',
-			'options'   => array(
+			'type'           => 'background',
+			'title'          => esc_html__( 'Hover Background Color', 'jeg-elementor-kit' ),
+			'segment'        => 'style_button',
+			'selectors'      => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper:not(.hover-gradient):hover, {{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper.hover-gradient:before',
+			'options'        => array(
 				'classic',
 				'gradient',
+			),
+			'fields_options' => array(
+				'background' => array(
+					'render_type' => 'template',
+				),
 			),
 		);
 
@@ -461,6 +471,15 @@ class Button_Option extends Option_Abstract {
 			'segment' => 'style_shadow',
 		);
 
+		$this->options['st_icon_padding'] = array(
+			'type'      => 'dimension',
+			'title'     => esc_html__( 'Padding', 'jeg-elementor-kit' ),
+			'segment'   => 'style_icon',
+			'units'     => array( 'px', '%', 'em', 'custom' ),
+			'selectors' => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper i, {{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper svg',
+			'attribute' => 'padding',
+		);
+
 		$this->options['st_icon_size'] = array(
 			'type'       => 'slider',
 			'title'      => esc_html__( 'Icon Size', 'jeg-elementor-kit' ),
@@ -542,6 +561,34 @@ class Button_Option extends Option_Abstract {
 			),
 		);
 
+		$this->options['st_icon_normal_background'] = array(
+			'type'      => 'background',
+			'title'     => esc_html__( 'Normal Background Color', 'jeg-elementor-kit' ),
+			'segment'   => 'style_icon',
+			'selectors' => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper > i, {{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper > svg',
+			'options'   => array(
+				'classic',
+				'gradient',
+			),
+			'exclude'   => array( 'image' ),
+		);
+
+		$this->options['st_icon_normal_border'] = array(
+			'type'      => 'border',
+			'title'     => esc_html__( 'Normal Border', 'jeg-elementor-kit' ),
+			'segment'   => 'style_icon',
+			'selectors' => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper > i, {{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper > svg',
+		);
+
+		$this->options['st_icon_normal_border_radius'] = array(
+			'type'      => 'dimension',
+			'title'     => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
+			'segment'   => 'style_icon',
+			'units'     => array( 'px', '%', 'em', 'custom' ),
+			'selectors' => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper > i, {{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper > svg',
+			'attribute' => 'border-radius',
+		);
+
 		$this->options['st_icon_normal_tab_end'] = array(
 			'type'    => 'control_tab_end',
 			'segment' => 'style_icon',
@@ -560,10 +607,38 @@ class Button_Option extends Option_Abstract {
 			'responsive' => true,
 			'selectors'  => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover > i'     => 'color: {{VALUE}};',
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover > svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover i'     => 'color: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover svg' => 'fill: {{VALUE}};',
 				),
 			),
+		);
+
+		$this->options['st_icon_hover_background'] = array(
+			'type'      => 'background',
+			'title'     => esc_html__( 'Hover Background Color', 'jeg-elementor-kit' ),
+			'segment'   => 'style_icon',
+			'selectors' => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover > i, {{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover > svg',
+			'options'   => array(
+				'classic',
+				'gradient',
+			),
+			'exclude'   => array( 'image' ),
+		);
+
+		$this->options['st_icon_hover_border'] = array(
+			'type'      => 'border',
+			'title'     => esc_html__( 'Normal Border', 'jeg-elementor-kit' ),
+			'segment'   => 'style_icon',
+			'selectors' => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover > i, {{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover > svg',
+		);
+
+		$this->options['st_icon_hover_border_radius'] = array(
+			'type'      => 'dimension',
+			'title'     => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
+			'segment'   => 'style_icon',
+			'units'     => array( 'px', '%', 'em', 'custom' ),
+			'selectors' => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover > i, {{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover > svg',
+			'attribute' => 'border-radius',
 		);
 
 		$this->options['st_icon_hover_tab_end'] = array(

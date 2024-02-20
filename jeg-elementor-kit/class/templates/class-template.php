@@ -276,6 +276,10 @@ class Template {
 						break;
 				}
 			}
+
+			if ( jkit_is_multilanguage() && ! empty( $condition['language'] ) ) {
+				$flag = $flag && $condition['language'] === jkit_get_current_language();
+			}
 		} else {
 			$flag = false;
 		}
