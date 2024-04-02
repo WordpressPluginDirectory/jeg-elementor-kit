@@ -3,14 +3,14 @@
  * Plugin Name: Jeg Elementor Kit
  * Plugin URI: http://jegtheme.com/
  * Description: Additional highly customizable widgets for Elementor page builder
- * Version: 2.6.3
+ * Version: 2.6.4
  * Author: Jegtheme
  * Author URI: http://jegtheme.com
  * License: GPLv3
  * Text Domain: jeg-elementor-kit
  *
- * Elementor tested up to: 3.19.2
- * Elementor Pro tested up to: 3.19.2
+ * Elementor tested up to: 3.20.3
+ * Elementor Pro tested up to: 3.20.2
  *
  * @author: Jegtheme
  * @since 1.0.0
@@ -25,7 +25,7 @@ add_action(
 	function() {
 		defined( 'JEG_ELEMENTOR_KIT' ) || define( 'JEG_ELEMENTOR_KIT', 'jeg-elementor-kit' );
 		defined( 'JEG_ELEMENTOR_KIT_NAME' ) || define( 'JEG_ELEMENTOR_KIT_NAME', 'Jeg Elementor Kit' );
-		defined( 'JEG_ELEMENTOR_KIT_VERSION' ) || define( 'JEG_ELEMENTOR_KIT_VERSION', '2.6.3' );
+		defined( 'JEG_ELEMENTOR_KIT_VERSION' ) || define( 'JEG_ELEMENTOR_KIT_VERSION', '2.6.4' );
 		defined( 'JEG_ELEMENTOR_KIT_URL' ) || define( 'JEG_ELEMENTOR_KIT_URL', plugins_url( JEG_ELEMENTOR_KIT ) );
 		defined( 'JEG_ELEMENTOR_KIT_FILE' ) || define( 'JEG_ELEMENTOR_KIT_FILE', __FILE__ );
 		defined( 'JEG_ELEMENTOR_KIT_BASE' ) || define( 'JEG_ELEMENTOR_KIT_BASE', plugin_basename( __FILE__ ) );

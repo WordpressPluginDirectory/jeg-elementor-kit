@@ -544,7 +544,7 @@ if ( ! function_exists( 'jkit_remove_form_control' ) ) {
 		$page       = isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : '';
 
 		if ( $page ) {
-			$lists = array( 'gf_', 'formidable', 'bookly-', 'vik' );
+			$lists = array( 'gf_', 'formidable', 'bookly-', 'vik', 'wpdatatables-' );
 
 			foreach ( $lists as $list ) {
 				if ( strpos( $page, $list ) !== false ) {

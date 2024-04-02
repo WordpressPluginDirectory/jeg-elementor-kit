@@ -142,7 +142,7 @@ class Icon_Box_View extends View_Abstract {
 			$button =
 			'<div class="icon-box-button ' . $hover . '">
                 <div class="btn-wrapper icon-position-' . $icon_position . '">
-                    ' . $this->render_url_element( $this->attribute['sg_readmore_globallink'], null, $class, $button_item ) . '
+                    ' . $this->render_url_element( $this->attribute['sg_readmore_globallink'], null, $class, $button_item, $data_attribute ) . '
                 </div>
             </div>';
 		}

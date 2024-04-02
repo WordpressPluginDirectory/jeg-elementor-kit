@@ -125,7 +125,7 @@ class Heading_View extends View_Abstract {
 
 		$title = '<div class="heading-section-title ' . $class . '"><' . $html_tag . ' class="heading-title">' . $content . '</' . $html_tag . '></div>';
 
-		return $title;
+		return wp_kses_post( $title );
 	}
 
 	/**

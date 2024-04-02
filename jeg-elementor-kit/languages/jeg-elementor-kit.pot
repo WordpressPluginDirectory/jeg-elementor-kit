@@ -5049,11 +5049,11 @@ msgstr ""
 msgid "Sort by price: high to low"
 msgstr ""
 
-#: jeg-elementor-kit/class/elements/views/class-view-abstract.php:340
+#: jeg-elementor-kit/class/elements/views/class-view-abstract.php:342
 msgid "Previous"
 msgstr ""
 
-#: jeg-elementor-kit/class/elements/views/class-view-abstract.php:341
+#: jeg-elementor-kit/class/elements/views/class-view-abstract.php:343
 msgid "Next"
 msgstr ""
 

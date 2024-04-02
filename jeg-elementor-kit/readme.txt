@@ -4,7 +4,7 @@ Tags: elementor, element, addon, widget, extension, blog, post, elementor addon,
 Requires at least: 5.0
 Tested up to: 6.4.3
 Requires PHP: 7.0
-Stable tag: 2.6.3
+Stable tag: 2.6.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -90,6 +90,14 @@ Please make sure the WP Memory Limit on your site has set to 128 MB or greater. 
 https://elementor.com/help/requirements/ Also you can disable some widgets that you don't need from Jeg Elementor Kit > Elements dashboard to reduce memory usage.
 
 == Changelog ==
+
+= 2.6.4 - 02-04-2024 =
+* Improvement: Security issues
+* Improvement: Add data attributes for links in Icon Box widget
+* Fix: Nav Menu not Clickable in Nav Menu Widget
+* Fix: Bootstrap conflict with wpDataTables plugins
+* Fix: Level 3 and above menu issue on mobile devices in the Nav Menu widget
+* Fix: Sub Menu Icon not working with SVG in Nav Menu widget
 
 = 2.6.3 - 20-02-2024 =
 - Improvement: Add the Dynamic Tag feature to the Link control type

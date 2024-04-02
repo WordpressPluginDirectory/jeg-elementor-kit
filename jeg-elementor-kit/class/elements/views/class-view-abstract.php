@@ -157,7 +157,9 @@ class View_Abstract extends Elements_View_Abstract {
 		$image      = ! empty( $attachment[0] ) ? '<img src="' . esc_url( $attachment[0] ) . '" ' . $id . $class . $alt . $width . $height . '>' : '';
 		$image      = ! empty( $attr['url'] ) && empty( $image ) ? '<img src="' . esc_url( $attr['url'] ) . '" ' . $id . $class . $alt . $width . $height . '>' : $image;
 
-		return $image;
+		ob_start();
+		\Elementor\Utils::print_wp_kses_extended( $image, array( 'image' ) );
+		return ob_get_clean();
 	}
 
 	/**
