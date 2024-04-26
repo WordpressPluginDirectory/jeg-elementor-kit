@@ -2,9 +2,9 @@
 Contributors: Jegtheme
 Tags: elementor, element, addon, widget, extension, blog, post, elementor addon, elementor widget, elementor extension, elementor element, blog post, landing page, template, template kit
 Requires at least: 5.0
-Tested up to: 6.4.3
+Tested up to: 6.5.2
 Requires PHP: 7.0
-Stable tag: 2.6.4
+Stable tag: 2.6.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -91,6 +91,12 @@ https://elementor.com/help/requirements/ Also you can disable some widgets that 
 
 == Changelog ==
 
+= 2.6.5 - 26-04-2024 =
+* Improvement: Security issues
+* Fix: Data Sanitize, Escape and Validate issue
+* Fix: Hover Arrrow Padding option not working in Testimonial widget
+* Fix: Conflict with Ultimate Membership Pro plugin
+
 = 2.6.4 - 02-04-2024 =
 * Improvement: Security issues
 * Improvement: Add data attributes for links in Icon Box widget
@@ -100,105 +106,105 @@ https://elementor.com/help/requirements/ Also you can disable some widgets that 
 * Fix: Sub Menu Icon not working with SVG in Nav Menu widget
 
 = 2.6.3 - 20-02-2024 =
-- Improvement: Add the Dynamic Tag feature to the Link control type
-- Improvement: Use wp_get_attachment_image function for render images
-- Improvement: Add Multilanguage support for Jeg Elementor Kit Templates
-- Improvement: Make Transition working on Gradient buttons in Accordion, Button, Client Logo, Dual Button, Icon Box, Image Box, Nav Menu, Off-Canvas, Search, Social Share, Tabs, Team, Testimonial, Video Button widgets
-- Improvement: Update viewport meta value
-- Improvement: Add title attribute for the link
+* Improvement: Add the Dynamic Tag feature to the Link control type
+* Improvement: Use wp_get_attachment_image function for render images
+* Improvement: Add Multilanguage support for Jeg Elementor Kit Templates
+* Improvement: Make Transition working on Gradient buttons in Accordion, Button, Client Logo, Dual Button, Icon Box, Image Box, Nav Menu, Off-Canvas, Search, Social Share, Tabs, Team, Testimonial, Video Button widgets
+* Improvement: Update viewport meta value
+* Improvement: Add title attribute for the link
 * Improvement: Security issue
 * Improvement: Minify Jkit Icon CSS file
 * Improvement: Add Transition Duration Option for Title and Icon in Post List widget
-- Improvement: Add Close Button Style Options in Search widget
-- Improvement: Add more styling option for icon in Video Button widget
-- Improvement: Add hover border and box shadow style options for button in Mailchimp widget
-- Improvement: Add more options for icon in Button widget
-- Improvement: Add hover options in Accordion widget
-- Improvement: Add Title attribute for Read More button and add Aria-Label attribute for Thumbnail link in Post Block widget
-- Improvement: Add Aria-Label attribute in Video Button and Social Share widgets
-- Improvement: Change Viewport meta tag from maximum-scale to user-scalable
-- Fix: Fatal Error occurs when Element Order option is empty in Product Grid widget
-- Fix: Sticky Element makes the keyboard disappear on mobile devices
-- Fix: Nav Menu widget conflict with Twenty Twenty-One theme
-- Fix: Select List option in Mailchimp widget not working
-- Fix: Post pagination for CPT is not functioning correctly with custom taxonomies
-- Fix: Remove Elementor Top Bar from Jeg Elementor Kit pages
-- Fix: WooCommerce HPOS support issue
-- Tweak: Add Frontend Available capabilities for Slider and Color control
+* Improvement: Add Close Button Style Options in Search widget
+* Improvement: Add more styling option for icon in Video Button widget
+* Improvement: Add hover border and box shadow style options for button in Mailchimp widget
+* Improvement: Add more options for icon in Button widget
+* Improvement: Add hover options in Accordion widget
+* Improvement: Add Title attribute for Read More button and add Aria-Label attribute for Thumbnail link in Post Block widget
+* Improvement: Add Aria-Label attribute in Video Button and Social Share widgets
+* Improvement: Change Viewport meta tag from maximum-scale to user-scalable
+* Fix: Fatal Error occurs when Element Order option is empty in Product Grid widget
+* Fix: Sticky Element makes the keyboard disappear on mobile devices
+* Fix: Nav Menu widget conflict with Twenty Twenty-One theme
+* Fix: Select List option in Mailchimp widget not working
+* Fix: Post pagination for CPT is not functioning correctly with custom taxonomies
+* Fix: Remove Elementor Top Bar from Jeg Elementor Kit pages
+* Fix: WooCommerce HPOS support issue
+* Tweak: Add Frontend Available capabilities for Slider and Color control
 
 = 2.6.2 - 26-09-2023 =
-- Improvement: Add border on content hover in Team widget
-- Improvement: Add Transition Duration options in Social Share widget
-- Improvement: Add Text Stroke Group Control
-- Fix: Prevent Accordion Content to trigger the slide in the Accordion widget
-- Fix: Off Canvas position issue in Off-Canvas widget
-- Fix: Sticky Top position if have WordPress Admin Bar in mobile
-- Fix: Hover transition duration when Icon has color in Button widget
-- Fix: Elementor Dynamic Tag not working issue
-- Fix: Quote override option issue in Testimonial widget
-- Fix: Bootstrap conflict with VikWP plugins
-- Fix: Untidy style when there is pagination in the Post Block widget
-- Fix: ALT tag issue on Images
-- Fix: Image Size not working on Banner widget
-- Fix: Logo icon in Elementor editor is repeating
-- Fix: Advanced Options is missing on Container
-- Tweak: Disabled Margin Top and Bottom for Prefix and Suffix in Fun Fact widget
-- Tweak: Hide JKit CPT from CPT Elementor settings
-- Tweak: Add Filter for Control Options
-- Tweak: Add Filter for Mailchimp Response data
+* Improvement: Add border on content hover in Team widget
+* Improvement: Add Transition Duration options in Social Share widget
+* Improvement: Add Text Stroke Group Control
+* Fix: Prevent Accordion Content to trigger the slide in the Accordion widget
+* Fix: Off Canvas position issue in Off-Canvas widget
+* Fix: Sticky Top position if have WordPress Admin Bar in mobile
+* Fix: Hover transition duration when Icon has color in Button widget
+* Fix: Elementor Dynamic Tag not working issue
+* Fix: Quote override option issue in Testimonial widget
+* Fix: Bootstrap conflict with VikWP plugins
+* Fix: Untidy style when there is pagination in the Post Block widget
+* Fix: ALT tag issue on Images
+* Fix: Image Size not working on Banner widget
+* Fix: Logo icon in Elementor editor is repeating
+* Fix: Advanced Options is missing on Container
+* Tweak: Disabled Margin Top and Bottom for Prefix and Suffix in Fun Fact widget
+* Tweak: Hide JKit CPT from CPT Elementor settings
+* Tweak: Add Filter for Control Options
+* Tweak: Add Filter for Mailchimp Response data
 
 = 2.6.1 - 03-03-2023 =
-- Improvement: Add separate Icon style options if have both positions in Accordion widget
-- Improvement: Add Width, Height, Top Position, and Right Position options for percent tooltips in Progress Bar widget
-- Improvement: Add Margin option for Submenu Item in Nav Menu widget
-- Improvement: Add different text to highlight in the Heading widget
-- Fix: Alignment in Style 2 Layout in Testimonial widget
-- Fix: Style options not working in some HTML elements in Post Comment widget
-- Fix: Remove Highlight Text option and write Focused Text in Title option instead in Heading widget
+* Improvement: Add separate Icon style options if have both positions in Accordion widget
+* Improvement: Add Width, Height, Top Position, and Right Position options for percent tooltips in Progress Bar widget
+* Improvement: Add Margin option for Submenu Item in Nav Menu widget
+* Improvement: Add different text to highlight in the Heading widget
+* Fix: Alignment in Style 2 Layout in Testimonial widget
+* Fix: Style options not working in some HTML elements in Post Comment widget
+* Fix: Remove Highlight Text option and write Focused Text in Title option instead in Heading widget
 
 = 2.6.0 - 21-02-2023 =
-- Improvement: Add more units for Width option on Pagination style
-- Improvement: Add Alignment option for Dots in Testimonial widget
-- Improvement: Add Bottom option for Icon Position in Icon Box widget
-- Improvement: Add Margin option and Custom Position option for badge in Icon Box widget
-- Improvement: Add a few options for Testimonial widget
-- Improvement: Add Border option and Border Radius option for Menu Item Style in Nav Menu widget
-- Improvement: Add Prefix and Suffix style option in Fun Fact widget
-- Improvement: Add more Margin option in Testimonial widget
-- Improvement: Add Highlight option and Display option for Heading widget
-- Improvement: Add Color option for Icon and some more options in Button widget
-- Improvement: Add Close Button Position option in Off-Canvas widget
-- Improvement: Add a few style options in Accordion widget
-- Improvement: Add Alignment option for image in Image Box widget
-- Improvement: Add Element Order option for arranging Title, Meta, Excerpt, and Read More in Post Block widget
-- Improvement: Add New Options in Tabs widget
-- Fix: Pagination button width issue on responsive mode
-- Fix: Image not showing in Portfolio Gallery widget
-- Fix: Glass Blur Effect issue
-- Fix: Testimonial widget styles issue
-- Fix: First and Last Sub Menu Item border issue on Nav Menu widget
-- Fix: Border Radius on image issue in Image Box widget
-- Fix: Sticky Element issue with Entrance Animation Elementor
-- Fix: Connector position in Feature List widget
-- Fix: PHP Parse Error on PHP 7.2
-- Fix: Units in Slider control option on Responsive mode
-- Fix: Icon Spacing option not working in Video Button widget
-- Fix: Tooltips Text not centered on Progress Bar widget
-- Fix: Query Args issues
-- Tweak: Change Height option position in Testimonial widget
+* Improvement: Add more units for Width option on Pagination style
+* Improvement: Add Alignment option for Dots in Testimonial widget
+* Improvement: Add Bottom option for Icon Position in Icon Box widget
+* Improvement: Add Margin option and Custom Position option for badge in Icon Box widget
+* Improvement: Add a few options for Testimonial widget
+* Improvement: Add Border option and Border Radius option for Menu Item Style in Nav Menu widget
+* Improvement: Add Prefix and Suffix style option in Fun Fact widget
+* Improvement: Add more Margin option in Testimonial widget
+* Improvement: Add Highlight option and Display option for Heading widget
+* Improvement: Add Color option for Icon and some more options in Button widget
+* Improvement: Add Close Button Position option in Off-Canvas widget
+* Improvement: Add a few style options in Accordion widget
+* Improvement: Add Alignment option for image in Image Box widget
+* Improvement: Add Element Order option for arranging Title, Meta, Excerpt, and Read More in Post Block widget
+* Improvement: Add New Options in Tabs widget
+* Fix: Pagination button width issue on responsive mode
+* Fix: Image not showing in Portfolio Gallery widget
+* Fix: Glass Blur Effect issue
+* Fix: Testimonial widget styles issue
+* Fix: First and Last Sub Menu Item border issue on Nav Menu widget
+* Fix: Border Radius on image issue in Image Box widget
+* Fix: Sticky Element issue with Entrance Animation Elementor
+* Fix: Connector position in Feature List widget
+* Fix: PHP Parse Error on PHP 7.2
+* Fix: Units in Slider control option on Responsive mode
+* Fix: Icon Spacing option not working in Video Button widget
+* Fix: Tooltips Text not centered on Progress Bar widget
+* Fix: Query Args issues
+* Tweak: Change Height option position in Testimonial widget
 
 = 2.5.13 - 23-01-2023 =
-- Improvement: Add Date URL option for Post Date widget
-- Improvement: Update SweetAlert2 library to v11.6.16
-- Improvement: Add Dummy Data for Post Featured Image and Post Excerpt widget on Elementor Editor
-- Fix: Style issue in Search widget
-- Fix: Glass Blur Effect style problem on a widget that has a minus margin
-- Fix: Glass Blur Effect z-index issue
-- Fix: Related Query on Archive and Search page
-- Fix: Post Comment widget not showing in Elementor Editor
-- Fix: Missing CSS Box Option on Post Comment widget
-- Fix: Gallery and Portfolio Gallery widget responsive issue
-- Fix: Allowed Tag HTML issue
+* Improvement: Add Date URL option for Post Date widget
+* Improvement: Update SweetAlert2 library to v11.6.16
+* Improvement: Add Dummy Data for Post Featured Image and Post Excerpt widget on Elementor Editor
+* Fix: Style issue in Search widget
+* Fix: Glass Blur Effect style problem on a widget that has a minus margin
+* Fix: Glass Blur Effect z-index issue
+* Fix: Related Query on Archive and Search page
+* Fix: Post Comment widget not showing in Elementor Editor
+* Fix: Missing CSS Box Option on Post Comment widget
+* Fix: Gallery and Portfolio Gallery widget responsive issue
+* Fix: Allowed Tag HTML issue
 
 = 2.5.12 - 19-12-2022 =
 * Fix: Conditions issue in Header/Footer Template

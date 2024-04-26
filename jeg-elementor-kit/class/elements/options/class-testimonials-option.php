@@ -1816,7 +1816,7 @@ class Testimonials_Option extends Option_Abstract {
 			'units'     => array( 'px', '%', 'em' ),
 			'selectors' => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button:hover span',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .tns-controls button:hover span' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			),
 		);

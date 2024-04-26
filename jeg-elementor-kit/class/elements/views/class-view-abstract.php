@@ -106,7 +106,7 @@ class View_Abstract extends Elements_View_Abstract {
 			}
 		}
 
-		return '<a href="' . esc_url( $attr['url'] ) . '" ' . $id . $class . $target . $nofollow . $custom_attributes . $data_attribute . '>' . $child_element . '</a>';
+		return wp_kses_post( '<a href="' . esc_url( $attr['url'] ) . '" ' . $id . $class . $target . $nofollow . $custom_attributes . $data_attribute . '>' . $child_element . '</a>' );
 	}
 
 	/**

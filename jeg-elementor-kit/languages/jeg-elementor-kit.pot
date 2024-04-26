@@ -31,7 +31,7 @@ msgstr ""
 msgid "Rate Us"
 msgstr ""
 
-#: jeg-elementor-kit/class/class-init.php:110
+#: jeg-elementor-kit/class/class-init.php:109
 msgid "It is recommended that you backup your site before updating the plugin so rollback is possible whenever needed."
 msgstr ""
 

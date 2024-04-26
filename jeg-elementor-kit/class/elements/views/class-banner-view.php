@@ -64,6 +64,6 @@ class Banner_View extends View_Abstract {
 		$type_link = ( 'all' === $this->attribute['sg_link_type'] ) ? $this->render_url_element( $this->attribute['sg_button_link'], null, 'jkit-banner-all-link' ) : '';
 		$wrapper   = '<div class="jkit-banner-wrapper">' . $image . $content . $box_sale . $type_link . '</div>';
 
-		return $wrapper;
+		return wp_kses_post( $wrapper );
 	}
 }

@@ -47,8 +47,6 @@ class Init {
 		Dashboard::instance();
 		Template::instance();
 		Banner::instance();
-
-		$this->elementor_data_upgrader();
 	}
 
 	/**
@@ -57,6 +55,7 @@ class Init {
 	private function setup_hook() {
 		add_filter( 'body_class', array( $this, 'load_body_class' ) );
 		add_action( 'in_plugin_update_message-' . JEG_ELEMENTOR_KIT_BASE, array( $this, 'plugin_update_message' ), 10, 2 );
+		add_action( 'after_setup_theme', array( $this, 'elementor_data_upgrader' ) );
 	}
 
 	/**
@@ -115,7 +114,7 @@ class Init {
 	 *
 	 * @since 2.5.11
 	 */
-	private function elementor_data_upgrader() {
+	public function elementor_data_upgrader() {
 		$post_ids = $this->get_header_footer_template_issue_id();
 
 		foreach ( $post_ids as $id ) {
