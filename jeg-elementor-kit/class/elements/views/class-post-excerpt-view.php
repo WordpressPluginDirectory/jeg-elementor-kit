@@ -21,7 +21,7 @@ class Post_Excerpt_View extends View_Abstract {
 	public function build_content() {
 		$content = '';
 
-		$excerpt = ! jeg_is_editor_elementor() ? get_the_excerpt() : esc_html( 'This is dummy excerpt and will be replaced with real excerpt of your post', 'jeg-elementor-kit' );
+		$excerpt = ! jeg_is_editor_elementor() ? get_the_excerpt() : esc_html__( 'This is dummy excerpt and will be replaced with real excerpt of your post', 'jeg-elementor-kit' );
 
 		if ( ! empty( $excerpt ) ) {
 			$link_to   = $this->attribute['sg_excerpt_link_to'];

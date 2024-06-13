@@ -673,7 +673,7 @@ class Nav_Menu_Option extends Option_Abstract {
 			'type'           => 'background',
 			'title'          => esc_html__( 'Item Text Hover Background', 'jeg-elementor-kit' ),
 			'segment'        => 'style_menu_item',
-			'selectors'      => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu > li:not(.hover-gradient):hover > a, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu > li.hover-gradient > a:before',
+			'selectors'      => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu > li:not(.hover-gradient, .current-menu-item):hover > a, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu > li.hover-gradient > a:before',
 			'options'        => array(
 				'classic',
 				'gradient',
@@ -790,8 +790,8 @@ class Nav_Menu_Option extends Option_Abstract {
 			'responsive' => true,
 			'selectors'  => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.menu-item-has-children > a i'   => 'color: {{VALUE}};',
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.menu-item-has-children > a svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.menu-item-has-children > a i, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.has-mega-menu > a i'   => 'color: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.menu-item-has-children > a svg, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.has-mega-menu > a svg' => 'fill: {{VALUE}};',
 				),
 			),
 		);
@@ -802,7 +802,7 @@ class Nav_Menu_Option extends Option_Abstract {
 			'segment'   => 'style_submenu_item',
 			'selectors' => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.menu-item-has-children > a i, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.menu-item-has-children > a svg' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.menu-item-has-children > a i, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.menu-item-has-children > a svg, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.has-mega-menu > a i, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.has-mega-menu > a svg' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			),
 		);
@@ -813,7 +813,7 @@ class Nav_Menu_Option extends Option_Abstract {
 			'segment'   => 'style_submenu_item',
 			'selectors' => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.menu-item-has-children > a i, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.menu-item-has-children > a svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.menu-item-has-children > a i, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.menu-item-has-children > a svg, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.has-mega-menu > a i, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.has-mega-menu > a svg' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			),
 		);
@@ -824,7 +824,7 @@ class Nav_Menu_Option extends Option_Abstract {
 			'segment'   => 'style_submenu_item',
 			'selectors' => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.menu-item-has-children > a i, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.menu-item-has-children > a svg' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.menu-item-has-children > a i, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.menu-item-has-children > a svg, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.has-mega-menu > a i, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.has-mega-menu > a svg' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			),
 		);
@@ -834,7 +834,7 @@ class Nav_Menu_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Indicator Border', 'jeg-elementor-kit' ),
 			'segment'   => 'style_submenu_item',
 			'selectors' => array(
-				'custom' => '{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.menu-item-has-children > a i, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.menu-item-has-children > a svg',
+				'custom' => '{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.menu-item-has-children > a i, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.menu-item-has-children > a svg, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.has-mega-menu > a i, {{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu li.has-mega-menu > a svg',
 			),
 		);
 
@@ -1055,7 +1055,7 @@ class Nav_Menu_Option extends Option_Abstract {
 			'type'           => 'background',
 			'title'          => esc_html__( 'Item Text Hover Background', 'jeg-elementor-kit' ),
 			'segment'        => 'style_submenu_item',
-			'selectors'      => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu .sub-menu li:not(.hover-gradient):hover > a, .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu .sub-menu li.hover-gradient > a:before',
+			'selectors'      => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu .sub-menu li:not(.hover-gradient, .current-menu-item):hover > a, .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu .sub-menu li.hover-gradient > a:before',
 			'options'        => array(
 				'classic',
 				'gradient',

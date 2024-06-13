@@ -85,7 +85,7 @@ class Tabs_View extends View_Abstract {
 			$nav .= '<li class="' . $tab_class . '" data-tab="' . $tab_id . '">' . $nav_item . '</li>';
 		}
 
-		$nav = '<div class="tab-navigation"><ul class="tab-nav-list ' . $icon_position . ' ' . $animation . ' ' . $caret . '" data-toggle="' . $this->attribute['sg_general_toggle_tab_enable'] . '">' . $nav . '</ul></div>';
+		$nav = '<div class="tab-navigation"><ul class="tab-nav-list ' . $icon_position . ' ' . $animation . ' ' . $caret . '" data-toggle="' . esc_attr( $this->attribute['sg_general_toggle_tab_enable'] ) . '">' . $nav . '</ul></div>';
 
 		return $nav;
 	}

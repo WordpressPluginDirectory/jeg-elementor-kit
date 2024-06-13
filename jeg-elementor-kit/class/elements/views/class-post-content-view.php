@@ -33,7 +33,7 @@ class Post_Content_View extends View_Abstract {
 
 			$content = $post ? $post[0]->post_content : '';
 			if ( '' === $content ) {
-				$content = esc_html( 'This is dummy post content and will be replaced with real content of your post. ', 'jeg-elementor-kit' ) . 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at orci sed metus malesuada eleifend. Praesent condimentum metus ac euismod efficitur.';
+				$content = esc_html__( 'This is dummy post content and will be replaced with real content of your post. ', 'jeg-elementor-kit' ) . esc_html__( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at orci sed metus malesuada eleifend. Praesent condimentum metus ac euismod efficitur.', 'jeg-elementor-kit' );
 			}
 		} else {
 			$post    = get_post();

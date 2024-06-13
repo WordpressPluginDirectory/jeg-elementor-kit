@@ -16,6 +16,20 @@ namespace Jeg\Elementor_Kit\Elements\Views;
  */
 class Product_Carousel_View extends View_WooCommerce_Abstract {
 	/**
+	 * Post Loop
+	 *
+	 * @var $post
+	 */
+	protected $post = null;
+
+	/**
+	 * Product Class
+	 *
+	 * @var $product
+	 */
+	protected $product = null;
+
+	/**
 	 * Render Module
 	 *
 	 * @param  array  $attr         Array of attribute.

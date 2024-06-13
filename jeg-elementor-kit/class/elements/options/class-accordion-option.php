@@ -557,7 +557,7 @@ class Accordion_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Open Border Radius', 'jeg-elementor-kit' ),
 			'segment'   => 'style_title',
 			'units'     => array( 'px', '%', 'em' ),
-			'selectors' => '.jeg-elementor-kit.jkit-accordion .card-wrapper.expand .card-header .card-header-button',
+			'selectors' => '.jeg-elementor-kit.jkit-accordion .card-wrapper.expand .card-header .card-header-button, {{WRAPPER}} .jeg-elementor-kit.jkit-accordion .card-wrapper .card-header.background-gradient::after',
 			'attribute' => 'border-radius',
 		);
 
@@ -625,7 +625,7 @@ class Accordion_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Close Border Radius', 'jeg-elementor-kit' ),
 			'segment'   => 'style_title',
 			'units'     => array( 'px', '%', 'em' ),
-			'selectors' => '.jeg-elementor-kit.jkit-accordion .card-wrapper:not(.expand) .card-header .card-header-button',
+			'selectors' => '.jeg-elementor-kit.jkit-accordion .card-wrapper:not(.expand) .card-header .card-header-button, {{WRAPPER}} .jeg-elementor-kit.jkit-accordion .card-wrapper .card-header.background-gradient::before',
 			'attribute' => 'border-radius',
 		);
 

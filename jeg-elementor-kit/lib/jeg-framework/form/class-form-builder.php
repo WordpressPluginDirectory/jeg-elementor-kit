@@ -136,7 +136,7 @@ class Form_Builder {
 
 		// Script.
 		wp_enqueue_script( 'selectize', JEG_URL . '/assets/js/vendor/selectize.min.js', null, '0.14.0', true );
-		wp_enqueue_script( 'bootstrap', JEG_URL . '/assets/js/vendor/bootstrap.bundle.min.js', null, '5.2.2', true );
+		// wp_enqueue_script( 'bootstrap', JEG_URL . '/assets/js/vendor/bootstrap.bundle.min.js', null, '5.2.2', true );
 		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
 			wp_enqueue_script( 'jeg-fontawesome6-iconset', JEG_URL . '/assets/js/vendor/jeg-iconpicker/jeg-fontawesome6-iconset.js', null, '1.0.0', true );
 			wp_enqueue_script( 'jeg-iconpicker', JEG_URL . '/assets/js/vendor/jeg-iconpicker/jeg-iconpicker.js', null, '1.0.0', true );

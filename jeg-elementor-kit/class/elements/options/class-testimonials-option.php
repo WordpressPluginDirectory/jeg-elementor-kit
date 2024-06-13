@@ -263,12 +263,113 @@ class Testimonials_Option extends Option_Abstract {
 				'middle-edge'   => esc_html__( 'Middle Edge', 'jeg-elementor-kit' ),
 				'top-left'      => esc_html__( 'Top Left', 'jeg-elementor-kit' ),
 				'top-right'     => esc_html__( 'Top Right', 'jeg-elementor-kit' ),
+				'custom'        => esc_html__( 'Custom', 'jeg-elementor-kit' ),
 			),
 			'dependency' => array(
 				array(
 					'field'    => 'sg_setting_arrow',
 					'operator' => '==',
 					'value'    => true,
+				),
+			),
+		);
+
+		$this->options['sg_setting_arrow_vertical_orientation'] = array(
+			'type'        => 'radio',
+			'title'       => esc_html__( 'Vertical Orientation', 'jeg-elementor-kit' ),
+			'segment'     => 'segment_setting',
+			'options'     => array(
+				'top'    => array(
+					'title' => esc_html__( 'Top', 'jeg-elementor-kit' ),
+					'icon'  => 'eicon-v-align-top',
+				),
+				'bottom' => array(
+					'title' => esc_html__( 'Bottom', 'jeg-elementor-kit' ),
+					'icon'  => 'eicon-v-align-bottom',
+				),
+			),
+			'default'     => 'top',
+			'toggle'      => false,
+			'render_type' => 'ui',
+			'dependency'  => array(
+				array(
+					'field'    => 'sg_setting_arrow_position',
+					'operator' => '==',
+					'value'    => 'custom',
+				),
+			),
+		);
+
+		$this->options['sg_setting_arrow_position_vertical_offset'] = array(
+			'type'        => 'slider',
+			'title'       => esc_html__( 'Offset', 'jeg-elementor-kit' ),
+			'segment'     => 'segment_setting',
+			'units'       => array( 'px', '%', 'em' ),
+			'options'     => array(
+				'min'  => 0,
+				'max'  => 500,
+				'step' => 1,
+			),
+			'default'     => 20,
+			'responsive'  => true,
+			'selectors'   => '.jeg-elementor-kit.jkit-testimonials .tns-controls',
+			'attribute'   => '{{sg_setting_arrow_vertical_orientation.VALUE}}',
+			'render_type' => 'ui',
+			'dependency'  => array(
+				array(
+					'field'    => 'sg_setting_arrow_position',
+					'operator' => '==',
+					'value'    => 'custom',
+				),
+			),
+		);
+
+		$this->options['sg_setting_arrow_horizontal_orientation'] = array(
+			'type'        => 'radio',
+			'title'       => esc_html__( 'Horizontal Orientation', 'jeg-elementor-kit' ),
+			'segment'     => 'segment_setting',
+			'options'     => array(
+				'left'  => array(
+					'title' => esc_html__( 'Left', 'jeg-elementor-kit' ),
+					'icon'  => 'eicon-h-align-left',
+				),
+				'right' => array(
+					'title' => esc_html__( 'Right', 'jeg-elementor-kit' ),
+					'icon'  => 'eicon-h-align-right',
+				),
+			),
+			'default'     => 'right',
+			'toggle'      => false,
+			'render_type' => 'ui',
+			'dependency'  => array(
+				array(
+					'field'    => 'sg_setting_arrow_position',
+					'operator' => '==',
+					'value'    => 'custom',
+				),
+			),
+		);
+
+		$this->options['sg_setting_arrow_position_horizontal_offset'] = array(
+			'type'        => 'slider',
+			'title'       => esc_html__( 'Offset', 'jeg-elementor-kit' ),
+			'segment'     => 'segment_setting',
+			'units'       => array( 'px', '%', 'em' ),
+			'options'     => array(
+				'min'  => 0,
+				'max'  => 500,
+				'step' => 1,
+			),
+			'default'     => 30,
+			'responsive'  => true,
+			'selectors'   => '.jeg-elementor-kit.jkit-testimonials .tns-controls',
+			'attribute'   => '{{sg_setting_arrow_horizontal_orientation.VALUE}}',
+			'render_type' => 'ui',
+			'dependency'  => array(
+				array(
+					'field'    => 'sg_setting_arrow_position',
+					'operator' => '==',
+					'value'    => 'custom',
 				),
 			),
 		);
@@ -708,6 +809,17 @@ class Testimonials_Option extends Option_Abstract {
 			'attribute' => 'padding',
 		);
 
+		$this->options['st_description_tabs_start'] = array(
+			'type'    => 'control_tabs_start',
+			'segment' => 'style_description',
+		);
+
+		$this->options['st_description_normal_tab_start'] = array(
+			'type'    => 'control_tab_start',
+			'title'   => esc_html__( 'Normal', 'jeg-elementor-kit' ),
+			'segment' => 'style_description',
+		);
+
 		$this->options['st_description_color'] = array(
 			'type'       => 'color',
 			'title'      => esc_html__( 'Color', 'jeg-elementor-kit' ),
@@ -716,12 +828,81 @@ class Testimonials_Option extends Option_Abstract {
 			'selectors'  => '.jeg-elementor-kit.jkit-testimonials .testimonials-track .testimonial-item .testimonial-box .comment-content p',
 		);
 
+		$this->options['st_description_border'] = array(
+			'type'      => 'border',
+			'title'     => esc_html__( 'Border', 'jeg-elementor-kit' ),
+			'segment'   => 'style_description',
+			'selectors' => '.jeg-elementor-kit.jkit-testimonials .testimonials-track .testimonial-item .testimonial-box .comment-content p',
+		);
+
+		$this->options['st_description_border_radius'] = array(
+			'type'      => 'dimension',
+			'title'     => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
+			'segment'   => 'style_description',
+			'units'     => array( 'px', '%', 'em' ),
+			'selectors' => '.jeg-elementor-kit.jkit-testimonials .testimonials-track .testimonial-item .testimonial-box .comment-content p',
+			'attribute' => 'border-radius',
+		);
+
+		$this->options['st_description_normal_tab_end'] = array(
+			'type'    => 'control_tab_end',
+			'segment' => 'style_description',
+		);
+
+		$this->options['st_description_hover_tab_start'] = array(
+			'type'    => 'control_tab_start',
+			'title'   => esc_html__( 'Hover', 'jeg-elementor-kit' ),
+			'segment' => 'style_description',
+		);
+
+		$this->options['st_description_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_description',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-testimonials .testimonials-track .testimonial-item .testimonial-box .comment-content p' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
 		$this->options['st_description_hover_color'] = array(
 			'type'       => 'color',
 			'title'      => esc_html__( 'Hover Color', 'jeg-elementor-kit' ),
 			'segment'    => 'style_description',
 			'responsive' => true,
 			'selectors'  => '.jeg-elementor-kit.jkit-testimonials .testimonials-track .testimonial-item:hover .testimonial-box .comment-content p',
+		);
+
+		$this->options['st_description_hover_border'] = array(
+			'type'      => 'border',
+			'title'     => esc_html__( 'Border', 'jeg-elementor-kit' ),
+			'segment'   => 'style_description',
+			'selectors' => '.jeg-elementor-kit.jkit-testimonials .testimonials-track .testimonial-item:hover .testimonial-box .comment-content p',
+		);
+
+		$this->options['st_description_hover_border_radius'] = array(
+			'type'      => 'dimension',
+			'title'     => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
+			'segment'   => 'style_description',
+			'units'     => array( 'px', '%', 'em' ),
+			'selectors' => '.jeg-elementor-kit.jkit-testimonials .testimonials-track .testimonial-item:hover .testimonial-box .comment-content p',
+			'attribute' => 'border-radius',
+		);
+
+		$this->options['st_description_hover_tab_end'] = array(
+			'type'    => 'control_tab_end',
+			'segment' => 'style_description',
+		);
+
+		$this->options['st_description_tabs_end'] = array(
+			'type'    => 'control_tabs_end',
+			'segment' => 'style_description',
 		);
 
 		$this->options['st_quote_override_position'] = array(

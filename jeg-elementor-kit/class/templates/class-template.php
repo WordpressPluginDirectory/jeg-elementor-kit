@@ -249,6 +249,7 @@ class Template {
 	public function check_conditions( $post_id, $header_id ) {
 		$flag       = true;
 		$conditions = get_post_meta( $header_id, Dashboard::$jkit_condition, true );
+		$conditions = maybe_unserialize( $conditions );
 
 		if ( $conditions ) {
 			foreach ( $conditions as $condition ) {

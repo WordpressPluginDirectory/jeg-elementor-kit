@@ -201,14 +201,14 @@ class View_Abstract extends Elements_View_Abstract {
 		}
 
 		foreach ( $array_data as $key => $value ) {
-			$data = $data . ' data-' . $key . '="' . $value . '"';
+			$data = $data . ' data-' . $key . '="' . esc_attr( $value ) . '"';
 		}
 
 		if ( $id ) {
-			$id = 'id="' . $id . '"';
+			$id = 'id="' . esc_attr( $id ) . '"';
 		}
 
-		$classes = 'jeg-elementor-kit jkit-' . $element_name . $classes . ' ' . $this->unique_id;
+		$classes = esc_attr( 'jeg-elementor-kit jkit-' . $element_name . $classes . ' ' . $this->unique_id );
 
 		return '<div ' . $id . ' class="' . $classes . '" ' . $data . '>' . $inner . '</div>';
 	}

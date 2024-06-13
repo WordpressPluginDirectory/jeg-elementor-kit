@@ -1,12 +1,14 @@
 === Jeg Elementor Kit ===
 Contributors: Jegtheme
-Tags: elementor, element, addon, widget, extension, blog, post, elementor addon, elementor widget, elementor extension, elementor element, blog post, landing page, template, template kit
+Tags: elementor, elements, addons, widgets, templates
 Requires at least: 5.0
-Tested up to: 6.5.2
+Tested up to: 6.5.4
 Requires PHP: 7.0
-Stable tag: 2.6.5
+Stable tag: 2.6.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
+
+Additional widgets for Elementor page builder. It has 40 highly customizable widgets.
 
 == Description ==
 
@@ -90,6 +92,17 @@ Please make sure the WP Memory Limit on your site has set to 128 MB or greater. 
 https://elementor.com/help/requirements/ Also you can disable some widgets that you don't need from Jeg Elementor Kit > Elements dashboard to reduce memory usage.
 
 == Changelog ==
+
+= 2.6.6 - 13-06-2024 =
+* Improvement: Security issues
+* Improvement: Add more options for description in Testimonial widget
+* Fix: Seriliazed Data issues
+* Fix: PHP Deprecated warning on Product Carousel widget
+* Fix: Inline Font Icons feature issues
+* Fix: Metform conflict with Bootstrap library from Jeg Elementor Kit
+* Fix: Background style for current nav menu not working in Nav Menu widget
+* Fix: String translation on Post Content widget and Post Excerpt widget
+* Fix: Border Radius not working due to gradient background color in Accordion widget
 
 = 2.6.5 - 26-04-2024 =
 * Improvement: Security issues
