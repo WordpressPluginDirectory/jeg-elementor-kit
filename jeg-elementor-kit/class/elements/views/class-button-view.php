@@ -27,7 +27,7 @@ class Button_View extends View_Abstract {
 		$link_class    = 'jkit-button-wrapper';
 		$icon_attr     = array();
 
-		if ( $this->attribute['st_icon_normal_color_responsive'] || $this->attribute['st_icon_hover_color_responsive'] ) {
+		if ( ( isset( $this->attribute['st_icon_normal_color_responsive'] ) && $this->attribute['st_icon_normal_color_responsive'] ) || ( isset( $this->attribute['st_icon_hover_color_responsive'] ) && $this->attribute['st_icon_hover_color_responsive'] ) ) {
 			$icon_attr['class'][] = 'icon-colored';
 		}
 
