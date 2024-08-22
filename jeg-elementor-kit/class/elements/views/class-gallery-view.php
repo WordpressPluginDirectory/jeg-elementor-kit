@@ -414,12 +414,14 @@ class Gallery_View extends View_Abstract {
                 <span class="load-more-icon icon-position-after" aria-hidden="true">' . $loadmore_icon . '</span>';
 			}
 
-			$load_more =
-			'<div class="jkit-gallery-loadmore">
-                <a href="#" class="jkit-gallery-load-more">
-                    <span class="btn-loader"></span>' . $label . '
-                </a>
-            </div>';
+			$link_attr = array(
+				'url'               => '#',
+				'is_external'       => '',
+				'nofollow'          => '',
+				'custom_attributes' => 'aria-label|Load More Button',
+			);
+
+			$load_more = '<div class="jkit-gallery-loadmore">' . $this->render_url_element( $link_attr, null, 'jkit-gallery-load-more', '<span class="btn-loader"></span>' . $label ) . '</div>';
 		}
 
 		return $load_more;

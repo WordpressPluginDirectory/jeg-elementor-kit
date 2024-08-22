@@ -51,7 +51,14 @@ class Nav_Menu_View extends View_Abstract {
 		remove_filter( 'nav_menu_item_args', array( $this, 'add_jkit_mega_menu_args' ) );
 
 		if ( 'default' === $this->attribute['sg_mobile_menu_link'] ) {
-			$mobile_logo_image = '<a href="' . home_url() . '" class="jkit-nav-logo">' . $mobile_logo_image . '</a>';
+			$link_attr = array(
+				'url'               => home_url(),
+				'is_external'       => '',
+				'nofollow'          => '',
+				'custom_attributes' => 'aria-label|Home Link',
+			);
+
+			$mobile_logo_image = $this->render_url_element( $link_attr, null, 'jkit-nav-logo', $mobile_logo_image );
 		} else {
 			$mobile_logo_image = $this->render_url_element( $this->attribute['sg_mobile_menu_custom_link'], null, 'jkit-nav-logo', $mobile_logo_image );
 		}

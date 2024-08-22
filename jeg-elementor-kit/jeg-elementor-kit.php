@@ -4,14 +4,14 @@
  * Plugin URI: http://jegtheme.com/
  * Description: Additional highly customizable widgets for Elementor page builder
  * Requires Plugins: elementor
- * Version: 2.6.7
+ * Version: 2.6.8
  * Author: Jegtheme
  * Author URI: http://jegtheme.com
  * License: GPLv3
  * Text Domain: jeg-elementor-kit
  *
- * Elementor tested up to: 3.21.8
- * Elementor Pro tested up to: 3.21.3
+ * Elementor tested up to: 3.23.4
+ * Elementor Pro tested up to: 3.23.3
  *
  * @author: Jegtheme
  * @since 1.0.0
@@ -26,7 +26,7 @@ add_action(
 	function() {
 		defined( 'JEG_ELEMENTOR_KIT' ) || define( 'JEG_ELEMENTOR_KIT', 'jeg-elementor-kit' );
 		defined( 'JEG_ELEMENTOR_KIT_NAME' ) || define( 'JEG_ELEMENTOR_KIT_NAME', 'Jeg Elementor Kit' );
-		defined( 'JEG_ELEMENTOR_KIT_VERSION' ) || define( 'JEG_ELEMENTOR_KIT_VERSION', '2.6.7' );
+		defined( 'JEG_ELEMENTOR_KIT_VERSION' ) || define( 'JEG_ELEMENTOR_KIT_VERSION', '2.6.8' );
 		defined( 'JEG_ELEMENTOR_KIT_URL' ) || define( 'JEG_ELEMENTOR_KIT_URL', plugins_url( JEG_ELEMENTOR_KIT ) );
 		defined( 'JEG_ELEMENTOR_KIT_FILE' ) || define( 'JEG_ELEMENTOR_KIT_FILE', __FILE__ );
 		defined( 'JEG_ELEMENTOR_KIT_BASE' ) || define( 'JEG_ELEMENTOR_KIT_BASE', plugin_basename( __FILE__ ) );
@@ -43,6 +43,8 @@ add_action(
 		if ( ! defined( 'JEG_ELEMENT_VERSION' ) ) {
 			require_once JEG_ELEMENTOR_KIT_DIR . 'lib/jeg-element/bootstrap.php';
 		}
+
+		require_once JEG_ELEMENTOR_KIT_DIR . 'lib/vendor/autoload.php';
 
 		require_once JEG_ELEMENTOR_KIT_DIR . 'autoload.php';
 		require_once JEG_ELEMENTOR_KIT_DIR . 'helper.php';

@@ -1,7 +1,12 @@
 <?php
 
 $notfound_template = get_option( 'jkit_notfound_template' );
-$page_template     = get_page_template_slug( $notfound_template );
+
+if ( jkit_is_multilanguage() ) {
+	$notfound_template = jkit_get_multilanguage_post_id( $notfound_template );
+}
+
+$page_template = get_page_template_slug( $notfound_template );
 
 if ( 'elementor_canvas' === $page_template ) {
 	?>

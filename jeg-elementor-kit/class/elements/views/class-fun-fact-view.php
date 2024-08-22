@@ -66,12 +66,13 @@ class Fun_Fact_View extends View_Abstract {
 	 * @return string
 	 */
 	private function render_number() {
-		$super  = 'yes' === $this->attribute['sg_setting_enable_super'] ? '<sup class="super">' . esc_attr( $this->attribute['sg_content_super'] ) . '</sup>' : '';
-		$prefix = '<span class="prefix">' . $this->attribute['sg_content_number_prefix'] . '</span>';
-		$suffix = '<span class="suffix">' . $this->attribute['sg_content_number_suffix'] . '</span>';
+		$animation_duration = isset( $this->attribute['sg_setting_number_aniamtion_duration']['size'] ) ? esc_attr( $this->attribute['sg_setting_number_aniamtion_duration']['size'] ) : 3500;
+		$super              = 'yes' === $this->attribute['sg_setting_enable_super'] ? '<sup class="super">' . esc_attr( $this->attribute['sg_content_super'] ) . '</sup>' : '';
+		$prefix             = '<span class="prefix">' . $this->attribute['sg_content_number_prefix'] . '</span>';
+		$suffix             = '<span class="suffix">' . $this->attribute['sg_content_number_suffix'] . '</span>';
 
 		return $prefix . '
-        <span class="number" data-value="' . esc_attr( $this->attribute['sg_content_number'] ) . '" data-animation-duration="3500">0</span>
+        <span class="number" data-value="' . esc_attr( $this->attribute['sg_content_number'] ) . '" data-animation-duration="' . $animation_duration . '">0</span>
         ' . $suffix . $super;
 	}
 

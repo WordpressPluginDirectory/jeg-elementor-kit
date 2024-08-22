@@ -208,6 +208,18 @@ class Fun_Fact_Option extends Option_Abstract {
 			),
 		);
 
+		$this->options['sg_setting_number_aniamtion_duration'] = array(
+			'type'    => 'slider',
+			'title'   => esc_html__( 'Number Animation Duration', 'jeg-elementor-kit' ),
+			'segment' => 'segment_setting',
+			'default' => 3500,
+			'options' => array(
+				'min'  => 0,
+				'max'  => 10000,
+				'step' => 1,
+			),
+		);
+
 		$this->options['sg_setting_enable_hover_border_bottom'] = array(
 			'type'    => 'checkbox',
 			'title'   => esc_html__( 'Enable Hover Border Bottom', 'jeg-elementor-kit' ),

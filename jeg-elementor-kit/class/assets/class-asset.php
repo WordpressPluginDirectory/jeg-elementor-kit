@@ -54,6 +54,8 @@ class Asset {
 	 * Setup Hooks
 	 */
 	private function setup_hook() {
+		add_filter( 'wp_handle_upload_prefilter', array( $this, 'svg_upload_handler' ) );
+
 		add_action( 'admin_init', array( $this, 'remove_form_control' ), 99 );
 		add_action( 'elementor/frontend/after_register_scripts', array( $this, 'load_frontend_scripts' ), 98 );
 		add_action( 'elementor/frontend/after_register_styles', array( $this, 'load_frontend_assets' ), 98 );
@@ -1227,5 +1229,52 @@ class Asset {
 				true
 			);
 		}
+	}
+
+	/**
+	 * Check if the file is an SVG, if so handle appropriately
+	 *
+	 * @param array $file An array of data for a single file.
+	 *
+	 * @return mixed
+	 */
+	public function svg_upload_handler( $file ) {
+		if ( ! isset( $file['tmp_name'] ) ) {
+			return $file;
+		}
+
+		$file_name   = isset( $file['name'] ) ? $file['name'] : '';
+		$wp_filetype = wp_check_filetype_and_ext( $file['tmp_name'], $file_name );
+		$type        = ! empty( $wp_filetype['type'] ) ? $wp_filetype['type'] : '';
+
+		if ( 'image/svg+xml' === $type ) {
+			if ( ! $this->svg_sanitizer( $file['tmp_name'] ) ) {
+				$file['error'] = esc_html__( 'This file cannot be sanitized; therefore, it cannot be checked for security and cannot be uploaded for security reasons. For further inquiries, please contact Jeg Elementor Kit support.', 'jeg-elementor-kit' );
+			}
+		}
+
+		return $file;
+	}
+
+	/**
+	 * Sanitize the SVG
+	 *
+	 * @param string $path Temp file path.
+	 *
+	 * @return bool|int
+	 */
+	protected function svg_sanitizer( $path ) {
+		$svg_sanitizer = new \enshrined\svgSanitize\Sanitizer();
+
+		$file = file_get_contents( $path );
+		$file = $svg_sanitizer->sanitize( $file );
+
+		if ( false === $file ) {
+			return false;
+		}
+
+		file_put_contents( $path, $file );
+
+		return true;
 	}
 }

@@ -34,7 +34,7 @@ class Off_Canvas_View extends View_Abstract {
 			'url'               => '#',
 			'is_external'       => '',
 			'nofollow'          => '',
-			'custom_attributes' => '',
+			'custom_attributes' => 'aria-label|Off Canvas Button',
 		);
 
 		if ( 'icon' === $toggle_type ) {

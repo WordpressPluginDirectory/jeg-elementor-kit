@@ -801,6 +801,22 @@ class Image_Box_Option extends Option_Abstract {
 			'segment' => 'style_body',
 		);
 
+		$this->options['st_body_title_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_body',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-image-box .image-box-body .body-title' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
 		$this->options['st_body_title_hover_color'] = array(
 			'type'       => 'color',
 			'title'      => esc_html__( 'Hover Color', 'jeg-elementor-kit' ),
@@ -883,6 +899,22 @@ class Image_Box_Option extends Option_Abstract {
 			'type'    => 'control_tab_start',
 			'title'   => esc_html__( 'Hover', 'jeg-elementor-kit' ),
 			'segment' => 'style_body',
+		);
+
+		$this->options['st_body_description_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_body',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-image-box .image-box-body .body-inner .body-description' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
 		);
 
 		$this->options['st_body_description_hover_color'] = array(
@@ -1211,5 +1243,4 @@ class Image_Box_Option extends Option_Abstract {
 
 		parent::additional_style();
 	}
-
 }

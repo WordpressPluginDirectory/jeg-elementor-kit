@@ -2,9 +2,9 @@
 Contributors: Jegtheme
 Tags: elementor, elements, addons, widgets, templates
 Requires at least: 5.0
-Tested up to: 6.5.4
+Tested up to: 6.6.1
 Requires PHP: 7.0
-Stable tag: 2.6.7
+Stable tag: 2.6.8
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -93,8 +93,20 @@ https://elementor.com/help/requirements/ Also you can disable some widgets that 
 
 == Changelog ==
 
+= 2.6.8 - 22-08-2024 =
+* Improvement: Add Number Animation Duration option on Fun Fact widget
+* Improvement: Security issues
+* Improvement: Add Aria Label for button in Off-Canvas widget
+* Improvement: Add Aria Label for link in Nav Menu widget
+* Improvement: Add Capability Support for 404 Template with WPML and Polylang
+* Improvement: Add Aria Label for Load More button in Gallery widget
+* Improvement: Add Transiton Duration option for Title and Description in Image Box widget
+* Improvement: Add Transiton Duration option for Title in Post Block widget
+* Fix: Overlapping menu issue on hover
+* Fix: Sticky element width issue when window is resized
+
 = 2.6.7 - 19-06-2024 =
-- Fix: PHP warning
+* Fix: PHP warning
 
 = 2.6.6 - 13-06-2024 =
 * Improvement: Security issues

@@ -1122,3 +1122,37 @@ if ( ! function_exists( 'jkit_is_multilanguage' ) ) {
 		return false;
 	}
 }
+
+if ( ! function_exists( 'jkit_get_multilanguage_post_id' ) ) {
+	/**
+	 * Get the Multilanguage Post ID
+	 *
+	 * @param int $post_id Post ID.
+	 *
+	 * @return int
+	 */
+	function jkit_get_multilanguage_post_id( $post_id = null ) {
+		if ( empty( $post_id ) ) {
+			$post_id = get_the_ID();
+		}
+
+		$current_language = jkit_get_current_language();
+
+		if ( function_exists( 'PLL' ) ) {
+			return PLL()->model->post->get_translation( $post_id, $current_language );
+		}
+
+		if ( class_exists( 'SitePress' ) ) {
+			$type = apply_filters( 'wpml_element_type', get_post_type( $post_id ) );
+			$trid = apply_filters( 'wpml_element_trid', false, $post_id, $type );
+
+			$translations = apply_filters( 'wpml_get_element_translations', array(), $trid, $type );
+
+			if ( isset( $translations[ $current_language ] ) ) {
+				$post_id = $translations[ $current_language ]->element_id;
+			}
+		}
+
+		return $post_id;
+	}
+}

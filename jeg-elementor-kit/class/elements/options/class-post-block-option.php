@@ -1306,6 +1306,22 @@ class Post_Block_Option extends Option_Abstract {
 			'segment' => 'style_title',
 		);
 
+		$this->options['st_title_hover_transition_duration'] = array(
+			'type'      => 'slider',
+			'title'     => esc_html__( 'Transition Duration', 'jeg-elementor-kit' ),
+			'segment'   => 'style_title',
+			'options'   => array(
+				'min'  => 0,
+				'max'  => 10,
+				'step' => 0.1,
+			),
+			'selectors' => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-post-title a, {{WRAPPER}} .jeg-elementor-kit.jkit-postblock.postblock-type-4 .jkit-post-title a' => 'transition-duration: {{SIZE}}s;',
+				),
+			),
+		);
+
 		$this->options['st_title_hover_typography'] = array(
 			'type'      => 'typography',
 			'title'     => esc_html__( 'Hover Typography', 'jeg-elementor-kit' ),
