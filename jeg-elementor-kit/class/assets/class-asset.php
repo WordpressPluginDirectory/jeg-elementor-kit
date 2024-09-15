@@ -57,7 +57,7 @@ class Asset {
 		add_filter( 'wp_handle_upload_prefilter', array( $this, 'svg_upload_handler' ) );
 
 		add_action( 'admin_init', array( $this, 'remove_form_control' ), 99 );
-		add_action( 'elementor/frontend/after_register_scripts', array( $this, 'load_frontend_scripts' ), 98 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'load_frontend_scripts' ), 98 );
 		add_action( 'elementor/frontend/after_register_styles', array( $this, 'load_frontend_assets' ), 98 );
 		add_action( 'elementor/editor/after_enqueue_styles', array( $this, 'load_editor_assets' ) );
 		add_action( 'elementor/editor/after_enqueue_scripts', array( $this, 'load_editor_scripts' ) );
@@ -476,16 +476,14 @@ class Asset {
 			} else {
 				$css .= '@media (min-width: ' . strval( $breakpoints[0]['value'] + 1 ) . 'px) {' . $selector . ' .feature-list-items .feature-list-item .feature-list-content-box { margin-left: 0 !important; margin-right: 0 !important;  margin-bottom: 0 !important; } }';
 			}
-		} else {
-			if ( 'left' === $position ) {
+		} elseif ( 'left' === $position ) {
 				$css .= $selector . ' .feature-list-items .feature-list-item { text-align: left; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; display: -webkit-box; display: -ms-flexbox; display: flex; }';
 				$css .= $selector . ' .feature-list-items .feature-list-item .feature-list-content-box { margin-right: 0 !important; margin-top: 0 !important;  margin-bottom: 0 !important; }';
-			} elseif ( 'right' === $position ) {
-				$css .= $selector . ' .feature-list-items .feature-list-item { text-align: right; -webkit-box-orient: horizontal; -webkit-box-direction: reverse; -ms-flex-direction: row-reverse; flex-direction: row-reverse; display: -webkit-box; display: -ms-flexbox; display: flex; }';
-				$css .= $selector . ' .feature-list-items .feature-list-item .feature-list-content-box { margin-left: 0 !important; margin-top: 0 !important;  margin-bottom: 0 !important; }';
-			} else {
-				$css .= $selector . ' .feature-list-items .feature-list-item .feature-list-content-box { margin-left: 0 !important; margin-right: 0 !important;  margin-bottom: 0 !important; }';
-			}
+		} elseif ( 'right' === $position ) {
+			$css .= $selector . ' .feature-list-items .feature-list-item { text-align: right; -webkit-box-orient: horizontal; -webkit-box-direction: reverse; -ms-flex-direction: row-reverse; flex-direction: row-reverse; display: -webkit-box; display: -ms-flexbox; display: flex; }';
+			$css .= $selector . ' .feature-list-items .feature-list-item .feature-list-content-box { margin-left: 0 !important; margin-top: 0 !important;  margin-bottom: 0 !important; }';
+		} else {
+			$css .= $selector . ' .feature-list-items .feature-list-item .feature-list-content-box { margin-left: 0 !important; margin-right: 0 !important;  margin-bottom: 0 !important; }';
 		}
 
 		for ( $i = 0; $i < $count_breakpoints - 1; $i++ ) {
@@ -548,18 +546,16 @@ class Asset {
 					$css .= '@media (min-width: ' . strval( $breakpoints[0]['value'] + 1 ) . 'px) {' . $selector . ' .feature-list-items .feature-list-item:after { content: ""; position: absolute; display: block; border-style: solid; border-color: var(--jkit-element-bg-color); border-width: 1px; left: 5px; top: 50%; width: 23px; z-index: 2; border-top: none !important; } }';
 					$css .= '@media (min-width: ' . strval( $breakpoints[0]['value'] + 1 ) . 'px) {' . $selector . ' .feature-list-items .feature-list-item:not(:last-child):before { height: calc(100% + 8px); } }';
 				}
-			} else {
-				if ( 'left' === $position ) {
+			} elseif ( 'left' === $position ) {
 					$css .= $selector . ' .feature-list-items .feature-list-item .connector { left: 0; right: calc(100% - ' . $offset . $icon_size['unit'] . '); }';
-				} elseif ( 'right' === $position ) {
-					$css .= $selector . ' .feature-list-items .feature-list-item .connector { left: calc(100% - ' . $offset . $icon_size['unit'] . '); right: 0; }';
-				} else {
-					$css .= $selector . ' .feature-list-items .feature-list-item .connector { display: none; }';
-					$css .= $selector . ' .feature-list-items .feature-list-item { padding-left: 50px; }';
-					$css .= $selector . ' .feature-list-items .feature-list-item:before { content: ""; position: absolute; display: block; border-style: solid; border-color: var(--jkit-element-bg-color); border-width: 1px; left: 0px; top: 0; z-index: 1; border-right: none !important; height: 100%; }';
-					$css .= $selector . ' .feature-list-items .feature-list-item:after { content: ""; position: absolute; display: block; border-style: solid; border-color: var(--jkit-element-bg-color); border-width: 1px; left: 5px; top: 50%; width: 23px; z-index: 2; border-top: none !important; }';
-					$css .= $selector . ' .feature-list-items .feature-list-item:not(:last-child):before { height: calc(100% + 8px); }';
-				}
+			} elseif ( 'right' === $position ) {
+				$css .= $selector . ' .feature-list-items .feature-list-item .connector { left: calc(100% - ' . $offset . $icon_size['unit'] . '); right: 0; }';
+			} else {
+				$css .= $selector . ' .feature-list-items .feature-list-item .connector { display: none; }';
+				$css .= $selector . ' .feature-list-items .feature-list-item { padding-left: 50px; }';
+				$css .= $selector . ' .feature-list-items .feature-list-item:before { content: ""; position: absolute; display: block; border-style: solid; border-color: var(--jkit-element-bg-color); border-width: 1px; left: 0px; top: 0; z-index: 1; border-right: none !important; height: 100%; }';
+				$css .= $selector . ' .feature-list-items .feature-list-item:after { content: ""; position: absolute; display: block; border-style: solid; border-color: var(--jkit-element-bg-color); border-width: 1px; left: 5px; top: 50%; width: 23px; z-index: 2; border-top: none !important; }';
+				$css .= $selector . ' .feature-list-items .feature-list-item:not(:last-child):before { height: calc(100% + 8px); }';
 			}
 
 			for ( $i = 0; $i < $count_breakpoints - 1; $i++ ) {
@@ -637,16 +633,14 @@ class Asset {
 						$css .= '@media (min-width: ' . strval( $breakpoints[0]['value'] + 1 ) . 'px) {' . $selector . ' .feature-list-items.connector-type-modern .feature-list-item:before { left: 0; } }';
 						$css .= '@media (min-width: ' . strval( $breakpoints[0]['value'] + 1 ) . 'px) {' . $selector . ' .feature-list-items.connector-type-modern .feature-list-item:after { left: 5px; } }';
 					}
-				} else {
-					if ( 'right' === $position ) {
+				} elseif ( 'right' === $position ) {
 						$css .= $selector . ' .feature-list-items.connector-type-modern .feature-list-item { padding-right: 50px; }';
 						$css .= $selector . ' .feature-list-items.connector-type-modern .feature-list-item:before { right: 0 }';
 						$css .= $selector . ' .feature-list-items.connector-type-modern .feature-list-item:after { right: 5px }';
-					} else {
-						$css .= $selector . ' .feature-list-items.connector-type-modern .feature-list-item { padding-left: 50px; }';
-						$css .= $selector . ' .feature-list-items.connector-type-modern .feature-list-item:before { left: 0; }';
-						$css .= $selector . ' .feature-list-items.connector-type-modern .feature-list-item:after { left: 5px; }';
-					}
+				} else {
+					$css .= $selector . ' .feature-list-items.connector-type-modern .feature-list-item { padding-left: 50px; }';
+					$css .= $selector . ' .feature-list-items.connector-type-modern .feature-list-item:before { left: 0; }';
+					$css .= $selector . ' .feature-list-items.connector-type-modern .feature-list-item:after { left: 5px; }';
 				}
 
 				for ( $i = 0; $i < $count_breakpoints - 1; $i++ ) {
@@ -720,20 +714,18 @@ class Asset {
 				$css .= '@media (min-width: ' . strval( $breakpoints[0]['value'] + 1 ) . 'px) {' . $selector . ' .jkit-icon-box-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; flex-direction: column-reverse; } }';
 				$css .= '@media (min-width: ' . strval( $breakpoints[0]['value'] + 1 ) . 'px) {' . $selector . ' .jkit-icon-box-wrapper .icon-box.icon-box-header { margin-right: unset; margin-left: unset; } }';
 			}
-		} else {
-			if ( 'left' === $position ) {
+		} elseif ( 'left' === $position ) {
 				$css .= $selector . ' .jkit-icon-box-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; flex-direction: row; }';
 				$css .= $selector . ' .jkit-icon-box-wrapper .icon-box.icon-box-header { margin-right: 15px; margin-left: unset; }';
-			} elseif ( 'right' === $position ) {
-				$css .= $selector . ' .jkit-icon-box-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: reverse; -ms-flex-direction: row-reverse; flex-direction: row-reverse; }';
-				$css .= $selector . ' .jkit-icon-box-wrapper .icon-box.icon-box-header { margin-left: 15px; margin-right: unset; }';
-			} elseif ( 'top' === $position ) {
-				$css .= $selector . ' .jkit-icon-box-wrapper { display: block; }';
-				$css .= $selector . ' .jkit-icon-box-wrapper .icon-box.icon-box-header { margin-right: unset; margin-left: unset; }';
-			} elseif ( 'bottom' === $position ) {
-				$css .= $selector . ' .jkit-icon-box-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; flex-direction: column-reverse; }';
-				$css .= $selector . ' .jkit-icon-box-wrapper .icon-box.icon-box-header { margin-right: unset; margin-left: unset; }';
-			}
+		} elseif ( 'right' === $position ) {
+			$css .= $selector . ' .jkit-icon-box-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: reverse; -ms-flex-direction: row-reverse; flex-direction: row-reverse; }';
+			$css .= $selector . ' .jkit-icon-box-wrapper .icon-box.icon-box-header { margin-left: 15px; margin-right: unset; }';
+		} elseif ( 'top' === $position ) {
+			$css .= $selector . ' .jkit-icon-box-wrapper { display: block; }';
+			$css .= $selector . ' .jkit-icon-box-wrapper .icon-box.icon-box-header { margin-right: unset; margin-left: unset; }';
+		} elseif ( 'bottom' === $position ) {
+			$css .= $selector . ' .jkit-icon-box-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; flex-direction: column-reverse; }';
+			$css .= $selector . ' .jkit-icon-box-wrapper .icon-box.icon-box-header { margin-right: unset; margin-left: unset; }';
 		}
 
 		for ( $i = 0; $i < $count_breakpoints - 1; $i++ ) {
@@ -912,7 +904,7 @@ class Asset {
 		$selector          = '.elementor-element.elementor-element-' . $element->get_id() . ' .jeg-elementor-kit.jkit-mailchimp';
 		$mobile_breakpoint = array_filter(
 			$breakpoints,
-			function( $v, $k ) {
+			function ( $v, $k ) {
 				return 'mobile' === $v['key'];
 			},
 			ARRAY_FILTER_USE_BOTH
@@ -952,7 +944,7 @@ class Asset {
 		$selector           = '.elementor-element.elementor-element-' . $element->get_id() . ' .jeg-elementor-kit.jkit-postblock';
 		$custom_breakpoint  = array_filter(
 			$breakpoints,
-			function( $v, $k ) use ( $content_breakpoint ) {
+			function ( $v, $k ) use ( $content_breakpoint ) {
 				return $content_breakpoint === $v['key'];
 			},
 			ARRAY_FILTER_USE_BOTH
@@ -994,7 +986,7 @@ class Asset {
 		$selector          = '.elementor-element.elementor-element-' . $element->get_id() . ' .jeg-elementor-kit.jkit-tabs';
 		$mobile_breakpoint = array_filter(
 			$breakpoints,
-			function( $v, $k ) {
+			function ( $v, $k ) {
 				return 'mobile' === $v['key'];
 			},
 			ARRAY_FILTER_USE_BOTH
@@ -1084,7 +1076,7 @@ class Asset {
 		$selector           = '.elementor-element.elementor-element-' . $element->get_id() . ' .jeg-elementor-kit.jkit-nav-menu';
 		$custom_breakpoint  = array_filter(
 			$breakpoints,
-			function( $v, $k ) use ( $content_breakpoint ) {
+			function ( $v, $k ) use ( $content_breakpoint ) {
 				return $content_breakpoint === $v['key'];
 			},
 			ARRAY_FILTER_USE_BOTH

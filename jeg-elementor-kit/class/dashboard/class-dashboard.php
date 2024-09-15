@@ -201,7 +201,6 @@ class Dashboard {
 		wp_add_inline_script( 'jkit-dashboard', $this->ajax_url() );
 		wp_localize_script( 'jkit-dashboard', 'jkit_dashboard_localize', $this->localize_array() );
 		wp_enqueue_script( 'jkit-dashboard' );
-
 	}
 
 	/**
@@ -211,9 +210,15 @@ class Dashboard {
 	 */
 	public static function post_type_list() {
 		return array(
-			self::$jkit_header,
-			self::$jkit_footer,
-			self::$jkit_template,
+			self::$jkit_header   => array(
+				'label' => esc_html__( 'JKIT - Header ', 'jeg-elementor-kit' ),
+			),
+			self::$jkit_footer   => array(
+				'label' => esc_html__( 'JKIT - Footer ', 'jeg-elementor-kit' ),
+			),
+			self::$jkit_template => array(
+				'label' => esc_html__( 'JKIT - Template ', 'jeg-elementor-kit' ),
+			),
 		);
 	}
 
@@ -221,10 +226,11 @@ class Dashboard {
 	 * Post Type
 	 */
 	public function post_type() {
-		foreach ( self::post_type_list() as $list ) {
+		foreach ( self::post_type_list() as $post_type => $data ) {
 			register_post_type(
-				$list,
+				$post_type,
 				array(
+					'label'             => $data['label'],
 					'public'            => true,
 					'show_ui'           => false,
 					'capability_type'   => 'post',
@@ -233,7 +239,7 @@ class Dashboard {
 					'supports'          => array( 'title', 'revisions', 'page-attributes', 'elementor' ),
 					'map_meta_cap'      => true,
 					'rewrite'           => array(
-						'slug'       => $list,
+						'slug'       => $post_type,
 						'with_front' => false,
 					),
 				)
@@ -714,7 +720,7 @@ class Dashboard {
 	 */
 	public function hide_jkit_cpt_from_elementor( $post_types_objects ) {
 		foreach ( $post_types_objects as $type ) {
-			if ( in_array( $type->name, $this->post_type_list() ) ) {
+			if ( array_key_exists( $type->name, $this->post_type_list() ) ) {
 				unset( $post_types_objects[ $type->name ] );
 			}
 		}

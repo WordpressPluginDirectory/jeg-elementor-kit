@@ -270,7 +270,7 @@ if ( ! function_exists( 'jkit_get_public_post_type' ) ) {
 
 		$exclude = \Jeg\Elementor_Kit\Dashboard\Dashboard::post_type_list();
 
-		foreach ( $types as $type ) {
+		foreach ( $types as $type => $data ) {
 			if ( in_array( $type, $exclude ) ) {
 				unset( $types[ $type ] );
 			} else {
@@ -298,7 +298,7 @@ if ( ! function_exists( 'jkit_get_public_post_type_array' ) ) {
 		);
 
 		/** Remove header builder post type */
-		foreach ( \Jeg\Elementor_Kit\Dashboard\Dashboard::post_type_list() as $list ) {
+		foreach ( \Jeg\Elementor_Kit\Dashboard\Dashboard::post_type_list() as $list => $data ) {
 			unset( $types[ $list ] );
 		}
 

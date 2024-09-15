@@ -97,7 +97,7 @@ class Portfolio_Gallery_View extends View_Abstract {
 		$current_item     = 0 === $key || 'yes' === $item['sg_gallery_list_current'] ? 'current-item' : '';
 		$image_attachment = ! empty( $item['sg_gallery_list_image']['id'] ) ? wp_get_attachment_image_src( $item['sg_gallery_list_image']['id'], $image_size ) : '';
 		$image_src        = ! empty( $image_attachment[0] ) ? $image_attachment[0] : $item['sg_gallery_list_image']['url'];
-		$output           = '<div id="portfolio-gallery-tab-' . $key . '" class="image-item ' . $current_item . '" data-background="' . $image_src . '" style="background-image:url(' . $image_src . ');"></div>';
+		$output           = '<div id="portfolio-gallery-tab-' . $key . '" class="image-item ' . $current_item . '" data-background="' . esc_attr( $image_src ) . '" style="background-image:url(' . esc_url( $image_src ) . ');"></div>';
 
 		return $output;
 	}

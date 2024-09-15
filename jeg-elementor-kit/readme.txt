@@ -2,9 +2,9 @@
 Contributors: Jegtheme
 Tags: elementor, elements, addons, widgets, templates
 Requires at least: 5.0
-Tested up to: 6.6.1
+Tested up to: 6.6.2
 Requires PHP: 7.0
-Stable tag: 2.6.8
+Stable tag: 2.6.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -92,6 +92,11 @@ Please make sure the WP Memory Limit on your site has set to 128 MB or greater. 
 https://elementor.com/help/requirements/ Also you can disable some widgets that you don't need from Jeg Elementor Kit > Elements dashboard to reduce memory usage.
 
 == Changelog ==
+
+= 2.6.9 - 09-15-2024 =
+* Improvement: Security issues
+* Fix: JavaScript not working due to Elementor Update version 3.24.0
+* Tweak: Add Label for Jeg Elementor Kit Custom Post Type
 
 = 2.6.8 - 22-08-2024 =
 * Improvement: Add Number Animation Duration option on Fun Fact widget

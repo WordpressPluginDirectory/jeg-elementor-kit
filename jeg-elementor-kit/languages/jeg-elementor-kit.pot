@@ -7,33 +7,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Jegtheme <support@jegtheme.com>\n"
+"POT-Creation-Date: 2024-09-14 16:44+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: jeg-elementor-kit/helper.php:45
-msgid "edit post"
-msgstr ""
-
-#. translators: 1: Time from now.
-#: jeg-elementor-kit/helper.php:101
-msgid "%s ago"
-msgstr ""
-
-#: jeg-elementor-kit/helper.php:1056, jeg-elementor-kit/class/dashboard/class-dashboard.php:318, jeg-elementor-kit/class/dashboard/class-dashboard.php:319, jeg-elementor-kit/templates/banner/notice-banner.php:26
-msgid "Need Help?"
-msgstr ""
-
-#: jeg-elementor-kit/helper.php:1057
-msgid "Rate Us"
-msgstr ""
-
-#: jeg-elementor-kit/class/class-init.php:109
-msgid "It is recommended that you backup your site before updating the plugin so rollback is possible whenever needed."
-msgstr ""
 
 #: jeg-elementor-kit/class/ajax/class-ajax.php:169, jeg-elementor-kit/class/ajax/class-ajax.php:160, jeg-elementor-kit/class/ajax/class-ajax.php:150, jeg-elementor-kit/class/ajax/class-ajax.php:140, jeg-elementor-kit/class/dashboard/template/class-template-dashboard-abstract.php:82
 msgid "Success Save Data"
@@ -43,248 +23,100 @@ msgstr ""
 msgid "API Key is Invalid."
 msgstr ""
 
-#: jeg-elementor-kit/class/ajax/class-ajax.php:477, jeg-elementor-kit/class/dashboard/class-dashboard.php:621, jeg-elementor-kit/class/dashboard/template/class-template-dashboard-abstract.php:518
+#: jeg-elementor-kit/class/ajax/class-ajax.php:477, jeg-elementor-kit/class/dashboard/class-dashboard.php:627, jeg-elementor-kit/class/dashboard/template/class-template-dashboard-abstract.php:518
 msgid "Clone"
 msgstr ""
 
-#: jeg-elementor-kit/class/assets/class-asset.php:1192
+#: jeg-elementor-kit/class/assets/class-asset.php:1184
 msgid "JKit - Icons"
 msgstr ""
 
-#: jeg-elementor-kit/class/assets/class-asset.php:1252
+#: jeg-elementor-kit/class/assets/class-asset.php:1244
 msgid "This file cannot be sanitized; therefore, it cannot be checked for security and cannot be uploaded for security reasons. For further inquiries, please contact Jeg Elementor Kit support."
 msgstr ""
 
-#: jeg-elementor-kit/class/dashboard/class-dashboard.php:251, jeg-elementor-kit/class/dashboard/class-dashboard.php:252
+#: jeg-elementor-kit/class/class-init.php:109
+msgid "It is recommended that you backup your site before updating the plugin so rollback is possible whenever needed."
+msgstr ""
+
+#: jeg-elementor-kit/class/dashboard/class-dashboard.php:214
+msgid "JKIT - Header "
+msgstr ""
+
+#: jeg-elementor-kit/class/dashboard/class-dashboard.php:217
+msgid "JKIT - Footer "
+msgstr ""
+
+#: jeg-elementor-kit/class/dashboard/class-dashboard.php:220
+msgid "JKIT - Template "
+msgstr ""
+
+#: jeg-elementor-kit/class/dashboard/class-dashboard.php:257, jeg-elementor-kit/class/dashboard/class-dashboard.php:258
 msgid "Settings"
 msgstr ""
 
-#: jeg-elementor-kit/class/dashboard/class-dashboard.php:260, jeg-elementor-kit/class/dashboard/class-dashboard.php:261
+#: jeg-elementor-kit/class/dashboard/class-dashboard.php:266, jeg-elementor-kit/class/dashboard/class-dashboard.php:267
 msgid "User Data"
 msgstr ""
 
-#: jeg-elementor-kit/class/dashboard/class-dashboard.php:269, jeg-elementor-kit/class/dashboard/class-dashboard.php:270
+#: jeg-elementor-kit/class/dashboard/class-dashboard.php:275, jeg-elementor-kit/class/dashboard/class-dashboard.php:276
 msgid "Elements"
 msgstr ""
 
-#: jeg-elementor-kit/class/dashboard/class-dashboard.php:278, jeg-elementor-kit/class/dashboard/class-dashboard.php:279
+#: jeg-elementor-kit/class/dashboard/class-dashboard.php:284, jeg-elementor-kit/class/dashboard/class-dashboard.php:285
 msgid "Templates"
 msgstr ""
 
-#: jeg-elementor-kit/class/dashboard/class-dashboard.php:288, jeg-elementor-kit/class/dashboard/class-dashboard.php:289
+#: jeg-elementor-kit/class/dashboard/class-dashboard.php:294, jeg-elementor-kit/class/dashboard/class-dashboard.php:295
 msgid "Header"
 msgstr ""
 
-#: jeg-elementor-kit/class/dashboard/class-dashboard.php:298, jeg-elementor-kit/class/dashboard/class-dashboard.php:299
+#: jeg-elementor-kit/class/dashboard/class-dashboard.php:304, jeg-elementor-kit/class/dashboard/class-dashboard.php:305
 msgid "Footer"
 msgstr ""
 
-#: jeg-elementor-kit/class/dashboard/class-dashboard.php:308, jeg-elementor-kit/class/dashboard/class-dashboard.php:309
+#: jeg-elementor-kit/class/dashboard/class-dashboard.php:314, jeg-elementor-kit/class/dashboard/class-dashboard.php:315
 msgid "Not Found 404"
 msgstr ""
 
-#: jeg-elementor-kit/class/dashboard/class-dashboard.php:337, jeg-elementor-kit/class/dashboard/class-dashboard.php:338, jeg-elementor-kit/class/elements/options/class-accordion-option.php:57, jeg-elementor-kit/class/elements/options/class-animated-text-option.php:57, jeg-elementor-kit/class/elements/options/class-banner-option.php:57, jeg-elementor-kit/class/elements/options/class-button-option.php:57, jeg-elementor-kit/class/elements/options/class-category-list-option.php:71, jeg-elementor-kit/class/elements/options/class-client-logo-option.php:57, jeg-elementor-kit/class/elements/options/class-contact-form-7-option.php:57, jeg-elementor-kit/class/elements/options/class-countdown-option.php:57, jeg-elementor-kit/class/elements/options/class-dual-button-option.php:57, jeg-elementor-kit/class/elements/options/class-feature-list-option.php:57, jeg-elementor-kit/class/elements/options/class-fun-fact-option.php:57, jeg-elementor-kit/class/elements/options/class-gallery-option.php:57, jeg-elementor-kit/class/elements/options/class-heading-option.php:57, jeg-elementor-kit/class/elements/options/class-icon-box-option.php:57, jeg-elementor-kit/class/elements/options/class-image-box-option.php:57, jeg-elementor-kit/class/elements/options/class-mailchimp-option.php:57, jeg-elementor-kit/class/elements/options/class-nav-menu-option.php:57, jeg-elementor-kit/class/elements/options/class-off-canvas-option.php:57, jeg-elementor-kit/class/elements/options/class-option-abstract.php:92, jeg-elementor-kit/class/elements/options/class-pie-chart-option.php:57, jeg-elementor-kit/class/elements/options/class-portfolio-gallery-option.php:57, jeg-elementor-kit/class/elements/options/class-post-block-option.php:71, jeg-elementor-kit/class/elements/options/class-post-list-option.php:71, jeg-elementor-kit/class/elements/options/class-product-carousel-option.php:70, jeg-elementor-kit/class/elements/options/class-product-categories-option.php:70, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:63, jeg-elementor-kit/class/elements/options/class-progress-bar-option.php:57, jeg-elementor-kit/class/elements/options/class-search-option.php:57, jeg-elementor-kit/class/elements/options/class-social-share-option.php:57, jeg-elementor-kit/class/elements/options/class-tabs-option.php:57, jeg-elementor-kit/class/elements/options/class-team-option.php:57, jeg-elementor-kit/class/elements/options/class-testimonials-option.php:57, jeg-elementor-kit/class/elements/options/class-video-button-option.php:57
+#: jeg-elementor-kit/class/dashboard/class-dashboard.php:324, jeg-elementor-kit/class/dashboard/class-dashboard.php:325, jeg-elementor-kit/helper.php:1056, jeg-elementor-kit/templates/banner/notice-banner.php:26
+msgid "Need Help?"
+msgstr ""
+
+#: jeg-elementor-kit/class/dashboard/class-dashboard.php:343, jeg-elementor-kit/class/dashboard/class-dashboard.php:344, jeg-elementor-kit/class/elements/options/class-accordion-option.php:57, jeg-elementor-kit/class/elements/options/class-animated-text-option.php:57, jeg-elementor-kit/class/elements/options/class-banner-option.php:57, jeg-elementor-kit/class/elements/options/class-button-option.php:57, jeg-elementor-kit/class/elements/options/class-category-list-option.php:71, jeg-elementor-kit/class/elements/options/class-client-logo-option.php:57, jeg-elementor-kit/class/elements/options/class-contact-form-7-option.php:57, jeg-elementor-kit/class/elements/options/class-countdown-option.php:57, jeg-elementor-kit/class/elements/options/class-dual-button-option.php:57, jeg-elementor-kit/class/elements/options/class-feature-list-option.php:57, jeg-elementor-kit/class/elements/options/class-fun-fact-option.php:57, jeg-elementor-kit/class/elements/options/class-gallery-option.php:57, jeg-elementor-kit/class/elements/options/class-heading-option.php:57, jeg-elementor-kit/class/elements/options/class-icon-box-option.php:57, jeg-elementor-kit/class/elements/options/class-image-box-option.php:57, jeg-elementor-kit/class/elements/options/class-mailchimp-option.php:57, jeg-elementor-kit/class/elements/options/class-nav-menu-option.php:57, jeg-elementor-kit/class/elements/options/class-off-canvas-option.php:57, jeg-elementor-kit/class/elements/options/class-option-abstract.php:92, jeg-elementor-kit/class/elements/options/class-pie-chart-option.php:57, jeg-elementor-kit/class/elements/options/class-portfolio-gallery-option.php:57, jeg-elementor-kit/class/elements/options/class-post-block-option.php:71, jeg-elementor-kit/class/elements/options/class-post-list-option.php:71, jeg-elementor-kit/class/elements/options/class-product-carousel-option.php:70, jeg-elementor-kit/class/elements/options/class-product-categories-option.php:70, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:63, jeg-elementor-kit/class/elements/options/class-progress-bar-option.php:57, jeg-elementor-kit/class/elements/options/class-search-option.php:57, jeg-elementor-kit/class/elements/options/class-social-share-option.php:57, jeg-elementor-kit/class/elements/options/class-tabs-option.php:57, jeg-elementor-kit/class/elements/options/class-team-option.php:57, jeg-elementor-kit/class/elements/options/class-testimonials-option.php:57, jeg-elementor-kit/class/elements/options/class-video-button-option.php:57
 msgid "Jeg Elementor Kit"
 msgstr ""
 
-#: jeg-elementor-kit/class/dashboard/class-dashboard.php:513, jeg-elementor-kit/class/elements/views/class-mailchimp-view.php:47, jeg-elementor-kit/class/elements/views/class-mailchimp-view.php:296, jeg-elementor-kit/class/elements/views/class-mailchimp-view.php:315
+#: jeg-elementor-kit/class/dashboard/class-dashboard.php:519, jeg-elementor-kit/class/elements/views/class-mailchimp-view.php:47, jeg-elementor-kit/class/elements/views/class-mailchimp-view.php:296, jeg-elementor-kit/class/elements/views/class-mailchimp-view.php:315
 msgid "Something went wrong"
 msgstr ""
 
-#: jeg-elementor-kit/class/dashboard/class-dashboard.php:514
+#: jeg-elementor-kit/class/dashboard/class-dashboard.php:520
 msgid "Save Failed"
 msgstr ""
 
-#: jeg-elementor-kit/class/dashboard/class-dashboard.php:579, jeg-elementor-kit/class/dashboard/class-dashboard.php:618, jeg-elementor-kit/class/dashboard/template/class-template-dashboard-abstract.php:519
+#: jeg-elementor-kit/class/dashboard/class-dashboard.php:585, jeg-elementor-kit/class/dashboard/class-dashboard.php:624, jeg-elementor-kit/class/dashboard/template/class-template-dashboard-abstract.php:519
 msgid "Delete"
 msgstr ""
 
-#: jeg-elementor-kit/class/dashboard/class-dashboard.php:616
+#: jeg-elementor-kit/class/dashboard/class-dashboard.php:622
 msgid "Setup Condition"
 msgstr ""
 
-#: jeg-elementor-kit/class/dashboard/class-dashboard.php:624
+#: jeg-elementor-kit/class/dashboard/class-dashboard.php:630
 msgid "Modify"
 msgstr ""
 
-#: jeg-elementor-kit/class/dashboard/class-dashboard.php:659
+#: jeg-elementor-kit/class/dashboard/class-dashboard.php:665
 msgid "Hello <b>%1$s</b>, thank you for using <a href=\"%2$s\" target=\"_blank\">Jeg Elementor Kit</a> v%4$s. Please take a second to <a href=\"%3$s\" target=\"_blank\"> leave us a <span>★★★★★</span> rating</a>. We'd really appreciate your support!"
 msgstr ""
 
-#: jeg-elementor-kit/class/dashboard/class-dashboard.php:680
+#: jeg-elementor-kit/class/dashboard/class-dashboard.php:686
 msgid "Our Website"
 msgstr ""
 
-#: jeg-elementor-kit/class/dashboard/class-dashboard.php:681
+#: jeg-elementor-kit/class/dashboard/class-dashboard.php:687
 msgid "Support Forum"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:169
-msgid "Transform"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:180, jeg-elementor-kit/class/elements/options/class-post-author-option.php:377, jeg-elementor-kit/class/elements/options/class-post-featured-image-option.php:195
-msgid "Rotate"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:196
-msgid "Since Elementor version 3.5.0, it has its own Transform settings. When you use Transform Rotate from Elementor, this setting will be hidden."
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:205, jeg-elementor-kit/class/elements/class-element.php:244, jeg-elementor-kit/class/elements/class-element.php:616, jeg-elementor-kit/class/elements/class-element.php:985
-msgid "Glass Blur Effect"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:213, jeg-elementor-kit/class/elements/class-element.php:252, jeg-elementor-kit/class/elements/class-element.php:624, jeg-elementor-kit/class/elements/class-element.php:993
-msgid "Blur"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:222
-msgid "The blur effect will be set on the widget container. Make sure to set background to transparent to see the blur effect."
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:272, jeg-elementor-kit/class/elements/class-element.php:644, jeg-elementor-kit/class/elements/class-element.php:1013
-msgid "Sticky Element"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:280, jeg-elementor-kit/class/elements/class-element.php:652, jeg-elementor-kit/class/elements/class-element.php:1021
-msgid "Enable Sticky Element"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:299, jeg-elementor-kit/class/elements/class-element.php:668, jeg-elementor-kit/class/elements/class-element.php:1037
-msgid "Device"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:315, jeg-elementor-kit/class/elements/class-element.php:684, jeg-elementor-kit/class/elements/class-element.php:1053
-msgid "Sticky Trigger"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:319, jeg-elementor-kit/class/elements/class-element.php:688, jeg-elementor-kit/class/elements/class-element.php:1057
-msgid "On Scroll Up"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:320, jeg-elementor-kit/class/elements/class-element.php:689, jeg-elementor-kit/class/elements/class-element.php:1058
-msgid "On Scroll Down"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:321, jeg-elementor-kit/class/elements/class-element.php:690, jeg-elementor-kit/class/elements/class-element.php:1059
-msgid "On Both"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:333, jeg-elementor-kit/class/elements/class-element.php:702, jeg-elementor-kit/class/elements/class-element.php:1071
-msgid "Sticky Position"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:337, jeg-elementor-kit/class/elements/class-element.php:706, jeg-elementor-kit/class/elements/class-element.php:1075
-msgid "Sticky"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:338, jeg-elementor-kit/class/elements/class-element.php:707, jeg-elementor-kit/class/elements/class-element.php:1076
-msgid "Fixed"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:351, jeg-elementor-kit/class/elements/class-element.php:720, jeg-elementor-kit/class/elements/class-element.php:1089, jeg-elementor-kit/class/elements/options/class-progress-bar-option.php:484
-msgid "Top Position"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:385, jeg-elementor-kit/class/elements/class-element.php:754, jeg-elementor-kit/class/elements/class-element.php:1123, jeg-elementor-kit/class/elements/options/class-testimonials-option.php:1781
-msgid "Bottom Position"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:417, jeg-elementor-kit/class/elements/class-element.php:786, jeg-elementor-kit/class/elements/class-element.php:1155, jeg-elementor-kit/class/elements/options/class-heading-option.php:648, jeg-elementor-kit/class/elements/options/class-heading-option.php:890, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:283, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:329, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:400, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:486, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:579, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:779, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:805, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:998, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:1074, jeg-elementor-kit/class/elements/options/class-post-block-option.php:1771, jeg-elementor-kit/class/elements/options/class-post-list-option.php:650, jeg-elementor-kit/class/elements/options/class-post-list-option.php:1385, jeg-elementor-kit/class/elements/options/class-product-categories-option.php:666, jeg-elementor-kit/class/elements/options/class-product-categories-option.php:713, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:505, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:551, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:610, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:696, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:777, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:1173, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:1233, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:1369
-msgid "Background Color"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:447, jeg-elementor-kit/class/elements/class-element.php:816, jeg-elementor-kit/class/elements/class-element.php:1185
-msgid "Scroll Threshold"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:464, jeg-elementor-kit/class/elements/class-element.php:833, jeg-elementor-kit/class/elements/class-element.php:1202
-msgid "X Axis Animation"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:497, jeg-elementor-kit/class/elements/class-element.php:866, jeg-elementor-kit/class/elements/class-element.php:1235
-msgid "Y Axis Animation"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:530, jeg-elementor-kit/class/elements/class-element.php:899, jeg-elementor-kit/class/elements/class-element.php:1268
-msgid "Transition"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:576, jeg-elementor-kit/class/elements/class-element.php:945, jeg-elementor-kit/class/elements/class-element.php:1314
-msgid "Z-Index"
-msgstr ""
-
-#: jeg-elementor-kit/class/elements/class-element.php:595, jeg-elementor-kit/class/elements/class-element.php:964, jeg-elementor-kit/class/elements/class-element.php:1333, jeg-elementor-kit/class/elements/options/class-accordion-option.php:183, jeg-elementor-kit/class/elements/options/class-accordion-option.php:364, jeg-elementor-kit/class/elements/options/class-accordion-option.php:414, jeg-elementor-kit/class/elements/options/class-accordion-option.php:475, jeg-elementor-kit/class/elements/options/class-accordion-option.php:854, jeg-elementor-kit/class/elements/options/class-accordion-option.php:948, jeg-elementor-kit/class/elements/options/class-accordion-option.php:1024, jeg-elementor-kit/class/elements/options/class-accordion-option.php:1098, jeg-elementor-kit/class/elements/options/class-accordion-option.php:1350, jeg-elementor-kit/class/elements/options/class-accordion-option.php:1498, jeg-elementor-kit/class/elements/options/class-accordion-option.php:1632, jeg-elementor-kit/class/elements/options/class-accordion-option.php:1863, jeg-elementor-kit/class/elements/options/class-accordion-option.php:2011, jeg-elementor-kit/class/elements/options/class-accordion-option.php:2145, jeg-elementor-kit/class/elements/options/class-button-option.php:441, jeg-elementor-kit/class/elements/options/class-button-option.php:459, jeg-elementor-kit/class/elements/options/class-contact-form-7-option.php:211, jeg-elementor-kit/class/elements/options/class-contact-form-7-option.php:894, jeg-elementor-kit/class/elements/options/class-countdown-option.php:547, jeg-elementor-kit/class/elements/options/class-countdown-option.php:628, jeg-elementor-kit/class/elements/options/class-countdown-option.php:687, jeg-elementor-kit/class/elements/options/class-countdown-option.php:903, jeg-elementor-kit/class/elements/options/class-countdown-option.php:984, jeg-elementor-kit/class/elements/options/class-countdown-option.php:1043, jeg-elementor-kit/class/elements/options/class-countdown-option.php:1259, jeg-elementor-kit/class/elements/options/class-countdown-option.php:1340, jeg-elementor-kit/class/elements/options/class-countdown-option.php:1399, jeg-elementor-kit/class/elements/options/class-countdown-option.php:1615, jeg-elementor-kit/class/elements/options/class-countdown-option.php:1696, jeg-elementor-kit/class/elements/options/class-countdown-option.php:1755, jeg-elementor-kit/class/elements/options/class-dual-button-option.php:865, jeg-elementor-kit/class/elements/options/class-fun-fact-option.php:604, jeg-elementor-kit/class/elements/options/class-fun-fact-option.php:856, jeg-elementor-kit/class/elements/options/class-gallery-option.php:939, jeg-elementor-kit/class/elements/options/class-gallery-option.php:1132, jeg-elementor-kit/class/elements/options/class-gallery-option.php:1783, jeg-elementor-kit/class/elements/options/class-gallery-option.php:2129, jeg-elementor-kit/class/elements/options/class-gallery-option.php:2223, jeg-elementor-kit/class/elements/options/class-heading-option.php:693, jeg-elementor-kit/class/elements/options/class-icon-box-option.php:1521, jeg-elementor-kit/class/elements/options/class-image-box-option.php:678, jeg-elementor-kit/class/elements/options/class-mailchimp-option.php:721, jeg-elementor-kit/class/elements/options/class-mailchimp-option.php:970, jeg-elementor-kit/class/elements/options/class-mailchimp-option.php:1028, jeg-elementor-kit/class/elements/options/class-nav-menu-option.php:1205, jeg-elementor-kit/class/elements/options/class-off-canvas-option.php:422, jeg-elementor-kit/class/elements/options/class-off-canvas-option.php:643, jeg-elementor-kit/class/elements/options/class-option-abstract.php:518, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:311, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:357, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:446, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:532, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:625, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:852, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:1026, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:1102, jeg-elementor-kit/class/elements/options/class-pie-chart-option.php:680, jeg-elementor-kit/class/elements/options/class-portfolio-gallery-option.php:324, jeg-elementor-kit/class/elements/options/class-portfolio-gallery-option.php:693, jeg-elementor-kit/class/elements/options/class-post-author-option.php:401, jeg-elementor-kit/class/elements/options/class-post-block-option.php:816, jeg-elementor-kit/class/elements/options/class-post-block-option.php:883, jeg-elementor-kit/class/elements/options/class-post-block-option.php:946, jeg-elementor-kit/class/elements/options/class-post-block-option.php:1016, jeg-elementor-kit/class/elements/options/class-post-block-option.php:1113, jeg-elementor-kit/class/elements/options/class-post-block-option.php:1234, jeg-elementor-kit/class/elements/options/class-post-featured-image-option.php:212, jeg-elementor-kit/class/elements/options/class-post-list-option.php:574, jeg-elementor-kit/class/elements/options/class-post-list-option.php:619, jeg-elementor-kit/class/elements/options/class-product-carousel-option.php:453, jeg-elementor-kit/class/elements/options/class-product-categories-option.php:695, jeg-elementor-kit/class/elements/options/class-product-categories-option.php:742, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:404, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:459, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:533, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:579, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:656, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:742, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:823, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:1038, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:1201, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:1261, jeg-elementor-kit/class/elements/options/class-search-option.php:374, jeg-elementor-kit/class/elements/options/class-search-option.php:575, jeg-elementor-kit/class/elements/options/class-search-option.php:635, jeg-elementor-kit/class/elements/options/class-search-option.php:816, jeg-elementor-kit/class/elements/options/class-search-option.php:886, jeg-elementor-kit/class/elements/options/class-search-option.php:1047, jeg-elementor-kit/class/elements/options/class-search-option.php:1104, jeg-elementor-kit/class/elements/options/class-tabs-option.php:430, jeg-elementor-kit/class/elements/options/class-tabs-option.php:762, jeg-elementor-kit/class/elements/options/class-tabs-option.php:987, jeg-elementor-kit/class/elements/options/class-tabs-option.php:1053, jeg-elementor-kit/class/elements/options/class-tabs-option.php:1103, jeg-elementor-kit/class/elements/options/class-tabs-option.php:1872, jeg-elementor-kit/class/elements/options/class-team-option.php:991, jeg-elementor-kit/class/elements/options/class-team-option.php:1651, jeg-elementor-kit/class/elements/options/class-team-option.php:1961, jeg-elementor-kit/class/elements/options/class-testimonials-option.php:711, jeg-elementor-kit/class/elements/options/class-testimonials-option.php:1701, jeg-elementor-kit/class/elements/options/class-video-button-option.php:708
-msgid "Box Shadow"
-msgstr ""
-
-#: jeg-elementor-kit/templates/banner/notice-banner.php:6
-msgid "Jeg Elementor Kit Updated!"
-msgstr ""
-
-#: jeg-elementor-kit/templates/banner/notice-banner.php:7
-msgid "Hi there! Thanks for updating and sticking with the Jeg Elementor Kit. We hope our plugin is proving helpful in building your website. If you can spare a few moments, please let us know what you think of Jeg Elementor Kit by leaving a rating, we'd be super grateful — Thanks a lot!"
-msgstr ""
-
-#: jeg-elementor-kit/templates/banner/notice-banner.php:11
-msgid "Yes, You deserve"
-msgstr ""
-
-#: jeg-elementor-kit/templates/banner/notice-banner.php:18
-msgid "No, Thank You"
-msgstr ""
-
-#: jeg-elementor-kit/templates/dashboard/dashboard-elements.php:19
-msgid "Enable All"
-msgstr ""
-
-#: jeg-elementor-kit/templates/dashboard/dashboard-elements.php:22
-msgid "Disable All"
-msgstr ""
-
-#: jeg-elementor-kit/templates/dashboard/dashboard-elements.php:52, jeg-elementor-kit/templates/dashboard/dashboard-notfound.php:56, jeg-elementor-kit/templates/dashboard/dashboard-settings.php:58, jeg-elementor-kit/templates/dashboard/dashboard-user-data.php:34
-msgid "Save Changes"
-msgstr ""
-
-#: jeg-elementor-kit/templates/dashboard/dashboard-notfound.php:29
-msgid "404 Template"
-msgstr ""
-
-#: jeg-elementor-kit/templates/dashboard/dashboard-notfound.php:34
-msgid "Choose 404 Template"
-msgstr ""
-
-#: jeg-elementor-kit/templates/dashboard/dashboard-notfound.php:36
-msgid "Default From Theme"
-msgstr ""
-
-#: jeg-elementor-kit/templates/dashboard/dashboard-notfound.php:49
-msgid "Choose which page that you want to set as a 404 page."
-msgstr ""
-
-#: jeg-elementor-kit/templates/dashboard/dashboard-settings.php:30
-msgid "Global Style"
-msgstr ""
-
-#: jeg-elementor-kit/templates/dashboard/dashboard-settings.php:35
-msgid "Choose Global Style"
-msgstr ""
-
-#: jeg-elementor-kit/templates/dashboard/dashboard-settings.php:51
-msgid "Here you can switch the Elementor global style."
-msgstr ""
-
-#: jeg-elementor-kit/templates/dashboard/dashboard-user-data.php:20
-msgid "Mailchimp"
-msgstr ""
-
-#: jeg-elementor-kit/templates/dashboard/dashboard-user-data.php:25
-msgid "API Key"
-msgstr ""
-
-#: jeg-elementor-kit/templates/dashboard/dashboard-user-data.php:27
-msgid "Insert your Mailchimp API key. For more info, you can check out this <a href=\"%s\" target=\"_blank\">article</a>."
 msgstr ""
 
 #: jeg-elementor-kit/class/dashboard/template/class-footer-dashboard-template.php:40
@@ -569,6 +401,106 @@ msgstr ""
 
 #: jeg-elementor-kit/class/dashboard/template/class-template-dashboard-abstract.php:520
 msgid "Loading..."
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:169
+msgid "Transform"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:180, jeg-elementor-kit/class/elements/options/class-post-author-option.php:377, jeg-elementor-kit/class/elements/options/class-post-featured-image-option.php:195
+msgid "Rotate"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:196
+msgid "Since Elementor version 3.5.0, it has its own Transform settings. When you use Transform Rotate from Elementor, this setting will be hidden."
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:205, jeg-elementor-kit/class/elements/class-element.php:244, jeg-elementor-kit/class/elements/class-element.php:616, jeg-elementor-kit/class/elements/class-element.php:985
+msgid "Glass Blur Effect"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:213, jeg-elementor-kit/class/elements/class-element.php:252, jeg-elementor-kit/class/elements/class-element.php:624, jeg-elementor-kit/class/elements/class-element.php:993
+msgid "Blur"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:222
+msgid "The blur effect will be set on the widget container. Make sure to set background to transparent to see the blur effect."
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:272, jeg-elementor-kit/class/elements/class-element.php:644, jeg-elementor-kit/class/elements/class-element.php:1013
+msgid "Sticky Element"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:280, jeg-elementor-kit/class/elements/class-element.php:652, jeg-elementor-kit/class/elements/class-element.php:1021
+msgid "Enable Sticky Element"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:299, jeg-elementor-kit/class/elements/class-element.php:668, jeg-elementor-kit/class/elements/class-element.php:1037
+msgid "Device"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:315, jeg-elementor-kit/class/elements/class-element.php:684, jeg-elementor-kit/class/elements/class-element.php:1053
+msgid "Sticky Trigger"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:319, jeg-elementor-kit/class/elements/class-element.php:688, jeg-elementor-kit/class/elements/class-element.php:1057
+msgid "On Scroll Up"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:320, jeg-elementor-kit/class/elements/class-element.php:689, jeg-elementor-kit/class/elements/class-element.php:1058
+msgid "On Scroll Down"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:321, jeg-elementor-kit/class/elements/class-element.php:690, jeg-elementor-kit/class/elements/class-element.php:1059
+msgid "On Both"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:333, jeg-elementor-kit/class/elements/class-element.php:702, jeg-elementor-kit/class/elements/class-element.php:1071
+msgid "Sticky Position"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:337, jeg-elementor-kit/class/elements/class-element.php:706, jeg-elementor-kit/class/elements/class-element.php:1075
+msgid "Sticky"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:338, jeg-elementor-kit/class/elements/class-element.php:707, jeg-elementor-kit/class/elements/class-element.php:1076
+msgid "Fixed"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:351, jeg-elementor-kit/class/elements/class-element.php:720, jeg-elementor-kit/class/elements/class-element.php:1089, jeg-elementor-kit/class/elements/options/class-progress-bar-option.php:484
+msgid "Top Position"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:385, jeg-elementor-kit/class/elements/class-element.php:754, jeg-elementor-kit/class/elements/class-element.php:1123, jeg-elementor-kit/class/elements/options/class-testimonials-option.php:1781
+msgid "Bottom Position"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:417, jeg-elementor-kit/class/elements/class-element.php:786, jeg-elementor-kit/class/elements/class-element.php:1155, jeg-elementor-kit/class/elements/options/class-heading-option.php:648, jeg-elementor-kit/class/elements/options/class-heading-option.php:890, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:283, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:329, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:400, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:486, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:579, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:779, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:805, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:998, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:1074, jeg-elementor-kit/class/elements/options/class-post-block-option.php:1771, jeg-elementor-kit/class/elements/options/class-post-list-option.php:650, jeg-elementor-kit/class/elements/options/class-post-list-option.php:1385, jeg-elementor-kit/class/elements/options/class-product-categories-option.php:666, jeg-elementor-kit/class/elements/options/class-product-categories-option.php:713, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:505, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:551, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:610, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:696, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:777, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:1173, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:1233, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:1369
+msgid "Background Color"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:447, jeg-elementor-kit/class/elements/class-element.php:816, jeg-elementor-kit/class/elements/class-element.php:1185
+msgid "Scroll Threshold"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:464, jeg-elementor-kit/class/elements/class-element.php:833, jeg-elementor-kit/class/elements/class-element.php:1202
+msgid "X Axis Animation"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:497, jeg-elementor-kit/class/elements/class-element.php:866, jeg-elementor-kit/class/elements/class-element.php:1235
+msgid "Y Axis Animation"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:530, jeg-elementor-kit/class/elements/class-element.php:899, jeg-elementor-kit/class/elements/class-element.php:1268
+msgid "Transition"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:576, jeg-elementor-kit/class/elements/class-element.php:945, jeg-elementor-kit/class/elements/class-element.php:1314
+msgid "Z-Index"
+msgstr ""
+
+#: jeg-elementor-kit/class/elements/class-element.php:595, jeg-elementor-kit/class/elements/class-element.php:964, jeg-elementor-kit/class/elements/class-element.php:1333, jeg-elementor-kit/class/elements/options/class-accordion-option.php:183, jeg-elementor-kit/class/elements/options/class-accordion-option.php:364, jeg-elementor-kit/class/elements/options/class-accordion-option.php:414, jeg-elementor-kit/class/elements/options/class-accordion-option.php:475, jeg-elementor-kit/class/elements/options/class-accordion-option.php:854, jeg-elementor-kit/class/elements/options/class-accordion-option.php:948, jeg-elementor-kit/class/elements/options/class-accordion-option.php:1024, jeg-elementor-kit/class/elements/options/class-accordion-option.php:1098, jeg-elementor-kit/class/elements/options/class-accordion-option.php:1350, jeg-elementor-kit/class/elements/options/class-accordion-option.php:1498, jeg-elementor-kit/class/elements/options/class-accordion-option.php:1632, jeg-elementor-kit/class/elements/options/class-accordion-option.php:1863, jeg-elementor-kit/class/elements/options/class-accordion-option.php:2011, jeg-elementor-kit/class/elements/options/class-accordion-option.php:2145, jeg-elementor-kit/class/elements/options/class-button-option.php:441, jeg-elementor-kit/class/elements/options/class-button-option.php:459, jeg-elementor-kit/class/elements/options/class-contact-form-7-option.php:211, jeg-elementor-kit/class/elements/options/class-contact-form-7-option.php:894, jeg-elementor-kit/class/elements/options/class-countdown-option.php:547, jeg-elementor-kit/class/elements/options/class-countdown-option.php:628, jeg-elementor-kit/class/elements/options/class-countdown-option.php:687, jeg-elementor-kit/class/elements/options/class-countdown-option.php:903, jeg-elementor-kit/class/elements/options/class-countdown-option.php:984, jeg-elementor-kit/class/elements/options/class-countdown-option.php:1043, jeg-elementor-kit/class/elements/options/class-countdown-option.php:1259, jeg-elementor-kit/class/elements/options/class-countdown-option.php:1340, jeg-elementor-kit/class/elements/options/class-countdown-option.php:1399, jeg-elementor-kit/class/elements/options/class-countdown-option.php:1615, jeg-elementor-kit/class/elements/options/class-countdown-option.php:1696, jeg-elementor-kit/class/elements/options/class-countdown-option.php:1755, jeg-elementor-kit/class/elements/options/class-dual-button-option.php:865, jeg-elementor-kit/class/elements/options/class-fun-fact-option.php:604, jeg-elementor-kit/class/elements/options/class-fun-fact-option.php:856, jeg-elementor-kit/class/elements/options/class-gallery-option.php:939, jeg-elementor-kit/class/elements/options/class-gallery-option.php:1132, jeg-elementor-kit/class/elements/options/class-gallery-option.php:1783, jeg-elementor-kit/class/elements/options/class-gallery-option.php:2129, jeg-elementor-kit/class/elements/options/class-gallery-option.php:2223, jeg-elementor-kit/class/elements/options/class-heading-option.php:693, jeg-elementor-kit/class/elements/options/class-icon-box-option.php:1521, jeg-elementor-kit/class/elements/options/class-image-box-option.php:678, jeg-elementor-kit/class/elements/options/class-mailchimp-option.php:721, jeg-elementor-kit/class/elements/options/class-mailchimp-option.php:970, jeg-elementor-kit/class/elements/options/class-mailchimp-option.php:1028, jeg-elementor-kit/class/elements/options/class-nav-menu-option.php:1205, jeg-elementor-kit/class/elements/options/class-off-canvas-option.php:422, jeg-elementor-kit/class/elements/options/class-off-canvas-option.php:643, jeg-elementor-kit/class/elements/options/class-option-abstract.php:518, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:311, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:357, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:446, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:532, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:625, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:852, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:1026, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:1102, jeg-elementor-kit/class/elements/options/class-pie-chart-option.php:680, jeg-elementor-kit/class/elements/options/class-portfolio-gallery-option.php:324, jeg-elementor-kit/class/elements/options/class-portfolio-gallery-option.php:693, jeg-elementor-kit/class/elements/options/class-post-author-option.php:401, jeg-elementor-kit/class/elements/options/class-post-block-option.php:816, jeg-elementor-kit/class/elements/options/class-post-block-option.php:883, jeg-elementor-kit/class/elements/options/class-post-block-option.php:946, jeg-elementor-kit/class/elements/options/class-post-block-option.php:1016, jeg-elementor-kit/class/elements/options/class-post-block-option.php:1113, jeg-elementor-kit/class/elements/options/class-post-block-option.php:1234, jeg-elementor-kit/class/elements/options/class-post-featured-image-option.php:212, jeg-elementor-kit/class/elements/options/class-post-list-option.php:574, jeg-elementor-kit/class/elements/options/class-post-list-option.php:619, jeg-elementor-kit/class/elements/options/class-product-carousel-option.php:453, jeg-elementor-kit/class/elements/options/class-product-categories-option.php:695, jeg-elementor-kit/class/elements/options/class-product-categories-option.php:742, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:404, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:459, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:533, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:579, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:656, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:742, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:823, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:1038, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:1201, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:1261, jeg-elementor-kit/class/elements/options/class-search-option.php:374, jeg-elementor-kit/class/elements/options/class-search-option.php:575, jeg-elementor-kit/class/elements/options/class-search-option.php:635, jeg-elementor-kit/class/elements/options/class-search-option.php:816, jeg-elementor-kit/class/elements/options/class-search-option.php:886, jeg-elementor-kit/class/elements/options/class-search-option.php:1047, jeg-elementor-kit/class/elements/options/class-search-option.php:1104, jeg-elementor-kit/class/elements/options/class-tabs-option.php:430, jeg-elementor-kit/class/elements/options/class-tabs-option.php:762, jeg-elementor-kit/class/elements/options/class-tabs-option.php:987, jeg-elementor-kit/class/elements/options/class-tabs-option.php:1053, jeg-elementor-kit/class/elements/options/class-tabs-option.php:1103, jeg-elementor-kit/class/elements/options/class-tabs-option.php:1872, jeg-elementor-kit/class/elements/options/class-team-option.php:991, jeg-elementor-kit/class/elements/options/class-team-option.php:1651, jeg-elementor-kit/class/elements/options/class-team-option.php:1961, jeg-elementor-kit/class/elements/options/class-testimonials-option.php:711, jeg-elementor-kit/class/elements/options/class-testimonials-option.php:1701, jeg-elementor-kit/class/elements/options/class-video-button-option.php:708
+msgid "Box Shadow"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-accordion-option.php:48
@@ -3937,8 +3869,6 @@ msgid "Post Date Custom Format"
 msgstr ""
 
 #. translators: %s: https://wordpress.org/support/article/formatting-date-and-time/
-#. translators: %s: https://wordpress.org/support/article/formatting-date-and-time/
-#. translators: %s: https://wordpress.org/support/article/formatting-date-and-time/
 #: jeg-elementor-kit/class/elements/options/class-post-block-option.php:697, jeg-elementor-kit/class/elements/options/class-post-date-option.php:127, jeg-elementor-kit/class/elements/options/class-post-list-option.php:375
 msgid "Insert custom date format for single post meta. For more detail about this format, please refer to <a href=\"%s\" target=\"_blank\">Developer Codex</a>."
 msgstr ""
@@ -5040,7 +4970,6 @@ msgid "Dummy "
 msgstr ""
 
 #. translators: %s: rating
-#. translators: %s: rating
 #: jeg-elementor-kit/class/elements/views/class-product-carousel-view.php:195, jeg-elementor-kit/class/elements/views/class-product-grid-view.php:292
 msgid "Rated %s out of 5"
 msgstr ""
@@ -5077,275 +5006,21 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:388
-msgid "Partial render must echo the content or return the content string (or array), but not both."
+#: jeg-elementor-kit/helper.php:45
+msgid "edit post"
 msgstr ""
 
-#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:898
-msgid "Row"
+#. translators: 1: Time from now.
+#: jeg-elementor-kit/helper.php:101
+msgid "%s ago"
 msgstr ""
 
-#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:1356, jeg-elementor-kit/lib/jeg-framework/form/class-form-builder.php:110
-msgid "Clear"
+#: jeg-elementor-kit/helper.php:1057
+msgid "Rate Us"
 msgstr ""
 
-#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:1357
-msgid "Clear color"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:1359
-msgid "Select default color"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:1360
-msgid "Select color"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:1361
-msgid "Color value"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:1700, jeg-elementor-kit/lib/jeg-element/includes/class/option/sections/module_custom_post_type.php:27, jeg-elementor-kit/lib/jeg-element/includes/class/option/sections/module_meta.php:10
-msgid "Notice"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:1702
-msgid "To improve customizer load speed, we disable widget option on customizer for element."
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:1703
-msgid "You can still modify widget content from Widget Panel on Admin Page"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:1788
-msgid "Change you made not showing on this page.<br/> Do you want to be redirected to the appropriate page to see change you just made?"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:1789, jeg-elementor-kit/lib/jeg-element/includes/class/divi/class-divi-builder-abstract.php:105
+#: jeg-elementor-kit/lib/jeg-element/includes/class/divi/class-divi-builder-abstract.php:105, jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:1789
 msgid "Yes"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/form/class-custom-menu-walker.php:107
-msgid "Loading Option"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/form/class-form-builder.php:112
-msgid "Select Color"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/form/class-form-builder.php:113
-msgid "Current Color"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:90
-msgctxt "font style"
-msgid "Serif"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:94
-msgctxt "font style"
-msgid "Sans Serif"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:98
-msgctxt "font style"
-msgid "Monospace"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:174
-msgid "Cyrillic"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:175
-msgid "Cyrillic Extended"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:176
-msgid "Devanagari"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:177
-msgid "Greek"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:178
-msgid "Greek Extended"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:179
-msgid "Khmer"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:180
-msgid "Latin Extended"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:181
-msgid "Vietnamese"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:182
-msgid "Hebrew"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:183
-msgid "Arabic"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:184
-msgid "Bengali"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:185
-msgid "Gujarati"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:186
-msgid "Tamil"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:187
-msgid "Telugu"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:188
-msgid "Thai"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:201
-msgid "Ultra-Light 100"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:202
-msgid "Ultra-Light 100 Italic"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:203
-msgid "Light 200"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:204
-msgid "Light 200 Italic"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:205
-msgid "Book 300"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:206
-msgid "Book 300 Italic"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:207
-msgid "Normal 400"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:208
-msgid "Normal 400 Italic"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:209
-msgid "Medium 500"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:210
-msgid "Medium 500 Italic"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:211
-msgid "Semi-Bold 600"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:212
-msgid "Semi-Bold 600 Italic"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:213
-msgid "Bold 700"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:214
-msgid "Bold 700 Italic"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:215
-msgid "Extra-Bold 800"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:216
-msgid "Extra-Bold 800 Italic"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:217
-msgid "Ultra-Bold 900"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:218
-msgid "Ultra-Bold 900 Italic"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:65
-msgid "row"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:93
-msgid "Add new"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:127
-msgid "Select a Page"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:230
-msgid "Limit: %s rows"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:370, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:181
-msgid "Hex Value"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:395, jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:400, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:206, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:211
-msgid "No Image Selected"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:405, jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:441, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:216, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:252, jeg-elementor-kit/lib/jeg-framework/form/field/class-upload.php:47
-msgid "Remove"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:406, jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:410, jeg-elementor-kit/lib/jeg-framework/form/field/class-image.php:58, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:217, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:221
-msgid "Add Image"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:406, jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:408, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:217, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:219
-msgid "Change Image"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:431, jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:436, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:242, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:247, jeg-elementor-kit/lib/jeg-framework/form/field/class-upload.php:37, jeg-elementor-kit/lib/jeg-framework/form/field/class-upload.php:42
-msgid "No File Selected"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:442, jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:446, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:253, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:257, jeg-elementor-kit/lib/jeg-framework/form/field/class-upload.php:48, jeg-elementor-kit/lib/jeg-framework/form/field/class-upload.php:52
-msgid "Add File"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:442, jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:444, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:253, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:255, jeg-elementor-kit/lib/jeg-framework/form/field/class-upload.php:48, jeg-elementor-kit/lib/jeg-framework/form/field/class-upload.php:50
-msgid "Change File"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:460, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:284
-msgid "delete"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-spacing.php:76
-msgid "Value Invalid"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-typography.php:80
-msgid "Select Font Family"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-framework/form/field/class-image.php:60
-msgid "Remove Image"
 msgstr ""
 
 #: jeg-elementor-kit/lib/jeg-element/includes/class/divi/class-divi-builder-abstract.php:106
@@ -5558,16 +5233,8 @@ msgstr ""
 msgid "Module Global Font"
 msgstr ""
 
-#: jeg-elementor-kit/lib/jeg-element/includes/class/shortcode/class-shortcode-generator.php:123
-msgid "Shortcode Generator"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-element/includes/class/shortcode/class-shortcode-generator.php:125
-msgid "Generate"
-msgstr ""
-
-#: jeg-elementor-kit/lib/jeg-element/includes/class/wpbakery/class-wpbakery-integration.php:361
-msgid "Select File"
+#: jeg-elementor-kit/lib/jeg-element/includes/class/option/sections/module_custom_post_type.php:27, jeg-elementor-kit/lib/jeg-element/includes/class/option/sections/module_meta.php:10, jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:1700
+msgid "Notice"
 msgstr ""
 
 #: jeg-elementor-kit/lib/jeg-element/includes/class/option/sections/module_custom_post_type.php:28
@@ -5708,4 +5375,347 @@ msgstr ""
 
 #: jeg-elementor-kit/lib/jeg-element/includes/class/option/sections/module_meta.php:99
 msgid "Show comment icon on meta block"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-element/includes/class/shortcode/class-shortcode-generator.php:123
+msgid "Shortcode Generator"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-element/includes/class/shortcode/class-shortcode-generator.php:125
+msgid "Generate"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-element/includes/class/wpbakery/class-wpbakery-integration.php:361
+msgid "Select File"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:388
+msgid "Partial render must echo the content or return the content string (or array), but not both."
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:898
+msgid "Row"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:1356, jeg-elementor-kit/lib/jeg-framework/form/class-form-builder.php:110
+msgid "Clear"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:1357
+msgid "Clear color"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:1359
+msgid "Select default color"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:1360
+msgid "Select color"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:1361
+msgid "Color value"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:1702
+msgid "To improve customizer load speed, we disable widget option on customizer for element."
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:1703
+msgid "You can still modify widget content from Widget Panel on Admin Page"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:1788
+msgid "Change you made not showing on this page.<br/> Do you want to be redirected to the appropriate page to see change you just made?"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:65
+msgid "row"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:93
+msgid "Add new"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:127
+msgid "Select a Page"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:230
+msgid "Limit: %s rows"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:370, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:181
+msgid "Hex Value"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:395, jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:400, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:206, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:211
+msgid "No Image Selected"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:405, jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:441, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:216, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:252, jeg-elementor-kit/lib/jeg-framework/form/field/class-upload.php:47
+msgid "Remove"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:406, jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:410, jeg-elementor-kit/lib/jeg-framework/form/field/class-image.php:58, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:217, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:221
+msgid "Add Image"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:406, jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:408, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:217, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:219
+msgid "Change Image"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:431, jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:436, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:242, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:247, jeg-elementor-kit/lib/jeg-framework/form/field/class-upload.php:37, jeg-elementor-kit/lib/jeg-framework/form/field/class-upload.php:42
+msgid "No File Selected"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:442, jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:446, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:253, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:257, jeg-elementor-kit/lib/jeg-framework/form/field/class-upload.php:48, jeg-elementor-kit/lib/jeg-framework/form/field/class-upload.php:52
+msgid "Add File"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:442, jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:444, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:253, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:255, jeg-elementor-kit/lib/jeg-framework/form/field/class-upload.php:48, jeg-elementor-kit/lib/jeg-framework/form/field/class-upload.php:50
+msgid "Change File"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-repeater.php:460, jeg-elementor-kit/lib/jeg-framework/form/field/class-repeater.php:284
+msgid "delete"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-spacing.php:76
+msgid "Value Invalid"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/customizer/control/class-typography.php:80
+msgid "Select Font Family"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/form/class-custom-menu-walker.php:107
+msgid "Loading Option"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/form/class-form-builder.php:112
+msgid "Select Color"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/form/class-form-builder.php:113
+msgid "Current Color"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/form/field/class-image.php:60
+msgid "Remove Image"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:90
+msgctxt "font style"
+msgid "Serif"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:94
+msgctxt "font style"
+msgid "Sans Serif"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:98
+msgctxt "font style"
+msgid "Monospace"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:174
+msgid "Cyrillic"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:175
+msgid "Cyrillic Extended"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:176
+msgid "Devanagari"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:177
+msgid "Greek"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:178
+msgid "Greek Extended"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:179
+msgid "Khmer"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:180
+msgid "Latin Extended"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:181
+msgid "Vietnamese"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:182
+msgid "Hebrew"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:183
+msgid "Arabic"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:184
+msgid "Bengali"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:185
+msgid "Gujarati"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:186
+msgid "Tamil"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:187
+msgid "Telugu"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:188
+msgid "Thai"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:201
+msgid "Ultra-Light 100"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:202
+msgid "Ultra-Light 100 Italic"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:203
+msgid "Light 200"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:204
+msgid "Light 200 Italic"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:205
+msgid "Book 300"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:206
+msgid "Book 300 Italic"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:207
+msgid "Normal 400"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:208
+msgid "Normal 400 Italic"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:209
+msgid "Medium 500"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:210
+msgid "Medium 500 Italic"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:211
+msgid "Semi-Bold 600"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:212
+msgid "Semi-Bold 600 Italic"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:213
+msgid "Bold 700"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:214
+msgid "Bold 700 Italic"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:215
+msgid "Extra-Bold 800"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:216
+msgid "Extra-Bold 800 Italic"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:217
+msgid "Ultra-Bold 900"
+msgstr ""
+
+#: jeg-elementor-kit/lib/jeg-framework/util/class-font.php:218
+msgid "Ultra-Bold 900 Italic"
+msgstr ""
+
+#: jeg-elementor-kit/templates/banner/notice-banner.php:6
+msgid "Jeg Elementor Kit Updated!"
+msgstr ""
+
+#: jeg-elementor-kit/templates/banner/notice-banner.php:7
+msgid "Hi there! Thanks for updating and sticking with the Jeg Elementor Kit. We hope our plugin is proving helpful in building your website. If you can spare a few moments, please let us know what you think of Jeg Elementor Kit by leaving a rating, we'd be super grateful — Thanks a lot!"
+msgstr ""
+
+#: jeg-elementor-kit/templates/banner/notice-banner.php:11
+msgid "Yes, You deserve"
+msgstr ""
+
+#: jeg-elementor-kit/templates/banner/notice-banner.php:18
+msgid "No, Thank You"
+msgstr ""
+
+#: jeg-elementor-kit/templates/dashboard/dashboard-elements.php:19
+msgid "Enable All"
+msgstr ""
+
+#: jeg-elementor-kit/templates/dashboard/dashboard-elements.php:22
+msgid "Disable All"
+msgstr ""
+
+#: jeg-elementor-kit/templates/dashboard/dashboard-elements.php:52, jeg-elementor-kit/templates/dashboard/dashboard-notfound.php:56, jeg-elementor-kit/templates/dashboard/dashboard-settings.php:58, jeg-elementor-kit/templates/dashboard/dashboard-user-data.php:34
+msgid "Save Changes"
+msgstr ""
+
+#: jeg-elementor-kit/templates/dashboard/dashboard-notfound.php:29
+msgid "404 Template"
+msgstr ""
+
+#: jeg-elementor-kit/templates/dashboard/dashboard-notfound.php:34
+msgid "Choose 404 Template"
+msgstr ""
+
+#: jeg-elementor-kit/templates/dashboard/dashboard-notfound.php:36
+msgid "Default From Theme"
+msgstr ""
+
+#: jeg-elementor-kit/templates/dashboard/dashboard-notfound.php:49
+msgid "Choose which page that you want to set as a 404 page."
+msgstr ""
+
+#: jeg-elementor-kit/templates/dashboard/dashboard-settings.php:30
+msgid "Global Style"
+msgstr ""
+
+#: jeg-elementor-kit/templates/dashboard/dashboard-settings.php:35
+msgid "Choose Global Style"
+msgstr ""
+
+#: jeg-elementor-kit/templates/dashboard/dashboard-settings.php:51
+msgid "Here you can switch the Elementor global style."
+msgstr ""
+
+#: jeg-elementor-kit/templates/dashboard/dashboard-user-data.php:20
+msgid "Mailchimp"
+msgstr ""
+
+#: jeg-elementor-kit/templates/dashboard/dashboard-user-data.php:25
+msgid "API Key"
+msgstr ""
+
+#: jeg-elementor-kit/templates/dashboard/dashboard-user-data.php:27
+msgid "Insert your Mailchimp API key. For more info, you can check out this <a href=\"%s\" target=\"_blank\">article</a>."
 msgstr ""
