@@ -432,7 +432,7 @@ class Element {
 				'type'         => Controls_Manager::SWITCHER,
 				'return_value' => 'hide-on-scroll',
 				'selectors'    => array(
-					'{{WRAPPER}}.elementor-column.jkit-sticky-element--enabled.sticky-pinned.hide-sticky' => 'opacity: 0; transform: translate(var(--x-axis-animations, 0), var(--y-axis-animations, 0));',
+					'{{WRAPPER}}.elementor-column.jkit-sticky-element--enabled.sticky-pinned.hide-sticky' => 'opacity: 0; pointer-events: none; cursor: default; transform: translate(var(--x-axis-animations, 0), var(--y-axis-animations, 0));',
 				),
 				'prefix_class' => 'jkit-sticky-element--',
 				'condition'    => array(
@@ -801,7 +801,7 @@ class Element {
 				'type'         => Controls_Manager::SWITCHER,
 				'return_value' => 'hide-on-scroll',
 				'selectors'    => array(
-					'{{WRAPPER}}.elementor-section.jkit-sticky-element--enabled.sticky-pinned.hide-sticky' => 'opacity: 0; transform: translate(var(--x-axis-animations, 0), var(--y-axis-animations, 0));',
+					'{{WRAPPER}}.elementor-section.jkit-sticky-element--enabled.sticky-pinned.hide-sticky' => 'opacity: 0; pointer-events: none; cursor: default; transform: translate(var(--x-axis-animations, 0), var(--y-axis-animations, 0));',
 				),
 				'prefix_class' => 'jkit-sticky-element--',
 				'condition'    => array(
@@ -1170,7 +1170,7 @@ class Element {
 				'type'         => Controls_Manager::SWITCHER,
 				'return_value' => 'hide-on-scroll',
 				'selectors'    => array(
-					'{{WRAPPER}}.elementor-element.e-flex.jkit-sticky-element--enabled.sticky-pinned.hide-sticky' => 'opacity: 0; transform: translate(var(--x-axis-animations, 0), var(--y-axis-animations, 0));',
+					'{{WRAPPER}}.elementor-element.e-flex.jkit-sticky-element--enabled.sticky-pinned.hide-sticky' => 'opacity: 0; pointer-events: none; cursor: default; transform: translate(var(--x-axis-animations, 0), var(--y-axis-animations, 0));',
 				),
 				'prefix_class' => 'jkit-sticky-element--',
 				'condition'    => array(

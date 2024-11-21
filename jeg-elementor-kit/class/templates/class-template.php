@@ -72,7 +72,7 @@ class Template {
 	 * Enqueue Styles
 	 */
 	public function enqueue_styles() {
-		if ( class_exists( '\Elementor\Plugin' ) ) {
+		if ( class_exists( '\Elementor\Plugin' ) && ! empty( \Elementor\Plugin::$instance->frontend ) ) {
 			\Elementor\Plugin::$instance->frontend->enqueue_styles();
 		}
 	}
@@ -298,10 +298,8 @@ class Template {
 			if ( ! $flag ) {
 				return false;
 			}
-		} else {
-			if ( $flag ) {
+		} elseif ( $flag ) {
 				return false;
-			}
 		}
 
 		return true;
@@ -317,10 +315,8 @@ class Template {
 			if ( ! $flag ) {
 				return false;
 			}
-		} else {
-			if ( $flag ) {
+		} elseif ( $flag ) {
 				return false;
-			}
 		}
 
 		return true;
@@ -346,10 +342,8 @@ class Template {
 			if ( empty( $flag ) ) {
 				return false;
 			}
-		} else {
-			if ( $flag ) {
+		} elseif ( $flag ) {
 				return false;
-			}
 		}
 
 		return true;
@@ -368,10 +362,8 @@ class Template {
 				if ( empty( $flag ) ) {
 					return false;
 				}
-			} else {
-				if ( $flag ) {
+			} elseif ( $flag ) {
 					return false;
-				}
 			}
 		}
 

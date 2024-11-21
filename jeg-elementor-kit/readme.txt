@@ -2,9 +2,9 @@
 Contributors: Jegtheme
 Tags: elementor, elements, addons, widgets, templates
 Requires at least: 5.0
-Tested up to: 6.6.2
+Tested up to: 6.7
 Requires PHP: 7.0
-Stable tag: 2.6.9
+Stable tag: 2.6.10
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -34,7 +34,7 @@ We include widgets that you can customize to your as you want.
 - **Animated Text**. Text widget that using rotating, highlight, and gradient animation.
 - **Countdown**. Countdown to show your contents of future events.
 - **Button**. Add button with customizable style.
-- **Video Button**. Add button with Youtube or Vimeo video pop up on click.
+- **Video Button**. Add button with YouTube or Vimeo video pop up on click.
 - **Post List**. Select some posts to show it on a list.
 - **Category List**. Select some categories to show it on a list.
 - **Mailchimp**. Provide sign up form to your users. You can manage mailing list, automated mailing, newsletter, and many other options with mailchimp.
@@ -68,10 +68,6 @@ We include widgets that you can customize to your as you want.
 - **Header and Footer Template**. Create Header or Footer template for the entire site or with specific conditions.
 - **404 Template**. Choose your 404 Template for your site.
 
-== EXPLORE OUR OTHER AMAZING PRODUCT ==
-
-- **[Gutenverse – Gutenberg Blocks Page Builder for FSE/Full Site Editor](https://wordpress.org/plugins/gutenverse/)** - Mix-and-Match your website with 45+ easy-to-use blocks and pre-build templates library, Build your dream website with ease.
-
 == Frequently Asked Questions ==
 
 **Is this plugin require any plugin to be installed?**
@@ -93,7 +89,21 @@ https://elementor.com/help/requirements/ Also you can disable some widgets that 
 
 == Changelog ==
 
-= 2.6.9 - 09-15-2024 =
+= 2.6.10 - 21-11-2024 =
+* Improvement: Security issues
+* Improvement: Add Overflow Hidden Option in Off-Canvas widget
+* Improvement: Add the Dynamic Tag feature to the Textarea, Media, and Text (default) control types
+* Fix: Header and Footer templates not working with Polylang
+* Fix: Add To Cart Button not showing after pagination in Product Grid widget
+* Fix: Empty Class Elementor Frontend issues
+* Fix: Pencil Icon feature from Astra theme not working on customizer
+* Fix: Sticky Element not completely hidden when scrolling down
+* Fix: Anchor menu not working
+* Fix: YouTube Short URLs not working in Video Button widget
+* Tweak: Add Description for Sub Menu Click On Text option in Nav Menu widget
+* Tweak: Remove Gutenverse Banner
+
+= 2.6.9 - 15-09-2024 =
 * Improvement: Security issues
 * Fix: JavaScript not working due to Elementor Update version 3.24.0
 * Tweak: Add Label for Jeg Elementor Kit Custom Post Type
@@ -320,7 +330,7 @@ https://elementor.com/help/requirements/ Also you can disable some widgets that 
 * Improvement: Add a Icon Position option for the Icon Box widget
 * Improvement: Update popup label text
 * Improvement: Add Responsive option in Sticky elements
-* Improvement: Add Mute option for youtube videos in Video Button widget
+* Improvement: Add Mute option for YouTube videos in Video Button widget
 * Improvement: Add a Description, Button Link, Animation and Transition option in Tabs widget
 * Improvement: Add a more option for Accordion widget
 * Improvement: Add Column Default value for Tablet and Mobile in Post Block widget

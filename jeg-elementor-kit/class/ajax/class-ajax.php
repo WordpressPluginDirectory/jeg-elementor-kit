@@ -522,7 +522,7 @@ class Ajax {
 				$post_args['meta_input']['_wp_page_template']  = 'elementor_header_footer';
 				$post_args['meta_input']['jkit-template-type'] = $page;
 				$meta = $page;
-			};
+			}
 
 			$post_id = wp_insert_post( $post_args );
 

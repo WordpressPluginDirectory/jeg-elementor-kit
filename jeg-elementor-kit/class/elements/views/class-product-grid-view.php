@@ -111,6 +111,7 @@ class Product_Grid_View extends View_WooCommerce_Abstract {
 			'pagination_icon_position',
 			'sg_content_column',
 			'sg_content_show_element',
+			'sg_content_show_button',
 			'sg_content_sorting',
 			'sg_content_image_heading',
 			'sg_content_image_size',

@@ -36,7 +36,6 @@ abstract class Template_Dashboard_Abstract {
 		wp_register_script( 'jkit-dashboard-template', JEG_ELEMENTOR_KIT_URL . '/assets/js/dashboard/dashboard-template.js', array( 'underscore', 'jquery', 'jquery-ui-draggable', 'jquery-ui-sortable', 'jkit-dashboard-container', 'notiflix' ), JEG_ELEMENTOR_KIT_VERSION, true );
 		wp_localize_script( 'jkit-dashboard-template', 'JKitTemplateConfig', $this->config() );
 		wp_enqueue_script( 'jkit-dashboard-template' );
-
 	}
 
 	/**
@@ -364,7 +363,7 @@ abstract class Template_Dashboard_Abstract {
 				'title'       => esc_html__( 'Language', 'jeg-elementor-kit' ),
 				'description' => esc_html__( 'Select the language for the template.', 'jeg-elementor-kit' ),
 				'options'     => call_user_func(
-					function() {
+					function () {
 						$languages = jkit_get_languages();
 						$options = array( '' => esc_html__( 'All Language', 'jeg-elementor-kit' ) );
 
@@ -520,5 +519,4 @@ abstract class Template_Dashboard_Abstract {
 			'loading'         => esc_html__( 'Loading...', 'jeg-elementor-kit' ),
 		);
 	}
-
 }

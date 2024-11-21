@@ -159,6 +159,12 @@ class Elementor_Kit_Abstract extends Elementor_Abstract {
 							'separator'   => isset( $option['separator'] ) ? $option['separator'] : '',
 						);
 
+						$args['dynamic']['active'] = true;
+
+						if ( isset( $option['dynamic'] ) ) {
+							$args['dynamic']['active'] = $option['dynamic'];
+						}
+
 						if ( isset( $option['dependency'] ) ) {
 							if ( isset( $option['dependency']['custom'] ) ) {
 								$args['conditions'] = $option['dependency']['custom'];
@@ -215,22 +221,20 @@ class Elementor_Kit_Abstract extends Elementor_Abstract {
 							} else {
 								$repeater->add_control( $id, $args );
 							}
-						} else {
-							if ( isset( $option['responsive'] ) && $option['responsive'] ) {
+						} elseif ( isset( $option['responsive'] ) && $option['responsive'] ) {
 								$default_value = isset( $option['default'] ) ? $option['default'] : '';
 
 								$args['desktop_default'] = $default_value;
 
-								foreach ( jkit_get_responsive_breakpoints() as $breakpoint ) {
-									if ( isset( $option[ $breakpoint['key'] . '_default' ] ) ) {
-										$args[ $breakpoint['key'] . '_default' ] = $option[ $breakpoint['key'] . '_default' ];
-									}
+							foreach ( jkit_get_responsive_breakpoints() as $breakpoint ) {
+								if ( isset( $option[ $breakpoint['key'] . '_default' ] ) ) {
+									$args[ $breakpoint['key'] . '_default' ] = $option[ $breakpoint['key'] . '_default' ];
 								}
+							}
 
 								$this->add_responsive_control( $id . '_responsive', $args, array( 'position' => isset( $option['position'] ) ? $option['position'] : null ) );
-							} else {
-								$this->add_control( $id, $args );
-							}
+						} else {
+							$this->add_control( $id, $args );
 						}
 
 						break;
@@ -290,6 +294,12 @@ class Elementor_Kit_Abstract extends Elementor_Abstract {
 							);
 						}
 
+						$args['dynamic']['active'] = true;
+
+						if ( isset( $option['dynamic'] ) ) {
+							$args['dynamic']['active'] = $option['dynamic'];
+						}
+
 						if ( isset( $option['dependency'] ) ) {
 							if ( isset( $option['dependency']['custom'] ) ) {
 								$args['conditions'] = $option['dependency']['custom'];
@@ -343,6 +353,10 @@ class Elementor_Kit_Abstract extends Elementor_Abstract {
 
 						if ( isset( $option['render_type'] ) ) {
 							$args['render_type'] = $option['render_type'];
+						}
+
+						if ( isset( $option['frontend_available'] ) ) {
+							$args['frontend_available'] = $option['frontend_available'];
 						}
 
 						if ( $repeater_options ) {
@@ -418,8 +432,7 @@ class Elementor_Kit_Abstract extends Elementor_Abstract {
 							} else {
 								$repeater->add_control( $id, $args );
 							}
-						} else {
-							if ( isset( $option['responsive'] ) && $option['responsive'] ) {
+						} elseif ( isset( $option['responsive'] ) && $option['responsive'] ) {
 								$default_unit = isset( $option['default_unit'] ) ? $option['default_unit'] : 'px';
 								$default_size = isset( $option['default'] ) ? $option['default'] : '';
 
@@ -442,9 +455,8 @@ class Elementor_Kit_Abstract extends Elementor_Abstract {
 								}
 
 								$this->add_responsive_control( $id . '_responsive', $args, array( 'position' => isset( $option['position'] ) ? $option['position'] : null ) );
-							} else {
-								$this->add_control( $id, $args );
-							}
+						} else {
+							$this->add_control( $id, $args );
 						}
 
 						break;
@@ -488,22 +500,20 @@ class Elementor_Kit_Abstract extends Elementor_Abstract {
 							} else {
 								$repeater->add_control( $id, $args );
 							}
-						} else {
-							if ( isset( $option['responsive'] ) && $option['responsive'] ) {
+						} elseif ( isset( $option['responsive'] ) && $option['responsive'] ) {
 								$default_value = isset( $option['default'] ) ? $option['default'] : '';
 
 								$args['desktop_default'] = $default_value;
 
-								foreach ( jkit_get_responsive_breakpoints() as $breakpoint ) {
-									if ( isset( $option[ $breakpoint['key'] . '_default' ] ) ) {
-										$args[ $breakpoint['key'] . '_default' ] = $option[ $breakpoint['key'] . '_default' ];
-									}
+							foreach ( jkit_get_responsive_breakpoints() as $breakpoint ) {
+								if ( isset( $option[ $breakpoint['key'] . '_default' ] ) ) {
+									$args[ $breakpoint['key'] . '_default' ] = $option[ $breakpoint['key'] . '_default' ];
 								}
+							}
 
 								$this->add_responsive_control( $id . '_responsive', $args, array( 'position' => isset( $option['position'] ) ? $option['position'] : null ) );
-							} else {
-								$this->add_control( $id, $args );
-							}
+						} else {
+							$this->add_control( $id, $args );
 						}
 
 						break;
@@ -682,22 +692,20 @@ class Elementor_Kit_Abstract extends Elementor_Abstract {
 							} else {
 								$repeater->add_control( $id, $args );
 							}
-						} else {
-							if ( isset( $option['responsive'] ) && $option['responsive'] ) {
+						} elseif ( isset( $option['responsive'] ) && $option['responsive'] ) {
 								$default_value = isset( $option['default'] ) ? $option['default'] : '';
 
 								$args['desktop_default'] = $default_value;
 
-								foreach ( jkit_get_responsive_breakpoints() as $breakpoint ) {
-									if ( isset( $option[ $breakpoint['key'] . '_default' ] ) ) {
-										$args[ $breakpoint['key'] . '_default' ] = $option[ $breakpoint['key'] . '_default' ];
-									}
+							foreach ( jkit_get_responsive_breakpoints() as $breakpoint ) {
+								if ( isset( $option[ $breakpoint['key'] . '_default' ] ) ) {
+									$args[ $breakpoint['key'] . '_default' ] = $option[ $breakpoint['key'] . '_default' ];
 								}
+							}
 
 								$this->add_responsive_control( $id . '_responsive', $args, array( 'position' => isset( $option['position'] ) ? $option['position'] : null ) );
-							} else {
-								$this->add_control( $id, $args );
-							}
+						} else {
+							$this->add_control( $id, $args );
 						}
 
 						break;
@@ -1063,22 +1071,20 @@ class Elementor_Kit_Abstract extends Elementor_Abstract {
 							} else {
 								$repeater->add_control( $id, $args );
 							}
-						} else {
-							if ( isset( $option['responsive'] ) && $option['responsive'] ) {
+						} elseif ( isset( $option['responsive'] ) && $option['responsive'] ) {
 								$default_value = isset( $option['default'] ) ? $option['default'] : '';
 
 								$args['desktop_default'] = $default_value;
 
-								foreach ( jkit_get_responsive_breakpoints() as $breakpoint ) {
-									if ( isset( $option[ $breakpoint['key'] . '_default' ] ) ) {
-										$args[ $breakpoint['key'] . '_default' ] = $option[ $breakpoint['key'] . '_default' ];
-									}
+							foreach ( jkit_get_responsive_breakpoints() as $breakpoint ) {
+								if ( isset( $option[ $breakpoint['key'] . '_default' ] ) ) {
+									$args[ $breakpoint['key'] . '_default' ] = $option[ $breakpoint['key'] . '_default' ];
 								}
+							}
 
 								$this->add_responsive_control( $id . '_responsive', $args, array( 'position' => isset( $option['position'] ) ? $option['position'] : null ) );
-							} else {
-								$this->add_control( $id, $args );
-							}
+						} else {
+							$this->add_control( $id, $args );
 						}
 
 						break;
@@ -1217,6 +1223,12 @@ class Elementor_Kit_Abstract extends Elementor_Abstract {
 							'description' => isset( $option['description'] ) ? $option['description'] : '',
 							'separator'   => isset( $option['separator'] ) ? $option['separator'] : '',
 						);
+
+						$args['dynamic']['active'] = true;
+
+						if ( isset( $option['dynamic'] ) ) {
+							$args['dynamic']['active'] = $option['dynamic'];
+						}
 
 						if ( isset( $option['dependency'] ) ) {
 							if ( isset( $option['dependency']['custom'] ) ) {

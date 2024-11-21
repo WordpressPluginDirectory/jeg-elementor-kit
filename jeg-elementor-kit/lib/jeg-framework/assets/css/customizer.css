@@ -1671,11 +1671,6 @@ span.CodeMirror-selectedtext {
   border-left: 0 !important;
 }
 
-/* fix dropdown overlap */
-#customize-theme-controls .customize-pane-child.accordion-section-content {
-  min-height: 100%;
-}
-
 .customize-control select {
   width: 100%;
   font-family: inherit;

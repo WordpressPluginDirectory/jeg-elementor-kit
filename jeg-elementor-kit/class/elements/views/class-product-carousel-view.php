@@ -65,7 +65,6 @@ class Product_Carousel_View extends View_WooCommerce_Abstract {
 		$wrapper = '<div class="woocommerce">' . $wrapper . '</div>';
 
 		return $wrapper;
-
 	}
 
 	public function build_column( $results ) {

@@ -1,3 +1,9 @@
+=== 1.3.3 ==
+- [BUG] Fix Pencil Icon feature not working on customizer from Astra theme
+
+=== 1.3.2 ==
+- [BUG] Fix conflict with some other plugins due to bootstrap library
+
 === 1.3.1 ==
 - [BUG] Fix customizer issue with XStore Core Plugin on Customizer
 

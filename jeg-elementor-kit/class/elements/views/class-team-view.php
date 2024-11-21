@@ -200,5 +200,4 @@ class Team_View extends View_Abstract {
 
 		return $border_bottom;
 	}
-
 }

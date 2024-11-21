@@ -376,7 +376,7 @@ class Dashboard {
 					if ( isset( $menu['action'] ) ) {
 						call_user_func( $menu['action'] );
 					}
-					$self->render_sidebar();
+					// $self->render_sidebar();
 				}
 			);
 

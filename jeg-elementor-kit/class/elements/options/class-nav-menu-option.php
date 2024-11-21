@@ -363,10 +363,11 @@ class Nav_Menu_Option extends Option_Abstract {
 		);
 
 		$this->options['sg_mobile_menu_submenu_click'] = array(
-			'type'    => 'checkbox',
-			'title'   => esc_html__( 'Sub Menu Click On Text', 'jeg-elementor-kit' ),
-			'default' => 'yes',
-			'segment' => 'segment_mobile_menu',
+			'type'        => 'checkbox',
+			'title'       => esc_html__( 'Sub Menu Click On Text', 'jeg-elementor-kit' ),
+			'default'     => 'yes',
+			'segment'     => 'segment_mobile_menu',
+			'description' => esc_html( 'Enable this option to open the Sub-Menu by clicking the Text (All area of menu). Disable this option to open the Sub-Menu by clicking only the Icon.', 'jeg-elementor-kit' ),
 		);
 	}
 

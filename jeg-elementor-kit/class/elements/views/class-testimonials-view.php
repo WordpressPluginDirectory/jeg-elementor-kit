@@ -176,19 +176,17 @@ class Testimonials_View extends View_Abstract {
 				'<div class="comment-header"><ul class="rating-stars">' . $rating_stars . '</ul></div>
                 <div class="comment-bio">' . $bio_details . $icon_content . '</div>
                 <div class="comment-content"><p>' . $client_review . '</p></div>';
-			} else {
-				if ( 'yes' === $override_quote_position ) {
+			} elseif ( 'yes' === $override_quote_position ) {
 					$content =
 					$icon_content . '
                     <div class="comment-content"><p>' . $client_review . '</p></div>
                     <div class="comment-header"><ul class="rating-stars">' . $rating_stars . '</ul></div>
                     <div class="comment-bio">' . $bio_details . '</div>';
-				} else {
-					$content =
-					'<div class="comment-content"><p>' . $client_review . '</p></div>
+			} else {
+				$content =
+				'<div class="comment-content"><p>' . $client_review . '</p></div>
                     <div class="comment-header"><ul class="rating-stars">' . $rating_stars . '</ul></div>
                     <div class="comment-bio">' . $bio_details . $icon_content . '</div>';
-				}
 			}
 
 			$testimonials = $testimonials .

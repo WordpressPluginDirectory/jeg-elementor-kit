@@ -872,7 +872,6 @@ class Option_Abstract extends Elements_Option_Abstract {
 			}
 		}
 		return $this->global_style_options;
-
 	}
 
 	/**

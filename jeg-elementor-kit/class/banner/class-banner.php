@@ -9,7 +9,7 @@
 
 namespace Jeg\Elementor_Kit\Banner;
 
-use \Jeg\Elementor_Kit\Init;
+use Jeg\Elementor_Kit\Init;
 
 /**
  * Class Banner
@@ -77,7 +77,7 @@ class Banner {
 	public function register_active_banner() {
 		$option = get_option( $this->option_name, true );
 
-		if ( 'review' !== $option && ! ! $option ) {
+		if ( 'review' !== $option && (bool) $option ) {
 			update_option( $this->option_name, true );
 		}
 	}
@@ -107,7 +107,7 @@ class Banner {
 			return false;
 		}
 
-		return ! ! $option;
+		return (bool) $option;
 	}
 
 	/**

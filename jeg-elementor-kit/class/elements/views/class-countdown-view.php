@@ -114,7 +114,7 @@ class Countdown_View extends View_Abstract {
 			$data['expired-title']   = esc_attr( $this->attribute['sg_expire_title'] );
 			$data['expired-content'] = esc_attr( $this->attribute['sg_expire_content'] );
 		} elseif ( 'redirect' === $type ) {
-			$data['redirect-link']  = esc_attr( $this->attribute['sg_expire_link'] );
+			$data['redirect-link']  = esc_url( $this->attribute['sg_expire_link'] );
 			$data['iframe-content'] = esc_html__( 'Your page will be redirected on frontend', 'jeg-elementor-kit' );
 		} elseif ( 'template' === $type ) {
 			$template         = Plugin::$instance->frontend->get_builder_content( $this->attribute['sg_expire_template'], true );

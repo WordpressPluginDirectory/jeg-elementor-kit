@@ -106,7 +106,13 @@ class Tabs_View extends View_Abstract {
 			if ( 'content' === $content_type ) {
 				$content .= '<div class="tab-content ' . $tab_id . ' ' . $active . '">' . wp_kses_post( $list['sg_content_text'] ) . '</div>';
 			} elseif ( 'template' === $content_type ) {
-				$content .= '<div class="tab-content ' . $tab_id . ' ' . $active . '">' . Plugin::$instance->frontend->get_builder_content( $list['sg_content_template'], true ) . '</div>';
+				$available_templates = jkit_get_elementor_saved_template_option();
+
+				if ( ! empty( $available_templates ) && array_key_exists( $list['sg_content_template'], $available_templates ) ) {
+					$template = Plugin::$instance->frontend->get_builder_content( $list['sg_content_template'], true );
+				}
+
+				$content .= '<div class="tab-content ' . $tab_id . ' ' . $active . '">' . $template . '</div>';
 			}
 		}
 

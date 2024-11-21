@@ -341,6 +341,10 @@ if ( ! function_exists( 'jkit_get_element' ) ) {
 			'post_status' => $status,
 		);
 
+		if ( jkit_is_multilanguage() ) {
+			$args['lang'] = '';
+		}
+
 		if ( $meta ) {
 			$args['meta_query'] = array(
 				array(
@@ -508,7 +512,7 @@ if ( ! function_exists( 'jkit_get_responsive_breakpoints' ) ) {
 
 		usort(
 			$breakpoints,
-			function( $a, $b ) {
+			function ( $a, $b ) {
 				return $b['value'] - $a['value'];
 			}
 		);

@@ -115,6 +115,13 @@ class Off_Canvas_Option extends Option_Abstract {
 			'options' => jkit_get_elementor_saved_template_option(),
 		);
 
+		$this->options['sg_setting_overflow_hidden'] = array(
+			'type'               => 'checkbox',
+			'title'              => esc_html__( 'Overflow Hidden', 'jeg-elementor-kit' ),
+			'segment'            => 'segment_setting',
+			'frontend_available' => true,
+		);
+
 		$this->options['sg_setting_overlay_color'] = array(
 			'type'      => 'background',
 			'title'     => esc_html__( 'Overlay Color', 'jeg-elementor-kit' ),

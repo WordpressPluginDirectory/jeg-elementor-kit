@@ -42,12 +42,10 @@ class Social_Share_View extends View_Abstract {
 				$label_icon = $this->render_icon_element( $social['sg_social_icon'] );
 			} elseif ( 'text' === $style ) {
 				$label_icon = $label;
-			} else {
-				if ( 'before' === $icon_position ) {
+			} elseif ( 'before' === $icon_position ) {
 					$label_icon = '<span class="icon-position-' . $icon_position . '">' . $this->render_icon_element( $social['sg_social_icon'] ) . $label . '</span>';
-				} else {
-					$label_icon = '<span class="icon-position-' . $icon_position . '">' . $label . $this->render_icon_element( $social['sg_social_icon'] ) . '</span>';
-				}
+			} else {
+				$label_icon = '<span class="icon-position-' . $icon_position . '">' . $label . $this->render_icon_element( $social['sg_social_icon'] ) . '</span>';
 			}
 
 			if ( 'gradient' === $social['sg_social_normal_background_background_background'] || 'gradient' === $social['sg_social_hover_background_background_background'] || 'gradient' === $this->attribute['st_social_normal_background_background_background'] || 'gradient' === $this->attribute['st_social_hover_background_background_background'] ) {

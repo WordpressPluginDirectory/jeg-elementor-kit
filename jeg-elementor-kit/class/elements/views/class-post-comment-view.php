@@ -24,7 +24,7 @@ class Post_Comment_View extends View_Abstract {
 		if ( jeg_is_editor_elementor() ) {
 			add_filter(
 				'comments_open',
-				function( $open, $post_id ) {
+				function ( $open, $post_id ) {
 					return array( true, $post_id );
 				},
 				null,

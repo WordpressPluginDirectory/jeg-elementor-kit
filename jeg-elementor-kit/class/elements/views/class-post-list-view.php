@@ -215,13 +215,11 @@ class Post_List_View extends View_Abstract {
 
 			if ( 'yes' === $this->attribute['sg_content_image_enable'] ) {
 				$thumbnail = get_the_post_thumbnail( $post->ID, $image_size );
-			} else {
-				if ( 'yes' === $this->attribute['sg_content_icon_enable'] ) {
+			} elseif ( 'yes' === $this->attribute['sg_content_icon_enable'] ) {
 					$icon = $this->render_icon_element( $this->attribute['sg_content_icon'] );
 
-					if ( $icon ) {
-						$thumbnail = '<span class="icon-list">' . $icon . '</span>';
-					}
+				if ( $icon ) {
+					$thumbnail = '<span class="icon-list">' . $icon . '</span>';
 				}
 			}
 

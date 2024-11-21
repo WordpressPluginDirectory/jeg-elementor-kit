@@ -1532,5 +1532,4 @@ class Icon_Box_Option extends Option_Abstract {
 
 		parent::additional_style();
 	}
-
 }
