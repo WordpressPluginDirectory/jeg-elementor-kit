@@ -2,9 +2,9 @@
 Contributors: Jegtheme
 Tags: elementor, elements, addons, widgets, templates
 Requires at least: 5.0
-Tested up to: 6.7
+Tested up to: 6.7.1
 Requires PHP: 7.0
-Stable tag: 2.6.10
+Stable tag: 2.6.11
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -88,6 +88,9 @@ Please make sure the WP Memory Limit on your site has set to 128 MB or greater. 
 https://elementor.com/help/requirements/ Also you can disable some widgets that you don't need from Jeg Elementor Kit > Elements dashboard to reduce memory usage.
 
 == Changelog ==
+
+= 2.6.11 - 29-11-2024 =
+* Fix: Block Content not working on Post Content widget
 
 = 2.6.10 - 21-11-2024 =
 * Improvement: Security issues
