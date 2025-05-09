@@ -469,6 +469,26 @@ if ( ! function_exists( 'jkit_get_elementor_saved_template_option' ) ) {
 	}
 }
 
+if ( ! function_exists( 'jkit_get_selected_elementor_template' ) ) {
+	/**
+	 * Get the valid Elementor Template ID
+	 *
+	 * @param int|string $template_id Template ID.
+	 * @param array      $args Query args.
+	 *
+	 * @return array
+	 */
+	function jkit_get_selected_elementor_template( $template_id, $args = array() ) {
+		$available_templates = jkit_get_elementor_saved_template_option( $args );
+
+		if ( ! empty( $available_templates ) && array_key_exists( $template_id, $available_templates ) ) {
+			return $template_id;
+		}
+
+		return false;
+	}
+}
+
 if ( ! function_exists( 'jkit_get_responsive_breakpoints' ) ) {
 	/**
 	 * Get Elementor responsive breakpoints
@@ -478,34 +498,15 @@ if ( ! function_exists( 'jkit_get_responsive_breakpoints' ) ) {
 	function jkit_get_responsive_breakpoints() {
 		$breakpoints = array();
 
-		if ( defined( 'ELEMENTOR_VERSION' ) && version_compare( ELEMENTOR_VERSION, '3.2.0', '>=' ) ) {
-			$elementor = \Elementor\Plugin::$instance->breakpoints->get_active_breakpoints();
+		$elementor = \Elementor\Plugin::$instance->breakpoints->get_active_breakpoints();
 
-			foreach ( $elementor as $key => $breakpoint ) {
-				array_push(
-					$breakpoints,
-					array(
-						'key'   => $key,
-						'value' => $breakpoint->get_value(),
-					)
-				);
-			}
-		} else {
-			$elementor = \Elementor\Core\Responsive\Responsive::get_editable_breakpoints();
-
+		foreach ( $elementor as $key => $breakpoint ) {
 			array_push(
 				$breakpoints,
 				array(
-					'key'   => 'tablet',
-					'value' => isset( $elementor['lg'] ) ? strval( $elementor['lg'] - 1 ) : 1024,
-				)
-			);
-
-			array_push(
-				$breakpoints,
-				array(
-					'key'   => 'mobile',
-					'value' => isset( $elementor['md'] ) ? strval( $elementor['md'] - 1 ) : 767,
+					'key'   => $key,
+					'value' => $breakpoint->get_value(),
+					'label' => $breakpoint->get_label(),
 				)
 			);
 		}
@@ -1158,5 +1159,24 @@ if ( ! function_exists( 'jkit_get_multilanguage_post_id' ) ) {
 		}
 
 		return $post_id;
+	}
+}
+
+if ( ! function_exists( 'jkit_optimized_markup_class' ) ) {
+	/**
+	 * Get Optimized Markup Class
+	 *
+	 * Note: Remove After Feature is Deleted
+	 *
+	 * @return string
+	 */
+	function jkit_optimized_markup_class() {
+		$optimized_markup = \Elementor\Plugin::$instance->experiments->is_feature_active( 'e_optimized_markup' );
+
+		if ( $optimized_markup ) {
+			return '';
+		}
+
+		return ' > .elementor-widget-container';
 	}
 }

@@ -208,7 +208,8 @@ class Product_Grid_View extends View_WooCommerce_Abstract {
 	 * Render Product Title
 	 */
 	public function render_title() {
-		return '<h2 class="product-title">' . get_the_title( $this->post ) . '</h2>';
+		$tag = \Elementor\Utils::validate_html_tag( $this->attribute['sg_content_title_html_tag'] );
+		return '<' . $tag . ' class="product-title">' . get_the_title( $this->post ) . '</' . $tag . '>';
 	}
 
 	/**
@@ -254,10 +255,14 @@ class Product_Grid_View extends View_WooCommerce_Abstract {
 
 					if ( ! empty( $price_percentage ) ) {
 						asort( $price_percentage );
-						$percentage = $price_percentage[0] . '%';
+						$price_percentage = array_unique( $price_percentage );
+
+						$first_element = reset( $price_percentage );
+						$percentage    = $first_element . '%';
 
 						if ( count( $price_percentage ) > 1 ) {
-							$percentage .= '-' . end( $price_percentage ) . '%';
+							$last_element = end( $price_percentage );
+							$percentage  .= '-' . $last_element . '%';
 						}
 
 						$content .= '<span class="onsale percent ' . $class . '">' . $percentage . '</span>';
