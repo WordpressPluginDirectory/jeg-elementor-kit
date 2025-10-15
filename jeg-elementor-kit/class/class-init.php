@@ -1,20 +1,22 @@
 <?php
 /**
- * Jeg Elementor Kit Class
+ * Jeg Kit Class
  *
- * @package jeg-elementor-kit
+ * @package jeg-kit
  * @author Jegtheme
  * @since 1.0.0
  */
 
 namespace Jeg\Elementor_Kit;
 
+use Jeg\Elementor_Kit\Admin\Api;
 use Jeg\Elementor_Kit\Ajax\Ajax;
 use Jeg\Elementor_Kit\Dashboard\Dashboard;
 use Jeg\Elementor_Kit\Assets\Asset;
 use Jeg\Elementor_Kit\Elements\Element;
 use Jeg\Elementor_Kit\Templates\Template;
 use Jeg\Elementor_Kit\Banner\Banner;
+use Jeg\Elementor_Kit\Wizard\Wizard;
 
 /**
  * Class Init
@@ -44,9 +46,11 @@ class Init {
 		Element::instance();
 		Asset::instance();
 		Ajax::instance();
+		Api::instance();
 		Dashboard::instance();
 		Template::instance();
 		Banner::instance();
+		Wizard::instance();
 	}
 
 	/**
@@ -110,7 +114,7 @@ class Init {
 	}
 
 	/**
-	 * Upgrader Elementor Data from Jeg Elementor Kit due to conflict with Metform plugin
+	 * Upgrader Elementor Data from Jeg Kit due to conflict with Metform plugin
 	 *
 	 * @since 2.5.11
 	 */

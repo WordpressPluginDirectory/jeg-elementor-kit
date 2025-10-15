@@ -1,8 +1,8 @@
 <?php
 /**
- * Jeg Elementor Kit Class
+ * Jeg Kit Class
  *
- * @package jeg-elementor-kit
+ * @package jeg-kit
  * @author Jegtheme
  * @since 1.2.0
  */
@@ -54,9 +54,10 @@ class Asset {
 	 * Setup Hooks
 	 */
 	private function setup_hook() {
-		add_filter( 'wp_handle_upload_prefilter', array( $this, 'svg_upload_handler' ) );
+		add_filter( 'wp_handle_upload', array( $this, 'svg_upload_handler' ) );
 
 		add_action( 'admin_init', array( $this, 'remove_form_control' ), 99 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'load_admin_assets' ), 98 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_frontend_scripts' ), 98 );
 		add_action( 'elementor/frontend/after_register_styles', array( $this, 'load_frontend_assets' ), 98 );
 		add_action( 'elementor/editor/after_enqueue_styles', array( $this, 'load_editor_assets' ) );
@@ -126,6 +127,7 @@ class Asset {
 	 * Load editor assets
 	 */
 	public function load_editor_assets() {
+		wp_enqueue_style( 'tippy', JEG_ELEMENTOR_KIT_URL . '/assets/js/tippy/tippy.css', array(), '6.3.7' );
 		wp_enqueue_style( 'jkit-elements-editor', JEG_ELEMENTOR_KIT_URL . '/assets/css/admin/editor.css', array(), JEG_ELEMENTOR_KIT_VERSION );
 	}
 
@@ -133,7 +135,19 @@ class Asset {
 	 * Load editor scripts
 	 */
 	public function load_editor_scripts() {
-		wp_enqueue_script( 'jkit-elements-editor', JEG_ELEMENTOR_KIT_URL . '/assets/js/elementor/editor-support.js', array( 'jquery' ), JEG_ELEMENTOR_KIT_VERSION, true );
+		wp_register_script( 'popper', JEG_ELEMENTOR_KIT_URL . '/assets/js/popper/popper.min.js', array(), '2.11.8', true );
+		wp_register_script( 'tippy', JEG_ELEMENTOR_KIT_URL . '/assets/js/tippy/tippy-bundle.umd.min.js', array( 'popper' ), '6.3.7', true );
+		wp_enqueue_script( 'jkit-elements-editor', JEG_ELEMENTOR_KIT_URL . '/assets/js/elementor/editor-support.js', array( 'jquery', 'tippy' ), JEG_ELEMENTOR_KIT_VERSION, true );
+
+		wp_localize_script(
+			'jkit-elements-editor',
+			'jkit_editor',
+			array(
+				// 'pro_banner' => file_get_contents( JEG_ELEMENTOR_KIT_DIR . '/assets/img/admin/jkit-pro-banner.svg' ),
+				// 'pro_banner' => JEG_ELEMENTOR_KIT_URL . '/assets/img/admin/jkit-pro-banner.svg',
+				'pro_banner' => pro_banner_popup_template(),
+			)
+		);
 	}
 
 	/**
@@ -147,6 +161,18 @@ class Asset {
 		if ( \Elementor\Plugin::$instance->preview->is_preview_mode() ) {
 			wp_enqueue_style( 'jkit-icons' );
 		}
+
+		/** Banner Asset */
+		wp_register_style( 'jkit-notice-banner', JEG_ELEMENTOR_KIT_URL . '/assets/css/admin/notice-banner.css', array(), JEG_ELEMENTOR_KIT_VERSION );
+	}
+
+	/**
+	 * Load Admin Styles
+	 * 
+	 * @return void
+	 */
+	public function load_admin_assets() {
+		wp_enqueue_style( 'jkit-admin', JEG_ELEMENTOR_KIT_URL . '/assets/css/admin/admin.css', array(), JEG_ELEMENTOR_KIT_VERSION );
 	}
 
 	/**
@@ -188,6 +214,9 @@ class Asset {
 		wp_localize_script( 'jkit-element-pagination', 'jkit_element_pagination_option', $this->localize_script() );
 
 		wp_add_inline_script( 'elementor-frontend', $this->ajax_url() );
+
+		/** Banner Asset */
+		wp_register_script( 'jkit-notice-banner', JEG_ELEMENTOR_KIT_URL . '/assets/js/admin/notice-banner.js', array( 'jquery' ), JEG_ELEMENTOR_KIT_VERSION, true );
 	}
 
 	/**
@@ -1183,7 +1212,7 @@ class Asset {
 	public function register_icons( $icons ) {
 		$icons['jkiticon'] = array(
 			'name'          => 'jkiticon',
-			'label'         => esc_html__( 'JKit - Icons', 'jeg-elementor-kit' ),
+			'label'         => esc_html__( 'Jeg Kit - Icons', 'jeg-elementor-kit' ),
 			'url'           => JEG_ELEMENTOR_KIT_URL . '/assets/fonts/jkiticon/jkiticon.css',
 			'enqueue'       => array(),
 			'prefix'        => 'jki-',
@@ -1226,36 +1255,32 @@ class Asset {
 	}
 
 	/**
+	 * SVG Upload Handler
+	 * 
 	 * Check if the file is an SVG, if so handle appropriately
 	 *
-	 * @param array $file An array of data for a single file.
+	 * @param array $data An array of data for a single file.
 	 *
 	 * @return mixed
 	 */
-	public function svg_upload_handler( $file ) {
-		if ( ! isset( $file['tmp_name'] ) ) {
-			return $file;
-		}
+	public function svg_upload_handler( $data ) {
+		if ( isset( $data['type'] ) && 'image/svg+xml' === $data['type'] ) {
+			$sanitized = $this->svg_sanitizer( $data['file'] );
 
-		$file_name   = isset( $file['name'] ) ? $file['name'] : '';
-		$wp_filetype = wp_check_filetype_and_ext( $file['tmp_name'], $file_name );
-		$type        = ! empty( $wp_filetype['type'] ) ? $wp_filetype['type'] : '';
-
-		if ( 'image/svg+xml' === $type ) {
-			if ( ! $this->svg_sanitizer( $file['tmp_name'] ) ) {
-				$file['error'] = esc_html__( 'This file cannot be sanitized; therefore, it cannot be checked for security and cannot be uploaded for security reasons. For further inquiries, please contact Jeg Elementor Kit support.', 'jeg-elementor-kit' );
+			if ( ! $sanitized ) {
+				$data['error'] = esc_html__( 'This file cannot be sanitized; therefore, it cannot be checked for security and cannot be uploaded for security reasons. For further inquiries, please contact Jeg Kit support.', 'jeg-elementor-kit' );
 			}
 		}
 
-		return $file;
+		return $data;
 	}
 
 	/**
 	 * Sanitize the SVG
 	 *
-	 * @param string $path Temp file path.
+	 * @param string $path File path.
 	 *
-	 * @return bool|int
+	 * @return strng|false Sanitized SVG content or false on failure
 	 */
 	protected function svg_sanitizer( $path ) {
 		$svg_sanitizer = new \enshrined\svgSanitize\Sanitizer();
@@ -1263,12 +1288,10 @@ class Asset {
 		$file = file_get_contents( $path );
 		$file = $svg_sanitizer->sanitize( $file );
 
-		if ( false === $file ) {
-			return false;
+		if ( $file ) {
+			file_put_contents( $path, $file );
 		}
 
-		file_put_contents( $path, $file );
-
-		return true;
+		return $file;
 	}
 }

@@ -2,7 +2,7 @@
 /**
  * Accordion Option Class
  *
- * @package jeg-elementor-kit
+ * @package jeg-kit
  * @author Jegtheme
  * @since 1.0.0
  */
@@ -45,7 +45,7 @@ class Accordion_Option extends Option_Abstract {
 	 * @return string
 	 */
 	public function get_element_name() {
-		return esc_html__( 'JKit - Accordion', 'jeg-elementor-kit' );
+		return esc_html__( 'Jeg Kit - Accordion', 'jeg-elementor-kit' );
 	}
 
 	/**
@@ -54,7 +54,7 @@ class Accordion_Option extends Option_Abstract {
 	 * @return string
 	 */
 	public function get_category() {
-		return esc_html__( 'Jeg Elementor Kit', 'jeg-elementor-kit' );
+		return esc_html__( 'Jeg Kit', 'jeg-elementor-kit' );
 	}
 
 	/**
@@ -275,6 +275,14 @@ class Accordion_Option extends Option_Abstract {
 					'value'    => array( 'left', 'both' ),
 				),
 			),
+		);
+
+		$this->options['sg_accordion_faq_schema'] = array(
+			'type'        => 'checkbox',
+			'title'       => esc_html__( 'FAQ Schema', 'jeg-elementor-kit' ),
+			'description' => esc_html__( 'Frequently Asked Questions schema for SEO.', 'jeg-elementor-kit' ),
+			'segment'     => 'segment_accordion',
+			'separator'   => 'before',
 		);
 	}
 
