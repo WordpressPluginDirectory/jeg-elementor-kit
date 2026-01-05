@@ -321,10 +321,12 @@ class Dashboard {
 		}
 
 		if ( ! defined( 'JEG_KIT_PRO' ) ) {
+			$crown_markup = '<img src="' . JEG_ELEMENTOR_KIT_URL . '/assets/img/crown.svg" alt="Jeg Kit Pro"/>';
+
 			add_submenu_page(
 				'jkit',
 				esc_html__( 'Upgrade to Pro', 'jeg-elementor-kit' ),
-				esc_html__( 'Upgrade to Pro', 'jeg-elementor-kit' ) . '<img src="' . JEG_ELEMENTOR_KIT_URL . '/assets/img/crown.svg" alt="Jeg Kit Logo"/>',
+				esc_html__( 'Upgrade to Pro', 'jeg-elementor-kit' ) . ' ' . $crown_markup,
 				'edit_theme_options',
 				JEG_ELEMENT_SERVER_URL . 'pricing?utm_source=jeg-elementor-kit&utm_medium=adminsidebar',
 				isset( $page['callback'] ) ? $page['callback'] : '',
@@ -357,14 +359,129 @@ class Dashboard {
 	 * @return void
 	 */
 	public function add_toolbar( $admin_bar ) {
+		$logo_svg = $this->get_svg_inline( 'assets/svg/jkit-dashboard-menu-logo.svg' );
+		$logo     = $logo_svg ? $logo_svg : '<img src="' . JEG_ELEMENTOR_KIT_URL . '/assets/svg/jkit-dashboard-menu-logo.svg' . '" alt="' . esc_html__( 'Jeg Kit Logo', 'jeg-elementor-kit' ) . '"/>';
+
+		$admin_bar->add_menu(
+			array(
+				'id'    => 'jeg-kit',
+				'title' => '<span class="jeg-kit-pro">' . $logo . esc_html__( 'Jeg Kit', 'jeg-elementor-kit' ) . '</span>',
+				'href'  => esc_url( get_home_url() . '/wp-admin/admin.php?page=jkit' ),
+			)
+		);
+
+		$admin_bar->add_menu(
+			array(
+				'id'     => 'jeg-kit-admin',
+				'title'  => '<span class="jeg-kit-pro">' . esc_html__( 'Jeg Kit Admin', 'jeg-elementor-kit' ) . '</span>',
+				'href'   => esc_url( get_home_url() . '/wp-admin/admin.php?page=jkit' ),
+				'parent' => 'jeg-kit',
+			)
+		);
+
+		$this->define_menu();
+
+		$path        = admin_url( 'admin.php?page=jkit&path=' );
+		$menu_sorted = self::$framework_menu;
+
+		uasort( $menu_sorted, function ( $a, $b ) {
+			return ( ( $a['priority'] ?? 0 ) <=> ( $b['priority'] ?? 0 ) );
+		} );
+
+		foreach ( $menu_sorted as $key => $menu ) {
+			if ( $menu ) {
+				if ( $key === 'dashboard' ) {
+					$admin_bar->add_menu(
+						array(
+							'id'     => 'jeg-kit-' . $key,
+							'title'  => '<span class="jeg-kit-menu">' . esc_html( $menu['name'] ) . '</span>',
+							'href'   => esc_url( admin_url( 'admin.php?page=jkit' ) ),
+							'parent' => 'jeg-kit-admin',
+						)
+					);
+				} else if ( $key === 'theme-builder' ) {
+					$admin_bar->add_menu(
+						array(
+							'id'     => 'jeg-kit-' . $key,
+							'title'  => '<span class="jeg-kit-menu">' . esc_html( $menu['name'] ) . '</span>',
+							'href'   => 'url' === $menu['type'] ? esc_url( $menu['url'] ) : esc_url( $path . $key ),
+							'parent' => 'jeg-kit',
+						)
+					);
+				} else {
+					$admin_bar->add_menu(
+						array(
+							'id'     => 'jeg-kit-' . $key,
+							'title'  => '<span class="jeg-kit-menu">' . esc_html( $menu['name'] ) . '</span>',
+							'href'   => 'url' === $menu['type'] ? esc_url( $menu['url'] ) : esc_url( $path . $key ),
+							'parent' => 'jeg-kit-admin',
+						)
+					);
+				}
+			}
+		}
+
+		$admin_bar->add_menu(
+			array(
+				'id'     => 'jeg-kit-menu-border',
+				'title'  => '',
+				'parent' => 'jeg-kit',
+			)
+		);
+
+		$svg_icon  = '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.67679 3.52128L6.67898 3.06505L5.33889 0.220085C5.30228 0.142191 5.24207 0.0791345 5.16768 0.0408059C4.98113 -0.0556336 4.75444 0.0247327 4.66116 0.220085L3.32106 3.06505L0.323258 3.52128C0.240609 3.53365 0.165044 3.57445 0.107189 3.63627C0.0372466 3.71155 -0.00129512 3.81283 3.3232e-05 3.91785C0.00136159 4.02287 0.0424513 4.12305 0.114274 4.19636L2.28323 6.41076L1.7708 9.53763C1.75878 9.61037 1.76647 9.68517 1.79299 9.75357C1.81951 9.82197 1.86379 9.88121 1.92083 9.92459C1.97787 9.96797 2.04537 9.99375 2.11568 9.999C2.186 10.0042 2.25631 9.98876 2.31865 9.9543L5.00002 8.47803L7.6814 9.9543C7.7546 9.9951 7.83962 10.0087 7.92108 9.99386C8.12653 9.95677 8.26467 9.75276 8.22925 9.53763L7.71682 6.41076L9.88577 4.19636C9.94481 4.13578 9.98377 4.05665 9.99558 3.9701C10.0275 3.75373 9.88341 3.55343 9.67679 3.52128Z" fill="url(#paint0_linear_1841_8010)"/><defs><linearGradient id="paint0_linear_1841_8010" x1="5.2381" y1="12.7273" x2="5.23809" y2="-7.27273" gradientUnits="userSpaceOnUse"><stop stop-color="#FFD978"/><stop offset="1" stop-color="#FFAA00"/></linearGradient></defs></svg>';
+		$star_icon = '<span class="star-icon">' . $svg_icon . $svg_icon . $svg_icon . $svg_icon . $svg_icon . '</span>';
+
+		$admin_bar->add_menu(
+			array(
+				'id'     => 'jeg-kit-rate-us',
+				'title'  => '<span class="jeg-kit-pro">' . esc_html__( 'Rate Us ', 'jeg-elementor-kit' ) . $star_icon . '</span>',
+				'href'   => esc_url( 'https://wordpress.org/support/plugin/jeg-elementor-kit/reviews/?utm_source=jeg-elementor-kit&utm_medium=admintopbar#new-post' ),
+				'meta'   => array(
+					'title'  => esc_html__( 'Leave a review for Jeg Kit', 'jeg-elementor-kit' ),
+					'target' => '_blank',
+				),
+				'parent' => 'jeg-kit',
+			)
+		);
+
+		$admin_bar->add_menu(
+			array(
+				'id'     => 'jeg-kit-get-support',
+				'title'  => '<span class="jeg-kit-pro">' . esc_html__( 'Get a Support', 'jeg-elementor-kit' ) . '</span>',
+				'href'   => esc_url( 'https://wordpress.org/support/plugin/jeg-elementor-kit/?utm_source=jeg-elementor-kit&utm_medium=admintopbar#new-topic-0' ),
+				'meta'   => array(
+					'title'  => esc_html__( 'Get Jeg Kit Support', 'jeg-elementor-kit' ),
+					'target' => '_blank',
+				),
+				'parent' => 'jeg-kit',
+			)
+		);
+
+		$admin_bar->add_menu(
+			array(
+				'id'     => 'jeg-kit-documentation',
+				'title'  => '<span class="jeg-kit-pro">' . esc_html__( 'Documentation', 'jeg-elementor-kit' ) . '</span>',
+				'href'   => esc_url( JEG_ELEMENT_SERVER_URL . 'documentation?utm_source=jeg-elementor-kit&utm_medium=admintopbar' ),
+				'meta'   => array(
+					'title'  => esc_html__( 'Open Jeg Kit Documentation', 'jeg-elementor-kit' ),
+					'target' => '_blank',
+				),
+				'parent' => 'jeg-kit',
+			)
+		);
+
 		if ( ! defined( 'JEG_KIT_PRO' ) ) {
+			$crown_markup = '<img src="' . JEG_ELEMENTOR_KIT_URL . '/assets/img/crown.svg" alt="' . esc_html__( 'Jeg Kit Pro', 'jeg-elementor-kit' ) . '"/>';
+
 			$admin_bar->add_menu(
 				array(
-					'id'    => 'jeg-kit-pro',
-					'title' => '<span class="jeg-kit-pro">Jeg Kit Pro <img src="' . JEG_ELEMENTOR_KIT_URL . '/assets/img/crown.svg" alt="Jeg Kit Logo"/></span>',
-					'href'  => esc_url( JEG_ELEMENT_SERVER_URL . 'pricing?utm_source=jeg-elementor-kit&utm_medium=admintopbar' ),
-					'meta'  => array(
-						'title'  => esc_html__( 'Jeg Kit Pro', 'jeg-elementor-kit' ),
+					'id'     => 'jeg-kit-pro',
+					'title'  => '<span class="jeg-kit-pro">' . esc_html__( 'Jeg Kit Pro ', 'jeg-elementor-kit' ) . $crown_markup . '</span>',
+					'parent' => 'jeg-kit',
+					'href'   => esc_url( JEG_ELEMENT_SERVER_URL . 'pricing?utm_source=jeg-elementor-kit&utm_medium=admintopbar' ),
+					'meta'   => array(
+						'title'  => esc_html__( 'Get Jeg Kit Pro', 'jeg-elementor-kit' ),
 						'target' => '_blank',
 					),
 				)
@@ -444,7 +561,7 @@ class Dashboard {
 			'title'    => esc_html__( 'Settings', 'jeg-elementor-kit' ),
 			'menu'     => esc_html__( 'Settings', 'jeg-elementor-kit' ),
 			'slug'     => self::$settings,
-			'action'   => array( &$this, 'settings' ),
+			'action'   => array(&$this, 'settings' ),
 			'priority' => 56,
 			'icon'     => 'fa-cogs',
 		);
@@ -453,7 +570,7 @@ class Dashboard {
 			'title'    => esc_html__( 'User Data', 'jeg-elementor-kit' ),
 			'menu'     => esc_html__( 'User Data', 'jeg-elementor-kit' ),
 			'slug'     => self::$user_data,
-			'action'   => array( &$this, 'user_data' ),
+			'action'   => array(&$this, 'user_data' ),
 			'priority' => 57,
 			'icon'     => 'fa-regular fa-circle-user',
 		);
@@ -462,7 +579,7 @@ class Dashboard {
 			'title'    => esc_html__( 'Elements', 'jeg-elementor-kit' ),
 			'menu'     => esc_html__( 'Elements', 'jeg-elementor-kit' ),
 			'slug'     => 'jkit-elements',
-			'action'   => array( &$this, 'elements' ),
+			'action'   => array(&$this, 'elements' ),
 			'priority' => 58,
 			'icon'     => 'fa-solid fa-bars-progress',
 		);
@@ -471,7 +588,7 @@ class Dashboard {
 			'title'    => esc_html__( 'Templates', 'jeg-elementor-kit' ),
 			'menu'     => esc_html__( 'Templates', 'jeg-elementor-kit' ),
 			'slug'     => self::$templates,
-			'action'   => array( &$this, 'manage_template' ),
+			'action'   => array(&$this, 'manage_template' ),
 			'priority' => 59,
 			'icon'     => 'fa-regular fa-file-lines',
 			'class'    => 'have-jkit-child-menu',
@@ -531,6 +648,23 @@ class Dashboard {
 	private function get_object_name( $name, $separator ) {
 		$object_name = str_replace( ' ', '', ucwords( str_replace( $separator, ' ', $name ) ) );
 		return $object_name;
+	}
+
+	/**
+	 * Get inline SVG markup from plugin assets.
+	 *
+	 * @param string $relative_path Path relative to plugin dir (no leading slash).
+	 * @return string|false SVG markup on success, false on failure.
+	 */
+	private function get_svg_inline( $relative_path ) {
+		$path = JEG_ELEMENTOR_KIT_DIR . ltrim( $relative_path, '/' );
+		if ( file_exists( $path ) ) {
+			$svg = file_get_contents( $path );
+			if ( $svg !== false ) {
+				return $svg;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -803,7 +937,7 @@ class Dashboard {
 				'options'     => call_user_func(
 					function () {
 						$languages = jkit_get_languages();
-						$options = array( '' => esc_html__( 'All Language', 'jeg-elementor-kit' ) );
+						$options   = array( '' => esc_html__( 'All Language', 'jeg-elementor-kit' ) );
 
 						foreach ( $languages as $locale => $language ) {
 							$options[ $locale ] = isset( $language['name'] ) ? $language['name'] : $language['native_name'];

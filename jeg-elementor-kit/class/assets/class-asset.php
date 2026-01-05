@@ -164,6 +164,11 @@ class Asset {
 
 		/** Banner Asset */
 		wp_register_style( 'jkit-notice-banner', JEG_ELEMENTOR_KIT_URL . '/assets/css/admin/notice-banner.css', array(), JEG_ELEMENTOR_KIT_VERSION );
+
+		/** WP Admin Bar Style in Frontend */
+		if ( is_admin_bar_showing() ) {
+			wp_enqueue_style( 'jkit-admin', JEG_ELEMENTOR_KIT_URL . '/assets/css/admin/admin.css', array(), JEG_ELEMENTOR_KIT_VERSION );
+		}
 	}
 
 	/**

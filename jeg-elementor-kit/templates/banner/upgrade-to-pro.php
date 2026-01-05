@@ -9,7 +9,7 @@
 <div class="notice jkit-upgrade-banner">
 	<button class="jkit-btn-close-button">✕</button>
 		<div class="jkit-banner-content">
-			<h1>Unlock More With <span class="jkit-pro-text-highlight">JEGKIT PRO!</span></h1>
+			<h1>Unlock More With <span class="jkit-pro-text-highlight">JEG KIT PRO!</span></h1>
 			<p>Empowering you to build a website that truly stands out with advanced features and seamless
 				integration</p>
 			<div class="jkit-banner-cta-button-wrapper">

@@ -320,6 +320,7 @@ class Element {
 			'Timeline',
 			'Back_To_Top',
 			'Text_Background',
+			'Breadcrumb',
 			'Text_Marquee',
 			'Horizontal_Accordion',
 			'Charts',

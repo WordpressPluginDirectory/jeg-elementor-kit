@@ -1256,38 +1256,46 @@ class Api {
 	 * @param \WP_REST_Request $request The Request.
 	 */
 	public function newsletter_subscribe_handler( $request ) {
-		$data     = json_decode( $request->get_body(), true );
+		$email    = $request->get_param( 'email' );
+		$site     = $request->get_param( 'site' );
 		$response = array(
 			'status'  => false,
 			'message' => esc_html__( 'Bad Request', 'jeg-elementor-kit' ),
 		);
 
-		if ( isset( $data['email'] ) && isset( $data['site'] ) ) {
+		if ( isset( $email ) && isset( $site ) ) {
 			add_filter( 'http_request_host_is_external', '__return_true' );
-			if ( is_email( $data['email'] ) && wp_http_validate_url( $data['site'] ) ) {
+			if ( is_email( $email ) && wp_http_validate_url( $site ) ) {
 				$save_request = wp_remote_request(
-					JEG_ELEMENT_SERVER_URL . '/v1/newsletter-subscribe',
+					JEG_ELEMENT_SERVER_URL . '/wp-json/jeg-kit-server/v1/subscribe',
 					array(
 						'method'  => 'POST',
 						'timeout' => 10,
 						'body'    => array(
-							'email' => sanitize_email( $data['email'] ),
-							'site'  => esc_url_raw( $data['site'] ),
+							'email'  => sanitize_email( $email ),
+							'domain' => esc_url_raw( $site ),
 						),
 					)
 				);
 
+				if ( is_wp_error( $response ) ) {
+					$response = array(
+						'status'  => true,
+						'message' => esc_html__( 'Faild to subscribe the newsletter.', 'jeg-elementor-kit' ),
+					);
+				}
+
 				$save_response = json_decode( wp_remote_retrieve_body( $save_request ), true );
 
-				if ( ! $save_response['status'] ) {
+				if ( 200 === wp_remote_retrieve_response_code( $save_request ) ) {
 					$response = array(
-						'status'  => false,
-						'message' => esc_html__( 'The email has been subscribed.', 'jeg-elementor-kit' ),
+						'status'  => true,
+						'message' => esc_html__( 'Thank you for subscribing.', 'jeg-elementor-kit' ),
 					);
 				} else {
 					$response = array(
 						'status'  => true,
-						'message' => esc_html__( 'Thank you for subscribing.', 'jeg-elementor-kit' ),
+						'message' => isset( $save_response['message'] ) ? $save_response['message'] : esc_html__( 'Faild to subscribe the newsletter.', 'jeg-elementor-kit' ),
 					);
 				}
 			}
@@ -2907,12 +2915,12 @@ class Api {
 	 *
 	 * @return \WP_REST_Response
 	 */
-	private function response_error( $message ) {
+	private function response_error( $message, $code = 400 ) {
 		return new \WP_REST_Response(
 			array(
 				'message' => $message,
 			),
-			500
+			$code
 		);
 	}
 

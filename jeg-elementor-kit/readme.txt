@@ -1,10 +1,10 @@
-=== Jeg Kit for Elementor – Powerful Elementor Addons, Widgets & Templates for WordPress ===
+=== Jeg Kit for Elementor – Powerful Addons for Elementor, Widgets & Templates for WordPress ===
 Contributors: Jegtheme
 Tags: elementor, elements, addons, widgets, templates
 Requires at least: 5.0
-Tested up to: 6.8.3
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 3.0.1
+Stable tag: 3.0.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -143,24 +143,25 @@ Learn more and see examples at **[https://jegkit.com/features/mega-menu/](https:
 
 == 🌐 Theme Builder ==
 
-Create and manage your entire website visually using Elementor templates.
+Create and manage your site visually with the Jeg Kit for Elementor Theme Builder — build SEO-friendly templates for posts, products, archives, and popups that improve search visibility and conversions.
 
 **Free Templates**
-- **Header Template**. Design and assign custom headers site-wide.  
-- **Footer Template**. Build footers with global or conditional display.  
-- **404 Template**. Create a custom 404 error page design.  
+- **Header Template** — design responsive, accessible headers that improve site navigation and crawlability.
+- **Footer Template** — build structured footers to surface important links and enhance sitewide SEO.
+- **404 Template** — customize 404 pages to reduce bounce rate and guide users back to relevant content.
 
 **Pro Templates**
-- **Single Post Template**. Design custom post layouts with Elementor.  
-- **Archive Template**. Build archive and category pages dynamically.  
-- **Popup Template**. Create animated popups for marketing or forms.  
+- **Single Post Template** — craft SEO-optimized blog post layouts with dynamic title, meta, breadcrumbs, and fast-rendering components.
+- **Single Product Template** — design responsive, conversion-focused WooCommerce product pages using Jeg Kit for Elementor Theme Builder; includes product images, price, add-to-cart, reviews, related products, and SEO-friendly markup (structured data-ready).
+- **Archive Template** — build category, tag, and product archive pages with optimized headings, pagination, and structured data for better indexing.
+- **Popup Template** — create high-converting, mobile-friendly popups for promotions and lead capture without harming SEO.
 
 ---
 
 == 🚀 One Click Demo Importer ==
 
 Access **114 ready-to-import demo templates** directly from your dashboard (10 Free + 104 Pro).  
-Each demo includes full Elementor layouts for business, portfolio, blog, and eCommerce sites.
+Each demo includes full Jeg Kit for Elementor layouts for business, portfolio, blog, and eCommerce sites, optimized for performance and SEO.
 
 > Import any demo with one click and start customizing instantly.  
 > View the complete demo showcase at **[https://jegkit.com/demos/](https://jegkit.com/demos/)**.
@@ -202,6 +203,15 @@ Visit **[https://jegkit.com/](https://jegkit.com/)** for live demos, tutorials, 
 This major release introduces Mega Menu Builder, 114 demo templates, and a redesigned dashboard. Update now to explore new features and improved performance.
 
 == Changelog ==
+
+= 3.0.2 - 05-01-2025 =
+* Improvement: Security issues
+* Improvement: Add quick link of Jeg Kit in top bar menu
+* Improvement: Change mechanism font load to swap
+* Fix: Notification and Pro Banner issues in Metform Wizard and Menus
+* Fix: Newsletter Form on Dashboard not working
+* Tweak: Element List
+* Tweak: Remove Promotion Banner after uninstalling demo
 
 = 3.0.1 - 16-10-2025 =
 * Fix: Missing widget list in Elementor panel when Elementor Pro is active

@@ -49,7 +49,11 @@ class Banner {
 	 * Init constructor.
 	 */
 	public function __construct() {
-		add_action( 'admin_notices', array( $this, 'notice' ) );
+		if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array( 'metform-menu-settings', 'metform_wpmet_plugins' ) ) ) {
+			add_action( 'in_admin_header', array( $this, 'notice' ) );
+		} else {
+			add_action( 'admin_notices', array( $this, 'notice' ) );
+		}
 		add_action( 'wp_ajax_jkit_notice_banner_close', array( $this, 'close' ) );
 		add_action( 'wp_ajax_jkit_notice_banner_review', array( $this, 'review' ) );
 		add_action( 'wp_ajax_jkit_notice_banner_upgrade_close', array( $this, 'close_banner_upgrade' ) );

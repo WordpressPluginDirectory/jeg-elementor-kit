@@ -1630,7 +1630,7 @@ if ( ! function_exists( 'pro_banner_template' ) ) {
 			<div class="image">
 				<img src="<?php echo esc_url( JEG_ELEMENTOR_KIT_URL . '/assets/banner/jkit-pro/features.png' ) ?>" class="features" />
 			</div>
-			<h2 class="title">Unlock More <br />With <span class="gradient">JEGKIT PRO</span></h2>
+			<h2 class="title">Unlock More <br />With <span class="gradient">JEG KIT PRO</span></h2>
 			<p class="description">Elevate your website with our <br />all-in-one widget collection.</p>
 			<a href="<?php echo esc_url(JEG_ELEMENT_SERVER_URL) . '/pricing' ; ?>" target="_blank" class="upgrade"><?php echo esc_html__('Upgrade To PRO', 'jeg-elementor-kit') ?> <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M2.34752 9.50065L0.874512 1.3991L4.92529 5.08163L7.50305 0.662598L10.0808 5.08163L14.1316 1.3991L12.6586 9.50065H2.34752ZM12.6586 11.7102C12.6586 12.1521 12.364 12.4467 11.9221 12.4467H3.08403C2.64212 12.4467 2.34752 12.1521 2.34752 11.7102V10.9737H12.6586V11.7102Z" fill="white" />
