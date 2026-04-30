@@ -30,6 +30,11 @@ class Asset {
 	private $endpoint = 'jkit-ajax-request';
 
 	/**
+	 * Loaded Scripts
+	 */
+	private $loaded_scripts = array();
+
+	/**
 	 * Block ajax prefix
 	 *
 	 * @var string
@@ -63,6 +68,8 @@ class Asset {
 		add_action( 'elementor/editor/after_enqueue_styles', array( $this, 'load_editor_assets' ) );
 		add_action( 'elementor/editor/after_enqueue_scripts', array( $this, 'load_editor_scripts' ) );
 		add_action( 'elementor/element/parse_css', array( $this, 'add_post_css' ), 10, 2 );
+
+		add_action( 'elementor/frontend/before_get_builder_content', array( $this, 'enqueue_conditional_scripts' ), 99, 2 );
 
 		/** Add portfolio gallery css custom handler */
 		add_action( 'elementor/element/parse_css', array( $this, 'add_portfolio_gallery_css' ), 10, 2 );
@@ -148,6 +155,29 @@ class Asset {
 				'pro_banner' => pro_banner_popup_template(),
 			)
 		);
+
+		$editor_asset = JEG_ELEMENTOR_KIT_DIR . '/lib/dependencies/editor.asset.php';
+		$include      = include $editor_asset;
+		wp_enqueue_script(
+			'jkit-editor-bundle',
+			JEG_ELEMENTOR_KIT_URL . '/assets/js/editor/editor.js',
+			isset( $include['dependencies'] ) ? $include['dependencies'] : array(),
+			JEG_ELEMENTOR_KIT_VERSION,
+			true
+		);
+
+		// Minimal mirror for shared helpers used in editor bundle
+		$freemius_cfg  = \Jeg\Elementor_Kit\Integrations\Freemius::instance()->get_pricing_config();
+		$editor_option = array(
+			'freemius'    => array( 'pricing' => $freemius_cfg ),
+			'pricingPlan' => jkit_get_pricing_plan(),
+			'imgDir'      => JEG_ELEMENTOR_KIT_URL . '/assets/img/',
+		);
+		$mirror_js     = $this->build_window_assignment_js( 'jkit.options.freemius', $editor_option['freemius'], false )
+			. $this->build_window_assignment_js( 'jkit.pricingPlan', $editor_option['pricingPlan'], false )
+			. $this->build_window_assignment_js( 'jkit.imgDir', $editor_option['imgDir'], false );
+		wp_add_inline_script( 'jkit-editor-bundle', $mirror_js );
+
 	}
 
 	/**
@@ -168,6 +198,21 @@ class Asset {
 		/** WP Admin Bar Style in Frontend */
 		if ( is_admin_bar_showing() ) {
 			wp_enqueue_style( 'jkit-admin', JEG_ELEMENTOR_KIT_URL . '/assets/css/admin/admin.css', array(), JEG_ELEMENTOR_KIT_VERSION );
+			wp_enqueue_script( 'jkit-admin', JEG_ELEMENTOR_KIT_URL . '/assets/js/admin/admin.js', array( 'lodash', 'react', 'react-dom', 'regenerator-runtime', 'wp-api-fetch', 'wp-data', 'wp-hooks', 'wp-i18n', 'wp-notices' ), JEG_ELEMENTOR_KIT_VERSION, true );
+
+			// Provide minimal dashboard options to frontend/admin-bar pages so shared modules
+			// (like the pricing modal) can access Freemius pricing config and related values.
+			$freemius_cfg    = \Jeg\Elementor_Kit\Integrations\Freemius::instance()->get_pricing_config();
+			$frontend_option = array(
+				'freemius'    => array( 'pricing' => $freemius_cfg ),
+				'pricingPlan' => jkit_get_pricing_plan(),
+				'imgDir'      => JEG_ELEMENTOR_KIT_URL . '/assets/img/',
+			);
+			// Mirror only the minimal fields into a safer namespace to avoid collisions
+			$mirror_js = $this->build_window_assignment_js( 'jkit.options.freemius', $frontend_option['freemius'], false )
+				. $this->build_window_assignment_js( 'jkit.pricingPlan', $frontend_option['pricingPlan'], false )
+				. $this->build_window_assignment_js( 'jkit.imgDir', $frontend_option['imgDir'], false );
+			wp_add_inline_script( 'jkit-admin', $mirror_js );
 		}
 	}
 
@@ -178,6 +223,19 @@ class Asset {
 	 */
 	public function load_admin_assets() {
 		wp_enqueue_style( 'jkit-admin', JEG_ELEMENTOR_KIT_URL . '/assets/css/admin/admin.css', array(), JEG_ELEMENTOR_KIT_VERSION );
+		wp_enqueue_script( 'jkit-admin', JEG_ELEMENTOR_KIT_URL . '/assets/js/admin/admin.js', array( 'lodash', 'react', 'react-dom', 'regenerator-runtime', 'wp-api-fetch', 'wp-data', 'wp-hooks', 'wp-i18n', 'wp-notices' ), JEG_ELEMENTOR_KIT_VERSION, true );
+
+		// Ensure JkitDashboardOption is available on admin pages where `jkit-admin` is loaded.
+		$admin_option = array(
+			'freemius'    => array( 'pricing' => \Jeg\Elementor_Kit\Integrations\Freemius::instance()->get_pricing_config() ),
+			'pricingPlan' => jkit_get_pricing_plan(),
+			'imgDir'      => JEG_ELEMENTOR_KIT_URL . '/assets/img/',
+		);
+		// Mirror only the minimal fields into a safer namespace to avoid collisions
+		$mirror_js = $this->build_window_assignment_js( 'jkit.options.freemius', $admin_option['freemius'], false )
+			. $this->build_window_assignment_js( 'jkit.pricingPlan', $admin_option['pricingPlan'], false )
+			. $this->build_window_assignment_js( 'jkit.imgDir', $admin_option['imgDir'], false );
+		wp_add_inline_script( 'jkit-admin', $mirror_js );
 	}
 
 	/**
@@ -249,6 +307,37 @@ class Asset {
 	}
 
 	/**
+	 * Build JavaScript snippet that ensures a nested `window` path exists and assigns a value.
+	 *
+	 * @param string $path Dot-separated path, e.g. 'jkit.options.freemius'.
+	 * @param mixed  $value Value to assign. If $raw is false the value is JSON-encoded.
+	 * @param bool   $raw  Whether $value is a raw JS expression (true) or PHP value to json_encode (false).
+	 *
+	 * @return string JS code string (immediately-invoked function expression).
+	 */
+	protected function build_window_assignment_js( $path, $value, $raw = false ) {
+		$parts = explode( '.', $path );
+		$acc   = 'window';
+		$lines = array();
+		foreach ( $parts as $part ) {
+			$acc     .= "['" . esc_js( $part ) . "']";
+			$lines[]  = "if ( typeof {$acc} === 'undefined' ) { {$acc} = {}; }";
+		}
+
+		if ( $raw ) {
+			$val = $value;
+		} else {
+			$val = wp_json_encode( $value );
+		}
+
+		$assign = "{$acc} = {$val};";
+
+		$js = '(function(){' . implode( '', $lines ) . $assign . '})();';
+
+		return $js;
+	}
+
+	/**
 	 * Add Jeg Element Kit Custom CSS
 	 *
 	 * @param object $post_css \Elementor\Core\DynamicTags\Dynamic_CSS.
@@ -304,15 +393,15 @@ class Asset {
 
 		for ( $i = 0; $i < $count_breakpoints - 1; $i++ ) {
 			if ( isset( $settings[ 'sg_setting_column_responsive_' . $breakpoints[ $i ]['key'] ]['size'] ) && ! empty( $settings[ 'sg_setting_column_responsive_' . $breakpoints[ $i ]['key'] ]['size'] ) ) {
-				$column = $settings[ 'sg_setting_column_responsive_' . $breakpoints[ $i ]['key'] ];
-				$css   .= '@media (min-width: ' . strval( $breakpoints[ $i + 1 ]['value'] + 1 ) . 'px) and (max-width: ' . strval( $breakpoints[ $i ]['value'] ) . 'px) {' . $selector . ':nth-child(' . strval( $column['size'] ) . 'n) { border-right-width:0; } }';
+				$column  = $settings[ 'sg_setting_column_responsive_' . $breakpoints[ $i ]['key'] ];
+				$css    .= '@media (min-width: ' . strval( $breakpoints[ $i + 1 ]['value'] + 1 ) . 'px) and (max-width: ' . strval( $breakpoints[ $i ]['value'] ) . 'px) {' . $selector . ':nth-child(' . strval( $column['size'] ) . 'n) { border-right-width:0; } }';
 			}
 		}
 
 		if ( $count_breakpoints > 0 ) {
 			if ( isset( $settings[ 'sg_setting_column_responsive_' . $breakpoints[ $count_breakpoints - 1 ]['key'] ]['size'] ) && ! empty( $settings[ 'sg_setting_column_responsive_' . $breakpoints[ $count_breakpoints - 1 ]['key'] ]['size'] ) ) {
-				$column = $settings[ 'sg_setting_column_responsive_' . $breakpoints[ $count_breakpoints - 1 ]['key'] ];
-				$css   .= '@media (max-width: ' . strval( $breakpoints[ $count_breakpoints - 1 ]['value'] ) . 'px) {' . $selector . ':nth-child(' . strval( $column['size'] ) . 'n) { border-right-width:0; } }';
+				$column  = $settings[ 'sg_setting_column_responsive_' . $breakpoints[ $count_breakpoints - 1 ]['key'] ];
+				$css    .= '@media (max-width: ' . strval( $breakpoints[ $count_breakpoints - 1 ]['value'] ) . 'px) {' . $selector . ':nth-child(' . strval( $column['size'] ) . 'n) { border-right-width:0; } }';
 			}
 		}
 
@@ -406,9 +495,9 @@ class Asset {
 		}
 
 		if ( $track_color || $track_bg ) {
-			$color    = $track_color ? $track_color : $color_default;
-			$bg_color = $track_bg ? $track_bg : $bg_color_default;
-			$css     .= $selector . ' { background: -o-repeating-linear-gradient(left, ' . $color . ', ' . $color . ' 4px, ' . $bg_color . ' 4px, ' . $bg_color . ' 8px); background: repeating-linear-gradient(to right, ' . $color . ', ' . $color . ' 4px, ' . $bg_color . ' 4px, ' . $bg_color . ' 8px); }';
+			$color     = $track_color ? $track_color : $color_default;
+			$bg_color  = $track_bg ? $track_bg : $bg_color_default;
+			$css      .= $selector . ' { background: -o-repeating-linear-gradient(left, ' . $color . ', ' . $color . ' 4px, ' . $bg_color . ' 4px, ' . $bg_color . ' 8px); background: repeating-linear-gradient(to right, ' . $color . ', ' . $color . ' 4px, ' . $bg_color . ' 4px, ' . $bg_color . ' 8px); }';
 		}
 
 		foreach ( $breakpoints as $breakpoint ) {
@@ -424,9 +513,9 @@ class Asset {
 			}
 
 			if ( $track_color || $track_bg ) {
-				$color    = $track_color ? $track_color : $color_default;
-				$bg_color = $track_bg ? $track_bg : $bg_color_default;
-				$css     .= '@media (max-width: ' . strval( $breakpoint['value'] ) . 'px) {' . $selector . ' { background: -o-repeating-linear-gradient(left, ' . $color . ', ' . $color . ' 4px, ' . $bg_color . ' 4px, ' . $bg_color . ' 8px); background: repeating-linear-gradient(to right, ' . $color . ', ' . $color . ' 4px, ' . $bg_color . ' 4px, ' . $bg_color . ' 8px); } }';
+				$color     = $track_color ? $track_color : $color_default;
+				$bg_color  = $track_bg ? $track_bg : $bg_color_default;
+				$css      .= '@media (max-width: ' . strval( $breakpoint['value'] ) . 'px) {' . $selector . ' { background: -o-repeating-linear-gradient(left, ' . $color . ', ' . $color . ' 4px, ' . $bg_color . ' 4px, ' . $bg_color . ' 8px); background: repeating-linear-gradient(to right, ' . $color . ', ' . $color . ' 4px, ' . $bg_color . ' 4px, ' . $bg_color . ' 8px); } }';
 			}
 		}
 
@@ -511,8 +600,8 @@ class Asset {
 				$css .= '@media (min-width: ' . strval( $breakpoints[0]['value'] + 1 ) . 'px) {' . $selector . ' .feature-list-items .feature-list-item .feature-list-content-box { margin-left: 0 !important; margin-right: 0 !important;  margin-bottom: 0 !important; } }';
 			}
 		} elseif ( 'left' === $position ) {
-				$css .= $selector . ' .feature-list-items .feature-list-item { text-align: left; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; display: -webkit-box; display: -ms-flexbox; display: flex; }';
-				$css .= $selector . ' .feature-list-items .feature-list-item .feature-list-content-box { margin-right: 0 !important; margin-top: 0 !important;  margin-bottom: 0 !important; }';
+			$css .= $selector . ' .feature-list-items .feature-list-item { text-align: left; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; display: -webkit-box; display: -ms-flexbox; display: flex; }';
+			$css .= $selector . ' .feature-list-items .feature-list-item .feature-list-content-box { margin-right: 0 !important; margin-top: 0 !important;  margin-bottom: 0 !important; }';
 		} elseif ( 'right' === $position ) {
 			$css .= $selector . ' .feature-list-items .feature-list-item { text-align: right; -webkit-box-orient: horizontal; -webkit-box-direction: reverse; -ms-flex-direction: row-reverse; flex-direction: row-reverse; display: -webkit-box; display: -ms-flexbox; display: flex; }';
 			$css .= $selector . ' .feature-list-items .feature-list-item .feature-list-content-box { margin-left: 0 !important; margin-top: 0 !important;  margin-bottom: 0 !important; }';
@@ -581,7 +670,7 @@ class Asset {
 					$css .= '@media (min-width: ' . strval( $breakpoints[0]['value'] + 1 ) . 'px) {' . $selector . ' .feature-list-items .feature-list-item:not(:last-child):before { height: calc(100% + 8px); } }';
 				}
 			} elseif ( 'left' === $position ) {
-					$css .= $selector . ' .feature-list-items .feature-list-item .connector { left: 0; right: calc(100% - ' . $offset . $icon_size['unit'] . '); }';
+				$css .= $selector . ' .feature-list-items .feature-list-item .connector { left: 0; right: calc(100% - ' . $offset . $icon_size['unit'] . '); }';
 			} elseif ( 'right' === $position ) {
 				$css .= $selector . ' .feature-list-items .feature-list-item .connector { left: calc(100% - ' . $offset . $icon_size['unit'] . '); right: 0; }';
 			} else {
@@ -668,9 +757,9 @@ class Asset {
 						$css .= '@media (min-width: ' . strval( $breakpoints[0]['value'] + 1 ) . 'px) {' . $selector . ' .feature-list-items.connector-type-modern .feature-list-item:after { left: 5px; } }';
 					}
 				} elseif ( 'right' === $position ) {
-						$css .= $selector . ' .feature-list-items.connector-type-modern .feature-list-item { padding-right: 50px; }';
-						$css .= $selector . ' .feature-list-items.connector-type-modern .feature-list-item:before { right: 0 }';
-						$css .= $selector . ' .feature-list-items.connector-type-modern .feature-list-item:after { right: 5px }';
+					$css .= $selector . ' .feature-list-items.connector-type-modern .feature-list-item { padding-right: 50px; }';
+					$css .= $selector . ' .feature-list-items.connector-type-modern .feature-list-item:before { right: 0 }';
+					$css .= $selector . ' .feature-list-items.connector-type-modern .feature-list-item:after { right: 5px }';
 				} else {
 					$css .= $selector . ' .feature-list-items.connector-type-modern .feature-list-item { padding-left: 50px; }';
 					$css .= $selector . ' .feature-list-items.connector-type-modern .feature-list-item:before { left: 0; }';
@@ -749,8 +838,8 @@ class Asset {
 				$css .= '@media (min-width: ' . strval( $breakpoints[0]['value'] + 1 ) . 'px) {' . $selector . ' .jkit-icon-box-wrapper .icon-box.icon-box-header { margin-right: unset; margin-left: unset; } }';
 			}
 		} elseif ( 'left' === $position ) {
-				$css .= $selector . ' .jkit-icon-box-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; flex-direction: row; }';
-				$css .= $selector . ' .jkit-icon-box-wrapper .icon-box.icon-box-header { margin-right: 15px; margin-left: unset; }';
+			$css .= $selector . ' .jkit-icon-box-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; flex-direction: row; }';
+			$css .= $selector . ' .jkit-icon-box-wrapper .icon-box.icon-box-header { margin-right: 15px; margin-left: unset; }';
 		} elseif ( 'right' === $position ) {
 			$css .= $selector . ' .jkit-icon-box-wrapper { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: reverse; -ms-flex-direction: row-reverse; flex-direction: row-reverse; }';
 			$css .= $selector . ' .jkit-icon-box-wrapper .icon-box.icon-box-header { margin-left: 15px; margin-right: unset; }';
@@ -1082,8 +1171,8 @@ class Asset {
 
 		if ( $count_breakpoints > 0 ) {
 			if ( isset( $settings[ 'sg_setting_column_responsive_' . $breakpoints[ $count_breakpoints - 1 ]['key'] ]['size'] ) && ! empty( $settings[ 'sg_setting_column_responsive_' . $breakpoints[ $count_breakpoints - 1 ]['key'] ]['size'] ) ) {
-				$columns = $settings[ 'sg_setting_column_responsive_' . $breakpoints[ $count_breakpoints - 1 ]['key'] ];
-				$css    .= '@media (max-width: ' . strval( $breakpoints[ $count_breakpoints - 1 ]['value'] ) . 'px) {' . $selector . ' .gallery-items .gallery-item-wrap { width: calc(100% / ' . strval( intval( $columns['size'] ) ) . ' ); float: left; } }';
+				$columns  = $settings[ 'sg_setting_column_responsive_' . $breakpoints[ $count_breakpoints - 1 ]['key'] ];
+				$css     .= '@media (max-width: ' . strval( $breakpoints[ $count_breakpoints - 1 ]['value'] ) . 'px) {' . $selector . ' .gallery-items .gallery-item-wrap { width: calc(100% / ' . strval( intval( $columns['size'] ) ) . ' ); float: left; } }';
 			}
 		}
 
@@ -1298,5 +1387,66 @@ class Asset {
 		}
 
 		return $file;
+	}
+
+	/**
+	 * Check loaded scripts
+	 * 
+	 * @param string $handle Script handle.
+	 * 
+	 * @return bool
+	 */
+	private function script_loaded( $handle ) {
+		if ( isset( $this->loaded_scripts[ $handle ] ) && $this->loaded_scripts[ $handle ] ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Find an option value inside an elements tree (DFS recursive).
+	 *
+	 * @param array $elements_data Elements array to search.
+	 * @param string $option_id Option key to find.
+	 * @param string|array $type (unused) kept for compatibility.
+	 *
+	 * @return mixed|null
+	 */
+	private function get_element_settings( $elements_data, $option_id, $type = null ) {
+		if ( empty( $elements_data ) || ! is_array( $elements_data ) ) {
+			return null;
+		}
+
+		foreach ( $elements_data as $element_data ) {
+			if ( isset( $element_data['settings'] ) && array_key_exists( $option_id, $element_data['settings'] ) ) {
+				return $element_data['settings'][ $option_id ];
+			}
+
+			if ( isset( $element_data['elements'] ) && ! empty( $element_data['elements'] ) && is_array( $element_data['elements'] ) ) {
+				$value = $this->get_element_settings( $element_data['elements'], $option_id, $type );
+
+				if ( null !== $value ) {
+					return $value;
+				}
+			}
+		}
+
+		return null;
+	}
+
+	/**
+	 * Load Conditional Scripts
+	 * 
+	 * @param \Elementor\Core\Base\Document $document Document instance.
+	 * @param mixed $_is_excerpt Whether the excerpt is being called.
+	 */
+	public function enqueue_conditional_scripts( $document, $_is_excerpt ) {
+		$elements_data = $document->get_elements_data();
+
+		if ( ! $this->script_loaded( 'jkit-sticky-element' ) && $this->get_element_settings( $elements_data, 'jkit_sticky_section' ) === 'enabled' ) {
+			$this->loaded_scripts['jkit-sticky-element'] = true;
+			wp_enqueue_script( 'jkit-sticky-element' );
+		}
 	}
 }

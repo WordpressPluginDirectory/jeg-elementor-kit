@@ -2,9 +2,9 @@
 Contributors: Jegtheme
 Tags: elementor, elements, addons, widgets, templates
 Requires at least: 5.0
-Tested up to: 6.9
+Tested up to: 6.9.4
 Requires PHP: 7.4
-Stable tag: 3.0.2
+Stable tag: 3.1.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -204,7 +204,26 @@ This major release introduces Mega Menu Builder, 114 demo templates, and a redes
 
 == Changelog ==
 
-= 3.0.2 - 05-01-2025 =
+= 3.1.1 - 30-04-2026 =
+* Improvement: Security issues
+* Tweak: Add Pricing popup mechanism to upgrade to Pro buttons
+
+= 3.1.0 - 21-04-2026 =
+* Improvement: Security issues
+* Improvement: WCAG support for Pagination feature
+* Improvement: Add Height, Object Fit, and Object Position options for Post Featured Image widget
+* Fix: Sticky Element not working on deep elements
+* Fix: Undefined Array Key issue on AJAX requests
+* Fix: Conflict with AffiliateWP plugins 
+* Tweak: Add Freemius integration
+
+= 3.0.3 - 02-02-2026 =
+* Improvement: Support Live Streaming Youtube Video for Video Button widget
+* Improvement: WCAG support for Search widget
+* Fix: elementorFrontendConfig not defined issues
+* Tweak: Banner mechanism
+
+= 3.0.2 - 05-01-2026 =
 * Improvement: Security issues
 * Improvement: Add quick link of Jeg Kit in top bar menu
 * Improvement: Change mechanism font load to swap

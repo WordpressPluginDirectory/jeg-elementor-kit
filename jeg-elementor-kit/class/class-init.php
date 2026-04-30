@@ -17,6 +17,7 @@ use Jeg\Elementor_Kit\Elements\Element;
 use Jeg\Elementor_Kit\Templates\Template;
 use Jeg\Elementor_Kit\Banner\Banner;
 use Jeg\Elementor_Kit\Wizard\Wizard;
+use Jeg\Elementor_Kit\Integrations\Freemius;
 
 /**
  * Class Init
@@ -51,6 +52,7 @@ class Init {
 		Template::instance();
 		Banner::instance();
 		Wizard::instance();
+		Freemius::instance();
 	}
 
 	/**

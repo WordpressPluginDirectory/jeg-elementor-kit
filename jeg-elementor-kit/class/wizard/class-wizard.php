@@ -51,7 +51,7 @@ class Wizard {
 		return static::$instance;
 	}
 
-    /**
+	/**
 	 * Ge Upgrader Option Name.
 	 *
 	 * @return string.
@@ -122,6 +122,8 @@ class Wizard {
 		$config['ajaxurl']      = admin_url( 'admin-ajax.php' );
 		$config['installNonce'] = wp_create_nonce( 'updates' );
 		$config['imageUrl']     = JEG_ELEMENTOR_KIT_URL . '/assets/img/admin';
+		$config['bannerData']   = jkit_get_banner_data();
+		$config['bannerNonce']  = wp_create_nonce( 'jkit-banner' );
 		return $config;
 	}
 
@@ -152,7 +154,7 @@ class Wizard {
 	public function onboard_wizard_page() {
 
 		// if ( get_option( 'jkit_wizard_action_complete' ) || ! current_user_can( 'manage_options' ) ) {
-		// 	wp_die( 'You are not allowed to access this page.', 'Access Denied', array( 'response' => 403 ) );
+		// wp_die( 'You are not allowed to access this page.', 'Access Denied', array( 'response' => 403 ) );
 		// }
 		try {
 			if ( isset( $_REQUEST['nonce'] ) && wp_verify_nonce( sanitize_key( $_REQUEST['nonce'] ), self::$onboard ) ) {
@@ -217,7 +219,7 @@ class Wizard {
 		return false;
 	}
 
-    /**
+	/**
 	 * Set form split option meta
 	 */
 	public function set_onboard_wizard_page() {

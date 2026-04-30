@@ -44,7 +44,7 @@ class Search_View extends View_Abstract {
 			$search_modal_class .= ' hover-gradient';
 		}
 
-		return '<a href="#" class="' . $search_modal_class . '">' . $icon . '</a>
+		return '<button type="button" class="' . $search_modal_class . '" aria-label="' . esc_html__( 'Open search dialog', 'jeg-elementor-kit' ) . '">' . $icon . '</button>
 			<div class="jkit-modal-search-panel-wrapper">
 				<div class="jkit-modal-search-panel">
 					' . $this->render_form( $icon ) . '
@@ -64,6 +64,7 @@ class Search_View extends View_Abstract {
 
 		$button_class = 'jkit-search-button';
 		$input_class  = 'jkit-search-field';
+		$input_id     = 'jkit-search-input-' . uniqid();
 
 		if ( 'gradient' === $this->attribute['st_button_background_background_background'] || 'gradient' === $this->attribute['st_button_hover_background_background_background'] ) {
 			$button_class .= ' hover-gradient';
@@ -71,8 +72,9 @@ class Search_View extends View_Abstract {
 
 		return '<div class="jkit-search-panel">
 					<form role="search" method="get" class="jkit-search-group" action="' . esc_url( home_url( '/' . $language_prefix ) ) . '">
-						<input type="search" class="' . $input_class . '" placeholder="' . $placeholder . '" value="' . esc_attr( get_search_query() ) . '" name="s" />
-						<button type="submit" class="' . $button_class . '" aria-label="search-button">' . $button_icon . '</button>
+						<label class="screen-reader-text" for="' . $input_id . '">' . esc_html__( 'Search', 'jeg-elementor-kit' ) . '</label>
+						<input id="' . $input_id . '" type="search" class="' . $input_class . '" placeholder="' . $placeholder . '" value="' . esc_attr( get_search_query() ) . '" name="s" autocomplete="on" />
+						<button type="submit" class="' . $button_class . '" aria-label="' . esc_attr__( 'Search', 'jeg-elementor-kit' ) . '">' . $button_icon . '</button>
 					</form>
 				</div>';
 	}

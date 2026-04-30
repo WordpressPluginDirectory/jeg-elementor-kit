@@ -1804,7 +1804,7 @@ class Post_Block_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Padding', 'jeg-elementor-kit' ),
 			'segment'   => 'style_pagination',
 			'units'     => array( 'px', 'em' ),
-			'selectors' => '.jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:not(.jkit-block-nextprev), {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev a',
+			'selectors' => '.jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:not(.jkit-block-nextprev), {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev button',
 			'attribute' => 'padding',
 		);
 
@@ -1812,7 +1812,7 @@ class Post_Block_Option extends Option_Abstract {
 			'type'       => 'typography',
 			'title'      => esc_html__( 'Typography', 'jeg-elementor-kit' ),
 			'segment'    => 'style_pagination',
-			'selectors'  => '.jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button a',
+			'selectors'  => '.jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button button',
 			'dependency' => array(
 				'custom' => array(
 					'relation' => 'or',
@@ -2051,7 +2051,7 @@ class Post_Block_Option extends Option_Abstract {
 			'responsive' => true,
 			'selectors'  => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button, {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button, {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button button' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button svg'                                                                                          => 'fill: {{VALUE}};',
 				),
 			),
@@ -2061,7 +2061,7 @@ class Post_Block_Option extends Option_Abstract {
 			'type'      => 'background',
 			'title'     => esc_html__( 'Normal Background', 'jeg-elementor-kit' ),
 			'segment'   => 'style_pagination',
-			'selectors' => '.jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:not(.jkit-block-nextprev), {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev a',
+			'selectors' => '.jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:not(.jkit-block-nextprev), {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev button',
 			'options'   => array(
 				'classic',
 				'gradient',
@@ -2073,7 +2073,7 @@ class Post_Block_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Normal Border Radius', 'jeg-elementor-kit' ),
 			'segment'   => 'style_pagination',
 			'units'     => array( 'px', '%', 'em' ),
-			'selectors' => '.jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:not(.jkit-block-nextprev), {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev a',
+			'selectors' => '.jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:not(.jkit-block-nextprev), {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev button',
 			'attribute' => 'border-radius',
 		);
 
@@ -2081,14 +2081,14 @@ class Post_Block_Option extends Option_Abstract {
 			'type'      => 'border',
 			'title'     => esc_html__( 'Normal Border', 'jeg-elementor-kit' ),
 			'segment'   => 'style_pagination',
-			'selectors' => '.jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:not(.jkit-block-nextprev), {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev a',
+			'selectors' => '.jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:not(.jkit-block-nextprev), {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev button',
 		);
 
 		$this->options['st_pagination_normal_boxshadow'] = array(
 			'type'      => 'boxshadow',
 			'title'     => esc_html__( 'Normal Box Shadow', 'jeg-elementor-kit' ),
 			'segment'   => 'style_pagination',
-			'selectors' => '.jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:not(.jkit-block-nextprev), {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev a',
+			'selectors' => '.jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:not(.jkit-block-nextprev), {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev button',
 		);
 
 		$this->options['st_pagination_normal_tab_end'] = array(
@@ -2109,7 +2109,7 @@ class Post_Block_Option extends Option_Abstract {
 			'responsive' => true,
 			'selectors'  => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:hover:not(.jkit-block-nextprev), {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:hover:not(.jkit-block-nextprev) a, {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev a:hover:not(.disabled)' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:hover:not(.jkit-block-nextprev), {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:hover:not(.jkit-block-nextprev) button, {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev button:hover:not(.disabled)' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:hover:not(.jkit-block-nextprev) svg'                                                                                                => 'fill: {{VALUE}};',
 				),
 			),
@@ -2119,7 +2119,7 @@ class Post_Block_Option extends Option_Abstract {
 			'type'      => 'background',
 			'title'     => esc_html__( 'Hover Background', 'jeg-elementor-kit' ),
 			'segment'   => 'style_pagination',
-			'selectors' => '.jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:hover:not(.jkit-block-nextprev), {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev a:hover:not(.disabled)',
+			'selectors' => '.jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:hover:not(.jkit-block-nextprev), {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev button:hover:not(.disabled)',
 			'options'   => array(
 				'classic',
 				'gradient',
@@ -2131,7 +2131,7 @@ class Post_Block_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Hover Border Radius', 'jeg-elementor-kit' ),
 			'segment'   => 'style_pagination',
 			'units'     => array( 'px', '%', 'em' ),
-			'selectors' => '.jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:hover:not(.jkit-block-nextprev), {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev a:hover:not(.disabled)',
+			'selectors' => '.jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:hover:not(.jkit-block-nextprev), {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev button:hover:not(.disabled)',
 			'attribute' => 'border-radius',
 		);
 
@@ -2139,14 +2139,14 @@ class Post_Block_Option extends Option_Abstract {
 			'type'      => 'border',
 			'title'     => esc_html__( 'Hover Border', 'jeg-elementor-kit' ),
 			'segment'   => 'style_pagination',
-			'selectors' => '.jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:hover:not(.jkit-block-nextprev), {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev a:hover:not(.disabled)',
+			'selectors' => '.jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:hover:not(.jkit-block-nextprev), {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev button:hover:not(.disabled)',
 		);
 
 		$this->options['st_pagination_hover_boxshadow'] = array(
 			'type'      => 'boxshadow',
 			'title'     => esc_html__( 'Hover Box Shadow', 'jeg-elementor-kit' ),
 			'segment'   => 'style_pagination',
-			'selectors' => '.jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:hover:not(.jkit-block-nextprev), {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev a:hover:not(.disabled)',
+			'selectors' => '.jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button:hover:not(.jkit-block-nextprev), {{WRAPPER}} .jeg-elementor-kit.jkit-postblock .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev button:hover:not(.disabled)',
 		);
 
 		$this->options['st_pagination_hover_tab_end'] = array(

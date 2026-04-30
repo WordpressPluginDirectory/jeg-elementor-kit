@@ -346,15 +346,15 @@ class View_Abstract extends Elements_View_Abstract {
 
 				$output =
 					'<div class="jkit-pagination-button ' . $class . '">
-						<a href="#" class="prev ' . $prev_class . '" title="' . esc_html__( 'Previous', 'jeg-elementor-kit' ) . '">' . $prev . '</a>
-						<a href="#" class="next ' . $next_class . '" title="' . esc_html__( 'Next', 'jeg-elementor-kit' ) . '">' . $next . '</a>
+						<button type="button" class="prev ' . $prev_class . '" title="' . esc_html__( 'Previous', 'jeg-elementor-kit' ) . '">' . $prev . '</button>
+						<button type="button" class="next ' . $next_class . '" title="' . esc_html__( 'Next', 'jeg-elementor-kit' ) . '">' . $next . '</button>
 					</div>';
 				$output = '<div class="jkit-block-pagination jkit-align' . $pagination_align . '">' . apply_filters( 'jkit_module_block_pagination_extend', $output, $this->attribute ) . '</div>';
 			} elseif ( in_array( $this->attribute['pagination_mode'], array( 'loadmore', 'scrollload' ), true ) && $next ) {
 				$icon          = $this->render_icon_element( $this->attribute['pagination_icon'] );
 				$icon_position = esc_attr( $this->attribute['pagination_icon_position'] );
 
-				$output = '<a href="#" data-load="' . esc_attr( $this->attribute['pagination_loadmore_text'] ) . '" data-loading="' . esc_attr( $this->attribute['pagination_loading_text'] ) . '">' . esc_attr( $this->attribute['pagination_loadmore_text'] ) . '</a>';
+				$output = '<span data-load="' . esc_attr( $this->attribute['pagination_loadmore_text'] ) . '" data-loading="' . esc_attr( $this->attribute['pagination_loading_text'] ) . '">' . esc_attr( $this->attribute['pagination_loadmore_text'] ) . '</span>';
 
 				if ( ! empty( $icon ) ) {
 					if ( 'before' === $icon_position ) {
@@ -364,7 +364,7 @@ class View_Abstract extends Elements_View_Abstract {
 					}
 				}
 
-				$output = '<div class="jkit-pagination-button jkit-block-' . $this->attribute['pagination_mode'] . ' icon-position-' . $icon_position . '">' . $output . '</div>';
+				$output = '<button type="button" class="jkit-pagination-button jkit-block-' . $this->attribute['pagination_mode'] . ' icon-position-' . $icon_position . '">' . $output . '</button>';
 				$output = '<div class="jkit-block-pagination jkit-align' . $pagination_align . '">' . apply_filters( 'jkit_module_block_pagination_extend', $output, $this->attribute ) . '</div>';
 			}
 		}
@@ -518,7 +518,7 @@ class View_Abstract extends Elements_View_Abstract {
 		if ( isset( $attr['content_selection'] ) && 'related' === $attr['content_selection'] ) {
 			$post_id   = get_the_ID();
 			$post_type = get_post_type( $post_id );
-			$category  = $post_tag  = array();
+			$category  = $post_tag = array();
 
 			if ( in_array( $attr['related_filter'], array( 'category', 'both' ), true ) ) {
 				$cats = get_the_category( $post_id );

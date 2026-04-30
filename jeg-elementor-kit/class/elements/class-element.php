@@ -58,7 +58,6 @@ class Element {
 		add_action( 'elementor/element/column/section_advanced/after_section_end', array( $this, 'add_column_options' ), 10, 2 );
 		add_action( 'elementor/element/section/section_advanced/after_section_end', array( $this, 'add_section_options' ), 10, 2 );
 		add_action( 'elementor/element/container/section_layout/after_section_end', array( $this, 'add_container_options' ), 10, 2 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 99 );
 		add_action( 'elementor/elements/categories_registered', array( $this, 'register_categories' ), 99 );
 		add_filter( 'elementor/editor/localize_settings', array( $this, 'scripts_localize_settings' ) );
 		add_action( 'elementor/editor/templates/panel/category', array( $this, 'pro_promotion_link' ), 99 );
@@ -609,7 +608,7 @@ class Element {
 		?>
 		<# if ( 'undefined' !==typeof name && name && name.includes('jkit-pro-') ) { #>
 			<span class="elementor-panel-heading-promotion jkit-pro-promotion">
-				<a href="<?php echo esc_url(JEG_ELEMENT_SERVER_URL . 'pricing?utm_source=jeg-elementor-kit&utm_medium=elementor-panel') ?>" target="_blank">
+				<a href="<?php echo esc_url( admin_url( 'admin.php?page=jkit&utm_source=jeg-elementor-kit&utm_medium=elementor-panel' ) ); ?>" target="_blank">
 					<i class="eicon-upgrade-crown"></i><?php echo esc_html__( 'Upgrade', 'elementor' ); ?>
 				</a>
 			</span>
@@ -1819,15 +1818,5 @@ class Element {
 		);
 
 		$container->end_controls_section();
-	}
-
-	/**
-	 * Enqueue The Script of Section
-	 *
-	 * @param \Elementor\Controls_Stack $class The edited element.
-	 * @param string                    $section_id The ID of Section.
-	 */
-	public function enqueue_scripts() {
-		wp_enqueue_script( 'jkit-sticky-element' );
 	}
 }

@@ -161,7 +161,7 @@ class Post_Featured_Image_Option extends Option_Abstract {
 
 		$this->options['st_image_size'] = array(
 			'type'       => 'slider',
-			'title'      => esc_html__( 'Size', 'jeg-elementor-kit' ),
+			'title'      => esc_html__( 'Width', 'jeg-elementor-kit' ),
 			'segment'    => 'style_image',
 			'options'    => array(
 				'min'  => 0,
@@ -173,6 +173,85 @@ class Post_Featured_Image_Option extends Option_Abstract {
 			'selectors'  => '.jeg-elementor-kit.jkit-post-featured-image .post-featured-image img',
 			'attribute'  => 'max-width',
 		);
+
+		$this->options['st_image_height'] = array(
+			'type'       => 'slider',
+			'title'      => esc_html__( 'Height', 'jeg-elementor-kit' ),
+			'segment'    => 'style_image',
+			'options'    => array(
+				'min'  => 0,
+				'max'  => 1000,
+				'step' => 1,
+			),
+			'units'      => array( 'px', 'em', '%' ),
+			'responsive' => true,
+			'selectors'  => '.jeg-elementor-kit.jkit-post-featured-image .post-featured-image img',
+			'attribute'  => 'max-height',
+		);
+
+		$this->options['st_image_object_fit'] = array(
+			'type'       => 'select',
+			'title'      => esc_html__( 'Object Fit', 'jeg-elementor-kit' ),
+			'default'    => '',
+			'segment'    => 'style_image',
+			'options'    => array(
+				''        => esc_html__( 'Default', 'jeg-elementor-kit' ),
+				'contain' => esc_html__( 'Contain', 'jeg-elementor-kit' ),
+				'cover'   => esc_html__( 'Cover', 'jeg-elementor-kit' ),
+				'fill'    => esc_html__( 'Fill', 'jeg-elementor-kit' ),
+				'none'    => esc_html__( 'None', 'jeg-elementor-kit' ),
+			),
+			'responsive' => true,
+			'selectors'  => '.jeg-elementor-kit.jkit-post-featured-image .post-featured-image img',
+			'attribute'  => 'object-fit',
+		);
+
+		$this->options['st_image_object_position'] = array(
+			'type'       => 'select',
+			'title'      => esc_html__( 'Object Position', 'jeg-elementor-kit' ),
+			'default'    => 'center center',
+			'segment'    => 'style_image',
+			'options'    => array(
+				'center center' => esc_html__( 'Center Center', 'jeg-elementor-kit' ),
+				'center left'   => esc_html__( 'Center Left', 'jeg-elementor-kit' ),
+				'center right'  => esc_html__( 'Center Right', 'jeg-elementor-kit' ),
+				'top center'    => esc_html__( 'Top Center', 'jeg-elementor-kit' ),
+				'top left'      => esc_html__( 'Top Left', 'jeg-elementor-kit' ),
+				'top right'     => esc_html__( 'Top Right', 'jeg-elementor-kit' ),
+				'bottom center' => esc_html__( 'Bottom Center', 'jeg-elementor-kit' ),
+				'bottom left'   => esc_html__( 'Bottom Left', 'jeg-elementor-kit' ),
+				'bottom right'  => esc_html__( 'Bottom Right', 'jeg-elementor-kit' ),
+				'custom'        => esc_html__( 'Custom', 'jeg-elementor-kit' ),
+			),
+			'responsive' => true,
+			'selectors'  => '.jeg-elementor-kit.jkit-post-featured-image .post-featured-image img',
+			'attribute'  => 'object-position',
+		);
+
+		// Custom numeric position (horizontal / vertical)
+		$this->options['st_image_object_position_custom'] = array(
+			'type'               => 'dimension',
+			'title'              => esc_html__( 'Object Position (Custom)', 'jeg-elementor-kit' ),
+			'segment'            => 'style_image',
+			'units'              => array( '%', 'px' ),
+			'allowed_dimensions' => array( 'left', 'top' ),
+			'default'            => array( 'left' => '50', 'top' => '50', 'unit' => '%', 'right' => '0', 'bottom' => '0' ),
+			'selectors'          => array(
+				'custom' => array(
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-post-featured-image .post-featured-image img' => 'object-position: {{LEFT}}{{UNIT}} {{TOP}}{{UNIT}};',
+				),
+			),
+			'responsive'         => true,
+			'dependency'         => array(
+				array(
+					'field'    => 'st_image_object_position_responsive',
+					'operator' => '==',
+					'value'    => 'custom',
+				),
+			),
+		);
+
+
 
 		$this->options['st_image_opacity'] = array(
 			'type'         => 'slider',

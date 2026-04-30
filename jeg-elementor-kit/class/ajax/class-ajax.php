@@ -107,15 +107,17 @@ class Ajax {
 		if ( array_key_exists( $this->endpoint, $wp->query_vars ) ) {
 			add_filter( 'wp_doing_ajax', array( $this, 'is_doing_ajax' ) );
 
-			$action         = $wp->query_vars['action'];
-			$element_prefix = self::$element_ajax_prefix;
+			if ( isset( $wp->query_vars['action'] ) ) {
+				$action         = $wp->query_vars['action'];
+				$element_prefix = self::$element_ajax_prefix;
 
-			if ( 0 === strpos( $action, $element_prefix ) ) {
-				$element_name = str_replace( $element_prefix, '', $action );
-				$this->element_ajax( $element_name );
+				if ( 0 === strpos( $action, $element_prefix ) ) {
+					$element_name = str_replace( $element_prefix, '', $action );
+					$this->element_ajax( $element_name );
+				}
+
+				do_action( 'jkit_elements_ajax_' . $action );
 			}
-
-			do_action( 'jkit_elements_ajax_' . $action );
 		}
 	}
 
@@ -128,53 +130,55 @@ class Ajax {
 		if ( array_key_exists( $this->endpoint, $wp->query_vars ) ) {
 			add_filter( 'wp_doing_ajax', array( $this, 'is_doing_ajax' ) );
 
-			$action = $wp->query_vars['action'];
+			if ( isset( $wp->query_vars['action'] ) ) {
+				$action = $wp->query_vars['action'];
 
-			if ( isset( $_POST['form_data'], $_POST['nonce'] ) && wp_verify_nonce( sanitize_key( $_POST['nonce'] ), jkit_get_nonce_identifier( 'dashboard' ) ) && current_user_can( 'edit_theme_options' ) ) {
-				if ( 'save_user_data' === $action ) {
-					// @codingStandardsIgnoreStart sanitize value using jeg_sanitize_array
-					$this->save_user_data( jeg_sanitize_array( wp_unslash( $_POST['form_data'] ) ) );
-					// @codingStandardsIgnoreEnd
-					wp_send_json(
-						array(
-							'message' => esc_html__( 'Success Save Data', 'jeg-elementor-kit' ),
-						),
-						200
-					);
-				} elseif ( 'save_elements_enable' === $action ) {
-					// @codingStandardsIgnoreStart sanitize value using jeg_sanitize_array
-					$this->save_elements_enable( jeg_sanitize_array( wp_unslash( $_POST['form_data'] ) ) );
-					// @codingStandardsIgnoreEnd
-					wp_send_json(
-						array(
-							'message' => esc_html__( 'Success Save Data', 'jeg-elementor-kit' ),
-						),
-						200
-					);
-				} elseif ( 'save_settings' === $action ) {
-					// @codingStandardsIgnoreStart sanitize value using jeg_sanitize_array
-					$this->save_settings( jeg_sanitize_array( wp_unslash( $_POST['form_data'] ) ) );
-					// @codingStandardsIgnoreEnd
-					wp_send_json(
-						array(
-							'message' => esc_html__( 'Success Save Data', 'jeg-elementor-kit' ),
-						),
-						200
-					);
-				} elseif ( 'save_notfound' === $action ) {
-					$this->save_notfound( jeg_sanitize_array( wp_unslash( $_POST['form_data'] ) ) );
+				if ( isset( $_POST['form_data'], $_POST['nonce'] ) && wp_verify_nonce( sanitize_key( $_POST['nonce'] ), jkit_get_nonce_identifier( 'dashboard' ) ) && current_user_can( 'edit_theme_options' ) ) {
+					if ( 'save_user_data' === $action ) {
+						// @codingStandardsIgnoreStart sanitize value using jeg_sanitize_array
+						$this->save_user_data( jeg_sanitize_array( wp_unslash( $_POST['form_data'] ) ) );
+						// @codingStandardsIgnoreEnd
+						wp_send_json(
+							array(
+								'message' => esc_html__( 'Success Save Data', 'jeg-elementor-kit' ),
+							),
+							200
+						);
+					} elseif ( 'save_elements_enable' === $action ) {
+						// @codingStandardsIgnoreStart sanitize value using jeg_sanitize_array
+						$this->save_elements_enable( jeg_sanitize_array( wp_unslash( $_POST['form_data'] ) ) );
+						// @codingStandardsIgnoreEnd
+						wp_send_json(
+							array(
+								'message' => esc_html__( 'Success Save Data', 'jeg-elementor-kit' ),
+							),
+							200
+						);
+					} elseif ( 'save_settings' === $action ) {
+						// @codingStandardsIgnoreStart sanitize value using jeg_sanitize_array
+						$this->save_settings( jeg_sanitize_array( wp_unslash( $_POST['form_data'] ) ) );
+						// @codingStandardsIgnoreEnd
+						wp_send_json(
+							array(
+								'message' => esc_html__( 'Success Save Data', 'jeg-elementor-kit' ),
+							),
+							200
+						);
+					} elseif ( 'save_notfound' === $action ) {
+						$this->save_notfound( jeg_sanitize_array( wp_unslash( $_POST['form_data'] ) ) );
 
-					wp_send_json(
-						array(
-							'message' => esc_html__( 'Success Save Data', 'jeg-elementor-kit' ),
-						),
-						200
-					);
+						wp_send_json(
+							array(
+								'message' => esc_html__( 'Success Save Data', 'jeg-elementor-kit' ),
+							),
+							200
+						);
+					}
 				}
-			}
 
-			do_action( 'jkit_elements_ajax_' . $action );
-			exit;
+				do_action( 'jkit_elements_ajax_' . $action );
+				exit;
+			}
 		}
 	}
 
@@ -268,9 +272,9 @@ class Ajax {
 					array(
 						'method'  => 'GET',
 						'headers' =>
-						array(
-							'Authorization' => sprintf( 'Basic %s', base64_encode( 'mc4wp:' . $data['mailchimp_api_key'] ) ),
-						),
+							array(
+								'Authorization' => sprintf( 'Basic %s', base64_encode( 'mc4wp:' . $data['mailchimp_api_key'] ) ),
+							),
 						'timeout' => 30,
 					)
 				);
@@ -502,7 +506,7 @@ class Ajax {
 			$post_type = sanitize_key( $_POST['type'] );
 			$published = jkit_get_element_data( $post_type )['publish'];
 			$keys      = jkit_extract_ids( $published );
-			$data      = jeg_sanitize_array( $_POST ['data'] );
+			$data      = jeg_sanitize_array( $_POST['data'] );
 			$condition = isset( $data['condition'] ) ? $data['condition'] : '';
 			$post_args = array(
 				'post_title'  => $data['option']['title'],
@@ -518,10 +522,10 @@ class Ajax {
 			$meta      = null;
 
 			if ( isset( $post_type ) && 'jkit-template' === $post_type ) {
-				$page = sanitize_key( $_POST['page'] );
+				$page                                          = sanitize_key( $_POST['page'] );
 				$post_args['meta_input']['_wp_page_template']  = 'elementor_header_footer';
 				$post_args['meta_input']['jkit-template-type'] = $page;
-				$meta = $page;
+				$meta                                          = $page;
 			}
 
 			$post_id = wp_insert_post( $post_args );

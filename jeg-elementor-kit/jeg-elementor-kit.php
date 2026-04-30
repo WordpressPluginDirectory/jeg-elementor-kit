@@ -4,19 +4,47 @@
  * Plugin URI: https://jegkit.com/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash
  * Description: Jeg Kit for Elementor (formerly Jeg Elementor Kit) extends Elementor with powerful, customizable widgets and templates — helping you build modern, responsive WordPress websites faster.
  * Requires Plugins: elementor
- * Version: 3.0.2
+ * Version: 3.1.1
  * Author: Jegtheme
  * Author URI: https://jegkit.com/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash
  * License: GPLv3
  * Text Domain: jeg-elementor-kit
  *
- * Elementor tested up to: 3.34.0
- * Elementor Pro tested up to: 3.34.0
+ * Elementor tested up to: 4.0.4
+ * Elementor Pro tested up to: 4.0.4
  *
  * @author Jegtheme
  * @since 1.0.0
  * @package jeg-kit
  */
+
+defined( 'JEG_ELEMENTOR_KIT' ) || define( 'JEG_ELEMENTOR_KIT', 'jeg-elementor-kit' );
+defined( 'JEG_ELEMENTOR_KIT_NAME' ) || define( 'JEG_ELEMENTOR_KIT_NAME', 'Jeg Kit' );
+defined( 'JEG_ELEMENTOR_KIT_VERSION' ) || define( 'JEG_ELEMENTOR_KIT_VERSION', '3.1.1' );
+defined( 'JEG_ELEMENTOR_KIT_URL' ) || define( 'JEG_ELEMENTOR_KIT_URL', plugins_url( JEG_ELEMENTOR_KIT ) );
+defined( 'JEG_ELEMENTOR_KIT_FILE' ) || define( 'JEG_ELEMENTOR_KIT_FILE', __FILE__ );
+defined( 'JEG_ELEMENTOR_KIT_BASE' ) || define( 'JEG_ELEMENTOR_KIT_BASE', plugin_basename( __FILE__ ) );
+defined( 'JEG_ELEMENTOR_KIT_DIR' ) || define( 'JEG_ELEMENTOR_KIT_DIR', plugin_dir_path( __FILE__ ) );
+defined( 'JEG_ELEMENTOR_KIT_ID' ) || define( 'JEG_ELEMENTOR_KIT_ID', 0 );
+defined( 'JEG_ELEMENTOR_KIT_OPTIONS' ) || define( 'JEG_ELEMENTOR_KIT_OPTIONS', 'jeg_elementor_kit_options' );
+
+defined( 'JEG_THEME_URL' ) || define( 'JEG_THEME_URL', JEG_ELEMENTOR_KIT_URL );
+defined( 'JEG_ELEMENT_THEME_URL' ) || define( 'JEG_ELEMENT_THEME_URL', JEG_ELEMENTOR_KIT_URL . '/lib/jeg-element' );
+defined( 'JEG_ELEMENT_SERVER_URL' ) || define( 'JEG_ELEMENT_SERVER_URL', 'https://jegkit.com/' );
+defined( 'ESSENTIAL_FRAMEWORK' ) || define( 'ESSENTIAL_FRAMEWORK', 'essential-framework' );
+
+if ( ! defined( 'JEG_VERSION' ) ) {
+	require_once JEG_ELEMENTOR_KIT_DIR . 'lib/jeg-framework/bootstrap.php';
+}
+
+if ( ! defined( 'JEG_ELEMENT_VERSION' ) ) {
+	require_once JEG_ELEMENTOR_KIT_DIR . 'lib/jeg-element/bootstrap.php';
+}
+
+require_once JEG_ELEMENTOR_KIT_DIR . 'lib/vendor/autoload.php';
+
+require_once JEG_ELEMENTOR_KIT_DIR . 'autoload.php';
+require_once JEG_ELEMENTOR_KIT_DIR . 'helper.php';
 
 /**
  * Initialize Plugin
@@ -24,34 +52,6 @@
 add_action(
 	'plugins_loaded',
 	function () {
-		defined( 'JEG_ELEMENTOR_KIT' ) || define( 'JEG_ELEMENTOR_KIT', 'jeg-elementor-kit' );
-		defined( 'JEG_ELEMENTOR_KIT_NAME' ) || define( 'JEG_ELEMENTOR_KIT_NAME', 'Jeg Kit' );
-		defined( 'JEG_ELEMENTOR_KIT_VERSION' ) || define( 'JEG_ELEMENTOR_KIT_VERSION', '3.0.2' );
-		defined( 'JEG_ELEMENTOR_KIT_URL' ) || define( 'JEG_ELEMENTOR_KIT_URL', plugins_url( JEG_ELEMENTOR_KIT ) );
-		defined( 'JEG_ELEMENTOR_KIT_FILE' ) || define( 'JEG_ELEMENTOR_KIT_FILE', __FILE__ );
-		defined( 'JEG_ELEMENTOR_KIT_BASE' ) || define( 'JEG_ELEMENTOR_KIT_BASE', plugin_basename( __FILE__ ) );
-		defined( 'JEG_ELEMENTOR_KIT_DIR' ) || define( 'JEG_ELEMENTOR_KIT_DIR', plugin_dir_path( __FILE__ ) );
-		defined( 'JEG_ELEMENTOR_KIT_ID' ) || define( 'JEG_ELEMENTOR_KIT_ID', 0 );
-		defined( 'JEG_ELEMENTOR_KIT_OPTIONS' ) || define( 'JEG_ELEMENTOR_KIT_OPTIONS', 'jeg_elementor_kit_options' );
-
-		defined( 'JEG_THEME_URL' ) || define( 'JEG_THEME_URL', JEG_ELEMENTOR_KIT_URL );
-		defined( 'JEG_ELEMENT_THEME_URL' ) || define( 'JEG_ELEMENT_THEME_URL', JEG_ELEMENTOR_KIT_URL . '/lib/jeg-element' );
-		defined( 'JEG_ELEMENT_SERVER_URL' ) || define( 'JEG_ELEMENT_SERVER_URL', 'https://jegkit.com/' );
-		defined( 'ESSENTIAL_FRAMEWORK' ) || define( 'ESSENTIAL_FRAMEWORK', 'essential-framework' );
-
-		if ( ! defined( 'JEG_VERSION' ) ) {
-			require_once JEG_ELEMENTOR_KIT_DIR . 'lib/jeg-framework/bootstrap.php';
-		}
-
-		if ( ! defined( 'JEG_ELEMENT_VERSION' ) ) {
-			require_once JEG_ELEMENTOR_KIT_DIR . 'lib/jeg-element/bootstrap.php';
-		}
-
-		require_once JEG_ELEMENTOR_KIT_DIR . 'lib/vendor/autoload.php';
-
-		require_once JEG_ELEMENTOR_KIT_DIR . 'autoload.php';
-		require_once JEG_ELEMENTOR_KIT_DIR . 'helper.php';
-
 		Jeg\Elementor_Kit\Init::instance();
 	},
 	99

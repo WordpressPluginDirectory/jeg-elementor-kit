@@ -105,6 +105,17 @@ class Api {
 			)
 		);
 
+		// UTM proxy: forward tracker requests to pro.jegkit.com to avoid exposing external URL in the client
+		register_rest_route(
+			self::ENDPOINT,
+			'utm-proxy',
+			array(
+				'methods'  => 'POST',
+				'callback' => array( $this, 'utm_proxy_handler' ),
+				'permission_callback' => array( $this, 'utm_permission_check' ),
+			)
+		);
+
 		register_rest_route(
 			self::ENDPOINT,
 			'updateMailChimp',
@@ -396,6 +407,34 @@ class Api {
 				'permission_callback' => 'jkit_permission_check_admin',
 			)
 		);
+
+		register_rest_route(
+			self::ENDPOINT,
+			'close-banner',
+			array(
+				'methods'             => 'POST',
+				'callback'            => array( $this, 'close_banner_handler' ),
+				'permission_callback' => 'jkit_permission_check_admin',
+			)
+		);
+
+		add_filter( 'wp_doing_ajax', '__return_false' );
+	}
+
+	/**
+	 * Handler for close banner.
+	 *
+	 * @param \WP_REST_Request $request request.
+	 *
+	 * @return \WP_REST_Response|array
+	 */
+	public function close_banner_handler( $request ) {
+		if ( ! wp_verify_nonce( sanitize_text_field( $request->get_param( 'nonce' ) ), 'jkit-banner', false ) ) {
+			return $this->response_error( esc_html__( 'You are not allowed to perform this action.', 'jeg-elementor-kit' ) );
+		}
+
+		set_transient( 'jkit_banner_closed', true, 7 * DAY_IN_SECONDS );
+		return $this->response_success( esc_html__( 'Banner closed successfully.', 'jeg-elementor-kit' ) );
 	}
 
 	/**
@@ -2933,5 +2972,64 @@ class Api {
 	 */
 	private function response_success( $args ) {
 		return new \WP_REST_Response( $args, 200 );
+	}
+
+	/**
+	 * Proxy handler that forwards UTM tracker requests to pro.jegkit.com
+	 *
+	 * @param \WP_REST_Request $request Request object.
+	 * @return \WP_REST_Response
+	 */
+	public function utm_proxy_handler( $request ) {
+		// nonce validated in permission callback (utm_permission_check) — no duplicate check here
+
+		$body = $request->get_body();
+		$headers = array(
+			'Content-Type' => $request->get_header( 'content-type' ) ?: 'application/json',
+		);
+
+		$remote = wp_remote_post(
+			'https://pro.jegkit.com/wp-json/jeg-kit-license/v1/utm-tracker/',
+			array(
+				'body'      => $body,
+				'headers'   => $headers,
+				'timeout'   => 10,
+				'sslverify' => true,
+			)
+		);
+
+		if ( is_wp_error( $remote ) ) {
+			return $this->response_error( $remote->get_error_message(), 502 );
+		}
+
+		$code = wp_remote_retrieve_response_code( $remote );
+		$resp_body = wp_remote_retrieve_body( $remote );
+
+		// try decode JSON, otherwise return raw body
+		$decoded = json_decode( $resp_body, true );
+
+		return new \WP_REST_Response( $decoded ?: $resp_body, $code );
+	}
+
+	/**
+	 * Permission check for UTM proxy endpoint.
+	 * Accepts a localized nonce (`jkit-dashboard`) or falls back to admin permission.
+	 *
+	 * @param \WP_REST_Request $request Request object.
+	 * @return bool|\WP_Error
+	 */
+	public function utm_permission_check( $request ) {
+		// Check WP REST nonce first (sent as X-WP-Nonce header)
+		$header_nonce = $request->get_header( 'X-WP-Nonce' ) ?: $request->get_header( 'x_wp_nonce' );
+		if ( $header_nonce && wp_verify_nonce( $header_nonce, 'wp_rest' ) ) {
+			return true;
+		}
+
+		// Fallback to existing admin permission check
+		if ( function_exists( 'jkit_permission_check_admin' ) ) {
+			return (bool) call_user_func( 'jkit_permission_check_admin' );
+		}
+
+		return new \WP_Error( 'rest_forbidden', esc_html__( 'You are not allowed to access this endpoint.', 'jeg-elementor-kit' ), array( 'status' => 403 ) );
 	}
 }
