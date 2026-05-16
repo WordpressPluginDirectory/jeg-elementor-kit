@@ -69,7 +69,7 @@ class Freemius {
 				'premium_slug'        => 'jeg-kit-pro',
 				'type'                => 'plugin',
 				'public_key'          => 'pk_af50d7e3c7029cda93a28f0dd390b',
-				'is_premium'          => true,
+				'is_premium'          => false,
 				'premium_suffix'      => 'Pro',
 				'has_premium_version' => true,
 				'has_addons'          => false,
@@ -92,7 +92,7 @@ class Freemius {
 
 			// Skip opt-in flow agar modal permintaan data tidak muncul.
 			if ( $this->fs && ! $this->fs->is_registered() ) {
-				$this->fs->skip_connection( null, true );
+				$this->fs->skip_connection( true );
 			}
 		}
 
@@ -202,6 +202,85 @@ class Freemius {
 			'client_theme_author'    => wp_get_theme()->get( 'Author' ),
 			'client_theme_author_uri' => wp_get_theme()->get( 'AuthorURI' ),
 		), $query_params );
+	}
+
+	/**
+	 * Get live pricing data from Freemius API.
+	 * Mirrors the SDK handler `_fs_pricing_ajax_action_handler` for `fetch_pricing_data`.
+	 *
+	 * @return array|null
+	 */
+	public function get_pricing_data() {
+		if ( ! $this->fs ) {
+			return null;
+		}
+
+		$fs            = $this->fs;
+		$pricing_cfg   = $this->get_pricing_config();
+		$bundle_id     = $fs->get_bundle_id();
+		$bundle_pubkey = $fs->get_bundle_public_key();
+
+		$params = array(
+			'is_enriched' => true,
+			'trial'       => false,
+		);
+
+		foreach ( array( 'sandbox', 's_ctx_type', 's_ctx_id', 's_ctx_ts', 's_ctx_secure' ) as $key ) {
+			if ( ! empty( $pricing_cfg[ $key ] ) ) {
+				$params[ $key ] = $pricing_cfg[ $key ];
+			}
+		}
+
+		$has_bundle_context = ( \FS_Plugin::is_valid_id( $bundle_id ) && ! empty( $bundle_pubkey ) );
+
+		if ( ! $has_bundle_context ) {
+			$api = $fs->get_api_plugin_scope();
+		} else {
+			$api = \FS_Api::instance(
+				$bundle_id,
+				'plugin',
+				$bundle_id,
+				$bundle_pubkey,
+				! $fs->is_live(),
+				false,
+				$fs->get_sdk_version()
+			);
+
+			$params['plugin_id']         = $fs->get_id();
+			$params['plugin_public_key'] = $fs->get_public_key();
+		}
+
+		$cache_ttl = $this->get_pricing_api_cache_ttl();
+		$result    = $api->get( $fs->add_show_pending( 'pricing.json?' . http_build_query( $params ) ), true, $cache_ttl );
+
+		if ( ! is_object( $result ) || isset( $result->error ) ) {
+			return null;
+		}
+
+		$data = json_decode( wp_json_encode( $result ), true );
+
+		if ( ! is_array( $data ) || empty( $data['plans'] ) || ! is_array( $data['plans'] ) ) {
+			return null;
+		}
+
+		return $data;
+	}
+
+	/**
+	 * Get Freemius FS_Api pricing cache TTL in seconds.
+	 *
+	 * @return int
+	 */
+	protected function get_pricing_api_cache_ttl() {
+		$default_ttl = 10 * MINUTE_IN_SECONDS;
+
+		$ttl = (int) apply_filters( 'jeg-elementor-kit/pricing/fs_api_cache_ttl', $default_ttl );
+
+		if ( $ttl < 0 ) {
+			$ttl = 0;
+		}
+
+		return $ttl;
 	}
 
 }

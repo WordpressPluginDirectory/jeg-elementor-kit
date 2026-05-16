@@ -1663,6 +1663,48 @@ if ( ! function_exists( 'pro_banner_popup_template' ) ) {
 	}
 }
 
+if ( ! function_exists( 'jkit_get_pricing_plan_event_expired_timestamp' ) ) {
+	/**
+	 * Get event pricing plan expired timestamp.
+	 *
+	 * @param array $data Pricing plan data.
+	 *
+	 * @return int|false
+	 */
+	function jkit_get_pricing_plan_event_expired_timestamp( $data ) {
+		if ( empty( $data['is_event_sales'] ) || empty( $data['event_expired'] ) ) {
+			return false;
+		}
+
+		if ( ! empty( $data['event_expired_timestamp'] ) ) {
+			return (int) $data['event_expired_timestamp'];
+		}
+
+		$expired  = trim( $data['event_expired'] );
+		$format   = 'Y-m-d H:i:s';
+		$date     = false;
+		$timezone = ! empty( $data['event_timezone'] ) ? $data['event_timezone'] : '';
+
+		if ( $timezone ) {
+			try {
+				$date = DateTimeImmutable::createFromFormat( $format, $expired . ' 23:59:59', new DateTimeZone( $timezone ) );
+			} catch (Exception $e) {
+				$date = false;
+			}
+		}
+
+		if ( ! $date && function_exists( 'wp_timezone' ) ) {
+			$date = DateTimeImmutable::createFromFormat( $format, $expired . ' 23:59:59', wp_timezone() );
+		}
+
+		if ( $date instanceof DateTimeImmutable ) {
+			return $date->getTimestamp();
+		}
+
+		return strtotime( $expired . ' 23:59:59' );
+	}
+}
+
 if ( ! function_exists( 'jkit_get_pricing_plan' ) ) {
 	/**
 	 * Get Pricing Plan Data
@@ -1672,14 +1714,21 @@ if ( ! function_exists( 'jkit_get_pricing_plan' ) ) {
 	function jkit_get_pricing_plan() {
 		$data = get_transient( 'jkit_pricing_plan_cache' );
 
-		// if ( $data ) {
-		// 	return $data;
-		// }
+		if ( $data ) {
+			$event_expired = jkit_get_pricing_plan_event_expired_timestamp( $data );
+
+			if ( false !== $event_expired && time() > $event_expired ) {
+				delete_transient( 'jkit_pricing_plan_cache' );
+			} else {
+				return $data;
+			}
+		}
 
 		$response = wp_remote_request(
-			JEG_ELEMENT_SERVER_URL . 'wp-json/jkit-export/v1/pricingplan',
+			JEG_ELEMENT_SERVER_URL . 'wp-json/jeg-kit/v1/client/pricing-plan',
 			array(
-				'method' => 'POST',
+				'method'  => 'GET',
+				'timeout' => 5,
 			)
 		);
 		if ( is_wp_error( $response ) || 200 !== $response['response']['code'] ) {
@@ -1691,7 +1740,15 @@ if ( ! function_exists( 'jkit_get_pricing_plan' ) ) {
 		if ( empty( $data ) ) {
 			return null;
 		}
-		set_transient( 'jkit_pricing_plan_cache', $data, 3 * HOUR_IN_SECONDS );
+
+		$cache_expiration = 3 * HOUR_IN_SECONDS;
+		$event_expired    = jkit_get_pricing_plan_event_expired_timestamp( $data );
+
+		if ( false !== $event_expired ) {
+			$cache_expiration = max( 1, min( $cache_expiration, $event_expired - time() ) );
+		}
+
+		set_transient( 'jkit_pricing_plan_cache', $data, $cache_expiration );
 		return $data;
 	}
 }
@@ -1716,9 +1773,10 @@ if ( ! function_exists( 'jkit_get_banner_data' ) ) {
 		}
 
 		$response = wp_remote_request(
-			JEG_ELEMENT_SERVER_URL . 'wp-json/jkit-export/v1/bannerdata',
+			JEG_ELEMENT_SERVER_URL . 'wp-json/jeg-kit/v1/client/banner-data',
 			array(
-				'method' => 'POST',
+				'method'  => 'GET',
+				'timeout' => 5,
 			)
 		);
 		if ( is_wp_error( $response ) || 200 !== $response['response']['code'] ) {
@@ -1732,5 +1790,199 @@ if ( ! function_exists( 'jkit_get_banner_data' ) ) {
 		}
 		set_transient( 'jkit_banner_cache', $data, 3 * HOUR_IN_SECONDS );
 		return $data;
+	}
+}
+
+/**
+ * Displays custom update information for a Jeg Kit plugin.
+ * 
+ * Adapted from WordPress core's wp_plugin_update_row() function.
+ * 
+ * Source:
+ * wp-admin/includes/update.php
+ * 
+ * This implementation is customized to replace the default plugin update
+ * notice shown on the Plugins screen.
+ *
+ * @since 3.1.3
+ * 
+ * @see wp_plugin_update_row()
+ * @link https://developer.wordpress.org/reference/functions/wp_plugin_update_row/
+ *
+ * @param string $file        Plugin basename.
+ * @param array  $plugin_data Plugin information.
+ * @return void|false
+ */
+function jkit_plugin_update_row( $file, $plugin_data ) {
+	$current = get_site_transient( 'update_plugins' );
+
+	if ( ! isset( $current->response[ $file ] ) ) {
+		return false;
+	}
+
+	$response = $current->response[ $file ];
+
+	$plugins_allowedtags = array(
+		'a'       => array(
+			'href'  => array(),
+			'title' => array(),
+		),
+		'abbr'    => array( 'title' => array() ),
+		'acronym' => array( 'title' => array() ),
+		'code'    => array(),
+		'em'      => array(),
+		'strong'  => array(),
+	);
+
+	$plugin_name = wp_kses( $plugin_data['Name'], $plugins_allowedtags );
+	$plugin_slug = isset( $response->slug ) ? $response->slug : $response->id;
+
+	if ( isset( $response->slug ) ) {
+		$details_url = self_admin_url( 'plugin-install.php?tab=plugin-information&plugin=' . $plugin_slug . '&section=changelog' );
+	} elseif ( isset( $response->url ) ) {
+		$details_url = $response->url;
+	} else {
+		$details_url = $plugin_data['PluginURI'];
+	}
+
+	$details_url = add_query_arg(
+		array(
+			'TB_iframe' => 'true',
+			'width'     => 600,
+			'height'    => 800,
+		),
+		$details_url
+	);
+
+	/** @var WP_Plugins_List_Table $wp_list_table */
+	$wp_list_table = _get_list_table(
+		'WP_Plugins_List_Table',
+		array(
+			'screen' => get_current_screen(),
+		)
+	);
+
+	if ( is_network_admin() || ! is_multisite() ) {
+		if ( is_network_admin() ) {
+			$active_class = is_plugin_active_for_network( $file ) ? ' active' : '';
+		} else {
+			$active_class = is_plugin_active( $file ) ? ' active' : '';
+		}
+
+		$requires_php   = isset( $response->requires_php ) ? $response->requires_php : null;
+		$compatible_php = is_php_version_compatible( $requires_php );
+		$notice_type    = $compatible_php ? 'notice-warning' : 'notice-error';
+
+		printf(
+			'<tr class="plugin-update-tr%s" id="%s" data-slug="%s" data-plugin="%s">' .
+			'<td colspan="%s" class="plugin-update colspanchange">' .
+			'<div class="update-message notice inline %s notice-alt"><p>',
+			$active_class,
+			esc_attr( $plugin_slug . '-update' ),
+			esc_attr( $plugin_slug ),
+			esc_attr( $file ),
+			esc_attr( $wp_list_table->get_column_count() ),
+			$notice_type
+		);
+
+		if ( ! current_user_can( 'update_plugins' ) ) {
+			printf(
+				/* translators: 1: Plugin name, 2: Details URL, 3: Additional link attributes, 4: Version number. */
+				__( 'There is a new version of %1$s available. <a href="%2$s" %3$s>View version %4$s details</a>.' ),
+				$plugin_name,
+				esc_url( $details_url ),
+				sprintf(
+					'class="thickbox open-plugin-details-modal" aria-label="%s"',
+					/* translators: 1: Plugin name, 2: Version number. */
+					esc_attr( sprintf( __( 'View %1$s version %2$s details' ), $plugin_name, $response->new_version ) )
+				),
+				esc_attr( $response->new_version )
+			);
+		} elseif ( empty( $response->package ) ) {
+			printf(
+				/* translators: 1: Plugin name, 2: Details URL, 3: Additional link attributes, 4: Version number. */
+				__( 'There is a new version of %1$s available. <a href="%2$s" %3$s>View version %4$s details</a>. <em>Automatic update is unavailable for this plugin.</em>' ),
+				$plugin_name,
+				esc_url( $details_url ),
+				sprintf(
+					'class="thickbox open-plugin-details-modal" aria-label="%s"',
+					/* translators: 1: Plugin name, 2: Version number. */
+					esc_attr( sprintf( __( 'View %1$s version %2$s details' ), $plugin_name, $response->new_version ) )
+				),
+				esc_attr( $response->new_version )
+			);
+		} else {
+			if ( $compatible_php ) {
+				printf(
+					/* translators: 1: Update URL, 2: Additional update link attributes, 3: Upgrade URL. */
+					__( 'There is a new version of %1$s available. <strong><a href="%2$s" target="_blank" rel="noopener noreferrer" %3$s>Upgrade to Pro</a></strong> to unlock automatic updates, premium features, widgets, templates, and priority support or <strong><a href="%4$s" target="_blank" rel="noopener noreferrer">download</a></strong> the latest version.', 'jeg-elementor-kit' ),
+					esc_html( $plugin_name ),
+					esc_url(
+						add_query_arg(
+							array(
+								'page'       => 'jkit',
+								'utm_source' => 'plugin-update-notice',
+								'utm_medium' => 'plugin-update-link',
+							),
+							admin_url( 'admin.php' )
+						)
+					),
+					sprintf(
+						'class="upgrade-to-pro jeg-kit-pro" aria-label="%s"',
+						/* translators: %s: Plugin name. */
+						esc_attr( sprintf( _x( 'Upgrade %s now', 'plugin' ), $plugin_name ) )
+					),
+					esc_url( $plugin_data['url'] )
+				);
+			} else {
+				printf(
+					/* translators: 1: Plugin name, 2: Details URL, 3: Additional link attributes, 4: Version number 5: URL to Update PHP page. */
+					__( 'There is a new version of %1$s available, but it does not work with your version of PHP. <a href="%2$s" %3$s>View version %4$s details</a> or <a href="%5$s">learn more about updating PHP</a>.' ),
+					$plugin_name,
+					esc_url( $details_url ),
+					sprintf(
+						'class="thickbox open-plugin-details-modal" aria-label="%s"',
+						/* translators: 1: Plugin name, 2: Version number. */
+						esc_attr( sprintf( __( 'View %1$s version %2$s details' ), $plugin_name, $response->new_version ) )
+					),
+					esc_attr( $response->new_version ),
+					esc_url( wp_get_update_php_url() )
+				);
+				wp_update_php_annotation( '<br><em>', '</em>' );
+			}
+		}
+
+		/**
+		 * Fires at the end of the update message container in each
+		 * row of the plugins list table.
+		 *
+		 * The dynamic portion of the hook name, `$file`, refers to the path
+		 * of the plugin's primary file relative to the plugins directory.
+		 *
+		 * @since 2.8.0
+		 *
+		 * @param array  $plugin_data An array of plugin metadata. See get_plugin_data()
+		 *                            and the {@see 'plugin_row_meta'} filter for the list
+		 *                            of possible values.
+		 * @param object $response {
+		 *     An object of metadata about the available plugin update.
+		 *
+		 *     @type string   $id           Plugin ID, e.g. `w.org/plugins/[plugin-name]`.
+		 *     @type string   $slug         Plugin slug.
+		 *     @type string   $plugin       Plugin basename.
+		 *     @type string   $new_version  New plugin version.
+		 *     @type string   $url          Plugin URL.
+		 *     @type string   $package      Plugin update package URL.
+		 *     @type string[] $icons        An array of plugin icon URLs.
+		 *     @type string[] $banners      An array of plugin banner URLs.
+		 *     @type string[] $banners_rtl  An array of plugin RTL banner URLs.
+		 *     @type string   $requires     The version of WordPress which the plugin requires.
+		 *     @type string   $tested       The version of WordPress the plugin is tested against.
+		 *     @type string   $requires_php The version of PHP which the plugin requires.
+		 * }
+		 */
+		do_action( "in_plugin_update_message-{$file}", $plugin_data, $response ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
+
+		echo '</p></div></td></tr>';
 	}
 }

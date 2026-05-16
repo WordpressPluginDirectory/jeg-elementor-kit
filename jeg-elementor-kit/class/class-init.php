@@ -59,8 +59,10 @@ class Init {
 	 * Setup Hooks
 	 */
 	private function setup_hook() {
+		add_action( 'load-plugins.php', array( $this, 'replace_plugin_update_row' ), 99 );
+		add_filter( 'plugin_action_links_' . JEG_ELEMENTOR_KIT_BASE, array( $this, 'add_upgrade_to_pro_action_link' ), 10, 4 );
 		add_filter( 'body_class', array( $this, 'load_body_class' ) );
-		add_action( 'in_plugin_update_message-' . JEG_ELEMENTOR_KIT_BASE, array( $this, 'plugin_update_message' ), 10, 2 );
+		add_filter( 'plugin_auto_update_setting_html', array( $this, 'disable_auto_update_setting_html' ), 10, 3 );
 		add_action( 'after_setup_theme', array( $this, 'elementor_data_upgrader' ) );
 	}
 
@@ -78,6 +80,14 @@ class Init {
 	}
 
 	/**
+	 * Replace default plugin update row.
+	 */
+	public function replace_plugin_update_row() {
+		remove_action( 'after_plugin_row_' . JEG_ELEMENTOR_KIT_BASE, 'wp_plugin_update_row' );
+		add_action( 'after_plugin_row_' . JEG_ELEMENTOR_KIT_BASE, 'jkit_plugin_update_row', 10, 2 );
+	}
+
+	/**
 	 * Add body class
 	 *
 	 * @param array $classes Body classes.
@@ -85,6 +95,58 @@ class Init {
 	public function load_body_class( $classes ) {
 		$classes[] = 'jkit-color-scheme';
 		return apply_filters( 'jkit_body_classes', $classes );
+	}
+
+	/**
+	 * Filters the HTML of the auto-updates setting for Jeg Kit for Elementor plugin in the Plugins list table.
+	 *
+	 * @since 3.1.3
+	 *
+	 * @param string $html        The HTML of the plugin's auto-update column content,
+	 *                            including toggle auto-update action links and
+	 *                            time to next update.
+	 * @param string $plugin_file Path to the plugin file relative to the plugins directory.
+	 * @param array  $plugin_data An array of plugin data. See get_plugin_data()
+	 *                            and the {@see 'plugin_row_meta'} filter for the list
+	 *                            of possible values.
+	 *
+	 * @return string
+	 */
+	public function disable_auto_update_setting_html( $html, $plugin_file, $plugin_data ) {
+		if ( isset( $plugin_data['plugin'] ) && JEG_ELEMENTOR_KIT_BASE === $plugin_data['plugin'] ) {
+			$html = '';
+		}
+
+		return $html;
+	}
+
+	/**
+	 * Add upgrade to pro action link.
+	 *
+	 * @param array  $actions     An array of plugin action links.
+	 * @param string $plugin_file Path to the plugin file relative to the plugins directory.
+	 * @param array  $plugin_data An array of plugin data.
+	 * @param string $context     The plugin context.
+	 *
+	 * @return array
+	 */
+	public function add_upgrade_to_pro_action_link( $actions, $plugin_file, $plugin_data, $context ) {
+		$actions['upgrade-to-jeg-kit-pro'] = sprintf(
+			'<b><a class="jkit-meta-upgrade-to-pro" target="_blank" href="%1$s">%2$s</a></b>',
+			esc_url(
+				add_query_arg(
+					array(
+						'page'       => 'jkit',
+						'utm_source' => 'plugin-row-meta',
+						'utm_medium' => 'plugin-row-link',
+					),
+					admin_url( 'admin.php' )
+				)
+			),
+			esc_html__( 'Get PRO', 'jeg-elementor-kit' )
+		);
+
+		return $actions;
 	}
 
 	/**

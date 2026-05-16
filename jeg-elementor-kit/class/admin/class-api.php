@@ -11,6 +11,7 @@ namespace Jeg\Elementor_Kit\Admin;
 
 use Jeg\Elementor_Kit\Meta;
 use Jeg\Elementor_Kit\Options\Settings;
+use Jeg\Elementor_Kit\Integrations\Freemius;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -102,6 +103,16 @@ class Api {
 				'methods'             => 'GET',
 				'callback'            => array( $this, 'get_option' ),
 				'permission_callback' => 'jkit_permission_check_admin',
+			)
+		);
+
+		register_rest_route(
+			self::ENDPOINT,
+			'pricing-modal-data',
+			array(
+				'methods'             => 'GET',
+				'callback'            => array( $this, 'get_pricing_modal_data' ),
+				'permission_callback' => array( $this, 'pricing_modal_permission_check' ),
 			)
 		);
 
@@ -419,6 +430,37 @@ class Api {
 		);
 
 		add_filter( 'wp_doing_ajax', '__return_false' );
+	}
+
+	/**
+	 * Get pricing modal data.
+	 *
+	 * @return \WP_REST_Response
+	 */
+	public function get_pricing_modal_data() {
+		return $this->response_success(
+			array(
+				'freemius'    => array(
+					'pricing' => Freemius::instance()->get_pricing_config(),
+				),
+				'pricingPlan' => jkit_get_pricing_plan(),
+				'imgDir'      => JEG_ELEMENTOR_KIT_URL . '/assets/img/',
+				'wpRestNonce' => wp_create_nonce( 'wp_rest' ),
+			)
+		);
+	}
+
+	/**
+	 * Check pricing modal data permission.
+	 *
+	 * @return bool|\WP_Error
+	 */
+	public function pricing_modal_permission_check() {
+		if ( current_user_can( 'edit_posts' ) ) {
+			return true;
+		}
+
+		return new \WP_Error( 'rest_forbidden', esc_html__( 'You are not allowed to access this endpoint.', 'jeg-elementor-kit' ), array( 'status' => 403 ) );
 	}
 
 	/**

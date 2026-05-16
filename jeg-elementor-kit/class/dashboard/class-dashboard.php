@@ -374,6 +374,10 @@ class Dashboard {
 	 * @return void
 	 */
 	public function add_toolbar( $admin_bar ) {
+		if ( ! current_user_can( 'edit_theme_options' ) ) {
+			return;
+		}
+
 		$logo_svg = $this->get_svg_inline( 'assets/svg/jkit-dashboard-menu-logo.svg' );
 		$logo     = $logo_svg ? $logo_svg : '<img src="' . JEG_ELEMENTOR_KIT_URL . '/assets/svg/jkit-dashboard-menu-logo.svg' . '" alt="' . esc_html__( 'Jeg Kit Logo', 'jeg-elementor-kit' ) . '"/>';
 
@@ -509,8 +513,7 @@ class Dashboard {
 			$admin_bar->add_menu(
 				array(
 					'id'     => 'jeg-kit-pro',
-					'title'  => '<span class="jeg-kit-pro">' . esc_html__( 'Jeg Kit Pro ', 'jeg-elementor-kit' ) . $crown_markup . '</span>',
-					'parent' => 'jeg-kit',
+					'title'  => '<span class="jeg-kit-pro">' . esc_html__( 'Upgrade to Pro ', 'jeg-elementor-kit' ) . $crown_markup . '</span>',
 					'href'   => esc_url( admin_url( 'admin.php?page=jkit&utm_source=jeg-elementor-kit&utm_medium=admintopbar' ) ),
 					'meta'   => array(
 						'title'  => esc_html__( 'Get Jeg Kit Pro', 'jeg-elementor-kit' ),
@@ -703,6 +706,8 @@ class Dashboard {
 	 * @return array
 	 */
 	private function get_all_option() {
+		$pricing_config = \Jeg\Elementor_Kit\Integrations\Freemius::instance()->get_pricing_config();
+
 		$options = array(
 			'homeSlug'          => 'jkit',
 			'menus'             => self::$framework_menu,
@@ -743,13 +748,50 @@ class Dashboard {
 			'bannerNonce'       => wp_create_nonce( 'jkit-banner' ),
 			'wpRestNonce'       => wp_create_nonce( 'wp_rest' ),
 			'pricingPlan'       => jkit_get_pricing_plan(),
+			'pricingData'       => $this->get_pricing_data( $pricing_config ),
 			'serverUrl'         => esc_url( JEG_ELEMENT_SERVER_URL ),
 			'freemius'          => array(
-				'pricing' => \Jeg\Elementor_Kit\Integrations\Freemius::instance()->get_pricing_config(),
+				'pricing' => $pricing_config,
 			),
 		);
 
 		return apply_filters( 'jkit_dashboard_options', $options );
+	}
+
+	/**
+	 * Fetch and cache Freemius pricing data for dashboard rendering.
+	 *
+	 * @param array|null $pricing_config Freemius pricing config.
+	 *
+	 * @return array|null
+	 */
+	private function get_pricing_data( $pricing_config ) {
+		if ( empty( $pricing_config ) ) {
+			return null;
+		}
+
+		$transient_key = 'jkit_dashboard_pricing_data_' . md5( wp_json_encode( array(
+			isset( $pricing_config['plugin_id'] ) ? $pricing_config['plugin_id'] : '',
+			isset( $pricing_config['bundle_id'] ) ? $pricing_config['bundle_id'] : '',
+			isset( $pricing_config['sandbox'] ) ? $pricing_config['sandbox'] : '',
+			isset( $pricing_config['s_ctx_type'] ) ? $pricing_config['s_ctx_type'] : '',
+			isset( $pricing_config['s_ctx_id'] ) ? $pricing_config['s_ctx_id'] : '',
+			isset( $pricing_config['s_ctx_secure'] ) ? $pricing_config['s_ctx_secure'] : '',
+		) ) );
+
+		$cached = get_transient( $transient_key );
+		if ( false !== $cached ) {
+			return $cached;
+		}
+
+		$data = \Jeg\Elementor_Kit\Integrations\Freemius::instance()->get_pricing_data();
+		if ( empty( $data['plans'] ) || ! is_array( $data['plans'] ) ) {
+			return null;
+		}
+
+		set_transient( $transient_key, $data, 10 * MINUTE_IN_SECONDS );
+
+		return $data;
 	}
 
 

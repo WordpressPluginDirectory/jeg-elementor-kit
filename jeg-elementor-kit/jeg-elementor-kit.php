@@ -4,13 +4,13 @@
  * Plugin URI: https://jegkit.com/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash
  * Description: Jeg Kit for Elementor (formerly Jeg Elementor Kit) extends Elementor with powerful, customizable widgets and templates — helping you build modern, responsive WordPress websites faster.
  * Requires Plugins: elementor
- * Version: 3.1.1
+ * Version: 3.1.3
  * Author: Jegtheme
  * Author URI: https://jegkit.com/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash
  * License: GPLv3
  * Text Domain: jeg-elementor-kit
  *
- * Elementor tested up to: 4.0.4
+ * Elementor tested up to: 4.0.8
  * Elementor Pro tested up to: 4.0.4
  *
  * @author Jegtheme
@@ -20,7 +20,7 @@
 
 defined( 'JEG_ELEMENTOR_KIT' ) || define( 'JEG_ELEMENTOR_KIT', 'jeg-elementor-kit' );
 defined( 'JEG_ELEMENTOR_KIT_NAME' ) || define( 'JEG_ELEMENTOR_KIT_NAME', 'Jeg Kit' );
-defined( 'JEG_ELEMENTOR_KIT_VERSION' ) || define( 'JEG_ELEMENTOR_KIT_VERSION', '3.1.1' );
+defined( 'JEG_ELEMENTOR_KIT_VERSION' ) || define( 'JEG_ELEMENTOR_KIT_VERSION', '3.1.3' );
 defined( 'JEG_ELEMENTOR_KIT_URL' ) || define( 'JEG_ELEMENTOR_KIT_URL', plugins_url( JEG_ELEMENTOR_KIT ) );
 defined( 'JEG_ELEMENTOR_KIT_FILE' ) || define( 'JEG_ELEMENTOR_KIT_FILE', __FILE__ );
 defined( 'JEG_ELEMENTOR_KIT_BASE' ) || define( 'JEG_ELEMENTOR_KIT_BASE', plugin_basename( __FILE__ ) );
@@ -107,3 +107,19 @@ function jkit_overide_complete( $package, $data, $package_type ) {
 	}
 }
 add_action( 'upgrader_overwrote_package', 'jkit_overide_complete', 10, 3 );
+
+/**
+ * Disable plugin auto-update.
+ */
+function jkit_disable_auto_update() {
+	$auto_update_plugins = (array) get_site_option( 'auto_update_plugins', array() );
+	$plugin_base         = plugin_basename( __FILE__ );
+
+	$updated_auto_update_plugins = array_values( array_diff( $auto_update_plugins, array( $plugin_base ) ) );
+
+	if ( $auto_update_plugins !== $updated_auto_update_plugins ) {
+		update_site_option( 'auto_update_plugins', $updated_auto_update_plugins );
+	}
+}
+register_activation_hook( __FILE__, 'jkit_disable_auto_update' );
+register_deactivation_hook( __FILE__, 'jkit_disable_auto_update' );

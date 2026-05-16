@@ -140,6 +140,14 @@ class Banner {
 			return true;
 		}
 
+		if ( is_numeric( $option ) ) {
+			return time() >= (int) $option;
+		}
+
+		if ( false === $option ) {
+			update_option( $this->key_upgrade_to_pro, time() + $this->get_second( 14 ) );
+		}
+
 		return (bool) $option;
 	}
 
@@ -155,7 +163,7 @@ class Banner {
 	 * Close Button Clicked.
 	 */
 	public function close_banner_upgrade() {
-		update_option( $this->key_upgrade_to_pro, false );
+		update_option( $this->key_upgrade_to_pro, time() + $this->get_second( 14 ) );
 
 		wp_send_json_success();
 	}

@@ -4,7 +4,7 @@ Tags: elementor, elements, addons, widgets, templates
 Requires at least: 5.0
 Tested up to: 6.9.4
 Requires PHP: 7.4
-Stable tag: 3.1.1
+Stable tag: 3.1.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -23,7 +23,7 @@ Whether you’re creating a business site, portfolio, online shop, or blog — J
 - **40+ Free Widgets** — content, media, layout, and WooCommerce widgets.  
 - **28+ Pro Widgets** — unlock advanced elements for product pages, archives, and creative layouts.  
 - **114 Prebuilt Demos** — 10 Free + 104 Pro ready for one-click import into your website 
-- **Theme Builder Templates** — Header, Footer, 404 (Free) + Single, Archive, Popup (Pro).  
+- **Theme Builder Templates** — Header, Footer, 404, Single, Archive, Popup (Pro).  
 - **Mega Menu Builder (Pro)** — visually design and assign Elementor templates from WordPress menus.  
 - **8 Advanced Visual Effects (Pro)** — including Custom Cursor, Blend Mode, Smooth Scroll, and Parallax.  
 - **Lightweight & Optimized** — built to run fast and clean on any Elementor-powered website.
@@ -145,12 +145,10 @@ Learn more and see examples at **[https://jegkit.com/features/mega-menu/](https:
 
 Create and manage your site visually with the Jeg Kit for Elementor Theme Builder — build SEO-friendly templates for posts, products, archives, and popups that improve search visibility and conversions.
 
-**Free Templates**
+**Pro Templates**
 - **Header Template** — design responsive, accessible headers that improve site navigation and crawlability.
 - **Footer Template** — build structured footers to surface important links and enhance sitewide SEO.
 - **404 Template** — customize 404 pages to reduce bounce rate and guide users back to relevant content.
-
-**Pro Templates**
 - **Single Post Template** — craft SEO-optimized blog post layouts with dynamic title, meta, breadcrumbs, and fast-rendering components.
 - **Single Product Template** — design responsive, conversion-focused WooCommerce product pages using Jeg Kit for Elementor Theme Builder; includes product images, price, add-to-cart, reviews, related products, and SEO-friendly markup (structured data-ready).
 - **Archive Template** — build category, tag, and product archive pages with optimized headings, pagination, and structured data for better indexing.
@@ -203,6 +201,16 @@ Visit **[https://jegkit.com/](https://jegkit.com/)** for live demos, tutorials, 
 This major release introduces Mega Menu Builder, 114 demo templates, and a redesigned dashboard. Update now to explore new features and improved performance.
 
 == Changelog ==
+
+= 3.1.3 - 15-05-2026 =
+* Improvement: Improve Upgrade to Pro flow and pricing popup integration
+* Improvement: Improve Freemius pricing data handling and cache mechanism
+* Fix: Several compatibility and interface issues
+* Tweak: Align Theme Builder access with the current product plans
+* Tweak: Update plugin update notice and plugin row action links
+
+= 3.1.2 - 05-05-2026 =
+* Fix: Transient Cache issue for Pricing Plan API
 
 = 3.1.1 - 30-04-2026 =
 * Improvement: Security issues
