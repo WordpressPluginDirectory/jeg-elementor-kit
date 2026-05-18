@@ -4,7 +4,7 @@ Tags: elementor, elements, addons, widgets, templates
 Requires at least: 5.0
 Tested up to: 6.9.4
 Requires PHP: 7.4
-Stable tag: 3.1.3
+Stable tag: 3.2.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -201,6 +201,9 @@ Visit **[https://jegkit.com/](https://jegkit.com/)** for live demos, tutorials, 
 This major release introduces Mega Menu Builder, 114 demo templates, and a redesigned dashboard. Update now to explore new features and improved performance.
 
 == Changelog ==
+
+= 3.2.0 - 18-05-2026 =
+* Improvement: Added WPML compatibility for translating Jeg Kit widget content.
 
 = 3.1.3 - 15-05-2026 =
 * Improvement: Improve Upgrade to Pro flow and pricing popup integration

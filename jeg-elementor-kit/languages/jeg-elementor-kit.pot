@@ -7,7 +7,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Jegtheme <support@jegtheme.com>\n"
-"POT-Creation-Date: 2026-05-15 14:26+0000\n"
+"POT-Creation-Date: 2026-05-18 10:09+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -45,11 +45,11 @@ msgstr ""
 msgid "There is a new version of %1$s available. <strong><a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\" %3$s>Upgrade to Pro</a></strong> to unlock automatic updates, premium features, widgets, templates, and priority support or <strong><a href=\"%4$s\" target=\"_blank\" rel=\"noopener noreferrer\">download</a></strong> the latest version."
 msgstr ""
 
-#: jeg-elementor-kit/class/class-init.php:146
+#: jeg-elementor-kit/class/class-init.php:148
 msgid "Get PRO"
 msgstr ""
 
-#: jeg-elementor-kit/class/class-init.php:177
+#: jeg-elementor-kit/class/class-init.php:179
 msgid "It is recommended that you backup your site before updating the plugin so rollback is possible whenever needed."
 msgstr ""
 
@@ -659,6 +659,174 @@ msgstr ""
 
 #: jeg-elementor-kit/class/elements/class-element.php:1074, jeg-elementor-kit/class/elements/class-element.php:1443, jeg-elementor-kit/class/elements/class-element.php:1812, jeg-elementor-kit/class/elements/options/class-accordion-option.php:183, jeg-elementor-kit/class/elements/options/class-accordion-option.php:372, jeg-elementor-kit/class/elements/options/class-accordion-option.php:422, jeg-elementor-kit/class/elements/options/class-accordion-option.php:483, jeg-elementor-kit/class/elements/options/class-accordion-option.php:862, jeg-elementor-kit/class/elements/options/class-accordion-option.php:956, jeg-elementor-kit/class/elements/options/class-accordion-option.php:1032, jeg-elementor-kit/class/elements/options/class-accordion-option.php:1106, jeg-elementor-kit/class/elements/options/class-accordion-option.php:1358, jeg-elementor-kit/class/elements/options/class-accordion-option.php:1506, jeg-elementor-kit/class/elements/options/class-accordion-option.php:1640, jeg-elementor-kit/class/elements/options/class-accordion-option.php:1871, jeg-elementor-kit/class/elements/options/class-accordion-option.php:2019, jeg-elementor-kit/class/elements/options/class-accordion-option.php:2153, jeg-elementor-kit/class/elements/options/class-button-option.php:441, jeg-elementor-kit/class/elements/options/class-button-option.php:459, jeg-elementor-kit/class/elements/options/class-contact-form-7-option.php:211, jeg-elementor-kit/class/elements/options/class-contact-form-7-option.php:894, jeg-elementor-kit/class/elements/options/class-countdown-option.php:547, jeg-elementor-kit/class/elements/options/class-countdown-option.php:628, jeg-elementor-kit/class/elements/options/class-countdown-option.php:687, jeg-elementor-kit/class/elements/options/class-countdown-option.php:903, jeg-elementor-kit/class/elements/options/class-countdown-option.php:984, jeg-elementor-kit/class/elements/options/class-countdown-option.php:1043, jeg-elementor-kit/class/elements/options/class-countdown-option.php:1259, jeg-elementor-kit/class/elements/options/class-countdown-option.php:1340, jeg-elementor-kit/class/elements/options/class-countdown-option.php:1399, jeg-elementor-kit/class/elements/options/class-countdown-option.php:1615, jeg-elementor-kit/class/elements/options/class-countdown-option.php:1696, jeg-elementor-kit/class/elements/options/class-countdown-option.php:1755, jeg-elementor-kit/class/elements/options/class-dual-button-option.php:865, jeg-elementor-kit/class/elements/options/class-fun-fact-option.php:604, jeg-elementor-kit/class/elements/options/class-fun-fact-option.php:856, jeg-elementor-kit/class/elements/options/class-gallery-option.php:939, jeg-elementor-kit/class/elements/options/class-gallery-option.php:1132, jeg-elementor-kit/class/elements/options/class-gallery-option.php:1783, jeg-elementor-kit/class/elements/options/class-gallery-option.php:2129, jeg-elementor-kit/class/elements/options/class-gallery-option.php:2223, jeg-elementor-kit/class/elements/options/class-heading-option.php:693, jeg-elementor-kit/class/elements/options/class-icon-box-option.php:1521, jeg-elementor-kit/class/elements/options/class-image-box-option.php:678, jeg-elementor-kit/class/elements/options/class-mailchimp-option.php:721, jeg-elementor-kit/class/elements/options/class-mailchimp-option.php:970, jeg-elementor-kit/class/elements/options/class-mailchimp-option.php:1028, jeg-elementor-kit/class/elements/options/class-nav-menu-option.php:1229, jeg-elementor-kit/class/elements/options/class-off-canvas-option.php:429, jeg-elementor-kit/class/elements/options/class-off-canvas-option.php:650, jeg-elementor-kit/class/elements/options/class-option-abstract.php:518, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:311, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:357, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:446, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:532, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:625, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:852, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:1026, jeg-elementor-kit/class/elements/options/class-option-woocommerce-abstract.php:1102, jeg-elementor-kit/class/elements/options/class-pie-chart-option.php:680, jeg-elementor-kit/class/elements/options/class-portfolio-gallery-option.php:324, jeg-elementor-kit/class/elements/options/class-portfolio-gallery-option.php:693, jeg-elementor-kit/class/elements/options/class-post-author-option.php:401, jeg-elementor-kit/class/elements/options/class-post-block-option.php:816, jeg-elementor-kit/class/elements/options/class-post-block-option.php:883, jeg-elementor-kit/class/elements/options/class-post-block-option.php:946, jeg-elementor-kit/class/elements/options/class-post-block-option.php:1016, jeg-elementor-kit/class/elements/options/class-post-block-option.php:1113, jeg-elementor-kit/class/elements/options/class-post-block-option.php:1234, jeg-elementor-kit/class/elements/options/class-post-featured-image-option.php:291, jeg-elementor-kit/class/elements/options/class-post-list-option.php:574, jeg-elementor-kit/class/elements/options/class-post-list-option.php:619, jeg-elementor-kit/class/elements/options/class-product-carousel-option.php:478, jeg-elementor-kit/class/elements/options/class-product-categories-option.php:695, jeg-elementor-kit/class/elements/options/class-product-categories-option.php:742, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:429, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:484, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:558, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:604, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:681, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:767, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:848, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:1063, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:1226, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:1286, jeg-elementor-kit/class/elements/options/class-search-option.php:374, jeg-elementor-kit/class/elements/options/class-search-option.php:575, jeg-elementor-kit/class/elements/options/class-search-option.php:635, jeg-elementor-kit/class/elements/options/class-search-option.php:816, jeg-elementor-kit/class/elements/options/class-search-option.php:886, jeg-elementor-kit/class/elements/options/class-search-option.php:1047, jeg-elementor-kit/class/elements/options/class-search-option.php:1104, jeg-elementor-kit/class/elements/options/class-tabs-option.php:430, jeg-elementor-kit/class/elements/options/class-tabs-option.php:762, jeg-elementor-kit/class/elements/options/class-tabs-option.php:987, jeg-elementor-kit/class/elements/options/class-tabs-option.php:1053, jeg-elementor-kit/class/elements/options/class-tabs-option.php:1103, jeg-elementor-kit/class/elements/options/class-tabs-option.php:1872, jeg-elementor-kit/class/elements/options/class-team-option.php:991, jeg-elementor-kit/class/elements/options/class-team-option.php:1651, jeg-elementor-kit/class/elements/options/class-team-option.php:1961, jeg-elementor-kit/class/elements/options/class-testimonials-option.php:711, jeg-elementor-kit/class/elements/options/class-testimonials-option.php:1701, jeg-elementor-kit/class/elements/options/class-video-button-option.php:708
 msgid "Box Shadow"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:61
+msgid "Jeg Kit Icon Box: Icon Box: Title"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:62
+msgid "Jeg Kit Icon Box: Icon Box: Description"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:63
+msgid "Jeg Kit Icon Box: Read More: Button Label"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:64
+msgid "Jeg Kit Icon Box: Badge: Text"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:93
+msgid "Jeg Kit Heading: Title: Before Focused Title"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:94
+msgid "Jeg Kit Heading: Title: Focused Title"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:95
+msgid "Jeg Kit Heading: Title: After Focused Title"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:96
+msgid "Jeg Kit Heading: Subtitle: Heading Sub Title"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:97
+msgid "Jeg Kit Heading: Description: Heading Description"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:98
+msgid "Jeg Kit Heading: Shadow Text: Content"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:106
+msgid "Jeg Kit Image Box: Image: Link"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:107
+msgid "Jeg Kit Image Box: Body: Title"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:108
+msgid "Jeg Kit Image Box: Body: Description"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:109
+msgid "Jeg Kit Image Box: Button: Label"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:110
+msgid "Jeg Kit Image Box: Button: Link"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:118
+msgid "Jeg Kit Button: Content: Label"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:119
+msgid "Jeg Kit Button: Content: Link"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:120
+msgid "Jeg Kit Button: Content: Class"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:121
+msgid "Jeg Kit Button: Content: ID"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:129
+msgid "Jeg Kit Animated Text: Text: Before Text"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:130
+msgid "Jeg Kit Animated Text: Text: Animated Text"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:131
+msgid "Jeg Kit Animated Text: Text: After Text"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:140
+msgid "Jeg Kit Pie Chart: Content: Title"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:141
+msgid "Jeg Kit Pie Chart: Content: Description"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:149
+msgid "Jeg Kit Fun Fact: Content: Number Prefix"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:150
+msgid "Jeg Kit Fun Fact: Content: Number"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:151
+msgid "Jeg Kit Fun Fact: Content: Number Suffix"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:152
+msgid "Jeg Kit Fun Fact: Content: Title"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:153
+msgid "Jeg Kit Fun Fact: Content: Super"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:161
+msgid "Jeg Kit Team: Team Member: Member Name"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:162
+msgid "Jeg Kit Team: Team Member: Position"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:163
+msgid "Jeg Kit Team: Team Member: Description"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:164
+msgid "Jeg Kit Team: Team Member: Phone"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:165
+msgid "Jeg Kit Team: Team Member: Email"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:173
+msgid "Jeg Kit Post Block: Content Setting: Excerpt More"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:174
+msgid "Jeg Kit Post Block: Content Setting: Read More Text"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:175
+msgid "Jeg Kit Post Block: Content Setting: Meta Author \"by\" Text"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:176
+msgid "Jeg Kit Post Block: Content Setting: Post Date Custom Format"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:177
+msgid "Jeg Kit Post Block: Pagination: Previous Text"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:178
+msgid "Jeg Kit Post Block: Pagination: Next Text"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:179
+msgid "Jeg Kit Post Block: Pagination: Load More Text"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:180
+msgid "Jeg Kit Post Block: Pagination: Loading Text"
 msgstr ""
 
 #: jeg-elementor-kit/class/options/class-settings.php:268
@@ -5418,6 +5586,46 @@ msgstr ""
 
 #: jeg-elementor-kit/class/elements/views/class-view-abstract.php:350
 msgid "Next"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/wpml/class-accordion-module.php:44
+msgid "Jeg Kit Accordion: Accordion: Title"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/wpml/class-accordion-module.php:46
+msgid "Jeg Kit Accordion: Accordion: Content Description"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/wpml/class-animated-text-module.php:44
+msgid "Jeg Kit Animated Text: Text: Rotating Text"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/wpml/class-portfolio-gallery-module.php:44
+msgid "Jeg Kit Portfolio Gallery: Gallery: Title"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/wpml/class-portfolio-gallery-module.php:46
+msgid "Jeg Kit Portfolio Gallery: Gallery: Sub Title"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/wpml/class-portfolio-gallery-module.php:48
+msgid "Jeg Kit Portfolio Gallery: Gallery: View More Link"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/wpml/class-portfolio-gallery-module.php:50
+msgid "Jeg Kit Portfolio Gallery: Gallery: View More Text"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/wpml/class-testimonials-module.php:44
+msgid "Jeg Kit Testimonials: Testimonials: Client Name"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/wpml/class-testimonials-module.php:46
+msgid "Jeg Kit Testimonials: Testimonials: Designation"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/wpml/class-testimonials-module.php:48
+msgid "Jeg Kit Testimonials: Testimonials: Review"
 msgstr ""
 
 #: jeg-elementor-kit/lib/jeg-framework/customizer/class-customizer.php:388

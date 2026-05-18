@@ -18,6 +18,7 @@ use Jeg\Elementor_Kit\Templates\Template;
 use Jeg\Elementor_Kit\Banner\Banner;
 use Jeg\Elementor_Kit\Wizard\Wizard;
 use Jeg\Elementor_Kit\Integrations\Freemius;
+use Jeg\Elementor_Kit\Integrations\WPML;
 
 /**
  * Class Init
@@ -53,6 +54,7 @@ class Init {
 		Banner::instance();
 		Wizard::instance();
 		Freemius::instance();
+		WPML::instance();
 	}
 
 	/**
