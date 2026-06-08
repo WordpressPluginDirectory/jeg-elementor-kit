@@ -59,6 +59,9 @@ abstract class Template_Dashboard_Abstract {
 			$condition[ $key ] = jeg_prepare_field( $key, $field );
 		}
 
+		$is_limited_template = ! defined( 'JEG_KIT_PRO' ) && in_array( $page, array( Dashboard::$jkit_header, Dashboard::$jkit_footer ), true );
+		$template_limit      = 1;
+
 		return array(
 			'tab'     => array(
 				array(
@@ -76,9 +79,12 @@ abstract class Template_Dashboard_Abstract {
 			),
 			'nonce'   => wp_create_nonce( jkit_get_nonce_identifier( 'dashboard' ) ),
 			'ajax'    => admin_url( 'admin-ajax.php' ),
-			'page'    => $page,
-			'lang'    => $this->language(),
-			'success' => esc_html__( 'Success Save Data', 'jeg-elementor-kit' ),
+			'page'                   => $page,
+			'lang'                   => $this->language(),
+			'success'                => esc_html__( 'Success Save Data', 'jeg-elementor-kit' ),
+			'isTemplateLimitEnabled' => $is_limited_template,
+			'templateLimit'          => $template_limit,
+			'pricingUrl'             => admin_url( 'admin.php?page=jkit&utm_source=jeg-elementor-kit&utm_medium=theme-builder-limit' ),
 		);
 	}
 

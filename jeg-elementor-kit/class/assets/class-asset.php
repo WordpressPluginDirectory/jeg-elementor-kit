@@ -58,6 +58,21 @@ class Asset {
 	}
 
 	/**
+	 * Check if Elementor preview mode is available and active.
+	 *
+	 * @return bool
+	 */
+	private function is_elementor_preview_mode() {
+		if ( ! class_exists( '\Elementor\Plugin' ) ) {
+			return false;
+		}
+
+		$elementor = \Elementor\Plugin::instance();
+
+		return isset( $elementor->preview ) && $elementor->preview->is_preview_mode();
+	}
+
+	/**
 	 * Setup Hooks
 	 */
 	private function setup_hook() {
@@ -182,7 +197,7 @@ class Asset {
 		wp_register_style( 'tiny-slider', JEG_ELEMENTOR_KIT_URL . '/assets/js/tiny-slider/tiny-slider.css', array(), '2.9.3' );
 		wp_register_style( 'jkit-icons', JEG_ELEMENTOR_KIT_URL . '/assets/fonts/jkiticon/jkiticon.css', array(), JEG_ELEMENTOR_KIT_VERSION );
 		wp_enqueue_style( 'jkit-elements-main', JEG_ELEMENTOR_KIT_URL . '/assets/css/elements/main.css', array(), JEG_ELEMENTOR_KIT_VERSION );
-		if ( \Elementor\Plugin::$instance->preview->is_preview_mode() ) {
+		if ( $this->is_elementor_preview_mode() ) {
 			wp_enqueue_style( 'jkit-icons' );
 		}
 
@@ -245,7 +260,7 @@ class Asset {
 		wp_register_script( 'jkit-element-product-carousel', JEG_ELEMENTOR_KIT_URL . '/assets/js/elements/product-carousel.js', array( 'elementor-frontend' ), JEG_ELEMENTOR_KIT_VERSION, true );
 
 		wp_register_script( 'jkit-sticky-element', JEG_ELEMENTOR_KIT_URL . '/assets/js/elements/sticky-element.js', array( 'elementor-frontend' ), JEG_ELEMENTOR_KIT_VERSION, true );
-		if ( \Elementor\Plugin::$instance->preview->is_preview_mode() ) {
+		if ( $this->is_elementor_preview_mode() ) {
 			wp_enqueue_script( 'jkit-sticky-element' );
 		}
 

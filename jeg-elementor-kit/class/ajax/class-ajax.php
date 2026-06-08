@@ -440,16 +440,28 @@ class Ajax {
 	 */
 	public function clone_element() {
 		if ( $this->is_nonce_valid( 'dashboard' ) && current_user_can( 'edit_theme_options' ) ) {
-			$data    = jeg_sanitize_array( $_POST );
+			$data      = jeg_sanitize_array( $_POST );
+			$post_type = sanitize_key( $data['type'] );
+
+			if ( jkit_is_free_header_footer_template_limit_reached( $post_type ) ) {
+				wp_send_json_error(
+					array(
+						'code'         => 'jkit_template_limit_reached',
+						'show_pricing' => true,
+						'message'      => esc_html__( 'Upgrade to Pro to create more header or footer templates.', 'jeg-elementor-kit' ),
+					)
+				);
+			}
+
 			$post_id = $this->duplicate_element( $data['id'] );
 
-			$published = jkit_get_element_data( $_POST['type'] )['publish'];
+			$published = jkit_get_element_data( $post_type )['publish'];
 			$keys      = jkit_extract_ids( $published );
 			$keys      = jkit_remove_array( $post_id, $keys );
 			array_unshift( $keys, $post_id );
 			$this->update_post_sequence( $keys );
 
-			$element = apply_filters( 'jkit_element_data_clone', jkit_get_element_data( $_POST['type'] ), $_POST['type'], $_POST['page'] );
+			$element = apply_filters( 'jkit_element_data_clone', jkit_get_element_data( $post_type ), $post_type, $_POST['page'] );
 			wp_send_json_success( $element );
 		}
 	}
@@ -504,6 +516,17 @@ class Ajax {
 	public function create_element() {
 		if ( $this->is_nonce_valid( 'dashboard' ) && current_user_can( 'edit_theme_options' ) ) {
 			$post_type = sanitize_key( $_POST['type'] );
+
+			if ( jkit_is_free_header_footer_template_limit_reached( $post_type ) ) {
+				wp_send_json_error(
+					array(
+						'code'         => 'jkit_template_limit_reached',
+						'show_pricing' => true,
+						'message'      => esc_html__( 'Upgrade to Pro to create more header or footer templates.', 'jeg-elementor-kit' ),
+					)
+				);
+			}
+
 			$published = jkit_get_element_data( $post_type )['publish'];
 			$keys      = jkit_extract_ids( $published );
 			$data      = jeg_sanitize_array( $_POST['data'] );

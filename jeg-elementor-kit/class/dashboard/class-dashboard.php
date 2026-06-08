@@ -175,6 +175,41 @@ class Dashboard {
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ), 12 );
 		add_action( 'wizard_enqueue_scripts', array( $this, 'enqueue_scripts' ), 12 );
+		add_action( 'current_screen', array( $this, 'suppress_dashboard_notices' ) );
+	}
+
+	/**
+	 * Suppress WordPress admin notices on the Jeg Kit dashboard.
+	 *
+	 * @param \WP_Screen $screen Current admin screen.
+	 */
+	public function suppress_dashboard_notices( $screen ) {
+		if ( ! $screen || 'toplevel_page_jkit' !== $screen->id ) {
+			return;
+		}
+
+		remove_all_actions( 'admin_notices' );
+		remove_all_actions( 'all_admin_notices' );
+		remove_all_actions( 'network_admin_notices' );
+		remove_all_actions( 'user_admin_notices' );
+
+		add_action( 'admin_head', array( $this, 'hide_dashboard_notices' ) );
+	}
+
+	/**
+	 * Hide notices printed outside the standard notice hooks.
+	 */
+	public function hide_dashboard_notices() {
+		?>
+		<style>
+			#wpbody-content > .notice,
+			#wpbody-content > .error,
+			#wpbody-content > .updated,
+			#wpbody-content > .update-nag {
+				display: none !important;
+			}
+		</style>
+		<?php
 	}
 
 	/**
@@ -1039,16 +1074,29 @@ class Dashboard {
 	 * @return array
 	 */
 	public function get_theme_builder_desc() {
+		$header_publish_desc = defined( 'JEG_KIT_PRO' )
+			? __( 'These are your active Header Templates. You can create multiple header and drag them to reorder.', 'jeg-elementor-kit' )
+			: __( 'These are your active Header Templates. You can create multiple header and drag them to reorder. Upgrade to Pro to make more Templates.', 'jeg-elementor-kit' );
+		$header_empty_desc   = defined( 'JEG_KIT_PRO' )
+			? __( 'Add Header Templates to use them across your website. You can create multiple header and select where to use them.', 'jeg-elementor-kit' )
+			: __( 'Add Header Templates to use them across your website. You can create multiple header and select where to use them. Upgrade to Pro to make more Templates.', 'jeg-elementor-kit' );
+		$footer_publish_desc = defined( 'JEG_KIT_PRO' )
+			? __( 'These are your active Footer Templates. You can create multiple footer and drag them to reorder.', 'jeg-elementor-kit' )
+			: __( 'These are your active Footer Templates. You can create multiple footer and drag them to reorder. Upgrade to Pro to make more Templates.', 'jeg-elementor-kit' );
+		$footer_empty_desc   = defined( 'JEG_KIT_PRO' )
+			? __( 'Add Footer Templates to use them across your website. You can create multiple footer and select where to use them.', 'jeg-elementor-kit' )
+			: __( 'Add Footer Templates to use them across your website. You can create multiple footer and select where to use them. Upgrade to Pro to make more Templates.', 'jeg-elementor-kit' );
+
 		return array(
 			self::$jkit_header  => array(
-				'publish' => __( 'These are your active Header Templates. You can create multiple header and drag them to reorder.', 'jeg-elementor-kit' ),
+				'publish' => $header_publish_desc,
 				'draft'   => __( 'These are your unused Header Templates. You can deletes or activate header template from this list', 'jeg-elementor-kit' ),
-				'empty'   => __( 'Add Header Templates to use them across your website. You can create multiple header and select where to use them.', 'jeg-elementor-kit' ),
+				'empty'   => $header_empty_desc,
 			),
 			self::$jkit_footer  => array(
-				'publish' => __( 'These are your active Footer Templates. You can create multiple footer and drag them to reorder.', 'jeg-elementor-kit' ),
+				'publish' => $footer_publish_desc,
 				'draft'   => __( 'These are your unused Footer Templates. You can deletes or activate footer template from this list', 'jeg-elementor-kit' ),
-				'empty'   => __( 'Add Footer Templates to use them across your website. You can create multiple footer and select where to use them.', 'jeg-elementor-kit' ),
+				'empty'   => $footer_empty_desc,
 
 			),
 			self::$jkit_post    => array(

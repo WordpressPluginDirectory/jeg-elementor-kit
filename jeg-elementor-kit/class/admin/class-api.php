@@ -952,6 +952,17 @@ class Api {
 		$title = isset( $data['title'] ) ? $data['title'] : '';
 
 		if ( ! empty( $title ) ) {
+			if ( jkit_is_free_header_footer_template_limit_reached( $post_type ) ) {
+				return new \WP_REST_Response(
+					array(
+						'code'         => 'jkit_template_limit_reached',
+						'show_pricing' => true,
+						'message'      => esc_html__( 'Upgrade to Pro to create more header or footer templates.', 'jeg-elementor-kit' ),
+					),
+					403
+				);
+			}
+
 			$condition = isset( $data['condition'] ) ? $data['condition'] : array();
 			$published = jkit_get_element_data( $post_type )['publish'];
 			$keys      = jkit_extract_ids( $published );
@@ -1026,6 +1037,16 @@ class Api {
 		$title     = isset( $data['title'] ) ? $data['title'] : '';
 		$source_id = isset( $data['id'] ) ? $data['id'] : false;
 		if ( $source_id ) {
+			if ( jkit_is_free_header_footer_template_limit_reached( $post_type ) ) {
+				return new \WP_REST_Response(
+					array(
+						'code'         => 'jkit_template_limit_reached',
+						'show_pricing' => true,
+						'message'      => esc_html__( 'Upgrade to Pro to create more header or footer templates.', 'jeg-elementor-kit' ),
+					),
+					403
+				);
+			}
 
 			$template_type = ( 'jkit-header' === $post_type || 'jkit-footer' === $post_type ) ? $post_type : 'jkit-template';
 			$meta          = ( 'jkit-header' === $post_type || 'jkit-footer' === $post_type ) ? null : $post_type;

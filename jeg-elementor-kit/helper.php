@@ -540,6 +540,25 @@ if ( ! function_exists( 'jkit_get_element_data' ) ) {
 	}
 }
 
+if ( ! function_exists( 'jkit_is_free_header_footer_template_limit_reached' ) ) {
+	/**
+	 * Check whether free users already have a Header/Footer template.
+	 *
+	 * @param string $type Template post type.
+	 *
+	 * @return bool
+	 */
+	function jkit_is_free_header_footer_template_limit_reached( $type ) {
+		if ( defined( 'JEG_KIT_PRO' ) || ! in_array( $type, array( 'jkit-header', 'jkit-footer' ), true ) ) {
+			return false;
+		}
+
+		$templates = jkit_get_element_data( $type );
+
+		return ! empty( $templates['publish'] ) || ! empty( $templates['draft'] );
+	}
+}
+
 if ( ! function_exists( 'jkit_get_element' ) ) {
 	/**
 	 * Jeg Kit Get Element

@@ -65,6 +65,31 @@ class WPML {
 			),
 		);
 
+		/** Jeg Kit - Off Canvas Widget */
+		$widgets['jkit_off_canvas'] = array(
+			'conditions' => array( 'widgetType' => 'jkit_off_canvas' ),
+			'fields'     => array(
+				$this->field( 'sg_setting_open_text', __( 'Jeg Kit Off Canvas: Setting: Open Text', 'jeg-elementor-kit' ) ),
+			),
+		);
+
+		/** Jeg Kit - Search Widget */
+		$widgets['jkit_search'] = array(
+			'conditions' => array( 'widgetType' => 'jkit_search' ),
+			'fields'     => array(
+				$this->field( 'sg_search_placeholder', __( 'Jeg Kit Search: Search: Placeholder', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_search_text', __( 'Jeg Kit Search: Search: Text', 'jeg-elementor-kit' ) ),
+			),
+		);
+
+		/** Jeg Kit - Nav Menu Widget */
+		$widgets['jkit_nav_menu'] = array(
+			'conditions' => array( 'widgetType' => 'jkit_nav_menu' ),
+			'fields'     => array(
+				'sg_mobile_menu_custom_link' => $this->field( 'url', __( 'Jeg Kit Nav Menu: Mobile Menu: Custom Link', 'jeg-elementor-kit' ), 'LINK' ),
+			),
+		);
+
 		/** Jeg Kit - Accordion Widget */
 		$widgets['jkit_accordion'] = array(
 			'conditions'        => array( 'widgetType' => 'jkit_accordion' ),
@@ -93,6 +118,7 @@ class WPML {
 				$this->field( 'sg_title_before', __( 'Jeg Kit Heading: Title: Before Focused Title', 'jeg-elementor-kit' ) ),
 				$this->field( 'sg_title_focused', __( 'Jeg Kit Heading: Title: Focused Title', 'jeg-elementor-kit' ) ),
 				$this->field( 'sg_title_after', __( 'Jeg Kit Heading: Title: After Focused Title', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_title_text', __( 'Jeg Kit Heading: Title: Highlight Title', 'jeg-elementor-kit' ) ),
 				$this->field( 'sg_subtitle_heading', __( 'Jeg Kit Heading: Subtitle: Heading Sub Title', 'jeg-elementor-kit' ) ),
 				$this->field( 'sg_description', __( 'Jeg Kit Heading: Description: Heading Description', 'jeg-elementor-kit' ), 'VISUAL' ),
 				$this->field( 'sg_shadow_content', __( 'Jeg Kit Heading: Shadow Text: Content', 'jeg-elementor-kit' ) ),

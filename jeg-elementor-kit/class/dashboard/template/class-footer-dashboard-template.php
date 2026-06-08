@@ -46,10 +46,14 @@ class Footer_Dashboard_Template extends Template_Dashboard_Abstract {
 	 * @return array
 	 */
 	public function language() {
+		$create_description = defined( 'JEG_KIT_PRO' )
+			? esc_html__( 'Add footer template to use them across your website. You can create multiple footer and select where to use them.', 'jeg-elementor-kit' )
+			: esc_html__( 'Add footer template to use them across your website. You can create multiple footer and select where to use them. Upgrade to Pro to make more Templates.', 'jeg-elementor-kit' );
+
 		return array_merge(
 			array(
 				'createfirst'         => esc_html__( 'Create Footer Template', 'jeg-elementor-kit' ),
-				'createdescription'   => esc_html__( 'Add footer template to use them across your website. You can create multiple footer and select where to use them.', 'jeg-elementor-kit' ),
+				'createdescription'   => $create_description,
 				'addnewelement'       => esc_html__( 'Add New Footer', 'jeg-elementor-kit' ),
 				'createelement'       => esc_html__( 'Create Footer', 'jeg-elementor-kit' ),
 				'createconditiondesc' => esc_html__( 'Create filter where your footer will be shown, leave empty to show it everywhere.', 'jeg-elementor-kit' ),
