@@ -90,6 +90,14 @@ class WPML {
 			),
 		);
 
+		/** Jeg Kit - Progress Bar Widget */
+		$widgets['jkit_progress_bar'] = array(
+			'conditions' => array( 'widgetType' => 'jkit_progress_bar' ),
+			'fields'     => array(
+				$this->field( 'sg_progress_title', __( 'Jeg Kit Progress Bar: Progress Bar: Title', 'jeg-elementor-kit' ) ),
+			),
+		);
+
 		/** Jeg Kit - Accordion Widget */
 		$widgets['jkit_accordion'] = array(
 			'conditions'        => array( 'widgetType' => 'jkit_accordion' ),

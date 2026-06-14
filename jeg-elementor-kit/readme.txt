@@ -4,7 +4,7 @@ Tags: elementor, elements, addons, widgets, templates
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 3.2.3
+Stable tag: 3.2.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -202,7 +202,11 @@ This major release introduces Mega Menu Builder, 114 demo templates, and a redes
 
 == Changelog ==
 
-= 3.2.3 - 07-06-2026 = 
+= 3.2.4 - 14-06-2026 =
+* Improvement: Added WPML compatibility for the Progress Bar widget title.
+* Fix: Atomic Element styles not applying on Header/Footer Theme Builder templates.
+
+= 3.2.3 - 07-06-2026 =
 * Improvement: Added WPML compatibility for the Nav Menu widget mobile custom link.
 * Fix: Options in the input can't be clicked on in the Contact Form 7 widget
 * Tweak: Align Theme Builder access

@@ -73,7 +73,34 @@ class Template {
 	 */
 	public function enqueue_styles() {
 		if ( class_exists( '\Elementor\Plugin' ) && ! empty( \Elementor\Plugin::$instance->frontend ) ) {
+			$this->register_header_footer_template_styles();
 			\Elementor\Plugin::$instance->frontend->enqueue_styles();
+		}
+	}
+
+	/**
+	 * Register active header/footer template IDs before Elementor enqueues post styles.
+	 */
+	private function register_header_footer_template_styles() {
+		$post_id      = get_the_ID();
+		$template_ids = array();
+
+		foreach ( $this->get_header_template() as $header ) {
+			if ( $this->check_conditions( $post_id, $header['id'] ) ) {
+				$template_ids[] = $header['id'];
+				break;
+			}
+		}
+
+		foreach ( $this->get_footer_template() as $footer ) {
+			if ( $this->check_conditions( $post_id, $footer['id'] ) ) {
+				$template_ids[] = $footer['id'];
+				break;
+			}
+		}
+
+		foreach ( array_unique( array_filter( $template_ids ) ) as $template_id ) {
+			do_action( 'elementor/post/render', $template_id );
 		}
 	}
 
