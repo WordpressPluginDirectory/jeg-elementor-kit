@@ -98,6 +98,20 @@ class WPML {
 			),
 		);
 
+		/** Jeg Kit - Countdown Widget */
+		$widgets['jkit_countdown'] = array(
+			'conditions' => array( 'widgetType' => 'jkit_countdown' ),
+			'fields'     => array(
+				$this->field( 'sg_content_day_label', __( 'Jeg Kit Countdown: Content: Day Label', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_content_hour_label', __( 'Jeg Kit Countdown: Content: Hour Label', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_content_minute_label', __( 'Jeg Kit Countdown: Content: Minute Label', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_content_second_label', __( 'Jeg Kit Countdown: Content: Second Label', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_expire_title', __( 'Jeg Kit Countdown: Expired Action: Title', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_expire_content', __( 'Jeg Kit Countdown: Expired Action: Content', 'jeg-elementor-kit' ), 'AREA' ),
+				$this->field( 'sg_expire_link', __( 'Jeg Kit Countdown: Expired Action: Redirect Link', 'jeg-elementor-kit' ), 'LINK' ),
+			),
+		);
+
 		/** Jeg Kit - Accordion Widget */
 		$widgets['jkit_accordion'] = array(
 			'conditions'        => array( 'widgetType' => 'jkit_accordion' ),

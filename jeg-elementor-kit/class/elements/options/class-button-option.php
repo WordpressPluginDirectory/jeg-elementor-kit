@@ -555,8 +555,8 @@ class Button_Option extends Option_Abstract {
 			'responsive' => true,
 			'selectors'  => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper:not(:hover) > i'     => 'color: {{VALUE}};',
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper:not(:hover) > svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper:not(:hover) i'     => 'color: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper:not(:hover) svg' => 'fill: {{VALUE}};',
 				),
 			),
 		);
@@ -565,7 +565,7 @@ class Button_Option extends Option_Abstract {
 			'type'      => 'background',
 			'title'     => esc_html__( 'Normal Background Color', 'jeg-elementor-kit' ),
 			'segment'   => 'style_icon',
-			'selectors' => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper > i, {{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper > svg',
+			'selectors' => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper i, {{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper svg',
 			'options'   => array(
 				'classic',
 				'gradient',
@@ -577,7 +577,7 @@ class Button_Option extends Option_Abstract {
 			'type'      => 'border',
 			'title'     => esc_html__( 'Normal Border', 'jeg-elementor-kit' ),
 			'segment'   => 'style_icon',
-			'selectors' => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper > i, {{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper > svg',
+			'selectors' => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper i, {{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper svg',
 		);
 
 		$this->options['st_icon_normal_border_radius'] = array(
@@ -585,7 +585,7 @@ class Button_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
 			'segment'   => 'style_icon',
 			'units'     => array( 'px', '%', 'em', 'custom' ),
-			'selectors' => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper > i, {{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper > svg',
+			'selectors' => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper i, {{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper svg',
 			'attribute' => 'border-radius',
 		);
 
@@ -617,7 +617,7 @@ class Button_Option extends Option_Abstract {
 			'type'      => 'background',
 			'title'     => esc_html__( 'Hover Background Color', 'jeg-elementor-kit' ),
 			'segment'   => 'style_icon',
-			'selectors' => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover > i, {{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover > svg',
+			'selectors' => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover i, {{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover svg',
 			'options'   => array(
 				'classic',
 				'gradient',
@@ -629,7 +629,7 @@ class Button_Option extends Option_Abstract {
 			'type'      => 'border',
 			'title'     => esc_html__( 'Normal Border', 'jeg-elementor-kit' ),
 			'segment'   => 'style_icon',
-			'selectors' => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover > i, {{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover > svg',
+			'selectors' => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover i, {{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover svg',
 		);
 
 		$this->options['st_icon_hover_border_radius'] = array(
@@ -637,7 +637,7 @@ class Button_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
 			'segment'   => 'style_icon',
 			'units'     => array( 'px', '%', 'em', 'custom' ),
-			'selectors' => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover > i, {{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover > svg',
+			'selectors' => '.jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover i, {{WRAPPER}} .jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover svg',
 			'attribute' => 'border-radius',
 		);
 
