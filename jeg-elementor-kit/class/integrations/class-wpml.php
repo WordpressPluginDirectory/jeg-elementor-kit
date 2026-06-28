@@ -112,6 +112,18 @@ class WPML {
 			),
 		);
 
+		/** Jeg Kit - Dual Button Widget */
+		$widgets['jkit_dual_button'] = array(
+			'conditions' => array( 'widgetType' => 'jkit_dual_button' ),
+			'fields'     => array(
+				$this->field( 'sg_dual_middle_text', __( 'Jeg Kit Dual Button: Dual Button: Middle Text', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_one_text', __( 'Jeg Kit Dual Button: Button One: Text', 'jeg-elementor-kit' ) ),
+				'sg_one_link' => $this->field( 'url', __( 'Jeg Kit Dual Button: Button One: Link', 'jeg-elementor-kit' ), 'LINK' ),
+				$this->field( 'sg_two_text', __( 'Jeg Kit Dual Button: Button Two: Text', 'jeg-elementor-kit' ) ),
+				'sg_two_link' => $this->field( 'url', __( 'Jeg Kit Dual Button: Button Two: Link', 'jeg-elementor-kit' ), 'LINK' ),
+			),
+		);
+
 		/** Jeg Kit - Accordion Widget */
 		$widgets['jkit_accordion'] = array(
 			'conditions'        => array( 'widgetType' => 'jkit_accordion' ),

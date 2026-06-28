@@ -370,7 +370,7 @@ class Product_Grid_Option extends Option_WooCommerce_Abstract {
 			'selectors'  => array(
 				'custom' => array(
 					'{{WRAPPER}} .jeg-elementor-kit.jkit-product-grid .jkit-products, {{WRAPPER}} .jeg-elementor-kit.jkit-product-carousel .jkit-products .button' => 'text-align: {{VALUE}}',
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-product-grid .star-rating' => '--rating-margin-{{VALUE}}: 0',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-product-grid .star-rating'                                                                                => '--rating-margin-{{VALUE}}: 0',
 				),
 			),
 			'responsive' => true,
@@ -1322,7 +1322,7 @@ class Product_Grid_Option extends Option_WooCommerce_Abstract {
 			'selectors' => array(
 				'custom' => array(
 					'{{WRAPPER}} .jeg-elementor-kit.jkit-product-grid .product-order .orderby' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-product-grid .product-order::before' => 'top: {{TOP}}{{UNIT}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-product-grid .product-order::before'  => 'top: {{TOP}}{{UNIT}};',
 				),
 			),
 		);
@@ -1435,7 +1435,7 @@ class Product_Grid_Option extends Option_WooCommerce_Abstract {
 			'type'       => 'typography',
 			'title'      => esc_html__( 'Typography', 'jeg-elementor-kit' ),
 			'segment'    => 'style_pagination',
-			'selectors'  => '.jeg-elementor-kit.jkit-product-grid .jkit-block-pagination .jkit-pagination-button button',
+			'selectors'  => '.jeg-elementor-kit.jkit-product-grid .jkit-block-pagination .jkit-pagination-button button, {{WRAPPER}} .jeg-elementor-kit.jkit-product-grid .jkit-block-pagination button.jkit-pagination-button',
 			'dependency' => array(
 				'custom' => array(
 					'relation' => 'or',
@@ -1675,7 +1675,7 @@ class Product_Grid_Option extends Option_WooCommerce_Abstract {
 			'selectors'  => array(
 				'custom' => array(
 					'{{WRAPPER}} .jeg-elementor-kit.jkit-product-grid .jkit-block-pagination .jkit-pagination-button, {{WRAPPER}} .jeg-elementor-kit.jkit-product-grid .jkit-block-pagination .jkit-pagination-button button' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-product-grid .jkit-block-pagination .jkit-pagination-button svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-product-grid .jkit-block-pagination .jkit-pagination-button svg'                                                                                                     => 'fill: {{VALUE}};',
 				),
 			),
 		);
@@ -1733,7 +1733,7 @@ class Product_Grid_Option extends Option_WooCommerce_Abstract {
 			'selectors'  => array(
 				'custom' => array(
 					'{{WRAPPER}} .jeg-elementor-kit.jkit-product-grid .jkit-block-pagination .jkit-pagination-button:hover:not(.jkit-block-nextprev), {{WRAPPER}} .jeg-elementor-kit.jkit-product-grid .jkit-block-pagination .jkit-pagination-button:hover:not(.jkit-block-nextprev) button, {{WRAPPER}} .jeg-elementor-kit.jkit-product-grid .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev button:hover:not(.disabled)' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-product-grid .jkit-block-pagination .jkit-pagination-button:hover:not(.jkit-block-nextprev) svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-product-grid .jkit-block-pagination .jkit-pagination-button:hover:not(.jkit-block-nextprev) svg'                                                                                                                                                                                                                                                                                      => 'fill: {{VALUE}};',
 				),
 			),
 		);
@@ -1813,7 +1813,7 @@ class Product_Grid_Option extends Option_WooCommerce_Abstract {
 			'responsive' => true,
 			'selectors'  => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-product-grid .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev .disabled' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-product-grid .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev .disabled'     => 'color: {{VALUE}};',
 					'{{WRAPPER}} .jeg-elementor-kit.jkit-product-grid .jkit-block-pagination .jkit-pagination-button.jkit-block-nextprev .disabled svg' => 'fill: {{VALUE}};',
 				),
 			),
