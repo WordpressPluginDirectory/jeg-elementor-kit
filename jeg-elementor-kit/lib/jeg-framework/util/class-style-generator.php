@@ -379,9 +379,8 @@ class Style_Generator {
 	public function inline_dynamic_css() {
 		do_action( 'jeg_before_inline_dynamic_css' );
 
-		wp_enqueue_style( 'jeg-dynamic-style', JEG_URL . '/assets/css/jeg-dynamic-styles.css', null, JEG_VERSION );
-
 		if ( is_customize_preview() ) {
+			wp_enqueue_style( 'jeg-dynamic-style', JEG_URL . '/assets/css/jeg-dynamic-styles.css', null, JEG_VERSION );
 			wp_add_inline_style( 'jeg-dynamic-style', apply_filters( 'jeg_generate_inline_style', '' ) );
 
 			$fields = Customizer::get_instance()->get_all_fields();
@@ -392,13 +391,13 @@ class Style_Generator {
 		} else {
 			$styles = get_option( 'jeg-dynamic-css' );
 
-			if ( null === $styles ) {
+			if ( $styles == null ) {
 				$styles = apply_filters( 'jeg_generate_inline_style', $this->build_inline_style() );
 
 				update_option( 'jeg-dynamic-css', $styles );
 			}
 
-			wp_add_inline_style( 'jeg-dynamic-style', $styles );
+			echo '<style id="jeg_dynamic_css" type="text/css" data-type="jeg_custom-css">' . $styles . '</style>';
 		}
 
 		do_action( 'jeg_after_inline_dynamic_css' );

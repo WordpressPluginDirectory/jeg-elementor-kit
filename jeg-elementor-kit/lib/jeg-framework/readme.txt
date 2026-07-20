@@ -1,3 +1,6 @@
+=== 1.3.4 - [DEV] ==
+- [BUG] Fix conflict with JNews style generator on customizer
+
 === 1.3.3 ==
 - [BUG] Fix Pencil Icon feature not working on customizer from Astra theme
 

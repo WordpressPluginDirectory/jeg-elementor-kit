@@ -55,7 +55,7 @@ class Image_Box_View extends View_Abstract {
 		$title               = esc_attr( $this->attribute['sg_body_title'] );
 		$title_tag           = \Elementor\Utils::validate_html_tag( $this->attribute['sg_body_title_tag'] );
 		$title_icon_position = esc_attr( $this->attribute['sg_body_title_icon_position'] );
-		$description         = $this->attribute['sg_body_description'];
+		$description         = wp_kses_post( $this->attribute['sg_body_description'] );
 		$button              = $this->render_button();
 		$border_bottom       = $this->render_border_bottom();
 		$title_icon          = $this->render_icon_element( $this->attribute['sg_body_title_icon'] );

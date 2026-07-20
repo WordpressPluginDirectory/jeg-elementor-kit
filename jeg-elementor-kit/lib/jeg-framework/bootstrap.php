@@ -14,7 +14,7 @@ if ( defined( 'JEG_VERSION' ) ) {
 
 // Need to define JEG_URL on plugin / Themes.
 defined( 'JEG_URL' ) || define( 'JEG_URL', JEG_THEME_URL . '/lib/jeg-framework' );
-defined( 'JEG_VERSION' ) || define( 'JEG_VERSION', '1.3.0' );
+defined( 'JEG_VERSION' ) || define( 'JEG_VERSION', '1.3.4' );
 defined( 'JEG_DIR' ) || define( 'JEG_DIR', dirname( __FILE__ ) );
 defined( 'JEG_CLASSPATH' ) || define( 'JEG_CLASSPATH', JEG_DIR );
 

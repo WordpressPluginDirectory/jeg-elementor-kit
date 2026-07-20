@@ -123,6 +123,10 @@ class Heading_View extends View_Abstract {
 			$class .= ' display-' . $focused_title_display;
 		}
 
+		if ( ! empty( $this->attribute['sg_title_link']['url'] ) ) {
+			$content = $this->render_url_element( $this->attribute['sg_title_link'], null, 'heading-title-link', $content );
+		}
+
 		$title = '<div class="heading-section-title ' . $class . '"><' . $html_tag . ' class="heading-title">' . $content . '</' . $html_tag . '></div>';
 
 		return wp_kses_post( $title );

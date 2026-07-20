@@ -102,7 +102,12 @@ class Nav_Menu_View extends View_Abstract {
 	 * @param int      $depth     Depth of menu item. Used for padding.
 	 */
 	public function add_jkit_mega_menu_args( $args, $menu_item, $depth ) {
-		$jkit_mega_menu = get_post_meta( $menu_item->ID, 'menu_item_jkit_mega_menu', true );
+		$jnews_menu_active = (bool) apply_filters( 'jnews_load_mega_menu_option', false );
+		$jkit_mega_menu    = $jnews_menu_active ? get_post_meta( $menu_item->ID, 'menu_item_jnews_mega_menu', true ) : get_post_meta( $menu_item->ID, 'menu_item_jkit_mega_menu', true );
+
+		if ( ( ! is_array( $jkit_mega_menu ) || empty( $jkit_mega_menu['jkit_mega_menu'] ) ) ) {
+			$jkit_mega_menu = $jnews_menu_active ? get_post_meta( $menu_item->ID, 'menu_item_jkit_mega_menu', true ) : get_post_meta( $menu_item->ID, 'menu_item_jnews_mega_menu', true );
+		}
 
 		if ( isset( $jkit_mega_menu['jkit_mega_menu'] ) ) {
 			$args->jkit_mega_menu = $jkit_mega_menu['jkit_mega_menu'];

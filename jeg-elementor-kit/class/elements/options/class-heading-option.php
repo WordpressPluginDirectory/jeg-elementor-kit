@@ -277,6 +277,14 @@ class Heading_Option extends Option_Abstract {
 			),
 		);
 
+		$this->options['sg_title_link'] = array(
+			'type'          => 'link',
+			'title'         => esc_html__( 'Link', 'jeg-elementor-kit' ),
+			'segment'       => 'segment_title',
+			'placeholder'   => esc_html__( 'https://your-link.com', 'jeg-elementor-kit' ),
+			'show_external' => true,
+		);
+
 		$this->options['sg_title_focused_title_display'] = array(
 			'type'    => 'select',
 			'title'   => esc_html__( 'Focused Title Display', 'jeg-elementor-kit' ),
@@ -641,6 +649,14 @@ class Heading_Option extends Option_Abstract {
 			'segment'    => 'style_title',
 			'responsive' => true,
 			'selectors'  => '.jeg-elementor-kit.jkit-heading .heading-title',
+		);
+
+		$this->options['st_title_hover_color'] = array(
+			'type'       => 'color',
+			'title'      => esc_html__( 'Hover Color', 'jeg-elementor-kit' ),
+			'segment'    => 'style_title',
+			'responsive' => true,
+			'selectors'  => '.jeg-elementor-kit.jkit-heading .heading-title:hover',
 		);
 
 		$this->options['st_title_background'] = array(

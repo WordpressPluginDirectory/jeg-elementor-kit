@@ -124,6 +124,47 @@ class WPML {
 			),
 		);
 
+		/** Jeg Kit - Video Button Widget */
+		$widgets['jkit_video_button'] = array(
+			'conditions' => array( 'widgetType' => 'jkit_video_button' ),
+			'fields'     => array(
+				$this->field( 'sg_video_button_title', __( 'Jeg Kit Video Button: Video: Button Title', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_video_url', __( 'Jeg Kit Video Button: Video: Video URL', 'jeg-elementor-kit' ), 'LINK' ),
+			),
+		);
+
+		/** Jeg Kit - Mailchimp Widget */
+		$widgets['jkit_mailchimp'] = array(
+			'conditions' => array( 'widgetType' => 'jkit_mailchimp' ),
+			'fields'     => array(
+				$this->field( 'sg_form_name_first_label', __( 'Jeg Kit Mailchimp: Form: First Name Label', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_form_name_first_placeholder', __( 'Jeg Kit Mailchimp: Form: First Name Placeholder', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_form_name_last_label', __( 'Jeg Kit Mailchimp: Form: Last Name Label', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_form_name_last_placeholder', __( 'Jeg Kit Mailchimp: Form: Last Name Placeholder', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_form_phone_label', __( 'Jeg Kit Mailchimp: Form: Phone Label', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_form_phone_placeholder', __( 'Jeg Kit Mailchimp: Form: Phone Placeholder', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_form_email_label', __( 'Jeg Kit Mailchimp: Form: Email Label', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_form_email_placeholder', __( 'Jeg Kit Mailchimp: Form: Email Placeholder', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_form_button_text', __( 'Jeg Kit Mailchimp: Form: Button Text', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_form_success_message', __( 'Jeg Kit Mailchimp: Form: Success Message', 'jeg-elementor-kit' ) ),
+			),
+		);
+
+		/** Jeg Kit - Banner Widget */
+		$widgets['jkit_banner'] = array(
+			'conditions' => array( 'widgetType' => 'jkit_banner' ),
+			'fields'     => array(
+				$this->field( 'sg_banner_title', __( 'Jeg Kit Banner: Banner: Title', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_banner_subtitle', __( 'Jeg Kit Banner: Banner: Subtitle', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_banner_description', __( 'Jeg Kit Banner: Banner: Description', 'jeg-elementor-kit' ), 'VISUAL' ),
+				$this->field( 'sg_button_text', __( 'Jeg Kit Banner: Button: Text', 'jeg-elementor-kit' ) ),
+				'sg_button_link' => $this->field( 'url', __( 'Jeg Kit Banner: Button: Link', 'jeg-elementor-kit' ), 'LINK' ),
+				$this->field( 'sg_box_sale_before_text', __( 'Jeg Kit Banner: Box Sale: Before Text', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_box_sale_text', __( 'Jeg Kit Banner: Box Sale: Text', 'jeg-elementor-kit' ) ),
+				$this->field( 'sg_box_sale_unit', __( 'Jeg Kit Banner: Box Sale: Unit', 'jeg-elementor-kit' ) ),
+			),
+		);
+
 		/** Jeg Kit - Accordion Widget */
 		$widgets['jkit_accordion'] = array(
 			'conditions'        => array( 'widgetType' => 'jkit_accordion' ),
