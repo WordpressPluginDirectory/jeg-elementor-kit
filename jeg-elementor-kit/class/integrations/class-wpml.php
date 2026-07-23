@@ -282,6 +282,19 @@ class WPML {
 			),
 		);
 
+		/** Jeg Kit - Post List Widget */
+		$widgets['jkit_post_list'] = array(
+			'conditions' => array( 'widgetType' => 'jkit_post_list' ),
+			'fields'     => array(
+				$this->field( 'sg_content_meta_date_format_custom', __( 'Jeg Kit Post List: Content Setting: Post Date Custom Format', 'jeg-elementor-kit' ) ),
+				$this->field( 'pagination_prev_text', __( 'Jeg Kit Post List: Pagination: Previous Text', 'jeg-elementor-kit' ) ),
+				$this->field( 'pagination_next_text', __( 'Jeg Kit Post List: Pagination: Next Text', 'jeg-elementor-kit' ) ),
+				$this->field( 'pagination_loadmore_text', __( 'Jeg Kit Post List: Pagination: Load More Text', 'jeg-elementor-kit' ) ),
+				$this->field( 'pagination_loading_text', __( 'Jeg Kit Post List: Pagination: Loading Text', 'jeg-elementor-kit' ) ),
+				$this->field( 'st_nocontent_text', __( 'Jeg Kit Post List: No Content: Text', 'jeg-elementor-kit' ) ),
+			),
+		);
+
 		return $widgets;
 	}
 

@@ -61,7 +61,7 @@ class Init {
 	 * Setup Hooks
 	 */
 	private function setup_hook() {
-		add_action( 'load-plugins.php', array( $this, 'replace_plugin_update_row' ), 99 );
+		// add_action( 'load-plugins.php', array( $this, 'replace_plugin_update_row' ), 99 );
 		add_filter( 'plugin_action_links_' . JEG_ELEMENTOR_KIT_BASE, array( $this, 'add_upgrade_to_pro_action_link' ), 10, 4 );
 		add_filter( 'body_class', array( $this, 'load_body_class' ) );
 		add_filter( 'plugin_auto_update_setting_html', array( $this, 'disable_auto_update_setting_html' ), 10, 3 );
