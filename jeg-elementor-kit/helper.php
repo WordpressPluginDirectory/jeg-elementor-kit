@@ -1891,6 +1891,10 @@ function jkit_plugin_update_row( $file, $plugin_data ) {
 		$requires_php   = isset( $response->requires_php ) ? $response->requires_php : null;
 		$compatible_php = is_php_version_compatible( $requires_php );
 		$notice_type    = $compatible_php ? 'notice-warning' : 'notice-error';
+		$free_update_url = wp_nonce_url(
+			self_admin_url( 'update.php?action=upgrade-plugin&plugin=' . rawurlencode( $file ) ),
+			'upgrade-plugin_' . $file
+		);
 
 		printf(
 			'<tr class="plugin-update-tr%s" id="%s" data-slug="%s" data-plugin="%s">' .
@@ -1933,8 +1937,8 @@ function jkit_plugin_update_row( $file, $plugin_data ) {
 		} else {
 			if ( $compatible_php ) {
 				printf(
-					/* translators: 1: Update URL, 2: Additional update link attributes, 3: Upgrade URL. */
-					__( 'There is a new version of %1$s available. <strong><a href="%2$s" target="_blank" rel="noopener noreferrer" %3$s>Upgrade to Pro</a></strong> to unlock automatic updates, premium features, widgets, templates, and priority support or <strong><a href="%4$s" target="_blank" rel="noopener noreferrer">download</a></strong> the latest version.', 'jeg-elementor-kit' ),
+					/* translators: 1: Plugin name, 2: Upgrade URL, 3: Additional upgrade link attributes, 4: Pricing URL, 5: Free update URL, 6: Free update label. */
+					__( 'A new version of %1$s is available. <strong><a href="%2$s" target="_blank" rel="noopener noreferrer" %3$s>Upgrade to Pro</a></strong> to unlock automatic updates, premium features, widgets, templates, and priority support, or <strong><a href="%4$s" target="_blank" rel="noopener noreferrer" class="jkit-update-now-pricing" data-continue-url="%5$s" data-continue-label="%6$s">update now</a></strong>.', 'jeg-elementor-kit' ),
 					esc_html( $plugin_name ),
 					esc_url(
 						add_query_arg(
@@ -1951,7 +1955,18 @@ function jkit_plugin_update_row( $file, $plugin_data ) {
 						/* translators: %s: Plugin name. */
 						esc_attr( sprintf( _x( 'Upgrade %s now', 'plugin' ), $plugin_name ) )
 					),
-					esc_url( $plugin_data['url'] )
+					esc_url(
+						add_query_arg(
+							array(
+								'page'       => 'jkit',
+								'utm_source' => 'plugin-update-notice',
+								'utm_medium' => 'plugin-update-now-link',
+							),
+							admin_url( 'admin.php' )
+						)
+					),
+					esc_url( $free_update_url ),
+					esc_attr__( 'Continue Free Update', 'jeg-elementor-kit' )
 				);
 			} else {
 				printf(

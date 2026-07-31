@@ -295,6 +295,15 @@ class WPML {
 			),
 		);
 
+		/** Jeg Kit - Post Date Widget */
+		$widgets['jkit_post_date'] = array(
+			'conditions' => array( 'widgetType' => 'jkit_post_date' ),
+			'fields'     => array(
+				$this->field( 'sg_date_format_custom', __( 'Jeg Kit Post Date: Date: Custom Format', 'jeg-elementor-kit' ) ),
+				'sg_date_link_to_custom' => $this->field( 'url', __( 'Jeg Kit Post Date: Date: Custom Link', 'jeg-elementor-kit' ), 'LINK' ),
+			),
+		);
+
 		return $widgets;
 	}
 

@@ -110,6 +110,10 @@ class Element {
 	 * @param \Elementor\Widgets_Manager $manager Elementor widgets manager.
 	 */
 	public function register_element_pro( $manager ) {
+		if ( ! class_exists( '\Elementor\Modules\Promotions\Widgets\Pro_Widget_Promotion' ) ) {
+			return;
+		}
+
 		foreach ( $this->list_pro_elements() as $item => $data ) {
 			$item_key = 'jkit_pro_' . strtolower( $item );
 

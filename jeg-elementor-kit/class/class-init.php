@@ -61,7 +61,8 @@ class Init {
 	 * Setup Hooks
 	 */
 	private function setup_hook() {
-		// add_action( 'load-plugins.php', array( $this, 'replace_plugin_update_row' ), 99 );
+		add_action( 'load-plugins.php', array( $this, 'replace_plugin_update_row' ), 99 );
+		add_action( 'current_screen', array( $this, 'maybe_replace_plugin_update_row' ), 20 );
 		add_filter( 'plugin_action_links_' . JEG_ELEMENTOR_KIT_BASE, array( $this, 'add_upgrade_to_pro_action_link' ), 10, 4 );
 		add_filter( 'body_class', array( $this, 'load_body_class' ) );
 		add_filter( 'plugin_auto_update_setting_html', array( $this, 'disable_auto_update_setting_html' ), 10, 3 );
@@ -86,7 +87,22 @@ class Init {
 	 */
 	public function replace_plugin_update_row() {
 		remove_action( 'after_plugin_row_' . JEG_ELEMENTOR_KIT_BASE, 'wp_plugin_update_row' );
+		remove_action( 'after_plugin_row_' . JEG_ELEMENTOR_KIT_BASE, 'jkit_plugin_update_row', 10 );
 		add_action( 'after_plugin_row_' . JEG_ELEMENTOR_KIT_BASE, 'jkit_plugin_update_row', 10, 2 );
+	}
+
+	/**
+	 * Ensure custom plugin update row is used on the Plugins screen, including search results.
+	 *
+	 * @param \WP_Screen $screen Current screen instance.
+	 * @return void
+	 */
+	public function maybe_replace_plugin_update_row( $screen ) {
+		if ( ! isset( $screen->id ) || ! in_array( $screen->id, array( 'plugins', 'plugins-network' ), true ) ) {
+			return;
+		}
+
+		$this->replace_plugin_update_row();
 	}
 
 	/**
