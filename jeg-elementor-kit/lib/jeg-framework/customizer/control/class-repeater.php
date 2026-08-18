@@ -230,7 +230,7 @@ class Repeater extends Control_Abstract {
 			<p class="limit"><?php printf( esc_attr__( 'Limit: %s rows', 'jeg-elementor-kit' ), esc_html( $this->choices['limit'] ) ); ?></p>
 		<?php endif; ?>
 		<div class="repeater-add-wrapper">
-			<button class="button button-large button-primary repeater-add"><i class="fa fa-plus"></i></button>	
+			<button type="button" class="button button-large button-primary repeater-add"><i class="fa fa-plus"></i></button>	
 		</div>
 
 		<?php

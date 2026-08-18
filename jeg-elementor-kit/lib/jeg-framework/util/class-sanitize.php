@@ -115,6 +115,29 @@ class Sanitize {
 	}
 
 	/**
+	 * Sanitize input while keeping safe post HTML.
+	 *
+	 * @param mixed $value Value to sanitize.
+	 *
+	 * @return mixed
+	 */
+	public function sanitize_kses_post( $value ) {
+		if ( jeg_is_json( $value ) ) {
+			$value = json_decode( urldecode( $value ), true );
+		}
+
+		if ( is_array( $value ) ) {
+			foreach ( $value as $key => $item ) {
+				$value[ $key ] = $this->sanitize_kses_post( $item );
+			}
+
+			return $value;
+		}
+
+		return wp_kses_post( $value );
+	}
+
+	/**
 	 * Sanitize checkbox input value
 	 *
 	 * @param mixed $value value of checkbox input.

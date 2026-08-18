@@ -1,5 +1,6 @@
 === 1.3.4 - [DEV] ==
 - [BUG] Fix conflict with JNews style generator on customizer
+- [BUG] Fix Repeater Control, prevent submit and handle legacy string values
 
 === 1.3.3 ==
 - [BUG] Fix Pencil Icon feature not working on customizer from Astra theme

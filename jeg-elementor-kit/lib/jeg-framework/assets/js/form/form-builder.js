@@ -65,6 +65,30 @@
   }
 
   /**
+   * Safely parse repeater field values.
+   *
+   * @param value
+   * @returns {Array}
+   */
+  api.helper.parseRepeaterValue = function (value) {
+    if ($.isArray(value)) {
+      return value
+    }
+
+    if (!value) {
+      return []
+    }
+
+    try {
+      var parsedValue = JSON.parse(decodeURIComponent(value))
+
+      return $.isArray(parsedValue) ? parsedValue : []
+    } catch (e) {
+      return []
+    }
+  }
+
+  /**
    * Base container to extended by type of container
    */
   api.BaseContainer = api.Class.extend({
@@ -1431,8 +1455,7 @@
       var limit, theNewRow
 
       // The current value set in Control Class (set in to_json() function)
-      var settingValue = $.isArray(control.params.value) ? control.params.value : JSON.parse(
-        decodeURIComponent(control.params.value))
+      var settingValue = api.helper.parseRepeaterValue(control.params.value)
 
       // The hidden field that keeps the data saved (though we never update it)
       control.settingField = control.element.find('[data-customize-setting-link]').first()
@@ -1933,15 +1956,15 @@
     getValue: function () {
       'use strict'
 
+      var storedValue = $(this.element).find('.data-setting').val() || $(this.element).find('.data-setting').attr('value')
+
       // need to load the setting from JSON for first load
-      if (JSON.parse(decodeURIComponent($(this.element).find('.data-setting').attr('value'))).length <= 0) {
+      if (api.helper.parseRepeaterValue(storedValue).length <= 0) {
         // The setting is saved in JSON
-        return $.isArray(this.params.value) ? this.params.value : JSON.parse(decodeURIComponent(this.params.value))
+        return api.helper.parseRepeaterValue(this.params.value)
       }
 
-      return $.isArray($(this.element).find('.data-setting').attr('value')) ? $(this.element).
-        find('.data-setting').
-        attr('value') : JSON.parse(decodeURIComponent($(this.element).find('.data-setting').attr('value')))
+      return api.helper.parseRepeaterValue(storedValue)
 
     },
 
@@ -1975,8 +1998,10 @@
         })
       }
 
+      var serializedValue = encodeURI(JSON.stringify(filteredValue))
+
       this.value.set(filteredValue)
-      $(this.element).find('.data-setting').attr('value', encodeURI(JSON.stringify(filteredValue)))
+      $(this.element).find('.data-setting').val(serializedValue).attr('value', serializedValue)
     },
 
     /**

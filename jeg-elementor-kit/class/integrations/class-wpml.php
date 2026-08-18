@@ -304,6 +304,22 @@ class WPML {
 			),
 		);
 
+		/** Jeg Kit - Post Author Widget */
+		$widgets['jkit_post_author'] = array(
+			'conditions' => array( 'widgetType' => 'jkit_post_author' ),
+			'fields'     => array(
+				'sg_author_link_to_custom' => $this->field( 'url', __( 'Jeg Kit Post Author: Author: Custom Link', 'jeg-elementor-kit' ), 'LINK' ),
+			),
+		);
+
+		/** Jeg Kit - Post Title Widget */
+		$widgets['jkit_post_title'] = array(
+			'conditions' => array( 'widgetType' => 'jkit_post_title' ),
+			'fields'     => array(
+				'sg_title_link_to_custom' => $this->field( 'url', __( 'Jeg Kit Post Title: Title: Custom Link', 'jeg-elementor-kit' ), 'LINK' ),
+			),
+		);
+
 		return $widgets;
 	}
 

@@ -137,21 +137,21 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'typography',
 			'title'     => esc_html__( 'Typography', 'jeg-elementor-kit' ),
 			'segment'   => 'style_form_fields',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form label',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form label',
 		);
 
 		$this->options['st_form_label_text_color'] = array(
 			'type'      => 'color',
 			'title'     => esc_html__( 'Text Color', 'jeg-elementor-kit' ),
 			'segment'   => 'style_form_fields',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form label',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form label',
 		);
 
 		$this->options['st_form_label_required_text_color'] = array(
 			'type'      => 'color',
 			'title'     => esc_html__( 'Reuired Color', 'jeg-elementor-kit' ),
 			'segment'   => 'style_form_fields',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form label .required',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form label .required',
 		);
 
 		$this->options['st_form_field_heading'] = array(
@@ -166,7 +166,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Padding', 'jeg-elementor-kit' ),
 			'segment'   => 'style_form_fields',
 			'units'     => array( 'px', 'em' ),
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form textarea, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form input:not([type="submit"])',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form textarea, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form input:not([type="submit"])',
 			'attribute' => 'padding',
 		);
 
@@ -174,7 +174,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'typography',
 			'title'     => esc_html__( 'Typography', 'jeg-elementor-kit' ),
 			'segment'   => 'style_form_fields',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form textarea, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form input:not([type="submit"])',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form textarea, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form input:not([type="submit"])',
 		);
 
 		$this->options['st_form_field_tabs_start'] = array(
@@ -192,14 +192,14 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'color',
 			'title'     => esc_html__( 'Text Color', 'jeg-elementor-kit' ),
 			'segment'   => 'style_form_fields',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form textarea, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form input:not([type="submit"])',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form textarea, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form input:not([type="submit"])',
 		);
 
 		$this->options['st_form_field_normal_background'] = array(
 			'type'      => 'background',
 			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
 			'segment'   => 'style_form_fields',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form textarea, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form input:not([type="submit"])',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form textarea, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form input:not([type="submit"])',
 			'options'   => array(
 				'classic',
 				'gradient',
@@ -210,7 +210,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'border',
 			'title'     => esc_html__( 'Border', 'jeg-elementor-kit' ),
 			'segment'   => 'style_form_fields',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form textarea, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form input:not([type="submit"])',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form textarea, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form input:not([type="submit"])',
 		);
 
 		$this->options['st_form_field_normal_radius'] = array(
@@ -218,7 +218,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
 			'segment'   => 'style_form_fields',
 			'units'     => array( 'px', '%', 'em' ),
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form textarea, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form input:not([type="submit"])',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form textarea, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form input:not([type="submit"])',
 			'attribute' => 'border-radius',
 		);
 
@@ -226,7 +226,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'boxshadow',
 			'title'     => esc_html__( 'Field Shadow', 'jeg-elementor-kit' ),
 			'segment'   => 'style_form_fields',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form textarea, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form input:not([type="submit"])',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form textarea, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form input:not([type="submit"])',
 		);
 
 		$this->options['st_form_field_normal_tab_end'] = array(
@@ -251,7 +251,7 @@ class Post_Comment_Option extends Option_Abstract {
 			),
 			'selectors' => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form textarea, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form input:not([type="submit"])' => 'transition-duration: {{SIZE}}s;',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form textarea, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form input:not([type="submit"])' => 'transition-duration: {{SIZE}}s;',
 				),
 			),
 		);
@@ -260,14 +260,14 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'color',
 			'title'     => esc_html__( 'Text Color', 'jeg-elementor-kit' ),
 			'segment'   => 'style_form_fields',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form textarea:focus, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form input:not([type="submit"]):focus',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form textarea:focus, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form input:not([type="submit"]):focus',
 		);
 
 		$this->options['st_form_field_focus_background'] = array(
 			'type'      => 'background',
 			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
 			'segment'   => 'style_form_fields',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form textarea:focus, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form input:not([type="submit"]):focus',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form textarea:focus, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form input:not([type="submit"]):focus',
 			'options'   => array(
 				'classic',
 				'gradient',
@@ -278,7 +278,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'border',
 			'title'     => esc_html__( 'Border', 'jeg-elementor-kit' ),
 			'segment'   => 'style_form_fields',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form textarea:focus, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form input:not([type="submit"]):focus',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form textarea:focus, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form input:not([type="submit"]):focus',
 		);
 
 		$this->options['st_form_field_focus_radius'] = array(
@@ -286,7 +286,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
 			'segment'   => 'style_form_fields',
 			'units'     => array( 'px', '%', 'em' ),
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form textarea:focus, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form input:not([type="submit"]):focus',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form textarea:focus, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form input:not([type="submit"]):focus',
 			'attribute' => 'border-radius',
 		);
 
@@ -294,7 +294,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'boxshadow',
 			'title'     => esc_html__( 'Field Shadow', 'jeg-elementor-kit' ),
 			'segment'   => 'style_form_fields',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form textarea:focus, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form input:not([type="submit"]):focus',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form textarea:focus, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form input:not([type="submit"]):focus',
 		);
 
 		$this->options['st_form_field_focus_tab_end'] = array(
@@ -319,7 +319,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Padding', 'jeg-elementor-kit' ),
 			'segment'   => 'style_form_fields',
 			'units'     => array( 'px', 'em' ),
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form .checkmark',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form .checkmark',
 			'attribute' => 'padding',
 		);
 
@@ -344,8 +344,8 @@ class Post_Comment_Option extends Option_Abstract {
 			),
 			'selectors'  => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form .checkmark > i'   => 'font-size: {{SIZE}}{{UNIT}}',
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form .checkmark > svg' => 'width: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form .checkmark > i'   => 'font-size: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form .checkmark > svg' => 'width: {{SIZE}}{{UNIT}}',
 				),
 			),
 			'responsive' => true,
@@ -358,8 +358,8 @@ class Post_Comment_Option extends Option_Abstract {
 			'responsive' => true,
 			'selectors'  => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form .checkmark > i'   => 'color: {{VALUE}};',
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form .checkmark > svg path' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form .checkmark > i'   => 'color: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form .checkmark > svg path' => 'fill: {{VALUE}};',
 				),
 			),
 		);
@@ -375,7 +375,7 @@ class Post_Comment_Option extends Option_Abstract {
 			),
 			'selectors' => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form .checkmark' => 'transition-duration: {{SIZE}}s;',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form .checkmark' => 'transition-duration: {{SIZE}}s;',
 				),
 			),
 		);
@@ -395,7 +395,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'background',
 			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
 			'segment'   => 'style_form_fields',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form .checkmark',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form .checkmark',
 			'options'   => array(
 				'classic',
 				'gradient',
@@ -406,7 +406,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'border',
 			'title'     => esc_html__( 'Border', 'jeg-elementor-kit' ),
 			'segment'   => 'style_form_fields',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form .checkmark',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form .checkmark',
 		);
 
 		$this->options['st_form_checkbox_normal_tab_end'] = array(
@@ -424,7 +424,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'background',
 			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
 			'segment'   => 'style_form_fields',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form input[type="checkbox"]:checked ~ label .checkmark',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form input[type="checkbox"]:checked ~ label .checkmark',
 			'options'   => array(
 				'classic',
 				'gradient',
@@ -435,7 +435,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'border',
 			'title'     => esc_html__( 'Border', 'jeg-elementor-kit' ),
 			'segment'   => 'style_form_fields',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form input[type="checkbox"]:checked ~ label .checkmark',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form input[type="checkbox"]:checked ~ label .checkmark',
 		);
 
 		$this->options['st_form_checkbox_checked_tab_end'] = array(
@@ -453,7 +453,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Margin', 'jeg-elementor-kit' ),
 			'segment'   => 'style_title',
 			'units'     => array( 'px', '%', 'em' ),
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-reply-title',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-reply-title',
 			'attribute' => 'margin',
 		);
 
@@ -461,7 +461,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'typography',
 			'title'     => esc_html__( 'Typography', 'jeg-elementor-kit' ),
 			'segment'   => 'style_title',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-reply-title',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-reply-title',
 		);
 
 		$this->options['st_title_text_color'] = array(
@@ -469,7 +469,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'title'      => esc_html__( 'Text Color', 'jeg-elementor-kit' ),
 			'segment'    => 'style_title',
 			'responsive' => true,
-			'selectors'  => '.jeg-elementor-kit.jkit-post-comment #comments .comment-reply-title',
+			'selectors'  => '.jeg-elementor-kit.jkit-post-comment .comment-reply-title',
 		);
 
 		$this->options['st_description_margin'] = array(
@@ -477,7 +477,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Margin', 'jeg-elementor-kit' ),
 			'segment'   => 'style_description',
 			'units'     => array( 'px', '%', 'em' ),
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form .comment-notes, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form .logged-in-as, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form .must-log-in',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form .comment-notes, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form .logged-in-as, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form .must-log-in',
 			'attribute' => 'margin',
 		);
 
@@ -485,7 +485,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'typography',
 			'title'     => esc_html__( 'Typography', 'jeg-elementor-kit' ),
 			'segment'   => 'style_description',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form .comment-notes, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form .logged-in-as, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form .must-log-in',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form .comment-notes, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form .logged-in-as, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form .must-log-in',
 		);
 
 		$this->options['st_description_text_color'] = array(
@@ -493,7 +493,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'title'      => esc_html__( 'Text Color', 'jeg-elementor-kit' ),
 			'segment'    => 'style_description',
 			'responsive' => true,
-			'selectors'  => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form .comment-notes, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form .logged-in-as, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form .must-log-in',
+			'selectors'  => '.jeg-elementor-kit.jkit-post-comment .comment-form .comment-notes, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form .logged-in-as, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form .must-log-in',
 		);
 
 		$this->options['st_description_link_heading'] = array(
@@ -518,7 +518,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'typography',
 			'title'     => esc_html__( 'Typography', 'jeg-elementor-kit' ),
 			'segment'   => 'style_description',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form .comment-notes a, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form .logged-in-as a, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form .must-log-in a',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment .comment-form .comment-notes a, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form .logged-in-as a, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form .must-log-in a',
 		);
 
 		$this->options['st_description_link_normal_text_color'] = array(
@@ -526,7 +526,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'title'      => esc_html__( 'Text Color', 'jeg-elementor-kit' ),
 			'segment'    => 'style_description',
 			'responsive' => true,
-			'selectors'  => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form .comment-notes a, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form .logged-in-as a, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form .must-log-in a',
+			'selectors'  => '.jeg-elementor-kit.jkit-post-comment .comment-form .comment-notes a, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form .logged-in-as a, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form .must-log-in a',
 		);
 
 		$this->options['st_description_link_normal_tab_end'] = array(
@@ -551,7 +551,7 @@ class Post_Comment_Option extends Option_Abstract {
 			),
 			'selectors' => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form .comment-notes a, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form .logged-in-as a, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form .must-log-in a' => 'transition-duration: {{SIZE}}s;',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form .comment-notes a, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form .logged-in-as a, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form .must-log-in a' => 'transition-duration: {{SIZE}}s;',
 				),
 			),
 		);
@@ -561,7 +561,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'title'      => esc_html__( 'Text Color', 'jeg-elementor-kit' ),
 			'segment'    => 'style_description',
 			'responsive' => true,
-			'selectors'  => '.jeg-elementor-kit.jkit-post-comment #comments .comment-form .comment-notes a:hover, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form .logged-in-as a:hover, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments .comment-form .must-log-in a:hover',
+			'selectors'  => '.jeg-elementor-kit.jkit-post-comment .comment-form .comment-notes a:hover, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form .logged-in-as a:hover, {{WRAPPER}} .jeg-elementor-kit.jkit-post-comment .comment-form .must-log-in a:hover',
 		);
 
 		$this->options['st_description_link_hover_tab_end'] = array(
@@ -579,7 +579,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Padding', 'jeg-elementor-kit' ),
 			'segment'   => 'style_button',
 			'units'     => array( 'px', 'em' ),
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments #respond .comment-form .form-submit #submit',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment #respond .comment-form .form-submit #submit',
 			'attribute' => 'padding',
 		);
 
@@ -587,7 +587,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'typography',
 			'title'     => esc_html__( 'Typography', 'jeg-elementor-kit' ),
 			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments #respond .comment-form .form-submit #submit',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment #respond .comment-form .form-submit #submit',
 		);
 
 		$this->options['st_button_tabs_start'] = array(
@@ -605,14 +605,14 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'color',
 			'title'     => esc_html__( 'Text Color', 'jeg-elementor-kit' ),
 			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments #respond .comment-form .form-submit #submit',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment #respond .comment-form .form-submit #submit',
 		);
 
 		$this->options['st_button_normal_background'] = array(
 			'type'      => 'background',
 			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
 			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments #respond .comment-form .form-submit #submit',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment #respond .comment-form .form-submit #submit',
 			'options'   => array(
 				'classic',
 				'gradient',
@@ -623,7 +623,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'border',
 			'title'     => esc_html__( 'Border', 'jeg-elementor-kit' ),
 			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments #respond .comment-form .form-submit #submit',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment #respond .comment-form .form-submit #submit',
 		);
 
 		$this->options['st_button_normal_radius'] = array(
@@ -631,7 +631,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
 			'segment'   => 'style_button',
 			'units'     => array( 'px', '%', 'em' ),
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments #respond .comment-form .form-submit #submit',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment #respond .comment-form .form-submit #submit',
 			'attribute' => 'border-radius',
 		);
 
@@ -639,14 +639,14 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'boxshadow',
 			'title'     => esc_html__( 'Button Shadow', 'jeg-elementor-kit' ),
 			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments #respond .comment-form .form-submit #submit',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment #respond .comment-form .form-submit #submit',
 		);
 
 		$this->options['st_button_normal_textshadow'] = array(
 			'type'      => 'textshadow',
 			'title'     => esc_html__( 'Text Shadow', 'jeg-elementor-kit' ),
 			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments #respond .comment-form .form-submit #submit',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment #respond .comment-form .form-submit #submit',
 		);
 
 		$this->options['st_button_normal_tab_end'] = array(
@@ -671,7 +671,7 @@ class Post_Comment_Option extends Option_Abstract {
 			),
 			'selectors' => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #comments #respond .comment-form .form-submit #submit' => 'transition-duration: {{SIZE}}s;',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-post-comment #respond .comment-form .form-submit #submit' => 'transition-duration: {{SIZE}}s;',
 				),
 			),
 		);
@@ -680,14 +680,14 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'color',
 			'title'     => esc_html__( 'Text Color', 'jeg-elementor-kit' ),
 			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments #respond .comment-form .form-submit #submit:hover',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment #respond .comment-form .form-submit #submit:hover',
 		);
 
 		$this->options['st_button_hover_background'] = array(
 			'type'      => 'background',
 			'title'     => esc_html__( 'Background', 'jeg-elementor-kit' ),
 			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments #respond .comment-form .form-submit #submit:hover',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment #respond .comment-form .form-submit #submit:hover',
 			'options'   => array(
 				'classic',
 				'gradient',
@@ -698,7 +698,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'border',
 			'title'     => esc_html__( 'Border', 'jeg-elementor-kit' ),
 			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments #respond .comment-form .form-submit #submit:hover',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment #respond .comment-form .form-submit #submit:hover',
 		);
 
 		$this->options['st_button_hover_radius'] = array(
@@ -706,7 +706,7 @@ class Post_Comment_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
 			'segment'   => 'style_button',
 			'units'     => array( 'px', '%', 'em' ),
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments #respond .comment-form .form-submit #submit:hover',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment #respond .comment-form .form-submit #submit:hover',
 			'attribute' => 'border-radius',
 		);
 
@@ -714,14 +714,14 @@ class Post_Comment_Option extends Option_Abstract {
 			'type'      => 'boxshadow',
 			'title'     => esc_html__( 'Button Shadow', 'jeg-elementor-kit' ),
 			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments #respond .comment-form .form-submit #submit:hover',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment #respond .comment-form .form-submit #submit:hover',
 		);
 
 		$this->options['st_button_hover_textshadow'] = array(
 			'type'      => 'textshadow',
 			'title'     => esc_html__( 'Text Shadow', 'jeg-elementor-kit' ),
 			'segment'   => 'style_button',
-			'selectors' => '.jeg-elementor-kit.jkit-post-comment #comments #respond .comment-form .form-submit #submit:hover',
+			'selectors' => '.jeg-elementor-kit.jkit-post-comment #respond .comment-form .form-submit #submit:hover',
 		);
 
 		$this->options['st_button_hover_tab_end'] = array(

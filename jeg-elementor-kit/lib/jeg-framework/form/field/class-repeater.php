@@ -47,7 +47,7 @@ class Repeater extends Field_Abstract {
 			<div class="jeg-repeater-wrapper">
 				<ul class="repeater-fields"></ul>
 				<div class="repeater-add-wrapper">
-					<button class="button button-large button-primary repeater-add"><i class="fa fa-plus"></i></button>
+					<button type="button" class="button button-large button-primary repeater-add"><i class="fa fa-plus"></i></button>
 				</div>
 			</div>
 			<# var value = ( 'object' === typeof data.value ) ? JSON.stringify(data.value) : data.value; #>

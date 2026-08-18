@@ -167,7 +167,7 @@ class Form_Meta_Box {
 				}
 			} else {
 				if ( jeg_is_json( $value ) ) {
-					$value = json_decode( urldecode( $value ) );
+					$value = json_decode( urldecode( $value ), true );
 				}
 
 				if ( is_object( $value ) ) {
@@ -338,25 +338,30 @@ class Form_Meta_Box {
 				if ( is_array( $value ) ) {
 					$temporary_value = array();
 					foreach ( $value as $id => $val ) {
+						if ( ! is_array( $val ) ) {
+							continue;
+						}
+
 						$temporary = array();
 						foreach ( $field['fields'] as $field_key => $field_detail ) {
-							$temporary[ $field_key ] = $val[ $field_key ];
+							$field_value              = isset( $val[ $field_key ] ) ? $val[ $field_key ] : '';
+							$temporary[ $field_key ] = $field_value;
 
 							if ( 'image' === $field_detail['type'] ) {
-								$image = wp_get_attachment_image_src( $val[ $field_key ], 'full' );
+								$image = wp_get_attachment_image_src( $field_value, 'full' );
 
 								$temporary[ $field_key ] = array(
-									'url' => $image[0],
-									'id'  => $val[ $field_key ],
+									'url' => isset( $image[0] ) ? $image[0] : '',
+									'id'  => $field_value,
 								);
 							}
 
 							if ( 'upload' === $field_detail['type'] ) {
-								$file = basename( wp_get_attachment_url( $val[ $field_key ] ) );
+								$file = basename( wp_get_attachment_url( $field_value ) );
 
 								$temporary[ $field_key ] = array(
 									'filename' => $file,
-									'id'       => $val[ $field_key ],
+									'id'       => $field_value,
 								);
 							}
 						}

@@ -7,7 +7,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Jegtheme <support@jegtheme.com>\n"
-"POT-Creation-Date: 2026-07-30 03:51+0000\n"
+"POT-Creation-Date: 2026-08-18 04:23+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -1035,6 +1035,14 @@ msgstr ""
 
 #: jeg-elementor-kit/class/integrations/class-wpml.php:303
 msgid "Jeg Kit Post Date: Date: Custom Link"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:311
+msgid "Jeg Kit Post Author: Author: Custom Link"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:319
+msgid "Jeg Kit Post Title: Title: Custom Link"
 msgstr ""
 
 #: jeg-elementor-kit/class/options/class-settings.php:268
@@ -5751,11 +5759,11 @@ msgstr ""
 msgid "Save my name, email, and website in this browser for the next time I comment."
 msgstr ""
 
-#: jeg-elementor-kit/class/elements/views/class-post-content-view.php:37
+#: jeg-elementor-kit/class/elements/views/class-post-content-view.php:40
 msgid "This is dummy post content and will be replaced with real content of your post. "
 msgstr ""
 
-#: jeg-elementor-kit/class/elements/views/class-post-content-view.php:37
+#: jeg-elementor-kit/class/elements/views/class-post-content-view.php:40
 msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at orci sed metus malesuada eleifend. Praesent condimentum metus ac euismod efficitur."
 msgstr ""
 
