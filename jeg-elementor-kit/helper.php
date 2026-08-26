@@ -1938,7 +1938,7 @@ function jkit_plugin_update_row( $file, $plugin_data ) {
 			if ( $compatible_php ) {
 				printf(
 					/* translators: 1: Plugin name, 2: Upgrade URL, 3: Additional upgrade link attributes, 4: Pricing URL, 5: Free update URL, 6: Free update label. */
-					__( 'A new version of %1$s is available. <strong><a href="%2$s" target="_blank" rel="noopener noreferrer" %3$s>Upgrade to Pro</a></strong> to unlock automatic updates, premium features, widgets, templates, and priority support, or <strong><a href="%4$s" target="_blank" rel="noopener noreferrer" class="jkit-update-now-pricing" data-continue-url="%5$s" data-continue-label="%6$s">update now</a></strong>.', 'jeg-elementor-kit' ),
+					__( 'A new version of %1$s is available. <strong><a href="%2$s" target="_blank" rel="noopener noreferrer" %3$s>Upgrade to Pro</a></strong> to unlock automatic updates premium features, widgets, templates, and priority support, or <strong><a href="%4$s" target="_blank" rel="noopener noreferrer" class="jkit-update-now-pricing" data-continue-url="%5$s" data-continue-label="%6$s">update now</a></strong>.', 'jeg-elementor-kit' ),
 					esc_html( $plugin_name ),
 					esc_url(
 						add_query_arg(

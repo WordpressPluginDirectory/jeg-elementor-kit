@@ -2,9 +2,9 @@
 Contributors: Jegtheme
 Tags: elementor, elements, addons, widgets, templates
 Requires at least: 5.0
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 3.2.13
+Stable tag: 3.2.15
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -203,6 +203,12 @@ Visit **[https://jegkit.com/](https://jegkit.com/)** for live demos, tutorials, 
 This major release introduces Mega Menu Builder, 114 demo templates, and a redesigned dashboard. Update now to explore new features and improved performance.
 
 == Changelog ==
+
+= 3.2.15 - 26-08-2026 =
+* Improvement: Added WPML compatibility for the Post Excerpt widget.
+
+= 3.2.14 - 20-08-2026 =
+* Improvement: Added WPML compatibility for the Post Featured Image widget.
 
 = 3.2.13 - 18-08-2026 =
 * Improvement: Added WPML compatibility for the Post Title widget.
@@ -741,20 +747,11 @@ This major release introduces Mega Menu Builder, 114 demo templates, and a redes
 * Fix: Typography issue in post block, category list, post terms, team, and nav menu
 * Fix: Typography gradient color in post title
 
-= 1.11.2 - 02-08-2021 =
-* Fix: Remove unnecessary stop button in client logo widget
-
 = 1.11.1 - 31-07-2021 =
 * Improvement: Update logo assets
 
 = 1.11.0 - 21-07-2021 =
 * Add New Widget: Feature List
-
-= 1.10.2 - 05-07-2021 =
-* Improvement: Add border style in menu item
-
-= 1.10.1 - 02-07-2021 =
-* Improvement: Add form style option in search widget
 
 = 1.10.0 - 23-06-2021 =
 * Add new widget: Dual Button and Search
@@ -772,12 +769,6 @@ This major release introduces Mega Menu Builder, 114 demo templates, and a redes
 * Fix animated text line height
 * Improvement: Add tabs widget title box alignment
 
-= 1.8.2 - 03-05-2021 =
-* Fix heading title center alignment
-
-= 1.8.1 - 30-04-2021 =
-* Fix inline style mailchimp form and button width
-
 = 1.8.0 - 30-04-2021 =
 * Add new widget: Tabs
 * Improvement: Add title inline background option in heading widget
@@ -787,9 +778,6 @@ This major release introduces Mega Menu Builder, 114 demo templates, and a redes
 = 1.7.0 - 23-04-2021 =
 * Add new widget: Off Canvas
 * Improvement: Elementor tested up to: 3.2.1
-
-= 1.6.2 - 21-04-2021 =
-* Improvement: Change rotate transform CSS to avoid conflict with entrance animation
 
 = 1.6.1 - 20-04-2021 =
 * Improvement: Add tooltip background color option to the progress bar
@@ -808,34 +796,20 @@ This major release introduces Mega Menu Builder, 114 demo templates, and a redes
 * Fix mailchimp form submit error
 * Fix deprecation warning php 8
 
-= 1.4.5 - 31-03-2021 =
-* Improvement: Add responsive style pie chart size
-
 = 1.4.4 - 29-03-2021 =
 * Improvement: Icon box button hover style
 * Fix pie chart size
 * Fix pie chart content z-index
-
-= 1.4.3 - 24-03-2021 =
-* Improvement: Adjust mailchimp responsive style
-* Improvement: Add mailchimp message typography
 
 = 1.4.2 - 24-03-2021 =
 * Fix active menu item background
 * Fix not full active sub menu background
 * Fix double nav menu indicator icon in elementor editor
 
-= 1.4.1 - 23-03-2021 =
-* Fix category style post block widget type 3 on pagination load
-* Fix icon style icon box widget
-
 = 1.4.0 - 19-03-2021 =
 * Add new widget: Heading
 * Improvement: Add related post option to Post Block and Post List widgets
 * Improvement: Add no content style setting to Post Block and Post List widgets
-
-= 1.3.1 - 18-03-2021 =
-* Fix post block and list pagination
 
 = 1.3.0 - 17-03-2021 =
 * Add new widgets: Category List and Mailchimp

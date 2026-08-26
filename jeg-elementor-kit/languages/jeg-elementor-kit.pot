@@ -7,7 +7,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Jegtheme <support@jegtheme.com>\n"
-"POT-Creation-Date: 2026-08-18 04:23+0000\n"
+"POT-Creation-Date: 2026-08-26 09:39+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -42,7 +42,7 @@ msgstr ""
 
 #. translators: 1: Plugin name, 2: Upgrade URL, 3: Additional upgrade link attributes, 4: Pricing URL, 5: Free update URL, 6: Free update label.
 #: jeg-elementor-kit/helper.php:1941
-msgid "A new version of %1$s is available. <strong><a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\" %3$s>Upgrade to Pro</a></strong> to unlock automatic updates, premium features, widgets, templates, and priority support, or <strong><a href=\"%4$s\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"jkit-update-now-pricing\" data-continue-url=\"%5$s\" data-continue-label=\"%6$s\">update now</a></strong>."
+msgid "A new version of %1$s is available. <strong><a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\" %3$s>Upgrade to Pro</a></strong> to unlock automatic updates premium features, widgets, templates, and priority support, or <strong><a href=\"%4$s\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"jkit-update-now-pricing\" data-continue-url=\"%5$s\" data-continue-label=\"%6$s\">update now</a></strong>."
 msgstr ""
 
 #: jeg-elementor-kit/helper.php:1969
@@ -1043,6 +1043,14 @@ msgstr ""
 
 #: jeg-elementor-kit/class/integrations/class-wpml.php:319
 msgid "Jeg Kit Post Title: Title: Custom Link"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:327
+msgid "Jeg Kit Post Featured Image: Image: Custom Link"
+msgstr ""
+
+#: jeg-elementor-kit/class/integrations/class-wpml.php:335
+msgid "Jeg Kit Post Excerpt: Excerpt: Custom Link"
 msgstr ""
 
 #: jeg-elementor-kit/class/options/class-settings.php:268
